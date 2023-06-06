@@ -1,0 +1,6 @@
+# Der Transistor
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+{{< include 01.01_Feldeffekttransistor.qmd >}}
+{{< include 01.02_Bipolartransistor.qmd >}}
+

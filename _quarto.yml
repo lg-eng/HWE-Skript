@@ -1,0 +1,40 @@
+project:
+  type: book
+
+lang: de
+book:
+    title: "HWE-Skript"
+    author: "Leopold Götsch"
+#    date: "9/29/2022"
+    chapters:
+    - index.qmd
+    - part: 3. Jahrgang
+      chapters:
+        - Transistoren/01_Transistoren.qmd
+
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    default-image-extension: svg
+  pdf:
+    documentclass: scrreprt
+    default-image-extension: pdf
+  docx:
+    toc: true
+    number-sections: true
+
+downloads: [pdf]
+sidebar:
+    pinned: true
+    
+execute:
+    echo: false
+    output: true
+    
+ 
+
+

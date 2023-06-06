@@ -1,0 +1,128 @@
+## Bipolartransistor
+
+<!-- ![Bipolartransistor in Emittergrundschaltung](Grafiken/BJTEmitter_Basic){#fig-BJT_Emitter_Basic} -->
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+R1 = MySymbol('R_1',description='Widerstand 1 am Spannungsteiler für die AP einstellung')
+R2 = MySymbol('R_2')
+Rc = MySymbol('R_c',unit=u.ohm,description='Widerstand zwischen der Versorgungsspannung und dem Kollektor')
+Re = MySymbol('R_e',description='Widerstand zwischen dem Emitter und der Masse')
+U1 = MySymbol('U_1')
+U2 = MySymbol('U_2')
+UBE = MySymbol('U_BE')
+Uc = MySymbol('U_C')
+Ue = MySymbol('U_E')
+Ubat = MySymbol('U_bat')
+Uout = MySymbol('U_out')
+Uin = MySymbol('U_in')
+Ib = MySymbol('I_B')
+Ic = MySymbol('I_C')
+Iq = MySymbol('I_Q')
+
+
+```
+### Die Emitterschaltung mit Temperaturstabilisierung
+Ein einfacher Spannungsverstärker. Der Re dient 
+
+![Bipolartransistor in Emittergrundschaltung mit Re](Grafiken/Emittergrundschaltung_mit_Re.jpg){#fig-BJT_Emitter_mit_Re}
+
+
+### Aufgabenstellung
+Entwerfen Sie einen Spannungsverstärker mit einer Verstärkung.
+```{python}
+#| code-fold: true
+#| echo: false
+vU = MySymbol('v_U',description='Spannungsverstärkung',value=-20)
+
+vU_eq = Eq(vU,-Rc/Re)
+
+QBookHelpers.print_equation(vU_eq,label='eq-vU_eq')
+QBookHelpers.print_description(vU_eq.free_symbols)
+QBookHelpers.print_values([vU])
+
+```
+
+#### Gegeben
+
+##### Aus der Angabe
+```{python}
+#| code-fold: true
+#| echo: false
+vU = MySymbol('v_U',description='Spannungsverstärkung',value=-20)
+QBookHelpers.print_values([vU])
+QBookHelpers.print_description([vU])
+
+Ubat = MySymbol('U_bat',description='Versorgungsspannung',value=10,unit=u.V)
+QBookHelpers.print_values([Ubat])
+QBookHelpers.print_description([Ubat])
+
+```
+
+##### Aus dem Datenblatt
+```{python}
+#| code-fold: true
+#| echo: false
+B = MySymbol('B',description='Stromverstärkung, $h_{fe}$',value=300)
+
+QBookHelpers.print_values([B])
+QBookHelpers.print_description([B])
+
+```
+
+##### Aus der Erfahrung / Fausregel
+* Zahlenwerte
+```{python}
+#| code-fold: true
+#| echo: false
+
+Ut = MySymbol('U_T',description='Temperaturspannung',value=25*10**-3,unit=u.V)
+QBookHelpers.print_values([Ut])
+QBookHelpers.print_description([Ut])
+
+Ic = MySymbol('I_c',description='Strom in den Kollektor',value=1*10**-3,unit=u.A)
+QBookHelpers.print_values([Ic])
+QBookHelpers.print_description([Ic])
+
+Ube = MySymbol('U_BE',description='Spannungsabfall zwischen Basis und Emitter',value=0.7,unit=u.V)
+QBookHelpers.print_values([Ube])
+QBookHelpers.print_description([Ube])
+
+
+```
+
+* Gleichungen
+```{python}
+#| code-fold: true
+#| echo: false
+
+Ic_eq = Eq(Ic,Ubat/(2*(Re+Rc)))
+
+QBookHelpers.print_equation(Ic_eq,label='eq-Ic1')
+QBookHelpers.print_description(Ic_eq.free_symbols)
+
+```
+
+### Berechnung
+* Gleichung @eq-vU_eq  nach $R_e$ auflösen. Das Ergebnis in Gleichung @eq-Ic1 einsetzen und nach $R_c$ auflösen.
+```{python}
+#| code-fold: true
+#| echo: false
+
+Re_eq  = Eq(Re,solve(vU_eq,Re)[0])
+QBookHelpers.print_equation(vU_eq,label='eq-Re1')
+
+Ic_eq2 = Ic_eq.subs(Re_eq.lhs,Re_eq.rhs)
+QBookHelpers.print_equation(Ic_eq2,label='Ic_eq2')
+
+Rc_eq2  = Eq(Rc,solve(Ic_eq2,Rc)[0])
+QBookHelpers.print_equation(Rc_eq2,label='eq-Rc1')
+
+QBookHelpers.calculate_num_value(Rc_eq2)
+QBookHelpers.print_values([Rc])
+
+#QBookHelpers.print_description(Rc_eq2.free_symbols)
+
+```
