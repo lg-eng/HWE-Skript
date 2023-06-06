@@ -25,9 +25,9 @@ Iq = MySymbol('I_Q')
 
 ```
 ### Die Emitterschaltung mit Temperaturstabilisierung
-Ein einfacher Spannungsverstärker. Der Re dient 
+Ein einfacher Spannungsverstärker. Der Re dient der Temperaturstabilisierung der $U_{BE}$ Strecke.
 
-![Bipolartransistor in Emittergrundschaltung mit Re](Grafiken/Emittergrundschaltung_mit_Re.jpg){#fig-BJT_Emitter_mit_Re}
+![Bipolartransistor in Emittergrundschaltung mit Re](Grafiken/Emittergrundschaltung_mit_Re){#fig-BJT_Emitter_mit_Re}
 
 
 ### Aufgabenstellung
@@ -72,7 +72,7 @@ QBookHelpers.print_description([B])
 
 ```
 
-##### Aus der Erfahrung / Fausregel
+##### Aus der Erfahrung / Faustregel
 * Zahlenwerte
 ```{python}
 #| code-fold: true
@@ -124,5 +124,16 @@ QBookHelpers.calculate_num_value(Rc_eq2)
 QBookHelpers.print_values([Rc])
 
 #QBookHelpers.print_description(Rc_eq2.free_symbols)
+
+```
+
+### Die Kollektorschaltung
+Die Kollektorschaltung wird als Impedanzwandler eingesetzt. Daher ist die die wesentliche Eigenschaft der Eingangswiderstand. Die Bauteile müssen also so berechnet werden, dass sich ein gewünschter Eingangwiderstand einstellt.
+
+
+```{python}
+#| code-fold: true
+#| echo: false
+
 
 ```

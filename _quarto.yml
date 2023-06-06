@@ -3,9 +3,9 @@ project:
 
 lang: de
 book:
-    title: "HWE-Skript"
+    title: "In Arbeit!! - HWE-Skript"
     author: "Leopold Götsch"
-#    date: "9/29/2022"
+    date: today
     chapters:
     - index.qmd
     - part: 3. Jahrgang
@@ -20,14 +20,14 @@ format:
   html:
     theme: cosmo
     default-image-extension: svg
-  pdf:
-    documentclass: scrreprt
-    default-image-extension: pdf
+#  pdf:
+#    documentclass: scrreprt
+#    default-image-extension: pdf
   docx:
     toc: true
     number-sections: true
 
-downloads: [pdf]
+#downloads: [pdf]
 sidebar:
     pinned: true
     
