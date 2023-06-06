@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript - 1&nbsp; Der Transistor</title>
+<title>In Arbeit!! - HWE-Skript - 1&nbsp; Der Transistor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">HWE-Skript</a> 
+      <a href="../">In Arbeit!! - HWE-Skript</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -137,6 +137,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#die-emitterschaltung-mit-temperaturstabilisierung" id="toc-die-emitterschaltung-mit-temperaturstabilisierung" class="nav-link" data-scroll-target="#die-emitterschaltung-mit-temperaturstabilisierung"><span class="toc-section-number">1.2.1</span>  Die Emitterschaltung mit Temperaturstabilisierung</a></li>
   <li><a href="#aufgabenstellung" id="toc-aufgabenstellung" class="nav-link" data-scroll-target="#aufgabenstellung"><span class="toc-section-number">1.2.2</span>  Aufgabenstellung</a></li>
   <li><a href="#berechnung" id="toc-berechnung" class="nav-link" data-scroll-target="#berechnung"><span class="toc-section-number">1.2.3</span>  Berechnung</a></li>
+  <li><a href="#die-kollektorgrundschaltung" id="toc-die-kollektorgrundschaltung" class="nav-link" data-scroll-target="#die-kollektorgrundschaltung"><span class="toc-section-number">1.2.4</span>  Die Kollektorgrundschaltung</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -188,10 +189,10 @@ ul.task-list li input[type="checkbox"] {
 <!-- ![Bipolartransistor in Emittergrundschaltung](Grafiken/BJTEmitter_Basic){#fig-BJT_Emitter_Basic} -->
 <section id="die-emitterschaltung-mit-temperaturstabilisierung" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="die-emitterschaltung-mit-temperaturstabilisierung"><span class="header-section-number">1.2.1</span> Die Emitterschaltung mit Temperaturstabilisierung</h3>
-<p>Ein einfacher Spannungsverstärker. Der Re dient</p>
+<p>Ein einfacher Spannungsverstärker. Der Re dient der Temperaturstabilisierung der <span class="math inline">\(U_{BE}\)</span> Strecke.</p>
 <div id="fig-BJT_Emitter_mit_Re" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Grafiken/Emittergrundschaltung_mit_Re.jpg" class="img-fluid figure-img"></p>
+<p><img src="Grafiken/Emittergrundschaltung_mit_Re.svg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Abbildung&nbsp;1.2: Bipolartransistor in Emittergrundschaltung mit Re</figcaption><p></p>
 </figure>
 </div>
@@ -206,10 +207,10 @@ v_{U} = - \frac{R_{c}}{R_{e}}
 \tag{1.1}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{c}\)</span> … Widerstand zwischen der Versorgungsspannung und dem Kollektor</p>
+<p><span class="math inline">\(R_{e}\)</span> … Widerstand zwischen dem Emitter und der Masse</p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{e}\)</span> … Widerstand zwischen dem Emitter und der Masse</p>
+<p><span class="math inline">\(R_{c}\)</span> … Widerstand zwischen der Versorgungsspannung und dem Kollektor</p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(v_{U}\)</span> … Spannungsverstärkung</p>
@@ -248,8 +249,8 @@ v_{U} = - \frac{R_{c}}{R_{e}}
 </div>
 </div>
 </section>
-<section id="aus-der-erfahrung-fausregel" class="level5" data-number="1.2.2.1.3">
-<h5 data-number="1.2.2.1.3" class="anchored" data-anchor-id="aus-der-erfahrung-fausregel"><span class="header-section-number">1.2.2.1.3</span> Aus der Erfahrung / Fausregel</h5>
+<section id="aus-der-erfahrung-faustregel" class="level5" data-number="1.2.2.1.3">
+<h5 data-number="1.2.2.1.3" class="anchored" data-anchor-id="aus-der-erfahrung-faustregel"><span class="header-section-number">1.2.2.1.3</span> Aus der Erfahrung / Faustregel</h5>
 <ul>
 <li>Zahlenwerte</li>
 </ul>
@@ -283,16 +284,16 @@ I_{c} = \frac{U_{bat}}{2 R_{c} + 2 R_{e}}
 \tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{c}\)</span> … Widerstand zwischen der Versorgungsspannung und dem Kollektor</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{e}\)</span> … Widerstand zwischen dem Emitter und der Masse</p>
-</div>
-<div class="cell-output cell-output-display">
 <p><span class="math inline">\(U_{bat}\)</span> … Versorgungsspannung</p>
 </div>
 <div class="cell-output cell-output-display">
+<p><span class="math inline">\(R_{c}\)</span> … Widerstand zwischen der Versorgungsspannung und dem Kollektor</p>
+</div>
+<div class="cell-output cell-output-display">
 <p><span class="math inline">\(I_{c}\)</span> … Strom in den Kollektor</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(R_{e}\)</span> … Widerstand zwischen dem Emitter und der Masse</p>
 </div>
 </div>
 </section>
@@ -323,6 +324,9 @@ R_{c} = \frac{U_{bat} v_{U}}{2 I_{c} \left(v_{U} - 1\right)}
 <p><span class="math inline">\(R_{c}\)</span> = 4761.90476190476<span class="math inline">\(\ \Omega\)</span></p>
 </div>
 </div>
+</section>
+<section id="die-kollektorgrundschaltung" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="die-kollektorgrundschaltung"><span class="header-section-number">1.2.4</span> Die Kollektorgrundschaltung</h3>
 
 
 </section>

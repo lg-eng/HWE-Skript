@@ -2,21 +2,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "HWE-Skript",
+    "title": "In Arbeit!! - HWE-Skript",
     "section": "",
-    "text": "Willkommen zum Skript"
+    "text": "Willkommen zum Skript\nIn Arbeit!!"
   },
   {
     "objectID": "index.html#verbessern",
     "href": "index.html#verbessern",
-    "title": "HWE-Skript",
+    "title": "In Arbeit!! - HWE-Skript",
     "section": "Verbessern",
     "text": "Verbessern\nIch freue mich über alle Fehlerkorrekturen und Verbesserungsvorschläge die mich erreichen. Am einfachsten ist dies via Mail."
   },
   {
     "objectID": "index.html#mitwirken",
     "href": "index.html#mitwirken",
-    "title": "HWE-Skript",
+    "title": "In Arbeit!! - HWE-Skript",
     "section": "Mitwirken",
     "text": "Mitwirken\nWer am Skriptum mitarbeiten möchte kann mich gerne kontaktieren. Meine Kontaktdaten sind auf der Homepage der HTL-Anichstrasse zu finden.\nViel Vergnügen mit HWE und dem interaktiven Quarto Book!"
   },
@@ -32,6 +32,6 @@
     "href": "Transistoren/01_Transistoren.html#bipolartransistor",
     "title": "1  Der Transistor",
     "section": "1.2 Bipolartransistor",
-    "text": "1.2 Bipolartransistor\n\n\n1.2.1 Die Emitterschaltung mit Temperaturstabilisierung\nEin einfacher Spannungsverstärker. Der Re dient\n\n\n\nAbbildung 1.2: Bipolartransistor in Emittergrundschaltung mit Re\n\n\n\n\n1.2.2 Aufgabenstellung\nEntwerfen Sie einen Spannungsverstärker mit einer Verstärkung.\n\n\n\\[\nv_{U} = - \\frac{R_{c}}{R_{e}}\n\\tag{1.1}\\]\n\n\n\\(R_{c}\\) … Widerstand zwischen der Versorgungsspannung und dem Kollektor\n\n\n\\(R_{e}\\) … Widerstand zwischen dem Emitter und der Masse\n\n\n\\(v_{U}\\) … Spannungsverstärkung\n\n\n\\(v_{U}\\) = -20\\(\\ \\mathtt{\\text{}}\\)\n\n\n\n1.2.2.1 Gegeben\n\n1.2.2.1.1 Aus der Angabe\n\n\n\\(v_{U}\\) = -20\\(\\ \\mathtt{\\text{}}\\)\n\n\n\\(v_{U}\\) … Spannungsverstärkung\n\n\n\\(U_{bat}\\) = 10\\(\\ \\text{V}\\)\n\n\n\\(U_{bat}\\) … Versorgungsspannung\n\n\n\n\n1.2.2.1.2 Aus dem Datenblatt\n\n\n\\(B\\) = 300\\(\\ \\mathtt{\\text{}}\\)\n\n\n\\(B\\) … Stromverstärkung, \\(h_{fe}\\)\n\n\n\n\n1.2.2.1.3 Aus der Erfahrung / Fausregel\n\nZahlenwerte\n\n\n\n\\(U_{T}\\) = 0.025\\(\\ \\text{V}\\)\n\n\n\\(U_{T}\\) … Temperaturspannung\n\n\n\\(I_{c}\\) = 0.001\\(\\ \\text{A}\\)\n\n\n\\(I_{c}\\) … Strom in den Kollektor\n\n\n\\(U_{BE}\\) = 0.7\\(\\ \\text{V}\\)\n\n\n\\(U_{BE}\\) … Spannungsabfall zwischen Basis und Emitter\n\n\n\nGleichungen\n\n\n\n\\[\nI_{c} = \\frac{U_{bat}}{2 R_{c} + 2 R_{e}}\n\\tag{1.2}\\]\n\n\n\\(R_{c}\\) … Widerstand zwischen der Versorgungsspannung und dem Kollektor\n\n\n\\(R_{e}\\) … Widerstand zwischen dem Emitter und der Masse\n\n\n\\(U_{bat}\\) … Versorgungsspannung\n\n\n\\(I_{c}\\) … Strom in den Kollektor\n\n\n\n\n\n\n1.2.3 Berechnung\n\nGleichung Gleichung 1.1 nach \\(R_e\\) auflösen. Das Ergebnis in Gleichung Gleichung 1.2 einsetzen und nach \\(R_c\\) auflösen.\n\n\n\n\\[\nv_{U} = - \\frac{R_{c}}{R_{e}}\n\\tag{1.3}\\]\n\n\n\\[\nI_{c} = \\frac{U_{bat}}{2 R_{c} - \\frac{2 R_{c}}{v_{U}}}\n\\]{#Ic_eq2}\n\n\n\\[\nR_{c} = \\frac{U_{bat} v_{U}}{2 I_{c} \\left(v_{U} - 1\\right)}\n\\tag{1.4}\\]\n\n\n\\(R_{c}\\) = 4761.90476190476\\(\\ \\Omega\\)"
+    "text": "1.2 Bipolartransistor\n\n\n1.2.1 Die Emitterschaltung mit Temperaturstabilisierung\nEin einfacher Spannungsverstärker. Der Re dient der Temperaturstabilisierung der \\(U_{BE}\\) Strecke.\n\n\n\nAbbildung 1.2: Bipolartransistor in Emittergrundschaltung mit Re\n\n\n\n\n1.2.2 Aufgabenstellung\nEntwerfen Sie einen Spannungsverstärker mit einer Verstärkung.\n\n\n\\[\nv_{U} = - \\frac{R_{c}}{R_{e}}\n\\tag{1.1}\\]\n\n\n\\(R_{e}\\) … Widerstand zwischen dem Emitter und der Masse\n\n\n\\(R_{c}\\) … Widerstand zwischen der Versorgungsspannung und dem Kollektor\n\n\n\\(v_{U}\\) … Spannungsverstärkung\n\n\n\\(v_{U}\\) = -20\\(\\ \\mathtt{\\text{}}\\)\n\n\n\n1.2.2.1 Gegeben\n\n1.2.2.1.1 Aus der Angabe\n\n\n\\(v_{U}\\) = -20\\(\\ \\mathtt{\\text{}}\\)\n\n\n\\(v_{U}\\) … Spannungsverstärkung\n\n\n\\(U_{bat}\\) = 10\\(\\ \\text{V}\\)\n\n\n\\(U_{bat}\\) … Versorgungsspannung\n\n\n\n\n1.2.2.1.2 Aus dem Datenblatt\n\n\n\\(B\\) = 300\\(\\ \\mathtt{\\text{}}\\)\n\n\n\\(B\\) … Stromverstärkung, \\(h_{fe}\\)\n\n\n\n\n1.2.2.1.3 Aus der Erfahrung / Faustregel\n\nZahlenwerte\n\n\n\n\\(U_{T}\\) = 0.025\\(\\ \\text{V}\\)\n\n\n\\(U_{T}\\) … Temperaturspannung\n\n\n\\(I_{c}\\) = 0.001\\(\\ \\text{A}\\)\n\n\n\\(I_{c}\\) … Strom in den Kollektor\n\n\n\\(U_{BE}\\) = 0.7\\(\\ \\text{V}\\)\n\n\n\\(U_{BE}\\) … Spannungsabfall zwischen Basis und Emitter\n\n\n\nGleichungen\n\n\n\n\\[\nI_{c} = \\frac{U_{bat}}{2 R_{c} + 2 R_{e}}\n\\tag{1.2}\\]\n\n\n\\(U_{bat}\\) … Versorgungsspannung\n\n\n\\(R_{c}\\) … Widerstand zwischen der Versorgungsspannung und dem Kollektor\n\n\n\\(I_{c}\\) … Strom in den Kollektor\n\n\n\\(R_{e}\\) … Widerstand zwischen dem Emitter und der Masse\n\n\n\n\n\n\n1.2.3 Berechnung\n\nGleichung Gleichung 1.1 nach \\(R_e\\) auflösen. Das Ergebnis in Gleichung Gleichung 1.2 einsetzen und nach \\(R_c\\) auflösen.\n\n\n\n\\[\nv_{U} = - \\frac{R_{c}}{R_{e}}\n\\tag{1.3}\\]\n\n\n\\[\nI_{c} = \\frac{U_{bat}}{2 R_{c} - \\frac{2 R_{c}}{v_{U}}}\n\\]{#Ic_eq2}\n\n\n\\[\nR_{c} = \\frac{U_{bat} v_{U}}{2 I_{c} \\left(v_{U} - 1\\right)}\n\\tag{1.4}\\]\n\n\n\\(R_{c}\\) = 4761.90476190476\\(\\ \\Omega\\)\n\n\n\n\n1.2.4 Die Kollektorgrundschaltung"
   }
 ]
