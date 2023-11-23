@@ -1,4 +1,4 @@
-## Bipolartransistor
+## Bipolartransistor {#sec-BJT}
 
 <!-- ![Bipolartransistor in Emittergrundschaltung](Grafiken/BJTEmitter_Basic){#fig-BJT_Emitter_Basic} -->
 
@@ -27,7 +27,7 @@ Iq = MySymbol('I_Q')
 ### Die Emitterschaltung mit Temperaturstabilisierung
 Ein einfacher Spannungsverstärker. Der Re dient der Temperaturstabilisierung der $U_{BE}$ Strecke.
 
-![Bipolartransistor in Emittergrundschaltung mit Re](Grafiken/Emittergrundschaltung_mit_Re){#fig-BJT_Emitter_mit_Re}
+![Bipolartransistor in Emittergrundschaltung mit Re](Grafiken/BJTEmitterschaltung_mitRE){#fig-BJT_Emitter_mit_Re}
 
 
 ### Aufgabenstellung
