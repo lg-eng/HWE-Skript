@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>In Arbeit!! - HWE-Skript - 1&nbsp; Der Transistor</title>
+<title>In Arbeit!! - HWE-Skript - 2&nbsp; Der Transistor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Transistoren/04_EinfuehrungProjekt.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../references.html" rel="next">
+<link href="../Transistoren/01_Transistoren.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,8 +62,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -76,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Transistoren/01_Transistoren.html">3. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Transistoren/01_Transistoren.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Transistoren/04_EinführungProjekt.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Transistoren/04_EinführungProjekt.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Der Transistor</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -122,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link active">
+  <a href="../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
   </div>
 </li>
@@ -139,8 +137,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transistoren/04_EinfuehrungProjekt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die Projekte</span></span></a>
+  <a href="../Transistoren/04_EinführungProjekt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
   </div>
 </li>
       </ul>
@@ -161,17 +159,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#feldeffekttransistor" id="toc-feldeffekttransistor" class="nav-link active" data-scroll-target="#feldeffekttransistor"><span class="header-section-number">1.1</span> Feldeffekttransistor</a>
-  <ul class="collapse">
-  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="header-section-number">1.1.1</span> Aufgabe</a></li>
-  </ul></li>
-  <li><a href="#sec-BJT" id="toc-sec-BJT" class="nav-link" data-scroll-target="#sec-BJT"><span class="header-section-number">1.2</span> Bipolartransistor</a>
-  <ul class="collapse">
-  <li><a href="#die-emitterschaltung-mit-temperaturstabilisierung" id="toc-die-emitterschaltung-mit-temperaturstabilisierung" class="nav-link" data-scroll-target="#die-emitterschaltung-mit-temperaturstabilisierung"><span class="header-section-number">1.2.1</span> Die Emitterschaltung mit Temperaturstabilisierung</a></li>
-  <li><a href="#aufgabenstellung" id="toc-aufgabenstellung" class="nav-link" data-scroll-target="#aufgabenstellung"><span class="header-section-number">1.2.2</span> Aufgabenstellung</a></li>
-  <li><a href="#berechnung" id="toc-berechnung" class="nav-link" data-scroll-target="#berechnung"><span class="header-section-number">1.2.3</span> Berechnung</a></li>
-  <li><a href="#die-kollektorschaltung" id="toc-die-kollektorschaltung" class="nav-link" data-scroll-target="#die-kollektorschaltung"><span class="header-section-number">1.2.4</span> Die Kollektorschaltung</a></li>
-  </ul></li>
+  <li><a href="#leistungsverstärker" id="toc-leistungsverstärker" class="nav-link active" data-scroll-target="#leistungsverstärker"><span class="header-section-number">2.1</span> Leistungsverstärker</a></li>
   </ul>
 </nav>
     </div>
@@ -180,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Der Transistor</span></h1>
 </div>
 
 
@@ -195,175 +183,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="feldeffekttransistor" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="feldeffekttransistor"><span class="header-section-number">1.1</span> Feldeffekttransistor</h2>
-<p>Die einfachste und die gleichzeitig eine der wichtigsten Anwendungen des MOSFET’s ist der Schalter. Mittels Spannnung am Gate wird der MOSFET ein- und ausgeschalten.</p>
-<div id="fig-n-Channel_switch" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/NChannelenhancementSwitch.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;1.1: N-Kanal MOSFET als Schalter</figcaption>
-</figure>
-</div>
-<p>Die notwendigen und zulässigen Spannungen sind aus dem Datenblatt des gewählten Transistors zu entnehmen. Am Gate wird kein Vorwiderstand benötigt, da der Eingangswiderstand des MOSFET’s sehr hoch ist und kann dadurch in den meisten Fällen mit <span class="math inline">\(I_D = 0 \ \mathrm{A}\)</span> angenommen werden kann.</p>
-<section id="aufgabe" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">1.1.1</span> Aufgabe</h3>
-<section id="teil-1-n-kanal-anreicherungstyp" class="level4" data-number="1.1.1.1">
-<h4 data-number="1.1.1.1" class="anchored" data-anchor-id="teil-1-n-kanal-anreicherungstyp"><span class="header-section-number">1.1.1.1</span> Teil 1: N-Kanal Anreicherungstyp</h4>
-<p>Simulieren Sie die Schaltung. Wählen Sie die Spannungen aus dem Datenblatt aus. Geben Sie für zwei Eingangspulse den Strom durch, und die Spannung über den Widerstand. Verwenden Sie dafür die Transientenanalyse und geben Sie deutlich an ob das Ergebnis den Erwartungen entspricht oder nicht. Argumentieren Sie Ihre Aussage.</p>
-</section>
-<section id="teil-2-p-kanal-anreicherungstyp" class="level4" data-number="1.1.1.2">
-<h4 data-number="1.1.1.2" class="anchored" data-anchor-id="teil-2-p-kanal-anreicherungstyp"><span class="header-section-number">1.1.1.2</span> Teil 2: P-Kanal Anreicherungstyp</h4>
-<p>Simulieren Sie die Schaltung erneut unter der verwendung eines P-Kanal Anreicherungstypen. Passen Sie die Spannungen so an, dass auch dieser als Schalter funktioniert. Verwenden Sie dazu erneut das passende Datenblatt. Geben Sie deutlich an ob das Ergebnis den Erwartungen entspricht oder nicht. Argumentieren Sie Ihre Aussage.</p>
-</section>
-</section>
-</section>
-<section id="sec-BJT" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="sec-BJT"><span class="header-section-number">1.2</span> Bipolartransistor</h2>
-<!-- ![Bipolartransistor in Emittergrundschaltung](Grafiken/BJTEmitter_Basic){#fig-BJT_Emitter_Basic} -->
-<section id="die-emitterschaltung-mit-temperaturstabilisierung" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="die-emitterschaltung-mit-temperaturstabilisierung"><span class="header-section-number">1.2.1</span> Die Emitterschaltung mit Temperaturstabilisierung</h3>
-<p>Ein einfacher Spannungsverstärker. Der Re dient der Temperaturstabilisierung der <span class="math inline">\(U_{BE}\)</span> Strecke.</p>
-<div id="fig-BJT_Emitter_mit_Re" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/BJTEmitterschaltung_mitRE.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;1.2: Bipolartransistor in Emittergrundschaltung mit Re</figcaption>
-</figure>
-</div>
-</section>
-<section id="aufgabenstellung" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="aufgabenstellung"><span class="header-section-number">1.2.2</span> Aufgabenstellung</h3>
-<p>Entwerfen Sie einen Spannungsverstärker mit einer Verstärkung.</p>
-<div class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<p><span id="eq-vU_eq"><span class="math display">\[
-v_{U} = - \frac{R_{c}}{R_{e}}
-\tag{1.1}\]</span></span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(v_{U}\)</span> … Spannungsverstärkung</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{c}\)</span> … Widerstand zwischen der Versorgungsspannung und dem Kollektor</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{e}\)</span> … Widerstand zwischen dem Emitter und der Masse</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(v_{U}\)</span> = -20<span class="math inline">\(\ \mathtt{\text{}}\)</span></p>
-</div>
-</div>
-<section id="gegeben" class="level4" data-number="1.2.2.1">
-<h4 data-number="1.2.2.1" class="anchored" data-anchor-id="gegeben"><span class="header-section-number">1.2.2.1</span> Gegeben</h4>
-<section id="aus-der-angabe" class="level5" data-number="1.2.2.1.1">
-<h5 data-number="1.2.2.1.1" class="anchored" data-anchor-id="aus-der-angabe"><span class="header-section-number">1.2.2.1.1</span> Aus der Angabe</h5>
-<div class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(v_{U}\)</span> = -20<span class="math inline">\(\ \mathtt{\text{}}\)</span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(v_{U}\)</span> … Spannungsverstärkung</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{bat}\)</span> = 10<span class="math inline">\(\ \text{V}\)</span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{bat}\)</span> … Versorgungsspannung</p>
-</div>
-</div>
-</section>
-<section id="aus-dem-datenblatt" class="level5" data-number="1.2.2.1.2">
-<h5 data-number="1.2.2.1.2" class="anchored" data-anchor-id="aus-dem-datenblatt"><span class="header-section-number">1.2.2.1.2</span> Aus dem Datenblatt</h5>
-<div class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(B\)</span> = 300<span class="math inline">\(\ \mathtt{\text{}}\)</span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(B\)</span> … Stromverstärkung, <span class="math inline">\(h_{fe}\)</span></p>
-</div>
-</div>
-</section>
-<section id="aus-der-erfahrung-faustregel" class="level5" data-number="1.2.2.1.3">
-<h5 data-number="1.2.2.1.3" class="anchored" data-anchor-id="aus-der-erfahrung-faustregel"><span class="header-section-number">1.2.2.1.3</span> Aus der Erfahrung / Faustregel</h5>
-<ul>
-<li>Zahlenwerte</li>
-</ul>
-<div class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{T}\)</span> = 0.025<span class="math inline">\(\ \text{V}\)</span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{T}\)</span> … Temperaturspannung</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(I_{c}\)</span> = 0.001<span class="math inline">\(\ \text{A}\)</span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(I_{c}\)</span> … Strom in den Kollektor</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{BE}\)</span> = 0.7<span class="math inline">\(\ \text{V}\)</span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{BE}\)</span> … Spannungsabfall zwischen Basis und Emitter</p>
-</div>
-</div>
-<ul>
-<li>Gleichungen</li>
-</ul>
-<div class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<p><span id="eq-Ic1"><span class="math display">\[
-I_{c} = \frac{U_{bat}}{2 R_{c} + 2 R_{e}}
-\tag{1.2}\]</span></span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(I_{c}\)</span> … Strom in den Kollektor</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{c}\)</span> … Widerstand zwischen der Versorgungsspannung und dem Kollektor</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{e}\)</span> … Widerstand zwischen dem Emitter und der Masse</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(U_{bat}\)</span> … Versorgungsspannung</p>
-</div>
-</div>
-</section>
-</section>
-</section>
-<section id="berechnung" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="berechnung"><span class="header-section-number">1.2.3</span> Berechnung</h3>
-<ul>
-<li>Gleichung <a href="#eq-vU_eq">Gleichung&nbsp;<span>1.1</span></a> nach <span class="math inline">\(R_e\)</span> auflösen. Das Ergebnis in Gleichung <a href="#eq-Ic1">Gleichung&nbsp;<span>1.2</span></a> einsetzen und nach <span class="math inline">\(R_c\)</span> auflösen.</li>
-</ul>
-<div class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<p><span id="eq-Re1"><span class="math display">\[
-v_{U} = - \frac{R_{c}}{R_{e}}
-\tag{1.3}\]</span></span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math display">\[
-I_{c} = \frac{U_{bat}}{2 R_{c} - \frac{2 R_{c}}{v_{U}}}
-\]</span>{#Ic_eq2}</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span id="eq-Rc1"><span class="math display">\[
-R_{c} = \frac{U_{bat} v_{U}}{2 I_{c} \left(v_{U} - 1\right)}
-\tag{1.4}\]</span></span></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(R_{c}\)</span> = 4761.90476190476<span class="math inline">\(\ \Omega\)</span></p>
-</div>
-</div>
-</section>
-<section id="die-kollektorschaltung" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4" class="anchored" data-anchor-id="die-kollektorschaltung"><span class="header-section-number">1.2.4</span> Die Kollektorschaltung</h3>
-<p>Die Kollektorschaltung wird als Impedanzwandler eingesetzt. Daher ist die die wesentliche Eigenschaft der Eingangswiderstand. Die Bauteile müssen also so berechnet werden, dass sich ein gewünschter Eingangwiderstand einstellt.</p>
+<section id="leistungsverstärker" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="leistungsverstärker"><span class="header-section-number">2.1</span> Leistungsverstärker</h2>
+<p>BlaBla</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -602,13 +426,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Willkommen zum Skript</span>
+      <a href="../Transistoren/01_Transistoren.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Transistoren/04_EinfuehrungProjekt.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Die Projekte</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
