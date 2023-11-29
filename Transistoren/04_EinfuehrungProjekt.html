@@ -232,7 +232,7 @@ cookieconsent.run({
 
 <section id="leistungsverstärker" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="leistungsverstärker"><span class="header-section-number">1.1</span> Leistungsverstärker</h2>
-<p>Transistorverstärker wie sie bisher bekannt sind <span class="quarto-unresolved-ref">?sec-BJT</span>, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor <span class="math inline">\(I_C\)</span> in Ruhe, also ohne Signal am Eingang. Bei der Emitterschaltung ist der Ruhestrom höher, da der Arbeitspunkt auf der Kennlinie weiter “oben” ist. Diese Betriebsart wird auch A - Betrieb genannt.</p>
+<p>Transistorverstärker, wie sie bisher bekannt sind <span class="quarto-unresolved-ref">?sec-BJT</span>, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor <span class="math inline">\(I_C\)</span> in Ruhe, also ohne Signal am Eingang. Bei der Emitterschaltung ist der Ruhestrom höher, da der Arbeitspunkt auf der Kennlinie weiter “oben” ist. Diese Betriebsart wird auch A - Betrieb genannt.</p>
 <div id="fig-BJT-AP_Ruhestrom" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/BJT_Kennlinie_AP_Ruhestrom.png" class="img-fluid figure-img"></p>
@@ -243,17 +243,17 @@ cookieconsent.run({
 <section id="die-gegentaktendstufe" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="die-gegentaktendstufe"><span class="header-section-number">1.1.1</span> Die Gegentaktendstufe</h3>
 <p>Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund eines höheren <span class="math inline">\(I_C\)</span> verursacht, und trotzdem ein symmetrisches Signal verstärkt werden kann, können zwei Transistoren eingesetzt werden. Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt und die die Betriebsart wird als B bezeichnet. Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_Gegen" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/01_LV_Gegentaktendstufe.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Bipolartransistoren in Gegentakt</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.2: Bipolartransistoren in Gegentakt</figcaption>
 </figure>
 </div>
 <p>Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_Gegen_Sim1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/01_GegentaktendstufeSimulation.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Bipolartransistoren in Gegentakt, Simulationsergebnisse</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.3: Bipolartransistoren in Gegentakt, Simulationsergebnisse</figcaption>
 </figure>
 </div>
 <table class="table">
@@ -286,18 +286,18 @@ cookieconsent.run({
 <section id="rückkopplung" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="rückkopplung"><span class="header-section-number">1.1.2</span> Rückkopplung</h3>
 <p>Um den Verlauf der Ausgangsspannung an den Verlauf der Eingangsspannung anzupassen, wird eine Gegenkopplung verwendet. Dazu ist eine Subtraktion des Ausgangssignals vom Eingangssignal notwendig. Als Transistorschaltung würde sich eine Differenzverstärkerschaltung anbieten. Für ein noch besseres Ergebnis wird hier ein OPV eingesetzt. Durch die Rückkopplung der gesamten Ausgangsspannung wird eine Spannungsverstärkung von Eins erreicht. Das Ausgangssignal folgt dem Eingangssignal. Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus um beispielsweise Lautsprecher zu betreiben.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_GegenRueck" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/02_LV_Rueckkopplung.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gegentaktendstufe mit Rückkopplung</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.4: Gegentaktendstufe mit Rückkopplung</figcaption>
 </figure>
 </div>
 <p>Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In Abbildung <a href="#fig-BJT-AP_Ruhestrom">Abbildung&nbsp;<span>1.1</span></a> lässt sich erkennen, dass sich in der Nähe des Ursprunges ein Knick befindet. Erst ab einer <span class="math inline">\(U_{BE} \ \)</span> größer von ca. <span class="math inline">\(0,7 \ \mathrm{V}\)</span> beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.<br>
 Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er stark abhängig von der Frequenz. Je schneller im Verhältnis zum Signal der OPV sein Ausgangssignal ändern kann, umso kleiner sind die Verzerrungen. Wie schnell der OPV seinen Ausgang ändern kann, hängt von der Slew-Rate mit der Einheit <span class="math inline">\(\mathrm{\frac{V}{s}}\)</span> ab.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_GegenRueck" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/02_Rueckkopplung_Sim12.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.5: Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse</figcaption>
 </figure>
 </div>
 <table class="table">
@@ -331,13 +331,13 @@ Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er st
 <h3 data-number="1.1.3" class="anchored" data-anchor-id="vorspannen"><span class="header-section-number">1.1.3</span> Vorspannen</h3>
 <p>Um die Übergabeverzerrungen zu eliminieren wird die B-E Strecke vorgespannt. Das bedeutet eine Spannung anzulegen welche größer ist als die Schwellspannung der Basis- Emitter Strecke. Damit ist der Transistor bereits im leitenden Bereich und wird nur noch vom Eingangssignal weiter ausgesteuert.<br>
 Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wenn am Eingang <span class="math inline">\(0 \ \mathrm{V} \ \)</span> anliegen erhöhen sich die Verluste. Dieser Kollektorstrom wird auch als Ruhestrom bezeichnet <span class="math inline">\(I_{C,Ruhe} \ \)</span>. Um den Ruhestrom möglichst klein zu halten muss die Spannungsquelle an die Transistoren und deren Fertigungstoleranzen angepasst werden.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_GegenRueckVor" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/03_LV_Vorspannung.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gegentaktendstufe mit vorgespannten Transistoren</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.6: Gegentaktendstufe mit vorgespannten Transistoren</figcaption>
 </figure>
 </div>
-<p>Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten <span class="math inline">\(I_C\)</span> eingestellt werden. Der <span class="math inline">\(I_C\)</span> ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der <span class="math inline">\(I_C\)</span> ein Zehntel des maximalen Laststromes betragen. <img src="Grafiken/03_Vorspannung_DCSweepSim12.png" class="img-fluid" alt="Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep"></p>
+<p>Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten <span class="math inline">\(I_C\)</span> eingestellt werden. Der <span class="math inline">\(I_C\)</span> ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der <span class="math inline">\(I_C\)</span> ein Zehntel des maximalen Laststromes betragen. <img src="Grafiken/03_Vorspannung_DCSweepSim12.png" id="fig-BJT_GegenRueckVorDCSw" class="img-fluid" alt="Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep"></p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -388,10 +388,10 @@ Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wen
 </table>
 <p>Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zusammenhang zwischen <span class="math inline">\(U_{BE}\)</span> und <span class="math inline">\(I_C\)</span> ein anderer. Da die Werte sehr nahe beieinander liegen kann ein gerundetes arithmetisches Mittel als Ergebnis für <span class="math inline">\(V_{Vor}\)</span> verwendet werden.</p>
 <p>Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt, um Beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung und der Ausgangsspannung zu erkennen.</p>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_GegenRueckVorSim1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/03_Vorspannung_Sim1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.7: Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse</figcaption>
 </figure>
 </div>
 <table class="table">
@@ -437,11 +437,11 @@ Hinweis
 <section id="reale-spannungsquelle" class="level3" data-number="1.1.4">
 <h3 data-number="1.1.4" class="anchored" data-anchor-id="reale-spannungsquelle"><span class="header-section-number">1.1.4</span> Reale Spannungsquelle</h3>
 <p>Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. AUs kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter “<span class="math inline">\(U_{BE}\)</span>-Vervielfacher” <span class="citation" data-cites="boehmer17">[<a href="../references.html#ref-boehmer17" role="doc-biblioref">2</a>]</span>.</p>
-<p>Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher <img src="Grafiken/04_LV_Reale_Vorspannung.png" class="img-fluid" alt="Gegentaktendstufe mit realer Vorspannungsquelle"></p>
-<div class="quarto-figure quarto-figure-center">
+<p>Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher <img src="Grafiken/04_LV_Reale_Vorspannung.png" id="fig-BJT_GegenRueckVorReal" class="img-fluid" alt="Gegentaktendstufe mit realer Vorspannungsquelle"></p>
+<div id="fig-BJT_GegenRueckVorReal2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/04.01_LV_Reale_Vorspannung.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Reale Vorspannungsquelle</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.8: Reale Vorspannungsquelle</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -460,10 +460,10 @@ Hinweis
 </section>
 <section id="stromversorgung" class="level3" data-number="1.1.5">
 <h3 data-number="1.1.5" class="anchored" data-anchor-id="stromversorgung"><span class="header-section-number">1.1.5</span> Stromversorgung</h3>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-BJT_GegenRueckVorRealStrom" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/05_LV_Stromquellen.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.9: Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle</figcaption>
 </figure>
 </div>
 </section>
