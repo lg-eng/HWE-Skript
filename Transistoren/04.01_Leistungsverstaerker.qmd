@@ -102,7 +102,7 @@ Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher
 ![Reale Vorspannungsquelle ](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
 
 ::: {.callout-note}
-Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat Sie? 
+Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
 :::
 
 ### Stromversorgung
