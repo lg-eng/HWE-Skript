@@ -8,21 +8,21 @@ Ic = MySymbol('I_C',description='Kollektorstrom')
 
 ```
 
-Transistorverstärker wie Sie bisher bekannt sind @sec-BJT, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor $I_C$ in Ruhe, also ohne Signal am Eingang.
-Bei der Emitterschaltung ist der Ruhestrom höher da der Arbeitspunkt auf der Kennlinie weiter "oben" ist. Diese Betriebsart wird auch A - Betrieb geanannt.
+Transistorverstärker wie sie bisher bekannt sind @sec-BJT, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor $I_C$ in Ruhe, also ohne Signal am Eingang.
+Bei der Emitterschaltung ist der Ruhestrom höher, da der Arbeitspunkt auf der Kennlinie weiter "oben" ist. Diese Betriebsart wird auch A - Betrieb genannt.
 
 ![Bipolartransistor Arbeitspunkt und Ruhestrom @BJT_Kennlinie](Grafiken/BJT_Kennlinie_AP_Ruhestrom.png){#fig-BJT-AP_Ruhestrom}
 
-Um höhere Leistungen und eine geringere Verlustleistung zu erreichen muss der Arbeitspunkt nach "unten" also zu einem kleineren $I_C$ gebracht werden. Wird dies am Beispiel des Verstärkers in Emittergrundschaltung @sec-BJT gemacht würde das bedeuten, dass nur noch eine Halbwelle verstärkt wird. Um dies zu verhindern werden ein PNP und ein NPN Transistor in Gegentakt geschaltet. Jeder Transistor übernimmt nun die Verstärkung einer Halbewelle. Warum der $I_C$, und damit die Verlustleistung, trotzdem nicht ganz Null sein kann, sehen wir im folgenden Teil.
+Um höhere Leistungen und eine geringere Verlustleistung zu erreichen, muss der Arbeitspunkt nach "unten" also zu einem kleineren $I_C$ gebracht werden. Wird dies am Beispiel des Verstärkers in Emittergrundschaltung @sec-BJT gemacht, würde das bedeuten, dass nur noch eine Halbwelle verstärkt wird. Um dies zu verhindern, werden ein PNP und ein NPN Transistor in Gegentakt geschaltet. Jeder Transistor übernimmt nun die Verstärkung einer Halbewelle. Warum der $I_C$, und damit die Verlustleistung, trotzdem nicht ganz Null sein kann, sehen wir im folgenden Teil.
 
 ### Die Gegentaktendstufe
-Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund eines höheren $I_C$ verursacht, und tortzdem ein symetrisches Signal verstärkt werden kann, können zwei Transistoren eingesetz werden.
+Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund eines höheren $I_C$ verursacht, und trotzdem ein symmetrisches Signal verstärkt werden kann, können zwei Transistoren eingesetzt werden.
 Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt und die die Betriebsart wird als B bezeichnet.
-Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteil eigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.
+Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.
 
 ![Bipolartransistoren in Gegentakt ](Grafiken/01_LV_Gegentaktendstufe.png)
 
-Wir diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.
+Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.
 
 ![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/01_GegentaktendstufeSimulation.png)  
 
@@ -34,13 +34,13 @@ Wir diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zu
 
 
 ### Rückkopplung
-Um die den Verlauf der Ausgangsspannung an den Verlauf der Eingangsspannung anzupassen wird eine Gegenkopplung verwendet. Dazu ist eine Subtraktion des Ausgangssignals vom Eingangssignal notwendig. Als Transistorschaltung würde sich eine Differenzverstärkerschaltung anbieten. Für ein noch besseres Ergebnis wird hier ein OPV eingesetzt. Durch die Rückkopplung der gesamten Ausgangsspannung wird eine Spannungsverstärkung von Eins erreicht. Das Ausgangssignal folgt dem Eingangssignal. 
+Um den Verlauf der Ausgangsspannung an den Verlauf der Eingangsspannung anzupassen, wird eine Gegenkopplung verwendet. Dazu ist eine Subtraktion des Ausgangssignals vom Eingangssignal notwendig. Als Transistorschaltung würde sich eine Differenzverstärkerschaltung anbieten. Für ein noch besseres Ergebnis wird hier ein OPV eingesetzt. Durch die Rückkopplung der gesamten Ausgangsspannung wird eine Spannungsverstärkung von Eins erreicht. Das Ausgangssignal folgt dem Eingangssignal. 
 Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus um beispielsweise Lautsprecher zu betreiben.
 
 ![Gegentaktendstufe mit Rückkopplung ](Grafiken/02_LV_Rueckkopplung.png)
 
-Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In Abbildung @fig-BJT-AP_Ruhestrom lässt sich Erkennen, dass sich in der nähe des Ursprunges ein Knick befindet. Erst ab einer $U_{BE} \ $ größer von ca. $0,7 \ \mathrm{V}$  beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.  
-Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings stark abhängig von der Frequenz. Je schneller im Verhältnis zum Signal der OPV sein Ausgangssignal ändern kann ums kleiner sind die Verzerrungen. Wie schnell der OPV seinen Ausgang ändern kann hängt von der Slew-Rate mit der Einheit $\mathrm{\frac{V}{s}}$ ab.
+Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In Abbildung @fig-BJT-AP_Ruhestrom lässt sich erkennen, dass sich in der Nähe des Ursprunges ein Knick befindet. Erst ab einer $U_{BE} \ $ größer von ca. $0,7 \ \mathrm{V}$  beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.  
+Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er stark abhängig von der Frequenz. Je schneller im Verhältnis zum Signal der OPV sein Ausgangssignal ändern kann, umso kleiner sind die Verzerrungen. Wie schnell der OPV seinen Ausgang ändern kann, hängt von der Slew-Rate mit der Einheit $\mathrm{\frac{V}{s}}$ ab.
 
 ![Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse ](Grafiken/02_Rueckkopplung_Sim12.png)  
 
@@ -57,13 +57,13 @@ Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wen
 
 ![Gegentaktendstufe mit vorgespannten Transistoren ](Grafiken/03_LV_Vorspannung.png)
 
-Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten $I_C$ eingestellt werden. Der $I_C$ ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt ist. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der $I_C$ soll ein Zehntel des maximalen Laststromes betragen.
+Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten $I_C$ eingestellt werden. Der $I_C$ ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der $I_C$ ein Zehntel des maximalen Laststromes betragen.
 ![Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep ](Grafiken/03_Vorspannung_DCSweepSim12.png)  
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
 | Vvor min         | 1,2 V  |        |   
-| Vor max        | 1,4 V     |        |  
+| Vvor max        | 1,4 V     |        |  
 | Vvor step size  | 1 mV       |        | 
 
 Mit dem Cursor können die Ergebnisse exakt abgelesen werden.  
@@ -73,12 +73,12 @@ Mit dem Cursor können die Ergebnisse exakt abgelesen werden.
 | Vvor bei I_C = 15 mA an T1        | 1,3479  V  |        |   
 | Vvor bei I_C = 15 mA an T2       | 1,3489  V     |        |  
 
-Da es sich um unterschiedliche Transistoren handelt ist natürlich auch der Zusammenhang zwischen $U_{BE}$ und $I_C$ ein anderes. Da die Werte sehr nahe beieinander liegen kann ein gerundetes arithmetisches Mittel als Ergebnis für $V_{Vor}$ verwendet werden.
+Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zusammenhang zwischen $U_{BE}$ und $I_C$ ein anderer. Da die Werte sehr nahe beieinander liegen kann ein gerundetes arithmetisches Mittel als Ergebnis für $V_{Vor}$ verwendet werden.
 
 
 
 
-Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt um Beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung under Ausgangsspannung zu erkennen. 
+Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt, um Beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung und der Ausgangsspannung zu erkennen. 
 
 ![Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse ](Grafiken/03_Vorspannung_Sim1.png)  
 
@@ -89,14 +89,20 @@ Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequen
 | Simulierte Perioden  | 3       |        |   
 
 ::: {.callout-note}
-Welche anderen Dartellungen des Verhältnisses zwischen Ausgang und Eingang würden sich eignen um Nachzuweisen, dass die Verzerrung akzeptabel ist?
+Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang würden sich eignen um Nachzuweisen, dass die Verzerrung akzeptabel ist?
 :::
 
 ### Reale Spannungsquelle
+Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. AUs kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, Seite 301].  
+
 Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher
 ![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png)
 
 ![Reale Vorspannungsquelle ](Grafiken/04.01_LV_Reale_Vorspannung.png)
+
+::: {.callout-note}
+Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat Sie? 
+:::
 
 ### Stromversorgung
 ![Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle](Grafiken/05_LV_Stromquellen.png)
