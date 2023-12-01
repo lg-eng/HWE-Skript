@@ -96,10 +96,11 @@ Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang wü
 ### Reale Spannungsquelle
 Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. AUs kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, Seite 301].  
 
-Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher
-![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal}
+Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher  
 
-![Reale Vorspannungsquelle ](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
+![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal}  
+
+![Reale Spannungsquelle, $U_{BE}$-Vervielfacher](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
 
 ::: {.callout-note}
 Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
@@ -116,4 +117,10 @@ Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Diod
 * welche Lastströme sind gewünscht.
 * Auswahl passender Transistoren in Bezug auf die maximale Werte.
 * Definition der Qualitätsparameter, z.B. Differenz der ein und Ausgangspannungen, Oberwellen Anteile, ...
+
+### Abwandlungen und Erweiterungen
+Strombegrenzung
+Differenzverstärker
+Dioden
+Darlingtontransistoren
 
