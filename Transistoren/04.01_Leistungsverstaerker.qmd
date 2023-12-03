@@ -4,8 +4,6 @@
 #| code-fold: true
 #| echo: false
 
-Ic = MySymbol('I_C',description='Kollektorstrom')
-
 ```
 
 Transistorverstärker, wie sie bisher bekannt sind @sec-BJT, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor $I_C$ in Ruhe, also ohne Signal am Eingang.
@@ -52,7 +50,7 @@ Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er st
 | Simulierte Perioden  | 3       |        |    
 
 
-### Vorspannen
+### Vorspannen {#sec-LV_Vorspannen}
 Um die Übergabeverzerrungen zu eliminieren wird die B-E Strecke vorgespannt. Das bedeutet eine Spannung anzulegen welche größer ist als die Schwellspannung der Basis- Emitter Strecke. Damit ist der Transistor bereits im leitenden Bereich und wird nur noch vom Eingangssignal weiter ausgesteuert.  
 Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wenn am Eingang $0 \ \mathrm{V} \ $ anliegen erhöhen sich die Verluste. Dieser Kollektorstrom wird auch als Ruhestrom bezeichnet $I_{C,Ruhe} \ $. Um den Ruhestrom möglichst klein zu halten muss die Spannungsquelle an die Transistoren und deren Fertigungstoleranzen angepasst werden. 
 
@@ -94,16 +92,124 @@ Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang wü
 :::
 
 ### Reale Spannungsquelle
-Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. AUs kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, Seite 301].  
-
-Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher  
-
-![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal}  
+Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, Seite 301].  
+In @fig-BJT_GegenRueckVorReal wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus Abschnitt @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
 
 ![Reale Spannungsquelle, $U_{BE}$-Vervielfacher](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
 
+Der Ablauf ist wie folgt und gilt für alle Dimensionierungsaufgaben von Schaltungen.  
+
+#### $U_{BE}$-Vervielfacher berechnen.
+Dabei wird die Schaltung analytisch, also mit Formeln berechnet.  
+Es soll wie bei der Dimensionierung der Emitterverstärkerschaltung klar gekennzeichnet werden woher die Formeln und Werte kommen.  
+Gesucht wird $R_{sq1}$ und $R_{sq2}$ so, dass $U_{out}$ der gesuchten Vorspannung aus Abschnitt @sec-LV_Vorspannen entspricht.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+Rsq1 = MySymbol('R_sq1',description='Widerstand 1 am Spannungsteiler für die AP einstellung')
+Rsq2 = MySymbol('R_sq2',description='Widerstand 2 am Spannungsteiler für die AP einstellung')
+Ispg = MySymbol('I_Spg',description='Versorgungsstrom')
+I1 = MySymbol('I_1',description='Strom durch den Widerstand 1')
+I2 = MySymbol('I_2',description='Strom durch den Widerstand 2')
+IL = MySymbol('I_L',description='Strom durch die Last')
+ILmax = MySymbol('I_Lmax',description='Maximaler Strom durch die Last',value=500*10**(-6),unit=u.A)
+Ic = MySymbol('I_C',description='Strom in den Kollektor',unit=u.A)
+Ib = MySymbol('I_B',description='Strom in die Basis',unit=u.A)
+Ie = MySymbol('I_E',description='Strom aus dem Emitter',unit=u.A)
+Ube = MySymbol('U_BE',description='Basis-Emitterspannung',value=0.7,unit=u.V)
+U2 = MySymbol('U_2',description='Spannung über den Widerstand $R_{sp1}$',unit=u.V)
+
+QBookHelpers.print_description([I1])
+
+#QBookHelpers.print_equation(vU_eq,label='eq-vU_eq')
+#QBookHelpers.print_description(vU_eq.free_symbols)
+#QBookHelpers.print_values([vU])
+
+I2_eq = Eq(I1,10* Ib)
+Ib_eq = Eq(Ib,Ic/100)
+Ispg_eq = Eq(Ispg,ILmax*20)
+
+#Masche1
+M1_eq = Eq(0,-U2+Ube)
+#solve for Ube
+U2_eq  = Eq(U2,solve(M1_eq,U2)[0])
+
+R2_eq = Eq(Rsq2,U2/I2)
+
+#Knoten1
+K1_eq = Eq(0,Ispg-I1-IL-Ic)
+
+#Knoten2
+K2_eq = Eq(0,I1-I2-Ib)
+I1_eq  = Eq(I1,solve(K2_eq,I1)[0])
+I1_eq2 = Eq(I1,I1_eq.rhs.subs(I2,I2_eq.rhs))
+I1_eq3 = Eq(I1,I1_eq2.rhs.subs(Ib,Ib_eq.rhs))
+
+
+Ic_eq = Eq(K1_eq.lhs,K1_eq.rhs.subs([(I1, I1_eq3.rhs), (IL, ILmax), (Ispg, Ispg_eq.rhs)]))
+Ic_eq2 = Eq(Ic,solve(Ic_eq,Ic)[0])
+
+QBookHelpers.calculate_num_value(Ic_eq2)
+
+```
+
+Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere, und damit kompliziertere, Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse groß sind. Folgende *Faustegeln* gelten für die Berechnung:
+```{python}
+#| code-fold: true
+#| echo: false
+
+QBookHelpers.print_equation(I1_eq,label='eq-I1_eq')
+QBookHelpers.print_equation(Ic_eq,label='eq-Ic_eq')
+QBookHelpers.print_equation(Ispg_eq,label='eq-Ispg_eq')
+QBookHelpers.print_values([Ube])
+
+```
+
+Mit Maschengleichung 1 $M_1$ erhält man den Zusammenhang zwischen $U_1$ und $U_{BE}$.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+QBookHelpers.print_equation(M1_eq,label='eq-M1_eq')
+QBookHelpers.print_equation(U2_eq,label='eq-U2_eq')
+
+```
+
+Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. $I_1$ kann aus dem Knoten 2 berechnet werden. Für $I_L$ muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in Abschnitt @sec-LV_Vorspannen ermittelt werden. Der Strom $I_{spg}$ kann mit der Faustregel @eq-Ispg_eq bestimmt werden. Werden diese Informationen in die Gleichung von Knoten 1 eingesetzt kann daraus $I_c$ berechnet werden. 
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+QBookHelpers.print_equation(K1_eq,label='eq-K1_eq')
+QBookHelpers.print_equation(Ic_eq,label='eq-Ic_eq')
+
+QBookHelpers.print_equation(K2_eq,label='eq-K2_eq')
+QBookHelpers.print_equation(I1_eq,label='eq-I1_eq')
+QBookHelpers.print_equation(I1_eq2,label='eq-I1_eq2')
+
+QBookHelpers.print_equation(Ic_eq2,label='eq-Ic_eq2')
+QBookHelpers.print_values([Ic])
+
+```
+
+* Mittels Simulation die Berechnung überprüfen und exakt einstellen, wie dies zum Beispiel mit dem DC-Sweep in Abschnitt @sec-LV_Vorspannen zur Bestimmung der korrekten Vorspannung gemacht wurde.  
+* Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potetntiometer in der realen Schaltung vorgesehen werden um die diese Effekte zu kompensieren. Beim $U_{BE}$-Vervielfacher würde $R_{sq2}$ als Trimpotentiometer ausgeführt werden.
+
+
+
+
+
+![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal} 
+
+
+
 ::: {.callout-note}
 Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
+Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung genutzt?
 :::
 
 ### Stromversorgung
@@ -119,8 +225,8 @@ Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Diod
 * Definition der Qualitätsparameter, z.B. Differenz der ein und Ausgangspannungen, Oberwellen Anteile, ...
 
 ### Abwandlungen und Erweiterungen
-Strombegrenzung
-Differenzverstärker
-Dioden
-Darlingtontransistoren
+Wie könnte eine Strombegrenzung, Kurzschlusssicherheit, umgesetzt werden?  
+Wie könnte die Rückkopplung die hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker -->  
+Wie könnte die Vorspannung mit Dioden umgesetzt werden?  
+Wie könnte die Leistung weiter erhöht werden? <!-- Darlingtontransistoren -->
 
