@@ -201,11 +201,17 @@ cookieconsent.run({
   <ul>
   <li><a href="#die-gegentaktendstufe" id="toc-die-gegentaktendstufe" class="nav-link" data-scroll-target="#die-gegentaktendstufe"><span class="header-section-number">1.1.1</span> Die Gegentaktendstufe</a></li>
   <li><a href="#rückkopplung" id="toc-rückkopplung" class="nav-link" data-scroll-target="#rückkopplung"><span class="header-section-number">1.1.2</span> Rückkopplung</a></li>
-  <li><a href="#vorspannen" id="toc-vorspannen" class="nav-link" data-scroll-target="#vorspannen"><span class="header-section-number">1.1.3</span> Vorspannen</a></li>
-  <li><a href="#reale-spannungsquelle" id="toc-reale-spannungsquelle" class="nav-link" data-scroll-target="#reale-spannungsquelle"><span class="header-section-number">1.1.4</span> Reale Spannungsquelle</a></li>
+  <li><a href="#sec-LV_Vorspannen" id="toc-sec-LV_Vorspannen" class="nav-link" data-scroll-target="#sec-LV_Vorspannen"><span class="header-section-number">1.1.3</span> Vorspannen</a></li>
+  <li><a href="#reale-spannungsquelle" id="toc-reale-spannungsquelle" class="nav-link" data-scroll-target="#reale-spannungsquelle"><span class="header-section-number">1.1.4</span> Reale Spannungsquelle</a>
+  <ul class="collapse">
+  <li><a href="#u_be-vervielfacher-berechnen." id="toc-u_be-vervielfacher-berechnen." class="nav-link" data-scroll-target="#u_be-vervielfacher-berechnen."><span class="header-section-number">1.1.4.1</span> <span class="math inline">\(U_{BE}\)</span>-Vervielfacher berechnen.</a></li>
+  <li><a href="#überprüfen-und-einstellen-mittels-simulation" id="toc-überprüfen-und-einstellen-mittels-simulation" class="nav-link" data-scroll-target="#überprüfen-und-einstellen-mittels-simulation"><span class="header-section-number">1.1.4.2</span> Überprüfen und Einstellen mittels Simulation</a></li>
+  <li><a href="#aufbau" id="toc-aufbau" class="nav-link" data-scroll-target="#aufbau"><span class="header-section-number">1.1.4.3</span> Aufbau</a></li>
+  </ul></li>
   <li><a href="#stromversorgung" id="toc-stromversorgung" class="nav-link" data-scroll-target="#stromversorgung"><span class="header-section-number">1.1.5</span> Stromversorgung</a></li>
   <li><a href="#reale-stromquelle" id="toc-reale-stromquelle" class="nav-link" data-scroll-target="#reale-stromquelle"><span class="header-section-number">1.1.6</span> Reale Stromquelle</a></li>
   <li><a href="#praktische-herangehensweise" id="toc-praktische-herangehensweise" class="nav-link" data-scroll-target="#praktische-herangehensweise"><span class="header-section-number">1.1.7</span> Praktische Herangehensweise</a></li>
+  <li><a href="#abwandlungen-und-erweiterungen" id="toc-abwandlungen-und-erweiterungen" class="nav-link" data-scroll-target="#abwandlungen-und-erweiterungen"><span class="header-section-number">1.1.8</span> Abwandlungen und Erweiterungen</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -327,8 +333,8 @@ Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er st
 </tbody>
 </table>
 </section>
-<section id="vorspannen" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="vorspannen"><span class="header-section-number">1.1.3</span> Vorspannen</h3>
+<section id="sec-LV_Vorspannen" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="sec-LV_Vorspannen"><span class="header-section-number">1.1.3</span> Vorspannen</h3>
 <p>Um die Übergabeverzerrungen zu eliminieren wird die B-E Strecke vorgespannt. Das bedeutet eine Spannung anzulegen welche größer ist als die Schwellspannung der Basis- Emitter Strecke. Damit ist der Transistor bereits im leitenden Bereich und wird nur noch vom Eingangssignal weiter ausgesteuert.<br>
 Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wenn am Eingang <span class="math inline">\(0 \ \mathrm{V} \ \)</span> anliegen erhöhen sich die Verluste. Dieser Kollektorstrom wird auch als Ruhestrom bezeichnet <span class="math inline">\(I_{C,Ruhe} \ \)</span>. Um den Ruhestrom möglichst klein zu halten muss die Spannungsquelle an die Transistoren und deren Fertigungstoleranzen angepasst werden.</p>
 <div id="fig-BJT_GegenRueckVor" class="quarto-figure quarto-figure-center anchored">
@@ -436,18 +442,198 @@ Hinweis
 </section>
 <section id="reale-spannungsquelle" class="level3" data-number="1.1.4">
 <h3 data-number="1.1.4" class="anchored" data-anchor-id="reale-spannungsquelle"><span class="header-section-number">1.1.4</span> Reale Spannungsquelle</h3>
-<p>Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. AUs kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter “<span class="math inline">\(U_{BE}\)</span>-Vervielfacher” <span class="citation" data-cites="boehmer17">[<a href="../references.html#ref-boehmer17" role="doc-biblioref">2</a>]</span>.</p>
-<p>Auf Dioden eingehen falls Ruhestrom egal. UBE-Vervielfacher</p>
-<div id="fig-BJT_GegenRueckVorReal" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/04_LV_Reale_Vorspannung.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;1.8: Gegentaktendstufe mit realer Vorspannungsquelle</figcaption>
-</figure>
-</div>
+<p>Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter “<span class="math inline">\(U_{BE}\)</span>-Vervielfacher” <span class="citation" data-cites="boehmer17">[<a href="../references.html#ref-boehmer17" role="doc-biblioref">2</a>]</span>.<br>
+In <a href="#fig-BJT_GegenRueckVorReal">Abbildung&nbsp;<span>1.9</span></a> wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der <span class="math inline">\(U_{BE}\)</span>-Vervielfacher alleine betrachtet werden. <span class="math inline">\(U_{out}\)</span> ist aus Abschnitt <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;1.1.3</span></a> bekannt. Es müssen nun also die Widerstände <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> so dimensioniert werden.</p>
 <div id="fig-BJT_GegenRueckVorReal2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/04.01_LV_Reale_Vorspannung.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;1.9: Reale Spannungsquelle, <span class="math inline">\(U_{BE}\)</span>-Vervielfacher</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;1.8: Reale Spannungsquelle, <span class="math inline">\(U_{BE}\)</span>-Vervielfacher</figcaption>
+</figure>
+</div>
+<p>Der Ablauf ist wie folgt und gilt für alle Dimensionierungsaufgaben von Schaltungen.</p>
+<section id="u_be-vervielfacher-berechnen." class="level4" data-number="1.1.4.1">
+<h4 data-number="1.1.4.1" class="anchored" data-anchor-id="u_be-vervielfacher-berechnen."><span class="header-section-number">1.1.4.1</span> <span class="math inline">\(U_{BE}\)</span>-Vervielfacher berechnen.</h4>
+<p>Dabei wird die Schaltung analytisch, also mit Formeln berechnet.<br>
+Es soll wie bei der Dimensionierung der Emitterverstärkerschaltung klar gekennzeichnet werden woher die Formeln und Werte kommen.<br>
+Gesucht wird <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> so, dass <span class="math inline">\(U_{out}\)</span> der gesuchten Vorspannung aus Abschnitt <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;1.1.3</span></a> entspricht.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{out} = \mathtt{\text{1.38 V}}\]</span></p>
+</div>
+</div>
+<p>Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere, und damit kompliziertere, Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse groß sind. Folgende <em>Faustegeln</em> gelten für die Berechnung:</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq"><span class="math display">\[
+I_{1} = I_{2} + I_{B}
+\tag{1.1}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ib_eq"><span class="math display">\[
+I_{B} = \frac{I_{C}}{100}
+\tag{1.2}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ispg_eq"><span class="math display">\[
+I_{Spg} = 20 I_{Lmax}
+\tag{1.3}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{BE} = \mathtt{\text{700 mV}}\]</span></p>
+</div>
+</div>
+<p>Mit Maschengleichung 1 <span class="math inline">\(M_1\)</span> erhält man den Zusammenhang zwischen <span class="math inline">\(U_1\)</span> und <span class="math inline">\(U_{BE}\)</span>.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<p><span id="eq-M1_eq"><span class="math display">\[
+0 = - U_{2} + U_{BE}
+\tag{1.4}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-U2_eq"><span class="math display">\[
+U_{2} = U_{BE}
+\tag{1.5}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{2} = \mathtt{\text{700 mV}}\]</span></p>
+</div>
+</div>
+<p>Mit Maschengleichung 2 <span class="math inline">\(M_2\)</span> lässt sich <span class="math inline">\(U_1\)</span> berechnen.</p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<p><span id="eq-M2_eq"><span class="math display">\[
+0 = U_{1} + U_{2} - U_{out}
+\tag{1.6}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-U1_eq"><span class="math display">\[
+U_{1} = - U_{2} + U_{out}
+\tag{1.7}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{1} = \mathtt{\text{680 mV}}\]</span></p>
+</div>
+</div>
+<p><span class="math inline">\(I_1\)</span> kann aus dem Knoten 2 berechnet werden indem Gleichung <a href="#eq-I2_eq">Gleichung&nbsp;<span>1.10</span></a> eingesetz wird.</p>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<p><span id="eq-K2_eq"><span class="math display">\[
+0 = I_{1} - I_{2} - I_{B}
+\tag{1.8}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq"><span class="math display">\[
+I_{1} = I_{2} + I_{B}
+\tag{1.9}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I2_eq"><span class="math display">\[
+I_{2} = 10 I_{B}
+\tag{1.10}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq2"><span class="math display">\[
+I_{1} = 11 I_{B}
+\tag{1.11}\]</span></span></p>
+</div>
+</div>
+<p>Wird nun noch Gleichung <a href="#eq-Ib_eq">Gleichung&nbsp;<span>1.16</span></a> in Gleichung <a href="#eq-I1_eq2">Gleichung&nbsp;<span>1.11</span></a> eingesetzt erhält man eine Gleich für <span class="math inline">\(I_1\)</span> in Abhängigkeit von <span class="math inline">\(I_C\)</span>.</p>
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq3"><span class="math display">\[
+I_{1} = \frac{11 I_{C}}{100}
+\tag{1.12}\]</span></span></p>
+</div>
+</div>
+<p>Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. Für <span class="math inline">\(I_L\)</span> muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in Abschnitt <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;1.1.3</span></a> ermittelt werden. Der Strom <span class="math inline">\(I_{spg}\)</span> kann mit der Faustregel <a href="#eq-Ispg_eq">Gleichung&nbsp;<span>1.3</span></a> bestimmt werden. Werden diese Informationen und Gleichung <a href="#eq-I1_eq3">Gleichung&nbsp;<span>1.17</span></a> in die Gleichung von Knoten 1 <a href="#eq-K1_eq">Gleichung&nbsp;<span>1.13</span></a> eingesetzt kann, durch umformen, <span class="math inline">\(I_c\)</span> berechnet werden.</p>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<p><span id="eq-K1_eq"><span class="math display">\[
+0 = - I_{1} - I_{C} - I_{L} + I_{Spg}
+\tag{1.13}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ic_eq"><span class="math display">\[
+0 = - \frac{111 I_{C}}{100} + 19 I_{Lmax}
+\tag{1.14}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ic_eq2"><span class="math display">\[
+I_{C} = \frac{1900 I_{Lmax}}{111}
+\tag{1.15}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{C} = \mathtt{\text{8.56 mA}}\]</span></p>
+</div>
+</div>
+<p>Durch einsetzen der Zahlenwerte können nun <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> berechnet werden.</p>
+<div class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ib_eq"><span class="math display">\[
+I_{B} = \frac{I_{C}}{100}
+\tag{1.16}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{B} = \mathtt{\text{85.6 uA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq3"><span class="math display">\[
+I_{1} = 11 I_{B}
+\tag{1.17}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{1} = \mathtt{\text{941 uA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-R1_eq"><span class="math display">\[
+R_{sq1} = \frac{U_{1}}{I_{1}}
+\tag{1.18}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[R_{sq1} = \mathtt{\text{722 ohm}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Dummy"><span class="math display">\[
+I_{2} = 10 I_{B}
+\tag{1.19}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{2} = \mathtt{\text{856 uA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-R2_eq"><span class="math display">\[
+R_{sq2} = \frac{U_{2}}{I_{2}}
+\tag{1.20}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[R_{sq2} = \mathtt{\text{818 ohm}}\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wird der Spannungsteiler aus <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> als unbelastet betrachtet, indem sichergestellt wird, dass <span class="math inline">\(I_1 &gt;&gt; I_B\)</span> ist, vereinfacht sich die Berechnung erheblich. Allerdings sind damit auch höher Ruheströme und damit Verluste verbunden.</p>
+</div>
+</div>
+</section>
+<section id="überprüfen-und-einstellen-mittels-simulation" class="level4" data-number="1.1.4.2">
+<h4 data-number="1.1.4.2" class="anchored" data-anchor-id="überprüfen-und-einstellen-mittels-simulation"><span class="header-section-number">1.1.4.2</span> Überprüfen und Einstellen mittels Simulation</h4>
+<p>Mittels Simulation die Berechnung überprüfen und exakt einstellen, wie dies zum Beispiel mit dem DC-Sweep in Abschnitt <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;1.1.3</span></a> zur Bestimmung der korrekten Vorspannung gemacht wurde.</p>
+</section>
+<section id="aufbau" class="level4" data-number="1.1.4.3">
+<h4 data-number="1.1.4.3" class="anchored" data-anchor-id="aufbau"><span class="header-section-number">1.1.4.3</span> Aufbau</h4>
+<p>Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potentiometer in der realen Schaltung vorgesehen werden um die diese Effekte zu kompensieren. Beim <span class="math inline">\(U_{BE}\)</span>-Vervielfacher würde <span class="math inline">\(R_{sq2}\)</span> als Trimpotentiometer ausgeführt werden.</p>
+<div id="fig-BJT_GegenRueckVorReal" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04_LV_Reale_Vorspannung.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;1.9: Gegentaktendstufe mit realer Vorspannungsquelle</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -460,9 +646,10 @@ Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung?</p>
+<p>Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung genutzt?</p>
 </div>
 </div>
+</section>
 </section>
 <section id="stromversorgung" class="level3" data-number="1.1.5">
 <h3 data-number="1.1.5" class="anchored" data-anchor-id="stromversorgung"><span class="header-section-number">1.1.5</span> Stromversorgung</h3>
@@ -484,6 +671,13 @@ Hinweis
 <li>Auswahl passender Transistoren in Bezug auf die maximale Werte.</li>
 <li>Definition der Qualitätsparameter, z.B. Differenz der ein und Ausgangspannungen, Oberwellen Anteile, …</li>
 </ul>
+</section>
+<section id="abwandlungen-und-erweiterungen" class="level3" data-number="1.1.8">
+<h3 data-number="1.1.8" class="anchored" data-anchor-id="abwandlungen-und-erweiterungen"><span class="header-section-number">1.1.8</span> Abwandlungen und Erweiterungen</h3>
+<p>Wie könnte eine Strombegrenzung, Kurzschlusssicherheit, umgesetzt werden?<br>
+Wie könnte die Rückkopplung die hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker --><br>
+Wie könnte die Vorspannung mit Dioden umgesetzt werden?<br>
+Wie könnte die Leistung weiter erhöht werden? <!-- Darlingtontransistoren --></p>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
