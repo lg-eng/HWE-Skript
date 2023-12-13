@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript – einfuehrungprojekt</title>
+<title>HWE-Skript - 3&nbsp; H-Brücke</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Projekte/04.01_Leistungsverstaerker.html" rel="next">
-<link href="../Transistoren/01_Transistoren.html" rel="prev">
+<link href="../references.html" rel="next">
+<link href="../Projekte/04.01_Leistungsverstaerker.html" rel="prev">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -80,6 +99,8 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -92,7 +113,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04_EinfuehrungProjekt.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04_EinfuehrungProjekt.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">04_EinfuehrungProjekt.html</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.02_H-Bruecke.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">H-Brücke</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -171,20 +192,14 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Projekte/04_EinfuehrungProjekt.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">04_EinfuehrungProjekt.html</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
+  <a href="../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
   </div>
 </li>
       </ul>
@@ -201,17 +216,86 @@ cookieconsent.run({
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#beschreibung-der-h-brücke" id="toc-beschreibung-der-h-brücke" class="nav-link active" data-scroll-target="#beschreibung-der-h-brücke"><span class="header-section-number">3.1</span> Beschreibung der H-Brücke</a>
+  <ul>
+  <li><a href="#funktionsweise" id="toc-funktionsweise" class="nav-link" data-scroll-target="#funktionsweise"><span class="header-section-number">3.1.1</span> Funktionsweise</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-H-Bruecke" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></h1>
+</div>
 
 
-<!-- {{< include 04.01_Leistungsverstaerker.qmd >}} -->
-<!-- {{< include 04.02_H-Bruecke.qmd >}} -->
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Der Markt für DC-Motoren belief sich im Jahr 2022 auf ca. 20,1 Milliarden US-Dollar und es wurde erwartet, dass sich das Volumen bis 2031 auf 49,3 Milliarden erhöht <span class="citation" data-cites="DC-Motor_Market">[<a href="../references.html#ref-DC-Motor_Market" role="doc-biblioref">1</a>]</span>. Jeder dieser Motoren braucht eine mehr oder weniger komplizierte Ansteuerung. Eine mögliche Ansteuerung soll hier gezeigt werden.</p>
+<p><strong>Ziel</strong><br>
+Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:</p>
+<ul>
+<li>Drehrichtung im Uhrzeigersinn<br>
+</li>
+<li>Drehrichtung gegen den Uhrzeigersinn<br>
+</li>
+<li>Freilauf<br>
+</li>
+<li>Bremsen</li>
+</ul>
+<p>Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels <em>Puls-Weiten-Modulation</em> (PWM) zu ändern.</p>
+<p><strong>Lernziele</strong></p>
+<ul>
+<li>Strukturiertes aufbereiten einer Aufgabenstellung<br>
+</li>
+<li>Auslegung von digitalen Schaltungen<br>
+</li>
+<li>Plausibilität und Qualitätsbeurteilung mittels Simulation<br>
+</li>
+<li>Hierarchisches Design in Schaltplänen</li>
+<li>Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit</li>
+</ul>
+<section id="beschreibung-der-h-brücke" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="beschreibung-der-h-brücke"><span class="header-section-number">3.1</span> Beschreibung der H-Brücke</h2>
+<p>Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.<br>
+Mit Schaltung <a href="../Transistoren/01_Transistoren.html#fig-n-Channel_switch">Abbildung&nbsp;<span>1.1</span></a> kann ein Motor Drehzahlgesteuert betrieben werden. Der MOSFET verstärkt dabei die Leistung des Steuersignales. Die Leistung wird von der Quelle <span class="math inline">\(U_q\)</span> zur Verfügung gestellt. Allerdings lässt sich dabei die Drehrichtung nicht ändern.<br>
+Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke, auch Vier-Quadranten-Steller genannt, in <a href="#fig-H-Bruecke">Abbildung&nbsp;<span>3.1</span></a>. Die punktiert umrandete Schaltung ist dabei das Ersatzschaltbild eines DC-Motors.</p>
+<div id="fig-H-Bruecke" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/Hbruecke/Vierquadrantensteller.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;3.1: H-Brücke <span class="citation" data-cites="HBruecke">[<a href="../references.html#ref-HBruecke" role="doc-biblioref">2</a>]</span></figcaption>
+</figure>
+</div>
+<section id="funktionsweise" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="funktionsweise"><span class="header-section-number">3.1.1</span> Funktionsweise</h3>
 
 
+<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-DC-Motor_Market" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Transparency Market Reserach Inc DC Motors Market. <a href="https://www.transparencymarketresearch.com/dc-motors-market.html">https://www.transparencymarketresearch.com/dc-motors-market.html</a>. Accessed 13 Dez 2023</div>
+</div>
+<div id="ref-HBruecke" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Biezl V Vierquadrantensteller steuert Gleichstrommotor. <a href="https://commons.wikimedia.org/w/index.php?curid=4792919">https://commons.wikimedia.org/w/index.php?curid=4792919</a>. Accessed 19 Nov 2023</div>
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -449,13 +533,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Transistoren/01_Transistoren.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></span>
+      <a href="../Projekte/04.01_Leistungsverstaerker.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Projekte/04.01_Leistungsverstaerker.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

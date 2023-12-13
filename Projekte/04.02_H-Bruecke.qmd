@@ -1,0 +1,32 @@
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+# H-Brücke {#sec-H-Bruecke}  
+Der Markt für DC-Motoren belief sich im Jahr 2022 auf ca. 20,1 Milliarden US-Dollar und es wurde erwartet, dass sich das Volumen bis 2031 auf 49,3 Milliarden erhöht [@DC-Motor_Market]. Jeder dieser Motoren braucht eine mehr oder weniger komplizierte Ansteuerung. Eine mögliche Ansteuerung soll hier gezeigt werden.
+
+**Ziel**  
+Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:  
+
+* Drehrichtung im Uhrzeigersinn  
+* Drehrichtung gegen den Uhrzeigersinn  
+* Freilauf  
+* Bremsen  
+
+Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels *Puls-Weiten-Modulation* (PWM) zu ändern.
+
+**Lernziele**  
+  
+* Strukturiertes aufbereiten einer Aufgabenstellung  
+* Auslegung von digitalen Schaltungen  
+* Plausibilität und Qualitätsbeurteilung mittels Simulation  
+* Hierarchisches Design in Schaltplänen
+* Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit  
+
+## Beschreibung der H-Brücke  
+
+Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.  
+Mit Schaltung @fig-n-Channel_switch kann ein Motor Drehzahlgesteuert betrieben werden. Der MOSFET verstärkt dabei die Leistung des Steuersignales. Die Leistung wird von der Quelle $U_q$ zur Verfügung gestellt. Allerdings lässt sich dabei die Drehrichtung nicht ändern.  
+Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke, auch Vier-Quadranten-Steller genannt, in @fig-H-Bruecke. Die punktiert umrandete Schaltung ist dabei das Ersatzschaltbild eines DC-Motors.
+
+![H-Brücke [@HBruecke] ](Grafiken/Hbruecke/Vierquadrantensteller.png){#fig-H-Bruecke}
+
+### Funktionsweise

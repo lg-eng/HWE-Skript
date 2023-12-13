@@ -1,3 +1,5 @@
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
 # Grundlagen eines Projektes
 Die hier gezeigten Grundlagen und Methoden sind reduzierte Inhalte des Projektmanagagements adaptiert auf den Schulbetrieb. Wann immer sinnvoll werden Querverbindungen hergestellt.  
 

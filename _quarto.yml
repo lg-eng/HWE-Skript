@@ -22,7 +22,9 @@ book:
         - Transistoren/01_Transistoren.qmd
     - part: 4. Jahrgang
       chapters:
-        - Projekte/04_EinfuehrungProjekt.qmd
+        #- Projekte/Grundlagen_Projektmanagement.qmd
+        - Projekte/04.01_Leistungsverstaerker.qmd
+        - Projekte/04.02_H-Bruecke.qmd
 
     - references.qmd
 
@@ -59,10 +61,12 @@ format:
   pdf:
     documentclass: scrreprt
     default-image-extension: pdf
+    fig-pos: "H"
 
   docx:
     toc: true
     number-sections: true
+    default-image-extension: svg
 
 downloads: [pdf,docx]
 sidebar:
