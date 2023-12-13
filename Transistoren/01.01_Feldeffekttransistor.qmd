@@ -4,7 +4,7 @@ Die einfachste und die gleichzeitig eine der wichtigsten Anwendungen des MOSFET'
 
 ![N-Kanal MOSFET als Schalter](Grafiken/NChannelenhancementSwitch){#fig-n-Channel_switch}
 
-Die notwendigen und zulässigen Spannungen sind aus dem Datenblatt des gewählten Transistors zu entnehmen. Am Gate wird kein Vorwiderstand benötigt, da der Eingangswiderstand des MOSFET's sehr hoch ist und kann dadurch in den meisten Fällen mit $I_D = 0 \ \mathrm{A}$ angenommen werden kann.
+Die notwendigen und zulässigen Spannungen sind aus dem Datenblatt des gewählten Transistors zu entnehmen. Am Gate wird kein Vorwiderstand benötigt, da der Eingangswiderstand des MOSFET's sehr hoch ist und dadurch, in den meisten Fällen, mit $I_D = 0 \ \mathrm{A}$ angenommen werden kann.
 
 ### Aufgabe
 

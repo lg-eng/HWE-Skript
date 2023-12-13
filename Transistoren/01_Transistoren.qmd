@@ -4,4 +4,3 @@
 {{< include 01.01_Feldeffekttransistor.qmd >}}
 {{< include 01.02_Bipolartransistor.qmd >}}
 
-

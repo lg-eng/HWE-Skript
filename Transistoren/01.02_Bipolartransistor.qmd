@@ -40,7 +40,7 @@ vU = MySymbol('v_U',description='Spannungsverstärkung',value=-20)
 vU_eq = Eq(vU,-Rc/Re)
 
 QBookHelpers.print_equation(vU_eq,label='eq-vU_eq')
-QBookHelpers.print_description(vU_eq.free_symbols)
+#QBookHelpers.print_description(vU_eq.free_symbols)
 QBookHelpers.print_values([vU])
 
 ```
@@ -53,11 +53,11 @@ QBookHelpers.print_values([vU])
 #| echo: false
 vU = MySymbol('v_U',description='Spannungsverstärkung',value=-20)
 QBookHelpers.print_values([vU])
-QBookHelpers.print_description([vU])
+#QBookHelpers.print_description([vU])
 
 Ubat = MySymbol('U_bat',description='Versorgungsspannung',value=10,unit=u.V)
 QBookHelpers.print_values([Ubat])
-QBookHelpers.print_description([Ubat])
+#QBookHelpers.print_description([Ubat])
 
 ```
 
@@ -68,7 +68,7 @@ QBookHelpers.print_description([Ubat])
 B = MySymbol('B',description='Stromverstärkung, $h_{fe}$',value=300)
 
 QBookHelpers.print_values([B])
-QBookHelpers.print_description([B])
+#QBookHelpers.print_description([B])
 
 ```
 
@@ -80,15 +80,15 @@ QBookHelpers.print_description([B])
 
 Ut = MySymbol('U_T',description='Temperaturspannung',value=25*10**-3,unit=u.V)
 QBookHelpers.print_values([Ut])
-QBookHelpers.print_description([Ut])
+#QBookHelpers.print_description([Ut])
 
 Ic = MySymbol('I_c',description='Strom in den Kollektor',value=1*10**-3,unit=u.A)
 QBookHelpers.print_values([Ic])
-QBookHelpers.print_description([Ic])
+#QBookHelpers.print_description([Ic])
 
 Ube = MySymbol('U_BE',description='Spannungsabfall zwischen Basis und Emitter',value=0.7,unit=u.V)
 QBookHelpers.print_values([Ube])
-QBookHelpers.print_description([Ube])
+#QBookHelpers.print_description([Ube])
 
 
 ```
@@ -101,7 +101,7 @@ QBookHelpers.print_description([Ube])
 Ic_eq = Eq(Ic,Ubat/(2*(Re+Rc)))
 
 QBookHelpers.print_equation(Ic_eq,label='eq-Ic1')
-QBookHelpers.print_description(Ic_eq.free_symbols)
+#QBookHelpers.print_description(Ic_eq.free_symbols)
 
 ```
 
@@ -115,7 +115,7 @@ Re_eq  = Eq(Re,solve(vU_eq,Re)[0])
 QBookHelpers.print_equation(vU_eq,label='eq-Re1')
 
 Ic_eq2 = Ic_eq.subs(Re_eq.lhs,Re_eq.rhs)
-QBookHelpers.print_equation(Ic_eq2,label='Ic_eq2')
+QBookHelpers.print_equation(Ic_eq2,label='eq-Ic_eq2')
 
 Rc_eq2  = Eq(Rc,solve(Ic_eq2,Rc)[0])
 QBookHelpers.print_equation(Rc_eq2,label='eq-Rc1')
@@ -128,7 +128,7 @@ QBookHelpers.print_values([Rc])
 ```
 
 ### Die Kollektorschaltung
-Die Kollektorschaltung wird als Impedanzwandler eingesetzt. Daher ist die die wesentliche Eigenschaft der Eingangswiderstand. Die Bauteile müssen also so berechnet werden, dass sich ein gewünschter Eingangwiderstand einstellt.
+Die Kollektorschaltung wird als Impedanzwandler eingesetzt. Daher ist die wesentliche Eigenschaft der Eingangswiderstand. Die Bauteile müssen also so berechnet werden, dass sich ein gewünschter Eingangwiderstand einstellt.
 
 
 ```{python}
@@ -137,3 +137,5 @@ Die Kollektorschaltung wird als Impedanzwandler eingesetzt. Daher ist die die we
 
 
 ```
+
+**To be Continued**

@@ -92,51 +92,64 @@ Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang wü
 :::
 
 ### Reale Spannungsquelle
-Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, Seite 301].  
-In @fig-BJT_GegenRueckVorReal wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus Abschnitt @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
+Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, pp. 301].  
+In @fig-BJT_GegenRueckVorReal wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus  @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
 
 ![Reale Spannungsquelle, $U_{BE}$-Vervielfacher](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
 
 Der Ablauf ist wie folgt und gilt für alle Dimensionierungsaufgaben von Schaltungen.  
 
-#### $U_{BE}$-Vervielfacher berechnen.
+#### $U_{BE}$-Vervielfacher berechnen. {#sec-ube_verf_bere}
 Dabei wird die Schaltung analytisch, also mit Formeln berechnet.  
 Es soll wie bei der Dimensionierung der Emitterverstärkerschaltung klar gekennzeichnet werden woher die Formeln und Werte kommen.  
-Gesucht wird $R_{sq1}$ und $R_{sq2}$ so, dass $U_{out}$ der gesuchten Vorspannung aus Abschnitt @sec-LV_Vorspannen entspricht.
+Gesucht wird $R_{sq1}$ und $R_{sq2}$ so, dass $U_{out}$ der gesuchten Vorspannung aus  @sec-LV_Vorspannen entspricht.
 
 ```{python}
 #| code-fold: true
 #| echo: false
 
-Rsq1 = MySymbol('R_sq1',description='Widerstand 1 am Spannungsteiler für die AP einstellung')
-Rsq2 = MySymbol('R_sq2',description='Widerstand 2 am Spannungsteiler für die AP einstellung')
-Ispg = MySymbol('I_Spg',description='Versorgungsstrom')
-I1 = MySymbol('I_1',description='Strom durch den Widerstand 1')
-I2 = MySymbol('I_2',description='Strom durch den Widerstand 2')
-IL = MySymbol('I_L',description='Strom durch die Last')
+Rsq1 = MySymbol('R_sq1',description='Widerstand 1 am Spannungsteiler für die AP einstellung',unit=u.ohm)
+Rsq2 = MySymbol('R_sq2',description='Widerstand 2 am Spannungsteiler für die AP einstellung',unit=u.ohm)
+Ispg = MySymbol('I_Spg',description='Versorgungsstrom',unit=u.A)
+I1 = MySymbol('I_1',description='Strom durch den Widerstand 1',unit=u.A)
+I2 = MySymbol('I_2',description='Strom durch den Widerstand 2',unit=u.A)
+IL = MySymbol('I_L',description='Strom durch die Last',unit=u.A)
 ILmax = MySymbol('I_Lmax',description='Maximaler Strom durch die Last',value=500*10**(-6),unit=u.A)
 Ic = MySymbol('I_C',description='Strom in den Kollektor',unit=u.A)
 Ib = MySymbol('I_B',description='Strom in die Basis',unit=u.A)
 Ie = MySymbol('I_E',description='Strom aus dem Emitter',unit=u.A)
 Ube = MySymbol('U_BE',description='Basis-Emitterspannung',value=0.7,unit=u.V)
 U2 = MySymbol('U_2',description='Spannung über den Widerstand $R_{sp1}$',unit=u.V)
+U1 = MySymbol('U_1',description='Spannung über den Widerstand $R_{sp2}$',unit=u.V)
+Uout = MySymbol('U_out',description='Ausgangsspannung',unit=u.V,value=1.35)
 
-QBookHelpers.print_description([I1])
+QBookHelpers.print_values([Uout])
 
 #QBookHelpers.print_equation(vU_eq,label='eq-vU_eq')
 #QBookHelpers.print_description(vU_eq.free_symbols)
 #QBookHelpers.print_values([vU])
 
-I2_eq = Eq(I1,10* Ib)
+I2_eq = Eq(I2,10* Ib)
 Ib_eq = Eq(Ib,Ic/100)
 Ispg_eq = Eq(Ispg,ILmax*20)
+QBookHelpers.calculate_num_value(Ispg_eq)
 
 #Masche1
 M1_eq = Eq(0,-U2+Ube)
 #solve for Ube
 U2_eq  = Eq(U2,solve(M1_eq,U2)[0])
+QBookHelpers.calculate_num_value(U2_eq)
 
+#Masche2
+M2_eq = Eq(0,-Uout+U2+U1)
+U1_eq = Eq(U1,solve(M2_eq,U1)[0])
+QBookHelpers.calculate_num_value(U1_eq)
+
+
+#Ohm
 R2_eq = Eq(Rsq2,U2/I2)
+
+R1_eq = Eq(Rsq1,U1/I1)
 
 #Knoten1
 K1_eq = Eq(0,Ispg-I1-IL-Ic)
@@ -153,6 +166,26 @@ Ic_eq2 = Eq(Ic,solve(Ic_eq,Ic)[0])
 
 QBookHelpers.calculate_num_value(Ic_eq2)
 
+QBookHelpers.calculate_num_value(Ib_eq)
+
+QBookHelpers.calculate_num_value(I1_eq3)
+
+QBookHelpers.calculate_num_value(I2_eq)
+
+QBookHelpers.calculate_num_value(R2_eq)
+
+QBookHelpers.calculate_num_value(R1_eq)
+
+```
+
+Der maximale Laststrom $I_{Lmax}$ wurde in @sec-LV_Vorspannen bestimmt.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+QBookHelpers.print_values([ILmax])
+
 ```
 
 Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere, und damit kompliziertere, Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse groß sind. Folgende *Faustegeln* gelten für die Berechnung:
@@ -161,8 +194,9 @@ Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Ei
 #| echo: false
 
 QBookHelpers.print_equation(I1_eq,label='eq-I1_eq')
-QBookHelpers.print_equation(Ic_eq,label='eq-Ic_eq')
+QBookHelpers.print_equation(Ib_eq,label='eq-Ib_eq')
 QBookHelpers.print_equation(Ispg_eq,label='eq-Ispg_eq')
+QBookHelpers.print_values([Ispg])
 QBookHelpers.print_values([Ube])
 
 ```
@@ -175,37 +209,138 @@ Mit Maschengleichung 1 $M_1$ erhält man den Zusammenhang zwischen $U_1$ und $U_
 
 QBookHelpers.print_equation(M1_eq,label='eq-M1_eq')
 QBookHelpers.print_equation(U2_eq,label='eq-U2_eq')
+QBookHelpers.print_values([U2])
 
 ```
 
-Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. $I_1$ kann aus dem Knoten 2 berechnet werden. Für $I_L$ muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in Abschnitt @sec-LV_Vorspannen ermittelt werden. Der Strom $I_{spg}$ kann mit der Faustregel @eq-Ispg_eq bestimmt werden. Werden diese Informationen in die Gleichung von Knoten 1 eingesetzt kann daraus $I_c$ berechnet werden. 
+Mit Maschengleichung 2 $M_2$ lässt sich $U_1$ berechnen.
 
 ```{python}
 #| code-fold: true
 #| echo: false
 
-QBookHelpers.print_equation(K1_eq,label='eq-K1_eq')
-QBookHelpers.print_equation(Ic_eq,label='eq-Ic_eq')
+QBookHelpers.print_equation(M2_eq,label='eq-M2_eq')
+QBookHelpers.print_equation(U1_eq,label='eq-U1_eq')
+QBookHelpers.print_values([U1])
+
+```
+
+
+
+$I_1$ kann aus dem Knoten 2 berechnet werden indem @eq-I2_eq eingesetz wird.
+
+```{python}
+#| code-fold: true
+#| echo: false
 
 QBookHelpers.print_equation(K2_eq,label='eq-K2_eq')
 QBookHelpers.print_equation(I1_eq,label='eq-I1_eq')
+QBookHelpers.print_equation(I2_eq,label='eq-I2_eq')
 QBookHelpers.print_equation(I1_eq2,label='eq-I1_eq2')
+
+
+```
+
+Wird nun noch  @eq-Ib_eq in  @eq-I1_eq2 eingesetzt erhält man eine Gleich für $I_1$ in Abhängigkeit von $I_C$.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+QBookHelpers.print_equation(I1_eq3,label='eq-I1_eq3')
+
+```
+
+Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. Für $I_L$ muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in  @sec-LV_Vorspannen ermittelt werden. Der Strom $I_{spg}$ kann mit der Faustregel @eq-Ispg_eq bestimmt werden. Werden diese Informationen und  @eq-I1_eq3 in Knoten 1 @eq-K1_eq eingesetzt, kann durch umformen, $I_c$ berechnet werden. 
+
+```{python}
+#| code-fold: true
+#| echo: false
+QBookHelpers.print_equation(K1_eq,label='eq-K1_eq')
+QBookHelpers.print_equation(Ic_eq,label='eq-Ic_eq')
+
+
 
 QBookHelpers.print_equation(Ic_eq2,label='eq-Ic_eq2')
 QBookHelpers.print_values([Ic])
 
 ```
 
-* Mittels Simulation die Berechnung überprüfen und exakt einstellen, wie dies zum Beispiel mit dem DC-Sweep in Abschnitt @sec-LV_Vorspannen zur Bestimmung der korrekten Vorspannung gemacht wurde.  
-* Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potetntiometer in der realen Schaltung vorgesehen werden um die diese Effekte zu kompensieren. Beim $U_{BE}$-Vervielfacher würde $R_{sq2}$ als Trimpotentiometer ausgeführt werden.
+Durch einsetzen der Zahlenwerte können nun $R_{sq1}$ und $R_{sq2}$ berechnet werden.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+QBookHelpers.print_equation(Ib_eq,label='eq-Ib_eq')
+QBookHelpers.print_values([Ib])
+
+QBookHelpers.print_equation(I1_eq2,label='eq-I1_eq3')
+QBookHelpers.print_values([I1])
+
+QBookHelpers.print_equation(R1_eq,label='eq-R1_eq')
+QBookHelpers.print_values([Rsq1])
+
+QBookHelpers.print_equation(I2_eq)
+QBookHelpers.print_values([I2])
+
+QBookHelpers.print_equation(R2_eq,label='eq-R2_eq')
+QBookHelpers.print_values([Rsq2])
+
+```
+
+::: {.callout-note}
+Wird der Spannungsteiler aus $R_{sq1}$ und $R_{sq2}$ als unbelastet betrachtet, indem sichergestellt wird, dass $I_1 >> I_B$ ist, vereinfacht sich die Berechnung erheblich. Allerdings sind damit auch höhere Ruheströme und damit Verluste verbunden.
+:::
+
+#### Überprüfen und einstellen mittels Simulation
+Nun wird mittels Simulation die Berechnung überprüft und die Schaltung exakt eingestellt. Zur Überpürfung wird eine "OP" Simulation verwendet. Um die Schaltung einzustellen kann eine "DC-Sweep" Simulation, wie dies zum Beispiel in @sec-LV_Vorspannen zur Bestimmung der korrekten Vorspannung gemacht wurde, verwendet werden.
+
+![Reale Spannungsquelle, Simulation 1](Grafiken/04.01_LV_RealeSpannungsquelleSim1.png){#fig-BJT_LV_RealeSpannungsquelleSim1}
+
+Werden die oben berechneten Werte mittels Simulation überpürft, erhält man eine gute Übereinstimmung für $U_{out}$. Um eine noch Bessere Übereinstimmung zu erzielen können die Widerstände mittels DC-Sweep eingestellt werden. Dazu wird $R_{sq1}$ laut Berechnung gewählt und Widerstand $R_{sq2}$ "gesweept". Ziel ist es Den Widerstandswert $R_{sq2}$ so zu bestimmen, dass $U_{out}$ den notwendigen Wert der Vorspannung hat, welcher in  @sec-LV_Vorspannen mittels "DC-Sweep" ermittelt wurde $U_{out} = 1.35 \ \mathrm{V}$.
+
+![Reale Spannungsquelle, DC-Sweep](Grafiken/04.01_LV_RealeSpannungsquelleSim2.png){#fig-BJT_LV_RealeSpannungsquelleSim2}
+
+| Simulationsparameter | Wert | Bemerkung |
+|----------------------|:-------:|:------:|
+| Rsq2 Sweep Bereich         | 1 Ohm bis 20 kOhm in 100 Ohm Schritten | 
+
+| Simulationsergebnis | Wert | Bemerkung |
+|----------------------|:-------:|:------:|
+| $R_{sq2}$ bei $U_{out} = 1,35 \ \mathrm{V}$        | $R_{sq2} = 774,11 \ \Omega$ |        |     
+
+Eine neuerliche Simulation bestätigt das Ergebnis.
 
 
+![Reale Spannungsquelle, Simulation 2](Grafiken/04.01_LV_RealeSpannungsquelleSim3.png){#fig-BJT_LV_RealeSpannungsquelleSim3}
 
 
+#### Aufbau
+ Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potentiometer in der realen Schaltung vorgesehen werden um die diese Effekte zu kompensieren. Beim $U_{BE}$-Vervielfacher würde $R_{sq2}$ als Trimpotentiometer ausgeführt werden.
+ Weiters ist zu beachten, dass für einen realen Aufbau Widerstandswerte aus den E-Reihen zu wählen sind!
+
+
+#### Reale Spannungsquelle in der Schaltung {#sec-RealeVorspannung}
+
+Der zuvor dimensionierte $U_{BE}$-Vervielfacher kann nun in die Schaltung eingebaut werden. 
 
 ![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal} 
 
+Es gilt aufs neue die Qualität zu überprüfen. Dabei werden die selben Parameter wie in @sec-LV_Vorspannen zur Beurteilung heran gezogen.
+Zuerst wird wieder eine Operating Point Analyse (OP) durchgeführt um den Arbeitspunkt zu kontrollieren, @fig-BJT_GegenRueckVorReal3. Bereits hier ist zu erkennen, dass die gewünschte Vorspannung nicht erreicht wird.
 
+![Gegentaktendstufe mit realer Vorspannungsquelle, Simulation 1 ](Grafiken/04_LV_Reale_VorspannungDCSim1.png){#fig-BJT_GegenRueckVorReal3}
+
+![Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation ](Grafiken/04_LV_Reale_VorspannungTRANSim1.png){#fig-BJT_GegenRueckVorReal4}
+
+| Simulationsparameter | Wert | Bemerkung |
+|----------------------|:-------:|:------:|
+| Vin Frequenz         | 10 kHz  |        |   
+| Vin Amplitude        | 1 V     |        |  
+| Simulierte Perioden  | 3       |        |  
+
+In der Simulation über die Zeit, der Transientensimulation, sind auch eindeutig die Übergabeverzerrungen zu sehen. DEr Grund dafür liegt in der fehlenden Stromversorgung der Spannungsquelle.
 
 ::: {.callout-note}
 Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
@@ -213,9 +348,47 @@ Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung g
 :::
 
 ### Stromversorgung
-![Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle](Grafiken/05_LV_Stromquellen.png){#fig-BJT_GegenRueckVorRealStrom}
+Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und @fig-BJT_GegenRueckVorReal4 sichtbar ist, fehlt für die reale Vorspannungsquelle noch die Stromversorgung.
+<!-- ![Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle](Grafiken/05_LV_Stromquellen.png){#fig-BJT_GegenRueckVorRealStrom} -->
+
+![Gegentaktendstufe mit Stromversorgung, Simulation 1 ](Grafiken/05_LV_StromquellenDCSim1.png){#fig-BJT_GegenRueckVorRealStromDCSim1}  
+
+Mittels Arbeitspunktsimulation ist zu sehen, dass die Vorspannung durch, den einbau der Stromquellen erreicht wird. Die Höhe des Stromes richtet sich nach der Dimensionierung von $I_{spqg}$ in @sec-ube_verf_bere. 
+
+![Gegentaktendstufe mit Stromversorgung, Transienten Simulation](Grafiken/05_LV_StromquellenTRANSim1.png){#fig-BJT_GegenRueckVorRealStromTRANSim1}  
+
+| Simulationsparameter | Wert | Bemerkung |
+|----------------------|:-------:|:------:|
+| Vin Frequenz         | 10 kHz  |        |   
+| Vin Amplitude        | 1 V     |        |  
+| Simulierte Perioden  | 5       |        |  
+
+Die Verzerrungen sind wieder auf dem Niveau aus @sec-LV_Vorspannen und damit akzeptabel. Nun müssen nur noch die idealen Stromquellen mit realen ersetzt werden.
 
 ### Reale Stromquelle
+Als geeignete Stromquellen bietet sich der sogenannte Stromspiegel an. Dieser kann wieder Analytisch berechnet werden nach [@boehmer17, pp. 157] oder mittels DC-Sweeps des Widerstandes bestimmt werden. Zur Simulation eignen sich als Last Spannungsgesteuerte Spannungsquellen. 
+
+![Gegentaktendstufe mit realen Stromquellen, Simulation 1 ](Grafiken/05.01_RealeStromquellenOPSim1.png){#fig-BJT_GegenRueckVorRealStromOPSim1}  
+
+Die Stabilität der Stromquelle kann ermittelt werden indem die Lastspannung "gesweept" wird. Dabei soll der Verlauf des Stromes möglichst horizontal, konstant, sein.
+
+![Gegentaktendstufe mit realen Stromquellen, DC Sweep ](Grafiken/05.01_RealeStromquelleDCSim1.png){#fig-BJT_GegenRueckVorRealStromDCsweepSim1}  
+
+Nachdem die ausreichende Stabilität gezeigt wurde können die Stromquellen eingebaut werden und die gesamte Schaltung auf ihre Qualität überprüft werden. 
+
+![Gegentaktendstufe mit realen Stromquellen, Arbeitspunktanalyse ](Grafiken/06_LV_Real.png){#fig-BJT_06_LV_Real}  
+
+
+![Gegentaktendstufe mit realen Stromquellen, Transienten Analyse ](Grafiken/06_LV_Real_TRANSim1.png){#fig-BJT_06_LV_Real_TRANSim1}  
+
+| Simulationsparameter | Wert | Bemerkung |
+|----------------------|:-------:|:------:|
+| Vin Frequenz         | 10 kHz  |        |   
+| Vin Amplitude        | 1 V     |        |  
+| Simulierte Perioden  | 5       |        |  
+
+Vergleicht man nun Ergebnis @fig-BJT_GegenRueckVorSim1, bei welchem die Vorspannung ideal ausgeführt wurde und das Ergebnis @fig-BJT_06_LV_Real_TRANSim1 mit realen, und damit tatsächlich fertigbar, Quellen ist die Qualitätsunterschied zu vernachlässigen. Das Schaltung gilt damit als fertig dimensioniert. Natürlich kann die Schaltung erweitert, adaptiert und verbessert werden. Siehe dazu @sec-AbwErw.
+
 
 
 ### Praktische Herangehensweise
@@ -224,7 +397,7 @@ Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung g
 * Auswahl passender Transistoren in Bezug auf die maximale Werte.
 * Definition der Qualitätsparameter, z.B. Differenz der ein und Ausgangspannungen, Oberwellen Anteile, ...
 
-### Abwandlungen und Erweiterungen
+### Abwandlungen und Erweiterungen {#sec-AbwErw}
 Wie könnte eine Strombegrenzung, Kurzschlusssicherheit, umgesetzt werden?  
 Wie könnte die Rückkopplung die hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker -->  
 Wie könnte die Vorspannung mit Dioden umgesetzt werden?  
