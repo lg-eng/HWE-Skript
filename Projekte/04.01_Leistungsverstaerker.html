@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>HWE-Skript - 2&nbsp; Leistungsverstärker</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Projekte/04.02_H-Bruecke.html" rel="next">
+<link href="../Transistoren/01_Transistoren.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">HWE-Skript</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/lg-eng/HWE-Skript" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../HWE-Skript.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../HWE-Skript.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Willkommen zum Skript</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">3. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">4. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#die-gegentaktendstufe" id="toc-die-gegentaktendstufe" class="nav-link active" data-scroll-target="#die-gegentaktendstufe"><span class="header-section-number">2.0.1</span> Die Gegentaktendstufe</a></li>
+  <li><a href="#rückkopplung" id="toc-rückkopplung" class="nav-link" data-scroll-target="#rückkopplung"><span class="header-section-number">2.0.2</span> Rückkopplung</a></li>
+  <li><a href="#sec-LV_Vorspannen" id="toc-sec-LV_Vorspannen" class="nav-link" data-scroll-target="#sec-LV_Vorspannen"><span class="header-section-number">2.0.3</span> Vorspannen</a></li>
+  <li><a href="#reale-spannungsquelle" id="toc-reale-spannungsquelle" class="nav-link" data-scroll-target="#reale-spannungsquelle"><span class="header-section-number">2.0.4</span> Reale Spannungsquelle</a>
+  <ul>
+  <li><a href="#sec-ube_verf_bere" id="toc-sec-ube_verf_bere" class="nav-link" data-scroll-target="#sec-ube_verf_bere"><span class="header-section-number">2.0.4.1</span> <span class="math inline">\(U_{BE}\)</span>-Vervielfacher berechnen.</a></li>
+  <li><a href="#überprüfen-und-einstellen-mittels-simulation" id="toc-überprüfen-und-einstellen-mittels-simulation" class="nav-link" data-scroll-target="#überprüfen-und-einstellen-mittels-simulation"><span class="header-section-number">2.0.4.2</span> Überprüfen und einstellen mittels Simulation</a></li>
+  <li><a href="#aufbau" id="toc-aufbau" class="nav-link" data-scroll-target="#aufbau"><span class="header-section-number">2.0.4.3</span> Aufbau</a></li>
+  <li><a href="#sec-RealeVorspannung" id="toc-sec-RealeVorspannung" class="nav-link" data-scroll-target="#sec-RealeVorspannung"><span class="header-section-number">2.0.4.4</span> Reale Spannungsquelle in der Schaltung</a></li>
+  </ul></li>
+  <li><a href="#stromversorgung" id="toc-stromversorgung" class="nav-link" data-scroll-target="#stromversorgung"><span class="header-section-number">2.0.5</span> Stromversorgung</a></li>
+  <li><a href="#reale-stromquelle" id="toc-reale-stromquelle" class="nav-link" data-scroll-target="#reale-stromquelle"><span class="header-section-number">2.0.6</span> Reale Stromquelle</a></li>
+  <li><a href="#praktische-herangehensweise" id="toc-praktische-herangehensweise" class="nav-link" data-scroll-target="#praktische-herangehensweise"><span class="header-section-number">2.0.7</span> Praktische Herangehensweise</a></li>
+  <li><a href="#sec-AbwErw" id="toc-sec-AbwErw" class="nav-link" data-scroll-target="#sec-AbwErw"><span class="header-section-number">2.0.8</span> Abwandlungen und Erweiterungen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Transistorverstärker, wie sie bisher bekannt sind <a href="../Transistoren/01_Transistoren.html#sec-BJT"><span>Kapitel&nbsp;1.2</span></a>, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor <span class="math inline">\(I_C\)</span> in Ruhe, also ohne Signal am Eingang. Bei der Emitterschaltung ist der Ruhestrom höher, da der Arbeitspunkt auf der Kennlinie weiter “oben” ist. Diese Betriebsart wird auch A - Betrieb genannt.</p>
+<div id="fig-BJT-AP_Ruhestrom" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/BJT_Kennlinie_AP_Ruhestrom.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.1: Bipolartransistor Arbeitspunkt und Ruhestrom <span class="citation" data-cites="BJT_Kennlinie">[<a href="../references.html#ref-BJT_Kennlinie" role="doc-biblioref">1</a>]</span></figcaption>
+</figure>
+</div>
+<p>Um höhere Leistungen und eine geringere Verlustleistung zu erreichen, muss der Arbeitspunkt nach “unten” also zu einem kleineren <span class="math inline">\(I_C\)</span> gebracht werden. Wird dies am Beispiel des Verstärkers in Emittergrundschaltung <a href="../Transistoren/01_Transistoren.html#sec-BJT"><span>Kapitel&nbsp;1.2</span></a> gemacht, würde das bedeuten, dass nur noch eine Halbwelle verstärkt wird. Um dies zu verhindern, werden ein PNP und ein NPN Transistor in Gegentakt geschaltet. Jeder Transistor übernimmt nun die Verstärkung einer Halbewelle. Warum der <span class="math inline">\(I_C\)</span>, und damit die Verlustleistung, trotzdem nicht ganz Null sein kann, sehen wir im folgenden Teil.</p>
+<section id="die-gegentaktendstufe" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="die-gegentaktendstufe"><span class="header-section-number">2.0.1</span> Die Gegentaktendstufe</h3>
+<p>Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund eines höheren <span class="math inline">\(I_C\)</span> verursacht, und trotzdem ein symmetrisches Signal verstärkt werden kann, können zwei Transistoren eingesetzt werden. Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt und die die Betriebsart wird als B bezeichnet. Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.</p>
+<div id="fig-BJT_Gegen" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/01_LV_Gegentaktendstufe.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.2: Bipolartransistoren in Gegentakt</figcaption>
+</figure>
+</div>
+<p>Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.</p>
+<div id="fig-BJT_Gegen_Sim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/01_GegentaktendstufeSimulation.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.3: Bipolartransistoren in Gegentakt, Simulationsergebnisse</figcaption>
+</figure>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{in}\)</span> Frequenz</td>
+<td style="text-align: center;">1 kHz</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{in}\)</span> Amplitude</td>
+<td style="text-align: center;">1 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Simulierte Perioden</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rückkopplung" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="rückkopplung"><span class="header-section-number">2.0.2</span> Rückkopplung</h3>
+<p>Um den Verlauf der Ausgangsspannung an den Verlauf der Eingangsspannung anzupassen, wird eine Gegenkopplung verwendet. Dazu ist eine Subtraktion des Ausgangssignals vom Eingangssignal notwendig. Als Transistorschaltung würde sich eine Differenzverstärkerschaltung anbieten. Für ein noch besseres Ergebnis wird hier ein OPV eingesetzt. Durch die Rückkopplung der gesamten Ausgangsspannung wird eine Spannungsverstärkung von Eins erreicht. Das Ausgangssignal folgt dem Eingangssignal. Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus um beispielsweise Lautsprecher zu betreiben.</p>
+<div id="fig-BJT_GegenRueck" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/02_LV_Rueckkopplung.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.4: Gegentaktendstufe mit Rückkopplung</figcaption>
+</figure>
+</div>
+<p>Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In Abbildung <a href="#fig-BJT-AP_Ruhestrom">Abbildung&nbsp;<span>2.1</span></a> lässt sich erkennen, dass sich in der Nähe des Ursprunges ein Knick befindet. Erst ab einer <span class="math inline">\(U_{BE} \ \)</span> größer von ca. <span class="math inline">\(0,7 \ \mathrm{V}\)</span> beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.<br>
+Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er stark abhängig von der Frequenz. Je schneller im Verhältnis zum Signal der OPV sein Ausgangssignal ändern kann, umso kleiner sind die Verzerrungen. Wie schnell der OPV seinen Ausgang ändern kann, hängt von der Slew-Rate mit der Einheit <span class="math inline">\(\mathrm{\frac{V}{s}}\)</span> ab.</p>
+<div id="fig-BJT_GegenRueck" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/02_Rueckkopplung_Sim12.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.5: Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse</figcaption>
+</figure>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{in}\)</span> Frequenz</td>
+<td style="text-align: center;">10 kHz</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{in}\)</span> Amplitude</td>
+<td style="text-align: center;">1 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Simulierte Perioden</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-LV_Vorspannen" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="sec-LV_Vorspannen"><span class="header-section-number">2.0.3</span> Vorspannen</h3>
+<p>Um die Übergabeverzerrungen zu eliminieren wird die B-E Strecke vorgespannt. Das bedeutet eine Spannung anzulegen welche größer ist als die Schwellspannung der Basis- Emitter Strecke. Damit ist der Transistor bereits im leitenden Bereich und wird nur noch vom Eingangssignal weiter ausgesteuert.<br>
+Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wenn am Eingang <span class="math inline">\(0 \ \mathrm{V} \ \)</span> anliegen erhöhen sich die Verluste. Dieser Kollektorstrom wird auch als Ruhestrom bezeichnet <span class="math inline">\(I_{C,Ruhe} \ \)</span>. Um den Ruhestrom möglichst klein zu halten muss die Spannungsquelle an die Transistoren und deren Fertigungstoleranzen angepasst werden.</p>
+<div id="fig-BJT_GegenRueckVor" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/03_LV_Vorspannung.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.6: Gegentaktendstufe mit vorgespannten Transistoren</figcaption>
+</figure>
+</div>
+<p>Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten <span class="math inline">\(I_C\)</span> eingestellt werden. Der <span class="math inline">\(I_C\)</span> ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der <span class="math inline">\(I_C\)</span> ein Zehntel des maximalen Laststromes betragen. <img src="Grafiken/03_Vorspannung_DCSweepSim12.png" id="fig-BJT_GegenRueckVorDCSw" class="img-fluid" alt="Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep"></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{vor}\)</span> min</td>
+<td style="text-align: center;">1,2 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{vor}\)</span> max</td>
+<td style="text-align: center;">1,4 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(V_{vor}\)</span> step size</td>
+<td style="text-align: center;">1 mV</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Mit dem Cursor können die Ergebnisse exakt abgelesen werden.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsergebnis</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{vor}\)</span> bei <span class="math inline">\(I_C\)</span> = 15 mA an T1</td>
+<td style="text-align: center;">1,3479 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{vor}\)</span> bei <span class="math inline">\(I_C\)</span> = 15 mA an T2</td>
+<td style="text-align: center;">1,3489 V</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zusammenhang zwischen <span class="math inline">\(U_{BE}\)</span> und <span class="math inline">\(I_C\)</span> ein anderer. Da die Werte sehr nahe beieinander liegen kann ein gerundetes arithmetisches Mittel als Ergebnis für <span class="math inline">\(V_{Vor}\)</span> verwendet werden.</p>
+<p>Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt, um Beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung und der Ausgangsspannung zu erkennen.</p>
+<div id="fig-BJT_GegenRueckVorSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/03_Vorspannung_Sim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.7: Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse</figcaption>
+</figure>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{in}\)</span> Frequenz</td>
+<td style="text-align: center;">10 kHz</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{in}\)</span> Amplitude</td>
+<td style="text-align: center;">1 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Simulierte Perioden</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang würden sich eignen um Nachzuweisen, dass die Verzerrung akzeptabel ist?</p>
+</div>
+</div>
+</section>
+<section id="reale-spannungsquelle" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="reale-spannungsquelle"><span class="header-section-number">2.0.4</span> Reale Spannungsquelle</h3>
+<p>Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter “<span class="math inline">\(U_{BE}\)</span>-Vervielfacher” <span class="citation" data-cites="boehmer17">[<a href="../references.html#ref-boehmer17" role="doc-biblioref">2</a>, pp.&nbsp;301]</span>.<br>
+In <a href="#fig-BJT_GegenRueckVorReal">Abbildung&nbsp;<span>2.12</span></a> wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der <span class="math inline">\(U_{BE}\)</span>-Vervielfacher alleine betrachtet werden. <span class="math inline">\(U_{out}\)</span> ist aus <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> bekannt. Es müssen nun also die Widerstände <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> so dimensioniert werden.</p>
+<div id="fig-BJT_GegenRueckVorReal2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04.01_LV_Reale_Vorspannung.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.8: Reale Spannungsquelle, <span class="math inline">\(U_{BE}\)</span>-Vervielfacher</figcaption>
+</figure>
+</div>
+<p>Der Ablauf ist wie folgt und gilt für alle Dimensionierungsaufgaben von Schaltungen.</p>
+<section id="sec-ube_verf_bere" class="level4" data-number="2.0.4.1">
+<h4 data-number="2.0.4.1" class="anchored" data-anchor-id="sec-ube_verf_bere"><span class="header-section-number">2.0.4.1</span> <span class="math inline">\(U_{BE}\)</span>-Vervielfacher berechnen.</h4>
+<p>Dabei wird die Schaltung analytisch, also mit Formeln berechnet.<br>
+Es soll wie bei der Dimensionierung der Emitterverstärkerschaltung klar gekennzeichnet werden woher die Formeln und Werte kommen.<br>
+Gesucht wird <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> so, dass <span class="math inline">\(U_{out}\)</span> der gesuchten Vorspannung aus <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> entspricht.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{out} = \mathtt{\text{1.35}} \ \mathtt{\text{V}}\]</span></p>
+</div>
+</div>
+<p>Der maximale Laststrom <span class="math inline">\(I_{Lmax}\)</span> wurde in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> bestimmt.</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{Lmax} = \mathtt{\text{500}} \ \mathtt{\text{uA}}\]</span></p>
+</div>
+</div>
+<p>Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere, und damit kompliziertere, Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse groß sind. Folgende <em>Faustegeln</em> gelten für die Berechnung:</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq"><span class="math display">\[
+I_{1} = I_{2} + I_{B}
+\tag{2.1}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ib_eq"><span class="math display">\[
+I_{B} = \frac{I_{C}}{100}
+\tag{2.2}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ispg_eq"><span class="math display">\[
+I_{Spg} = 20 I_{Lmax}
+\tag{2.3}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{Spg} = \mathtt{\text{10}} \ \mathtt{\text{mA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{BE} = \mathtt{\text{700}} \ \mathtt{\text{mV}}\]</span></p>
+</div>
+</div>
+<p>Mit Maschengleichung 1 <span class="math inline">\(M_1\)</span> erhält man den Zusammenhang zwischen <span class="math inline">\(U_1\)</span> und <span class="math inline">\(U_{BE}\)</span>.</p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<p><span id="eq-M1_eq"><span class="math display">\[
+0 = - U_{2} + U_{BE}
+\tag{2.4}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-U2_eq"><span class="math display">\[
+U_{2} = U_{BE}
+\tag{2.5}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{2} = \mathtt{\text{700}} \ \mathtt{\text{mV}}\]</span></p>
+</div>
+</div>
+<p>Mit Maschengleichung 2 <span class="math inline">\(M_2\)</span> lässt sich <span class="math inline">\(U_1\)</span> berechnen.</p>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<p><span id="eq-M2_eq"><span class="math display">\[
+0 = U_{1} + U_{2} - U_{out}
+\tag{2.6}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-U1_eq"><span class="math display">\[
+U_{1} = - U_{2} + U_{out}
+\tag{2.7}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[U_{1} = \mathtt{\text{650}} \ \mathtt{\text{mV}}\]</span></p>
+</div>
+</div>
+<p><span class="math inline">\(I_1\)</span> kann aus dem Knoten 2 berechnet werden indem <a href="#eq-I2_eq">Gleichung&nbsp;<span>2.10</span></a> eingesetz wird.</p>
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<p><span id="eq-K2_eq"><span class="math display">\[
+0 = I_{1} - I_{2} - I_{B}
+\tag{2.8}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq"><span class="math display">\[
+I_{1} = I_{2} + I_{B}
+\tag{2.9}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I2_eq"><span class="math display">\[
+I_{2} = 10 I_{B}
+\tag{2.10}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq2"><span class="math display">\[
+I_{1} = 11 I_{B}
+\tag{2.11}\]</span></span></p>
+</div>
+</div>
+<p>Wird nun noch <a href="#eq-Ib_eq">Gleichung&nbsp;<span>2.16</span></a> in <a href="#eq-I1_eq2">Gleichung&nbsp;<span>2.11</span></a> eingesetzt erhält man eine Gleich für <span class="math inline">\(I_1\)</span> in Abhängigkeit von <span class="math inline">\(I_C\)</span>.</p>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq3"><span class="math display">\[
+I_{1} = \frac{11 I_{C}}{100}
+\tag{2.12}\]</span></span></p>
+</div>
+</div>
+<p>Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. Für <span class="math inline">\(I_L\)</span> muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> ermittelt werden. Der Strom <span class="math inline">\(I_{spg}\)</span> kann mit der Faustregel <a href="#eq-Ispg_eq">Gleichung&nbsp;<span>2.3</span></a> bestimmt werden. Werden diese Informationen und <a href="#eq-I1_eq3">Gleichung&nbsp;<span>2.17</span></a> in Knoten 1 <a href="#eq-K1_eq">Gleichung&nbsp;<span>2.13</span></a> eingesetzt, kann durch umformen, <span class="math inline">\(I_c\)</span> berechnet werden.</p>
+<div class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<p><span id="eq-K1_eq"><span class="math display">\[
+0 = - I_{1} - I_{C} - I_{L} + I_{Spg}
+\tag{2.13}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ic_eq"><span class="math display">\[
+0 = - \frac{111 I_{C}}{100} + 19 I_{Lmax}
+\tag{2.14}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ic_eq2"><span class="math display">\[
+I_{C} = \frac{1900 I_{Lmax}}{111}
+\tag{2.15}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{C} = \mathtt{\text{8.56}} \ \mathtt{\text{mA}}\]</span></p>
+</div>
+</div>
+<p>Durch einsetzen der Zahlenwerte können nun <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> berechnet werden.</p>
+<div class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<p><span id="eq-Ib_eq"><span class="math display">\[
+I_{B} = \frac{I_{C}}{100}
+\tag{2.16}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{B} = \mathtt{\text{85.6}} \ \mathtt{\text{uA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-I1_eq3"><span class="math display">\[
+I_{1} = 11 I_{B}
+\tag{2.17}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{1} = \mathtt{\text{941}} \ \mathtt{\text{uA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-R1_eq"><span class="math display">\[
+R_{sq1} = \frac{U_{1}}{I_{1}}
+\tag{2.18}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[R_{sq1} = \mathtt{\text{690}} \ \mathrm{\Omega}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-Dummy"><span class="math display">\[
+I_{2} = 10 I_{B}
+\tag{2.19}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[I_{2} = \mathtt{\text{856}} \ \mathtt{\text{uA}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span id="eq-R2_eq"><span class="math display">\[
+R_{sq2} = \frac{U_{2}}{I_{2}}
+\tag{2.20}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math display">\[R_{sq2} = \mathtt{\text{818}} \ \mathrm{\Omega}\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wird der Spannungsteiler aus <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> als unbelastet betrachtet, indem sichergestellt wird, dass <span class="math inline">\(I_1 &gt;&gt; I_B\)</span> ist, vereinfacht sich die Berechnung erheblich. Allerdings sind damit auch höhere Ruheströme und damit Verluste verbunden.</p>
+</div>
+</div>
+</section>
+<section id="überprüfen-und-einstellen-mittels-simulation" class="level4" data-number="2.0.4.2">
+<h4 data-number="2.0.4.2" class="anchored" data-anchor-id="überprüfen-und-einstellen-mittels-simulation"><span class="header-section-number">2.0.4.2</span> Überprüfen und einstellen mittels Simulation</h4>
+<p>Nun wird mittels Simulation die Berechnung überprüft und die Schaltung exakt eingestellt. Zur Überpürfung wird eine “OP” Simulation verwendet. Um die Schaltung einzustellen kann eine “DC-Sweep” Simulation, wie dies zum Beispiel in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> zur Bestimmung der korrekten Vorspannung gemacht wurde, verwendet werden.</p>
+<div id="fig-BJT_LV_RealeSpannungsquelleSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04.01_LV_RealeSpannungsquelleSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.9: Reale Spannungsquelle, Simulation 1</figcaption>
+</figure>
+</div>
+<p>Werden die oben berechneten Werte mittels Simulation überpürft, erhält man eine gute Übereinstimmung für <span class="math inline">\(U_{out}\)</span>. Um eine noch Bessere Übereinstimmung zu erzielen können die Widerstände mittels DC-Sweep eingestellt werden. Dazu wird <span class="math inline">\(R_{sq1}\)</span> laut Berechnung gewählt und Widerstand <span class="math inline">\(R_{sq2}\)</span> “gesweept”. Ziel ist es Den Widerstandswert <span class="math inline">\(R_{sq2}\)</span> so zu bestimmen, dass <span class="math inline">\(U_{out}\)</span> den notwendigen Wert der Vorspannung hat, welcher in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> mittels “DC-Sweep” ermittelt wurde <span class="math inline">\(U_{out} = 1.35 \ \mathrm{V}\)</span>.</p>
+<div id="fig-BJT_LV_RealeSpannungsquelleSim2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04.01_LV_RealeSpannungsquelleSim2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.10: Reale Spannungsquelle, DC-Sweep</figcaption>
+</figure>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 56%">
+<col style="width: 23%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rsq2 Sweep Bereich</td>
+<td style="text-align: center;">1 Ohm bis 20 kOhm in 100 Ohm Schritten</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 56%">
+<col style="width: 23%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Simulationsergebnis</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R_{sq2}\)</span> bei <span class="math inline">\(U_{out} = 1,35 \ \mathrm{V}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R_{sq2} = 774,11 \ \Omega\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Eine neuerliche Simulation bestätigt das Ergebnis.</p>
+<div id="fig-BJT_LV_RealeSpannungsquelleSim3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04.01_LV_RealeSpannungsquelleSim3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.11: Reale Spannungsquelle, Simulation 2</figcaption>
+</figure>
+</div>
+</section>
+<section id="aufbau" class="level4" data-number="2.0.4.3">
+<h4 data-number="2.0.4.3" class="anchored" data-anchor-id="aufbau"><span class="header-section-number">2.0.4.3</span> Aufbau</h4>
+<p>Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potentiometer in der realen Schaltung vorgesehen werden um die diese Effekte zu kompensieren. Beim <span class="math inline">\(U_{BE}\)</span>-Vervielfacher würde <span class="math inline">\(R_{sq2}\)</span> als Trimpotentiometer ausgeführt werden. Weiters ist zu beachten, dass für einen realen Aufbau Widerstandswerte aus den E-Reihen zu wählen sind!</p>
+</section>
+<section id="sec-RealeVorspannung" class="level4" data-number="2.0.4.4">
+<h4 data-number="2.0.4.4" class="anchored" data-anchor-id="sec-RealeVorspannung"><span class="header-section-number">2.0.4.4</span> Reale Spannungsquelle in der Schaltung</h4>
+<p>Der zuvor dimensionierte <span class="math inline">\(U_{BE}\)</span>-Vervielfacher kann nun in die Schaltung eingebaut werden.</p>
+<div id="fig-BJT_GegenRueckVorReal" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04_LV_Reale_Vorspannung.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.12: Gegentaktendstufe mit realer Vorspannungsquelle</figcaption>
+</figure>
+</div>
+<p>Es gilt aufs neue die Qualität zu überprüfen. Dabei werden die selben Parameter wie in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> zur Beurteilung heran gezogen. Zuerst wird wieder eine Operating Point Analyse (OP) durchgeführt um den Arbeitspunkt zu kontrollieren, <a href="#fig-BJT_GegenRueckVorReal3">Abbildung&nbsp;<span>2.13</span></a>. Bereits hier ist zu erkennen, dass die gewünschte Vorspannung nicht erreicht wird.</p>
+<div id="fig-BJT_GegenRueckVorReal3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04_LV_Reale_VorspannungDCSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.13: Gegentaktendstufe mit realer Vorspannungsquelle, Simulation 1</figcaption>
+</figure>
+</div>
+<div id="fig-BJT_GegenRueckVorReal4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/04_LV_Reale_VorspannungTRANSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.14: Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation</figcaption>
+</figure>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{in}\)</span> Frequenz</td>
+<td style="text-align: center;">10 kHz</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{in}\)</span> Amplitude</td>
+<td style="text-align: center;">1 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Simulierte Perioden</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>In der Simulation über die Zeit, der Transientensimulation, sind auch eindeutig die Übergabeverzerrungen zu sehen. DEr Grund dafür liegt in der fehlenden Stromversorgung der Spannungsquelle.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung genutzt?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="stromversorgung" class="level3" data-number="2.0.5">
+<h3 data-number="2.0.5" class="anchored" data-anchor-id="stromversorgung"><span class="header-section-number">2.0.5</span> Stromversorgung</h3>
+<p>Wie in <a href="#sec-RealeVorspannung"><span>Kapitel&nbsp;2.0.4.4</span></a> Simulationsergebnis <a href="#fig-BJT_GegenRueckVorReal3">Abbildung&nbsp;<span>2.13</span></a> und <a href="#fig-BJT_GegenRueckVorReal4">Abbildung&nbsp;<span>2.14</span></a> sichtbar ist, fehlt für die reale Vorspannungsquelle noch die Stromversorgung. <!-- ![Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle](Grafiken/05_LV_Stromquellen.png){#fig-BJT_GegenRueckVorRealStrom} --></p>
+<div id="fig-BJT_GegenRueckVorRealStromDCSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/05_LV_StromquellenDCSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.15: Gegentaktendstufe mit Stromversorgung, Simulation 1</figcaption>
+</figure>
+</div>
+<p>Mittels Arbeitspunktsimulation ist zu sehen, dass die Vorspannung durch, den einbau der Stromquellen erreicht wird. Die Höhe des Stromes richtet sich nach der Dimensionierung von <span class="math inline">\(I_{spqg}\)</span> in <a href="#sec-ube_verf_bere"><span>Kapitel&nbsp;2.0.4.1</span></a>.</p>
+<div id="fig-BJT_GegenRueckVorRealStromTRANSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/05_LV_StromquellenTRANSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.16: Gegentaktendstufe mit Stromversorgung, Transienten Simulation</figcaption>
+</figure>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{in}\)</span> Frequenz</td>
+<td style="text-align: center;">10 kHz</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{in}\)</span> Amplitude</td>
+<td style="text-align: center;">1 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Simulierte Perioden</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Die Verzerrungen sind wieder auf dem Niveau aus <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;2.0.3</span></a> und damit akzeptabel. Nun müssen nur noch die idealen Stromquellen mit realen ersetzt werden.</p>
+</section>
+<section id="reale-stromquelle" class="level3" data-number="2.0.6">
+<h3 data-number="2.0.6" class="anchored" data-anchor-id="reale-stromquelle"><span class="header-section-number">2.0.6</span> Reale Stromquelle</h3>
+<p>Als geeignete Stromquellen bietet sich der sogenannte Stromspiegel an. Dieser kann wieder Analytisch berechnet werden nach <span class="citation" data-cites="boehmer17">[<a href="../references.html#ref-boehmer17" role="doc-biblioref">2</a>, pp.&nbsp;157]</span> oder mittels DC-Sweeps des Widerstandes bestimmt werden. Zur Simulation eignen sich als Last Spannungsgesteuerte Spannungsquellen.</p>
+<div id="fig-BJT_GegenRueckVorRealStromOPSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/05.01_RealeStromquellenOPSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.17: Gegentaktendstufe mit realen Stromquellen, Simulation 1</figcaption>
+</figure>
+</div>
+<p>Die Stabilität der Stromquelle kann ermittelt werden indem die Lastspannung “gesweept” wird. Dabei soll der Verlauf des Stromes möglichst horizontal, konstant, sein.</p>
+<div id="fig-BJT_GegenRueckVorRealStromDCsweepSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/05.01_RealeStromquelleDCSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.18: Gegentaktendstufe mit realen Stromquellen, DC Sweep</figcaption>
+</figure>
+</div>
+<p>Nachdem die ausreichende Stabilität gezeigt wurde können die Stromquellen eingebaut werden und die gesamte Schaltung auf ihre Qualität überprüft werden.</p>
+<div id="fig-BJT_06_LV_Real" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/06_LV_Real.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.19: Gegentaktendstufe mit realen Stromquellen, Arbeitspunktanalyse</figcaption>
+</figure>
+</div>
+<div id="fig-BJT_06_LV_Real_TRANSim1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/06_LV_Real_TRANSim1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.20: Gegentaktendstufe mit realen Stromquellen, Transienten Analyse</figcaption>
+</figure>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Simulationsparameter</th>
+<th style="text-align: center;">Wert</th>
+<th style="text-align: center;">Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(V_{in}\)</span> Frequenz</td>
+<td style="text-align: center;">10 kHz</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V_{in}\)</span> Amplitude</td>
+<td style="text-align: center;">1 V</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>Simulierte Perioden</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Vergleicht man nun Ergebnis <a href="#fig-BJT_GegenRueckVorSim1">Abbildung&nbsp;<span>2.7</span></a>, bei welchem die Vorspannung ideal ausgeführt wurde und das Ergebnis <a href="#fig-BJT_06_LV_Real_TRANSim1">Abbildung&nbsp;<span>2.20</span></a> mit realen, und damit tatsächlich fertigbar, Quellen ist die Qualitätsunterschied zu vernachlässigen. Das Schaltung gilt damit als fertig dimensioniert. Natürlich kann die Schaltung erweitert, adaptiert und verbessert werden. Siehe dazu <a href="#sec-AbwErw"><span>Kapitel&nbsp;2.0.8</span></a>.</p>
+</section>
+<section id="praktische-herangehensweise" class="level3" data-number="2.0.7">
+<h3 data-number="2.0.7" class="anchored" data-anchor-id="praktische-herangehensweise"><span class="header-section-number">2.0.7</span> Praktische Herangehensweise</h3>
+<ul>
+<li>welche Last muss versorgt werden.</li>
+<li>welche Lastströme sind gewünscht.</li>
+<li>Auswahl passender Transistoren in Bezug auf die maximale Werte.</li>
+<li>Definition der Qualitätsparameter, z.B. Differenz der ein und Ausgangspannungen, Oberwellen Anteile, …</li>
+</ul>
+</section>
+<section id="sec-AbwErw" class="level3" data-number="2.0.8">
+<h3 data-number="2.0.8" class="anchored" data-anchor-id="sec-AbwErw"><span class="header-section-number">2.0.8</span> Abwandlungen und Erweiterungen</h3>
+<p>Wie könnte eine Strombegrenzung, Kurzschlusssicherheit, umgesetzt werden?<br>
+Wie könnte die Rückkopplung die hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker --><br>
+Wie könnte die Vorspannung mit Dioden umgesetzt werden?<br>
+Wie könnte die Leistung weiter erhöht werden? <!-- Darlingtontransistoren --></p>
+
+
+<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-BJT_Kennlinie" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Biezl V Bipolartransistor Kennlinienfeld. <a href="https://commons.wikimedia.org/w/index.php?curid=7329334">https://commons.wikimedia.org/w/index.php?curid=7329334</a>. Accessed 19 Nov 2023</div>
+</div>
+<div id="ref-boehmer17" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">E. Böhmer WO D. Ehrhardt (2018) Elemente der angewandten Elektronik. Springer Verlag, Wiesbaden</div>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Transistoren/01_Transistoren.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Der Transistor</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Projekte/04.02_H-Bruecke.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">H-Brücke</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
