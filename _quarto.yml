@@ -2,6 +2,7 @@ project:
   type: book
 
 license: "CC BY"
+tbl-cap-location: bottom
 
 lang: de
 book:

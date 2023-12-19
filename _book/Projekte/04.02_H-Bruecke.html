@@ -222,8 +222,14 @@ cookieconsent.run({
   <ul>
   <li><a href="#beschreibung-der-h-brücke" id="toc-beschreibung-der-h-brücke" class="nav-link active" data-scroll-target="#beschreibung-der-h-brücke"><span class="header-section-number">3.1</span> Beschreibung der H-Brücke</a>
   <ul>
-  <li><a href="#funktionsweise" id="toc-funktionsweise" class="nav-link" data-scroll-target="#funktionsweise"><span class="header-section-number">3.1.1</span> Funktionsweise</a></li>
+  <li><a href="#funktionsweise" id="toc-funktionsweise" class="nav-link" data-scroll-target="#funktionsweise"><span class="header-section-number">3.1.1</span> Funktionsweise</a>
+  <ul class="collapse">
+  <li><a href="#linkslauf" id="toc-linkslauf" class="nav-link" data-scroll-target="#linkslauf"><span class="header-section-number">3.1.1.1</span> Linkslauf</a></li>
+  <li><a href="#rechtslauf" id="toc-rechtslauf" class="nav-link" data-scroll-target="#rechtslauf"><span class="header-section-number">3.1.1.2</span> Rechtslauf</a></li>
+  <li><a href="#bremsen" id="toc-bremsen" class="nav-link" data-scroll-target="#bremsen"><span class="header-section-number">3.1.1.3</span> Bremsen</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#entwicklung-der-logik" id="toc-entwicklung-der-logik" class="nav-link" data-scroll-target="#entwicklung-der-logik"><span class="header-section-number">3.2</span> Entwicklung der Logik</a></li>
   </ul>
 </nav>
     </div>
@@ -251,11 +257,9 @@ cookieconsent.run({
 <p><strong>Ziel</strong><br>
 Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:</p>
 <ul>
-<li>Drehrichtung im Uhrzeigersinn<br>
+<li>Linkslauf<br>
 </li>
-<li>Drehrichtung gegen den Uhrzeigersinn<br>
-</li>
-<li>Freilauf<br>
+<li>Rechtslauf<br>
 </li>
 <li>Bremsen</li>
 </ul>
@@ -284,6 +288,315 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 </div>
 <section id="funktionsweise" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="funktionsweise"><span class="header-section-number">3.1.1</span> Funktionsweise</h3>
+<p>Für die Erklärung der Funktionsweise werden die MOSFET’s durch gedachte Schalter ersetzt. Dies ist Zulässig, da der MOSFET als Schalter betrieben werden kann. Siehe dazu <a href="../Transistoren/01_Transistoren.html#sec-MOSFET"><span>Kapitel&nbsp;1.1</span></a>.</p>
+<div id="fig-H-BrueckeMS" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/Hbruecke/MitSchaltern.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;3.2: Ersatzschaltbild H-Brücke mit Schaltern</figcaption>
+</figure>
+</div>
+<p><span class="math inline">\(S_1, S_2, S_ 3\)</span> und <span class="math inline">\(S_4\)</span> stellen dabei Potentiale dar. Zur erinnerung, ein MOSFET schaltet wenn die Spannungs zwischen Gate und Source, <span class="math inline">\(U_{GS}\)</span>, die Threshold-Spannung <span class="math inline">\(U_{GS,Threshold}\)</span> überschreitet. In Bild <a href="#fig-H-BrueckeMS">Abbildung&nbsp;<span>3.2</span></a> sind alle Schalter offen. Da es sich um N-Kanal Selbstsperrende MOSFET handelt müssen, für diesen Zustand, alle Potentiale, <span class="math inline">\(S_1\)</span> bis <span class="math inline">\(S_4\)</span>, <span class="math inline">\(0 \ \mathrm{V}\)</span> sein.</p>
+<p>Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzukehren. Dies gelingt wie folgt.</p>
+<section id="linkslauf" class="level4" data-number="3.1.1.1">
+<h4 data-number="3.1.1.1" class="anchored" data-anchor-id="linkslauf"><span class="header-section-number">3.1.1.1</span> Linkslauf</h4>
+<div id="fig-H-BrueckeMSLL" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/Hbruecke/MitSchalternLL.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;3.3: Ersatzschaltbild H-Brücke mit Schaltern, Linkslauf</figcaption>
+</figure>
+</div>
+<p>Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_3\)</span> müssen auf HIGH sein. Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_4\)</span> müssen auf LOW sein.</p>
+</section>
+<section id="rechtslauf" class="level4" data-number="3.1.1.2">
+<h4 data-number="3.1.1.2" class="anchored" data-anchor-id="rechtslauf"><span class="header-section-number">3.1.1.2</span> Rechtslauf</h4>
+<div id="fig-H-BrueckeMSRL" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/Hbruecke/MitSchalternRL.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;3.4: Ersatzschaltbild H-Brücke mit Schaltern, Rechtslauf</figcaption>
+</figure>
+</div>
+<p>Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_4\)</span> müssen auf HIGH sein. Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_3\)</span> müssen auf LOW sein.</p>
+</section>
+<section id="bremsen" class="level4" data-number="3.1.1.3">
+<h4 data-number="3.1.1.3" class="anchored" data-anchor-id="bremsen"><span class="header-section-number">3.1.1.3</span> Bremsen</h4>
+<p>Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_4\)</span> auf HIGH sind und Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_3\)</span> auf LOW sind.</p>
+<div id="fig-H-BrueckeMSBremse" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/Hbruecke/MitSchalternBremse.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;3.5: Ersatzschaltbild H-Brücke mit Schaltern, Bremsen</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="entwicklung-der-logik" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="entwicklung-der-logik"><span class="header-section-number">3.2</span> Entwicklung der Logik</h2>
+<p>Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen Zustand und dem physikalischen Wert definiert werden.</p>
+<div id="tbl-Zuordnung" class="anchored">
+<table class="table">
+<caption>Tabelle&nbsp;3.1: Zuordnungstabelle</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Eingang / Ausgang</th>
+<th style="text-align: left;">Bezeichnung</th>
+<th style="text-align: left;">Zuordnung</th>
+<th style="text-align: left;">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Eingang</td>
+<td style="text-align: left;">E … Enable</td>
+<td style="text-align: left;">0 … Disabled; 1 … Enabled</td>
+<td style="text-align: left;">Damit wird die Schaltung Betriebsbereit, Ist Enable deaktiviert kann an den anderen Eingängen ein beliebiges Signal anliegen, der Motor darf sich trotzdem nicht bewegen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eingang</td>
+<td style="text-align: left;">B … Break</td>
+<td style="text-align: left;">0 … Disabled; 1 … Enabled</td>
+<td style="text-align: left;">Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eingang</td>
+<td style="text-align: left;">D … Direction</td>
+<td style="text-align: left;">0 … Linkslauf; 1 … Rechtslauf</td>
+<td style="text-align: left;">Gibt die Drehrichtung vor.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eingang</td>
+<td style="text-align: left;">P … PWM</td>
+<td style="text-align: left;">PWM Signal</td>
+<td style="text-align: left;">Gibt die Drehzahl vor.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ausgänge</td>
+<td style="text-align: left;">S1, S2, S3, S4</td>
+<td style="text-align: left;">0 … MOSFET aus; 1 … MOSFET ein</td>
+<td style="text-align: left;">PWM Signal für die Transistoren.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In der Wahrheitstabelle wird nun der Schaltzustand der Ausgänge in Abhängigkeit der Eingänge definiert.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="tbl-wahrheitstabelle" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Tabelle&nbsp;3.2: Wahrheitstabelle</caption>
+<thead>
+<tr class="header">
+<th>PWM</th>
+<th>Enable</th>
+<th>Direction</th>
+<th>Break</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+<th>S4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung Form ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle S_{1} = B \wedge E \wedge P \wedge \neg D\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle S_{2} = E \wedge P \wedge \left(D \vee \neg B\right)\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle S_{3} = E \wedge P \wedge \neg B \wedge \neg D\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle S_{4} = E \wedge P \wedge \left(B \vee D\right)\)</span></p>
+</div>
+</div>
+<p>Aus den Gleichungen können nun die Schaltungen gezeichnet werden.</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p><img src="04.02_H-Bruecke_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04.02_H-Bruecke_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04.02_H-Bruecke_files/figure-html/cell-5-output-3.svg" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="04.02_H-Bruecke_files/figure-html/cell-5-output-4.svg" class="img-fluid"></p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
@@ -291,10 +604,9 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Transparency Market Reserach Inc DC Motors Market. <a href="https://www.transparencymarketresearch.com/dc-motors-market.html">https://www.transparencymarketresearch.com/dc-motors-market.html</a>. Accessed 13 Dez 2023</div>
 </div>
 <div id="ref-HBruecke" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Biezl V Vierquadrantensteller steuert Gleichstrommotor. <a href="https://commons.wikimedia.org/w/index.php?curid=4792919">https://commons.wikimedia.org/w/index.php?curid=4792919</a>. Accessed 19 Nov 2023</div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Biezl V Vierquadrantensteller steuert Gleichstrommotor. <a href="https://commons.wikimedia.org/w/index.php?curid=4792919">https://commons.wikimedia.org/w/index.php?curid=4792919</a>. Accessed 13 Dez 2023</div>
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -6,9 +6,8 @@ Der Markt für DC-Motoren belief sich im Jahr 2022 auf ca. 20,1 Milliarden US-Do
 **Ziel**  
 Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:  
 
-* Drehrichtung im Uhrzeigersinn  
-* Drehrichtung gegen den Uhrzeigersinn  
-* Freilauf  
+* Linkslauf  
+* Rechtslauf   
 * Bremsen  
 
 Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels *Puls-Weiten-Modulation* (PWM) zu ändern.
@@ -30,3 +29,126 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 ![H-Brücke [@HBruecke] ](Grafiken/Hbruecke/Vierquadrantensteller.png){#fig-H-Bruecke}
 
 ### Funktionsweise
+Für die Erklärung der Funktionsweise werden die MOSFET's durch gedachte Schalter ersetzt. Dies ist Zulässig, da der MOSFET als Schalter betrieben werden kann. Siehe dazu @sec-MOSFET. 
+
+![Ersatzschaltbild H-Brücke mit Schaltern ](Grafiken/Hbruecke/MitSchaltern.png){#fig-H-BrueckeMS}
+
+$S_1, S_2, S_ 3$ und $S_4$ stellen dabei Potentiale dar. Zur erinnerung, ein MOSFET schaltet wenn die Spannungs zwischen Gate und Source, $U_{GS}$, die Threshold-Spannung $U_{GS,Threshold}$ überschreitet. In Bild @fig-H-BrueckeMS sind alle Schalter offen. Da es sich um N-Kanal Selbstsperrende MOSFET handelt müssen, für diesen Zustand, alle Potentiale, $S_1$ bis $S_4$, $0 \ \mathrm{V}$ sein.
+
+Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzukehren. Dies gelingt wie folgt.
+
+#### Linkslauf
+
+![Ersatzschaltbild H-Brücke mit Schaltern, Linkslauf ](Grafiken/Hbruecke/MitSchalternLL.png){#fig-H-BrueckeMSLL}
+
+Potential $S_2$ und $S_3$ müssen auf HIGH sein. Potential $S_1$ und $S_4$ müssen auf LOW sein.
+
+
+#### Rechtslauf
+
+![Ersatzschaltbild H-Brücke mit Schaltern, Rechtslauf ](Grafiken/Hbruecke/MitSchalternRL.png){#fig-H-BrueckeMSRL}
+
+Potential $S_1$ und $S_4$ müssen auf HIGH sein. Potential $S_2$ und $S_3$ müssen auf LOW sein.
+
+#### Bremsen  
+
+Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass Potential $S_2$ und $S_4$ auf HIGH sind und Potential $S_1$ und $S_3$  auf LOW sind.
+
+![Ersatzschaltbild H-Brücke mit Schaltern, Bremsen ](Grafiken/Hbruecke/MitSchalternBremse.png){#fig-H-BrueckeMSBremse}
+
+
+## Entwicklung der Logik
+Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen Zustand und dem physikalischen Wert definiert werden.
+
+|Eingang / Ausgang|Bezeichnung|Zuordnung|Beschreibung|
+|:----|:----|:----|:----|
+|Eingang|E ... Enable|0 … Disabled;  1 … Enabled|Damit wird die Schaltung Betriebsbereit, Ist Enable deaktiviert kann an den anderen Eingängen ein beliebiges Signal anliegen, der Motor darf sich trotzdem nicht bewegen.|
+|Eingang|B ... Break|0 … Disabled; 1 … Enabled|Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.|
+|Eingang|D ... Direction|0 … Linkslauf; 1 … Rechtslauf|Gibt die Drehrichtung vor.|
+|Eingang|P ... PWM|PWM Signal|Gibt die Drehzahl vor.|
+|Ausgänge|S1, S2, S3, S4|0 … MOSFET aus; 1 … MOSFET ein|PWM Signal für die Transistoren.|
+
+: Zuordnungstabelle {#tbl-Zuordnung}  
+
+In der Wahrheitstabelle wird nun der Schaltzustand der Ausgänge in Abhängigkeit der Eingänge definiert.  
+
+```{python}
+#| code-fold: true
+#| echo: false
+#| label: tbl-Wahrheitstabelle
+#| tbl-cap: Wahrheitstabelle
+
+import pandas as pd
+
+df = pd.read_csv('HBrücke_Wahrheitstabelle.csv',sep=';')
+
+display(Markdown(df.to_markdown(index=False,tablefmt="github", colalign ='center')))
+
+
+```
+
+Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung Form ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+
+from sympy.logic import SOPform
+from sympy.logic.boolalg import to_cnf, to_dnf
+
+
+PWM = MySymbol('P',description='PWM Eingang')
+Enable = MySymbol('E',description='Enable Eingang')
+Break = MySymbol('B',description='Break Eingang')
+Direction = MySymbol('D',description='Direction Eingang')
+
+S1 = MySymbol('S1',description='Steuersignal Transistor 1')
+mintermsS1 = df[df['S1'].isin([1])].iloc[:,0:4].values.tolist()
+#display(Eq(S1,POSform([PWM, Enable, Break, Direction], mintermsS1)))
+S1eq = Eq(S1,SOPform([PWM, Enable, Break, Direction], mintermsS1))
+display(S1eq)
+
+S2 = MySymbol('S2',description='Steuersignal Transistor 2')
+mintermsS2 = df[df['S2'].isin([1])].iloc[:,0:4].values.tolist()
+S2eq = Eq(S2,(POSform([PWM, Enable, Break, Direction], mintermsS2)))
+display(S2eq)
+#display(Eq(S2,to_cnf(SOPform([PWM, Enable, Break, Direction], mintermsS2),simplify=True)))
+
+S3 = MySymbol('S3',description='Steuersignal Transistor 3')
+mintermsS3 = df[df['S3'].isin([1])].iloc[:,0:4].values.tolist()
+#display(Eq(S3,POSform([PWM, Enable, Break, Direction], mintermsS3)))
+S3eq = Eq(S3,SOPform([PWM, Enable, Break, Direction], mintermsS3))
+display(S3eq)
+
+S4 = MySymbol('S4',description='Steuersignal Transistor 4')
+mintermsS4 = df[df['S4'].isin([1])].iloc[:,0:4].values.tolist()
+S4eq = Eq(S4,POSform([PWM, Enable, Break, Direction], mintermsS4))
+display(S4eq)
+#display(Eq(S4,SOPform([PWM, Enable, Break, Direction], mintermsS4)))
+
+```
+
+Aus den Gleichungen können nun die Schaltungen gezeichnet werden.
+
+```{python}
+#| code-fold: true
+#| echo: false
+from schemdraw.parsing import logicparse
+#https://schemdraw.readthedocs.io/en/latest/elements/logic.html
+
+S1string = str(S1eq.rhs).replace('&','and').replace('|','or').replace('~','not ')
+display(logicparse(S1string, outlabel='$S1$'))
+#display(logicparse('((B and E) and P) and not D', outlabel='$S1$'))
+
+S2string = str(S2eq.rhs).replace('&','and').replace('|','or').replace('~','not ')
+display(logicparse(S2string, outlabel='$S2$'))
+
+S3string = str(S3eq.rhs).replace('&','and').replace('|','or').replace('~','not ')
+display(logicparse(S3string, outlabel='$S3$',gateH=1.2))
+
+S4string = str(S4eq.rhs).replace('&','and').replace('|','or').replace('~','not ')
+display(logicparse(S4string, outlabel='$S4$'))
+
+
+```
