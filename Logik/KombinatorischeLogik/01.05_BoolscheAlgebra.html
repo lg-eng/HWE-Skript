@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript - 4&nbsp; H-Brücke</title>
+<title>HWE-Skript - 1&nbsp; Boolesche Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,48 +54,29 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
-<link href="../Projekte/04.01_Leistungsverstaerker.html" rel="prev">
-<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../Transistoren/01_Transistoren.html" rel="next">
+<link href="../../index.html" rel="prev">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -147,7 +128,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.02_H-Bruecke.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">H-Brücke</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -162,20 +143,20 @@ cookieconsent.run({
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">HWE-Skript</a> 
+      <a href="../../">HWE-Skript</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/lg-eng/HWE-Skript" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="../HWE-Skript.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="../../HWE-Skript.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="../HWE-Skript.docx">
+            <a class="dropdown-item sidebar-tools-main-item" href="../../HWE-Skript.docx">
               <i class="bi bi-bi-file-word pe-1"></i>
             Download Docx
             </a>
@@ -194,7 +175,7 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Willkommen zum Skript</span></a>
   </div>
 </li>
@@ -209,7 +190,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></span></a>
   </div>
 </li>
@@ -226,7 +207,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
   </div>
 </li>
@@ -243,13 +224,13 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link">
+  <a href="../../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
   </div>
 </li>
@@ -257,7 +238,7 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -271,16 +252,13 @@ cookieconsent.run({
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#beschreibung-der-h-brücke" id="toc-beschreibung-der-h-brücke" class="nav-link active" data-scroll-target="#beschreibung-der-h-brücke"><span class="header-section-number">4.1</span> Beschreibung der H-Brücke</a>
+  <li><a href="#von-der-wahrheitstabelle-zur-booleschen-gleichung" id="toc-von-der-wahrheitstabelle-zur-booleschen-gleichung" class="nav-link active" data-scroll-target="#von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.1</span> Von der Wahrheitstabelle zur Booleschen Gleichung</a>
   <ul>
-  <li><a href="#funktionsweise" id="toc-funktionsweise" class="nav-link" data-scroll-target="#funktionsweise"><span class="header-section-number">4.1.1</span> Funktionsweise</a>
-  <ul class="collapse">
-  <li><a href="#linkslauf" id="toc-linkslauf" class="nav-link" data-scroll-target="#linkslauf"><span class="header-section-number">4.1.1.1</span> Linkslauf</a></li>
-  <li><a href="#rechtslauf" id="toc-rechtslauf" class="nav-link" data-scroll-target="#rechtslauf"><span class="header-section-number">4.1.1.2</span> Rechtslauf</a></li>
-  <li><a href="#bremsen" id="toc-bremsen" class="nav-link" data-scroll-target="#bremsen"><span class="header-section-number">4.1.1.3</span> Bremsen</a></li>
+  <li><a href="#wahrheitstabelle" id="toc-wahrheitstabelle" class="nav-link" data-scroll-target="#wahrheitstabelle"><span class="header-section-number">1.1.1</span> Wahrheitstabelle</a></li>
+  <li><a href="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" id="toc-vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="nav-link" data-scroll-target="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</a></li>
+  <li><a href="#überprüfung" id="toc-überprüfung" class="nav-link" data-scroll-target="#überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</a></li>
+  <li><a href="#schaltung" id="toc-schaltung" class="nav-link" data-scroll-target="#schaltung"><span class="header-section-number">1.1.4</span> Schaltung</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#entwicklung-der-logik" id="toc-entwicklung-der-logik" class="nav-link" data-scroll-target="#entwicklung-der-logik"><span class="header-section-number">4.2</span> Entwicklung der Logik</a></li>
   </ul>
 </nav>
     </div>
@@ -289,7 +267,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-H-Bruecke" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></h1>
 </div>
 
 
@@ -409,152 +387,243 @@ cookieconsent.run({
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">str</span>(eqn).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Der Markt für DC-Motoren belief sich im Jahr 2022 auf ca. 20,1 Milliarden US-Dollar und es wurde erwartet, dass sich das Volumen bis 2031 auf 49,3 Milliarden erhöht <span class="citation" data-cites="DC-Motor_Market">[<a href="../references.html#ref-DC-Motor_Market" role="doc-biblioref">1</a>]</span>. Jeder dieser Motoren braucht eine mehr oder weniger komplizierte Ansteuerung. Eine mögliche Ansteuerung soll hier gezeigt werden.</p>
-<p><strong>Ziel</strong><br>
-Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:</p>
-<ul>
-<li>Linkslauf<br>
-</li>
-<li>Rechtslauf<br>
-</li>
-<li>Bremsen</li>
-</ul>
-<p>Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels <em>Puls-Weiten-Modulation</em> (PWM) zu ändern.</p>
-<p><strong>Lernziele</strong></p>
-<ul>
-<li>Strukturiertes aufbereiten einer Aufgabenstellung<br>
-</li>
-<li>Auslegung von digitalen Schaltungen<br>
-</li>
-<li>Plausibilität und Qualitätsbeurteilung mittels Simulation<br>
-</li>
-<li>Hierarchisches Design in Schaltplänen</li>
-<li>Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit</li>
-</ul>
-<section id="beschreibung-der-h-brücke" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="beschreibung-der-h-brücke"><span class="header-section-number">4.1</span> Beschreibung der H-Brücke</h2>
-<p>Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.<br>
-Mit Schaltung <a href="../Transistoren/01_Transistoren.html#fig-n-Channel_switch">Abbildung&nbsp;<span>2.1</span></a> kann ein Motor drehzahlgesteuert betrieben werden. Der MOSFET verstärkt dabei die Leistung des Steuersignales. Die Leistung wird von der Quelle <span class="math inline">\(U_q\)</span> zur Verfügung gestellt. Allerdings lässt sich dabei die Drehrichtung nicht ändern.<br>
-Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke, auch Vier-Quadranten-Steller genannt, in <a href="#fig-H-Bruecke">Abbildung&nbsp;<span>4.1</span></a>. Die punktiert umrandete Schaltung ist dabei das Ersatzschaltbild eines DC-Motors.</p>
-<div id="fig-H-Bruecke" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/Hbruecke/Vierquadrantensteller.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.1: H-Brücke <span class="citation" data-cites="HBruecke">[<a href="../references.html#ref-HBruecke" role="doc-biblioref">2</a>]</span></figcaption>
-</figure>
-</div>
-<section id="funktionsweise" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="funktionsweise"><span class="header-section-number">4.1.1</span> Funktionsweise</h3>
-<p>Für die Erklärung der Funktionsweise werden die MOSFET’s durch gedachte Schalter ersetzt. Dies ist Zulässig, da der MOSFET als Schalter betrieben werden kann. Siehe dazu <a href="../Transistoren/01_Transistoren.html#sec-MOSFET"><span>Kapitel&nbsp;2.1</span></a>.</p>
-<div id="fig-H-BrueckeMS" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/Hbruecke/MitSchaltern.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.2: Ersatzschaltbild H-Brücke mit Schaltern</figcaption>
-</figure>
-</div>
-<p><span class="math inline">\(S_1, S_2, S_ 3\)</span> und <span class="math inline">\(S_4\)</span> stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet wenn die Spannung zwischen Gate und Source, <span class="math inline">\(U_{GS}\)</span>, die Threshold-Spannung <span class="math inline">\(U_{GS,Threshold}\)</span> überschreitet. In Bild <a href="#fig-H-BrueckeMS">Abbildung&nbsp;<span>4.2</span></a> sind alle Schalter offen. Da es sich um N-Kanal Selbstsperrende MOSFET handelt müssen, für diesen Zustand, alle Potentiale, <span class="math inline">\(S_1\)</span> bis <span class="math inline">\(S_4\)</span>, <span class="math inline">\(0 \ \mathrm{V}\)</span> sein.</p>
-<p>Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzukehren. Dies gelingt wie folgt.</p>
-<section id="linkslauf" class="level4" data-number="4.1.1.1">
-<h4 data-number="4.1.1.1" class="anchored" data-anchor-id="linkslauf"><span class="header-section-number">4.1.1.1</span> Linkslauf</h4>
-<div id="fig-H-BrueckeMSLL" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/Hbruecke/MitSchalternLL.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.3: Ersatzschaltbild H-Brücke mit Schaltern, Linkslauf</figcaption>
-</figure>
-</div>
-<p>Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_3\)</span> müssen auf HIGH sein. Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_4\)</span> müssen auf LOW sein.</p>
-</section>
-<section id="rechtslauf" class="level4" data-number="4.1.1.2">
-<h4 data-number="4.1.1.2" class="anchored" data-anchor-id="rechtslauf"><span class="header-section-number">4.1.1.2</span> Rechtslauf</h4>
-<div id="fig-H-BrueckeMSRL" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/Hbruecke/MitSchalternRL.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.4: Ersatzschaltbild H-Brücke mit Schaltern, Rechtslauf</figcaption>
-</figure>
-</div>
-<p>Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_4\)</span> müssen auf HIGH sein. Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_3\)</span> müssen auf LOW sein.</p>
-</section>
-<section id="bremsen" class="level4" data-number="4.1.1.3">
-<h4 data-number="4.1.1.3" class="anchored" data-anchor-id="bremsen"><span class="header-section-number">4.1.1.3</span> Bremsen</h4>
-<p>Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_4\)</span> auf HIGH sind und Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_3\)</span> auf LOW sind.</p>
-<div id="fig-H-BrueckeMSBremse" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Grafiken/Hbruecke/MitSchalternBremse.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.5: Ersatzschaltbild H-Brücke mit Schaltern, Bremsen</figcaption>
-</figure>
-</div>
-</section>
-</section>
-</section>
-<section id="entwicklung-der-logik" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="entwicklung-der-logik"><span class="header-section-number">4.2</span> Entwicklung der Logik</h2>
-<p>Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen Zustand und dem physikalischen Wert definiert werden.</p>
-<div id="tbl-Zuordnung" class="anchored">
+<section id="von-der-wahrheitstabelle-zur-booleschen-gleichung" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.1</span> Von der Wahrheitstabelle zur Booleschen Gleichung</h2>
+<p>Es soll mittels Boolescher Algebra die einfachste Boolesche Gleichung aus der Wahrheitstabelle ermittelt werden.</p>
+<section id="wahrheitstabelle" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="wahrheitstabelle"><span class="header-section-number">1.1.1</span> Wahrheitstabelle</h3>
 <table class="table">
-<caption>Tabelle&nbsp;4.1: Zuordnungstabelle</caption>
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 50%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Eingang / Ausgang</th>
-<th style="text-align: left;">Bezeichnung</th>
-<th style="text-align: left;">Zuordnung</th>
-<th style="text-align: left;">Beschreibung</th>
+<th>Nummer</th>
+<th>D</th>
+<th>C</th>
+<th>B</th>
+<th>A</th>
+<th>Y</th>
+<th>Minterm</th>
+<th>Verwendet</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Eingang</td>
-<td style="text-align: left;">E … Enable</td>
-<td style="text-align: left;">0 … Disabled; 1 … Enabled</td>
-<td style="text-align: left;">Damit wird die Schaltung Betriebsbereit, Ist Enable deaktiviert kann an den anderen Eingängen ein beliebiges Signal anliegen, der Motor darf sich trotzdem nicht bewegen.</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Eingang</td>
-<td style="text-align: left;">B … Break</td>
-<td style="text-align: left;">0 … Disabled; 1 … Enabled</td>
-<td style="text-align: left;">Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{D} \land \bar{C} \land \bar{B} \land {A}\)</span></td>
+<td>x</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Eingang</td>
-<td style="text-align: left;">D … Direction</td>
-<td style="text-align: left;">0 … Linkslauf; 1 … Rechtslauf</td>
-<td style="text-align: left;">Gibt die Drehrichtung vor.</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Eingang</td>
-<td style="text-align: left;">P … PWM</td>
-<td style="text-align: left;">PWM Signal</td>
-<td style="text-align: left;">Gibt die Drehzahl vor.</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{D} \land \bar{C} \land {B} \land {A}\)</span></td>
+<td>xy</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Ausgänge</td>
-<td style="text-align: left;">S1, S2, S3, S4</td>
-<td style="text-align: left;">0 … MOSFET aus; 1 … MOSFET ein</td>
-<td style="text-align: left;">PWM Signal für die Transistoren.</td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{D} \land {C} \land \bar{B} \land {A}\)</span></td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{D} \land {C} \land {B} \land \bar{A}\)</span></td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{D} \land {C} \land {B} \land {A}\)</span></td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\({D} \land \bar{C} \land \bar{B} \land {A}\)</span></td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\({D} \land \bar{C} \land {B} \land {A}\)</span></td>
+<td>y</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td><span class="math inline">\({D} \land {C} \land \bar{B} \land \bar{A}\)</span></td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\({D} \land {C} \land \bar{B} \land {A}\)</span></td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
-</div>
-<p>In der Wahrheitstabelle wird nun der Schaltzustand der Ausgänge in Abhängigkeit der Eingänge definiert.</p>
+</section>
+<section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
+<p>Da gilt <span class="math inline">\(A \lor A = A\)</span> (Idempotenzgesetze der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden bis alle Terme einmal benutzt wurden! Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
+<p><span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor (\bar{D} \land \bar{C} \land {B} \land {A}) = \bar{D} \land \bar{C} \land {A}\)</span> x<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor (\bar{D} \land {C} \land \bar{B} \land {A}) = \bar{D} \land \bar{B} \land {A}\)</span> y<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor ({D} \land \bar{C} \land \bar{B} \land {A}) = \bar{C} \land \bar{B} \land {A}\)</span> z<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land {B} \land {A}) \lor (\bar{D} \land {C} \land {B} \land {A}) = \bar{D} \land {B} \land {A}\)</span> y<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land {B} \land {A}) \lor ({D} \land \bar{C} \land {B} \land {A}) = \bar{C} \land {B} \land {A}\)</span> z<br>
+<span class="math inline">\((\bar{D} \land {C} \land {B} \land \bar{A}) \lor (\bar{D} \land {C} \land {B} \land {A}) = \bar{D} \land {C} \land {B}\)</span><br>
+<span class="math inline">\(({D} \land \bar{C} \land {B} \land {A}) \lor ({D} \land \bar{C} \land \bar{B} \land {A}) = {D} \land \bar{C} \land {A}\)</span> x<br>
+<span class="math inline">\(({D} \land {C} \land \bar{B} \land \bar{A}) \lor ({D} \land {C} \land \bar{B} \land {A}) = {D} \land {C} \land \bar{B}\)</span></p>
+<p>Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde. Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land {A}) \lor ({D} \land \bar{C} \land {A}) = \bar{C} \land {A}\)</span><br>
+<span class="math inline">\((\bar{D} \land \bar{B} \land {A}) \lor (\bar{D} \land {B} \land {A}) = \bar{D} \land {A}\)</span><br>
+<span class="math inline">\((\bar{C} \land \bar{B} \land {A}) \lor (\bar{C} \land {B} \land {A}) = \bar{C} \land {A}\)</span><br>
+Mit dem Idempotenzgesetze der Disjunktion $ A A = A$ kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.</p>
+<p>Das Ergebnis:<br>
+<span id="eq-bool2"><span class="math display">\[Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B}) \tag{1.1}\]</span></span></p>
+</section>
+<section id="überprüfung" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</h3>
+<p>Zur Überprüfung wird das Ergebnis mittels Sympy berechnet.</p>
 <div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.logic <span class="im">import</span> SOPform</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.logic.boolalg <span class="im">import</span> to_cnf, to_dnf</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, Latex</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'Wahrheitstabelle.csv'</span>,sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>display(Markdown(df.to_markdown(index<span class="op">=</span><span class="va">False</span>, colalign <span class="op">=</span><span class="st">'left'</span>)))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div id="tbl-wahrheitstabelle" class="anchored">
 <table class="table table-sm table-striped small">
-<caption>Tabelle&nbsp;4.2: Wahrheitstabelle</caption>
+<caption>Tabelle&nbsp;1.1: Wahrheitstabelle</caption>
 <thead>
 <tr class="header">
-<th>PWM</th>
-<th>Enable</th>
-<th>Direction</th>
-<th>Break</th>
-<th>S1</th>
-<th>S2</th>
-<th>S3</th>
-<th>S4</th>
+<th>D</th>
+<th>C</th>
+<th>B</th>
+<th>A</th>
+<th style="text-align: right;">Y</th>
 </tr>
 </thead>
 <tbody>
@@ -563,215 +632,211 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td>0</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td>0</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td>1</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>1</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td>1</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>1</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td>1</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung Form ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\bar{A} = \neg A\)</span></p>
+</div>
+</div>
 <div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> MySymbol(<span class="st">'C'</span>,description<span class="op">=</span><span class="st">'C Eingang'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> MySymbol(<span class="st">'B'</span>,description<span class="op">=</span><span class="st">'B Eingang'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> MySymbol(<span class="st">'A'</span>,description<span class="op">=</span><span class="st">'A Eingang'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> MySymbol(<span class="st">'Y'</span>,description<span class="op">=</span><span class="st">'Y Ausgang'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#D,C,B,A,Y = symbols('D,C,B,A,Y')</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mintermsY <span class="op">=</span> df[df[<span class="st">'Y'</span>].isin([<span class="dv">1</span>])].iloc[:,<span class="dv">0</span>:<span class="dv">4</span>].values.tolist()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Yeq = Eq(Y,POSform([D,C,B,A], mintermsY))</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Yeq <span class="op">=</span> Eq(Y,SOPform([D,C,B,A], mintermsY))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(Yeq,label<span class="op">=</span><span class="st">'eq-Yeq'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_description(Yeq.free_symbols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{1} = B \wedge E \wedge P \wedge \neg D\)</span></p>
+<p><span id="eq-Yeq"><span class="math display">\[
+Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B \wedge C \wedge \neg D\right) \vee \left(C \wedge D \wedge \neg B\right)
+\tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{2} = E \wedge P \wedge \left(D \vee \neg B\right)\)</span></p>
+<p><span class="math inline">\(D\)</span> … D Eingang</p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{3} = E \wedge P \wedge \neg B \wedge \neg D\)</span></p>
+<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{4} = E \wedge P \wedge \left(B \vee D\right)\)</span></p>
+<p><span class="math inline">\(A\)</span> … A Eingang</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(C\)</span> … C Eingang</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
 </div>
-<p>Aus den Gleichungen können nun die Schaltungen gezeichnet werden.</p>
-<!--
-
-::: {#fig-schaltungs1 .cell tbl-cap='Logik Schaltung für Steuersignal S1' execution_count=4}
-
-::: {.cell-output .cell-output-display}
-![](04.02_H-Bruecke_files/figure-html/fig-schaltungs1-output-1.svg){#fig-schaltungs1-1}
-:::
-
-::: {.cell-output .cell-output-display}
-![](04.02_H-Bruecke_files/figure-html/fig-schaltungs1-output-2.svg){#fig-schaltungs1-2}
-:::
-
-::: {.cell-output .cell-output-display}
-![](04.02_H-Bruecke_files/figure-html/fig-schaltungs1-output-3.svg){#fig-schaltungs1-3}
-:::
-
-::: {.cell-output .cell-output-display}
-![](04.02_H-Bruecke_files/figure-html/fig-schaltungs1-output-4.svg){#fig-schaltungs1-4}
-:::
-:::
-
-
--->
-
-
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
-<div id="ref-DC-Motor_Market" class="csl-entry" role="listitem">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Transparency Market Reserach Inc DC Motors Market. <a href="https://www.transparencymarketresearch.com/dc-motors-market.html">https://www.transparencymarketresearch.com/dc-motors-market.html</a>. Accessed 13 Dez 2023</div>
+<p><a href="#eq-bool2">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>
+</section>
+<section id="schaltung" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="schaltung"><span class="header-section-number">1.1.4</span> Schaltung</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="ref-HBruecke" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Biezl V Vierquadrantensteller steuert Gleichstrommotor. <a href="https://commons.wikimedia.org/w/index.php?curid=4792919">https://commons.wikimedia.org/w/index.php?curid=4792919</a>. Accessed 13 Dez 2023</div>
+<div class="callout-title-container flex-fill">
+Hinweis
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Es handelt sich um eine automatisch generierte Schaltung mit amerikanischen Symbolen! Diese Schaltung entspricht NICHT europäischen Normen und ist rein informativ.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> schemdraw.parsing <span class="im">import</span> logicparse</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#https://schemdraw.readthedocs.io/en/latest/elements/logic.html</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Yeqstring <span class="op">=</span> <span class="bu">str</span>(Yeq.rhs).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not '</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#print(Yeqstring)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Yeqstring <span class="op">=</span> <span class="st">"(((A and not C) or (A and not D)) or (C and D and not B)) or (B and C and not D)"</span> <span class="co">#Manuell editiert für besseres grafische Ergebnis</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>display(logicparse(Yeqstring, outlabel<span class="op">=</span><span class="st">'$Y$'</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-schaltungs1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01.05_BoolscheAlgebra_files/figure-html/fig-schaltungs1-output-1.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;1.1: Logik Schaltung für Ausgang Y</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1010,13 +1075,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Projekte/04.01_Leistungsverstaerker.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span>
+      <a href="../../index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Willkommen zum Skript</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../Transistoren/01_Transistoren.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Der Transistor</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
