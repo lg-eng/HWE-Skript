@@ -614,9 +614,9 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <td>0</td>
 <td>1</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>0</td>
@@ -634,9 +634,9 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <td>1</td>
 <td>1</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>1</td>
@@ -723,19 +723,19 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 </div>
 </div>
 </div>
-<p>Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung Form ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.</p>
+<p>Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.</p>
 <div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(\displaystyle S_{1} = B \wedge E \wedge P \wedge \neg D\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{2} = E \wedge P \wedge \left(D \vee \neg B\right)\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{2} = E \wedge \left(D \vee P\right) \wedge \left(D \vee \neg B\right)\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(\displaystyle S_{3} = E \wedge P \wedge \neg B \wedge \neg D\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{4} = E \wedge P \wedge \left(B \vee D\right)\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{4} = E \wedge \left(B \vee D\right) \wedge \left(D \vee P\right)\)</span></p>
 </div>
 </div>
 <p>Aus den Gleichungen können nun die Schaltungen gezeichnet werden.</p>
