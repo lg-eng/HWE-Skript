@@ -18,6 +18,9 @@ book:
 #    - part: Projekt
 #      chapter: 
 #        - Projekt/Grundlagen.qmd
+    - part: 1. Jahrgang
+      chapters:
+        - Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.qmd
     - part: 3. Jahrgang
       chapters:
         - Transistoren/01_Transistoren.qmd
@@ -59,10 +62,10 @@ format:
     theme: cosmo
     default-image-extension: svg
 
-  pdf:
-    documentclass: scrreprt
-    default-image-extension: pdf
-    fig-pos: "H"
+  # pdf:
+  #   documentclass: scrreprt
+  #   default-image-extension: pdf
+  #   fig-pos: "H"
 
   docx:
     toc: true

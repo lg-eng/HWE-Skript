@@ -1,6 +1,5 @@
-{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
-
 # Leistungsverstärker
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
 
 **Lernziele**  
 
