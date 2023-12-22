@@ -1,0 +1,20 @@
+{
+  "index.qmd": {
+    "index.html": "af908f1b"
+  },
+  "Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.qmd": {
+    "01.05_BoolscheAlgebra.html": "3735ea1f"
+  },
+  "Transistoren/01_Transistoren.qmd": {
+    "01_Transistoren.html": "c30271e7"
+  },
+  "Projekte/04.01_Leistungsverstaerker.qmd": {
+    "04.01_Leistungsverstaerker.html": "202488b9"
+  },
+  "Projekte/04.02_H-Bruecke.qmd": {
+    "04.02_H-Bruecke.html": "5439852d"
+  },
+  "references.qmd": {
+    "references.html": "0fcb1ddd"
+  }
+}
