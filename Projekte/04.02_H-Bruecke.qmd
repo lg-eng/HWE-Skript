@@ -21,6 +21,10 @@ Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels *Puls-
 * Hierarchisches Design in Schaltplänen
 * Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit  
 
+**Hilfestellung**  
+
+[Hierarchisches Design](https://htlanichstrasse.sharepoint.com/:v:/s/HWE_G1_GoetL_4CHEL_2324/EZasQb_YxYJFhKNIHozMHHEBL6wJfvGr8gDUHmqqvegymg?e=bt8iiY&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
 ## Beschreibung der H-Brücke  
 
 Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.  

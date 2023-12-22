@@ -581,7 +581,7 @@ cookieconsent.run({
 </section>
 <section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
-<p>Da gilt <span class="math inline">\(A \lor A = A\)</span> (Idempotenzgesetze der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden bis alle Terme einmal benutzt wurden! Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
+<p>Da gilt <span class="math inline">\(A \lor A = A\)</span> (Idempotenzgesetze der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden bis alle Terme einmal benutzt wurden! Gibt es zu einem Term, keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
 <p><span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor (\bar{D} \land \bar{C} \land {B} \land {A}) = \bar{D} \land \bar{C} \land {A}\)</span> x<br>
 <span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor (\bar{D} \land {C} \land \bar{B} \land {A}) = \bar{D} \land \bar{B} \land {A}\)</span> y<br>
 <span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor ({D} \land \bar{C} \land \bar{B} \land {A}) = \bar{C} \land \bar{B} \land {A}\)</span> z<br>
@@ -782,19 +782,19 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 \tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display">
+<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
+</div>
+<div class="cell-output cell-output-display">
 <p><span class="math inline">\(D\)</span> … D Eingang</p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
+<p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(A\)</span> … A Eingang</p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(C\)</span> … C Eingang</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
 </div>
 <p><a href="#eq-bool2">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>

@@ -431,15 +431,17 @@ Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in fol
 <li>Hierarchisches Design in Schaltplänen</li>
 <li>Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit</li>
 </ul>
+<p><strong>Hilfestellung</strong></p>
+<p><a href="https://htlanichstrasse.sharepoint.com/:v:/s/HWE_G1_GoetL_4CHEL_2324/EZasQb_YxYJFhKNIHozMHHEBL6wJfvGr8gDUHmqqvegymg?e=bt8iiY&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">Hierarchisches Design</a></p>
 <section id="beschreibung-der-h-brücke" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="beschreibung-der-h-brücke"><span class="header-section-number">4.1</span> Beschreibung der H-Brücke</h2>
 <p>Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.<br>
 Mit Schaltung <a href="../Transistoren/01_Transistoren.html#fig-n-Channel_switch">Abbildung&nbsp;<span>2.1</span></a> kann ein Motor drehzahlgesteuert betrieben werden. Der MOSFET verstärkt dabei die Leistung des Steuersignales. Die Leistung wird von der Quelle <span class="math inline">\(U_q\)</span> zur Verfügung gestellt. Allerdings lässt sich dabei die Drehrichtung nicht ändern.<br>
-Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke, auch Vier-Quadranten-Steller genannt, in <a href="#fig-H-Bruecke">Abbildung&nbsp;<span>4.1</span></a>. Die punktiert umrandete Schaltung ist dabei das Ersatzschaltbild eines DC-Motors.</p>
-<div id="fig-H-Bruecke" class="quarto-figure quarto-figure-center anchored">
+Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke, auch Vier-Quadranten-Steller genannt, in <span class="quarto-unresolved-ref">?fig-H-Bruecke</span>. Die punktiert umrandete Schaltung ist dabei das Ersatzschaltbild eines DC-Motors.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Grafiken/Hbruecke/Vierquadrantensteller.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.1: H-Brücke <span class="citation" data-cites="HBruecke">[<a href="../references.html#ref-HBruecke" role="doc-biblioref">2</a>]</span></figcaption>
+<figcaption class="figure-caption">H-Brücke <span class="citation" data-cites="HBruecke">[<a href="../references.html#ref-HBruecke" role="doc-biblioref">2</a>]</span></figcaption>
 </figure>
 </div>
 <section id="funktionsweise" class="level3" data-number="4.1.1">
@@ -448,17 +450,17 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <div id="fig-H-BrueckeMS" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/Hbruecke/MitSchaltern.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.2: Ersatzschaltbild H-Brücke mit Schaltern</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;4.1: Ersatzschaltbild H-Brücke mit Schaltern</figcaption>
 </figure>
 </div>
-<p><span class="math inline">\(S_1, S_2, S_ 3\)</span> und <span class="math inline">\(S_4\)</span> stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet wenn die Spannung zwischen Gate und Source, <span class="math inline">\(U_{GS}\)</span>, die Threshold-Spannung <span class="math inline">\(U_{GS,Threshold}\)</span> überschreitet. In Bild <a href="#fig-H-BrueckeMS">Abbildung&nbsp;<span>4.2</span></a> sind alle Schalter offen. Da es sich um N-Kanal Selbstsperrende MOSFET handelt müssen, für diesen Zustand, alle Potentiale, <span class="math inline">\(S_1\)</span> bis <span class="math inline">\(S_4\)</span>, <span class="math inline">\(0 \ \mathrm{V}\)</span> sein.</p>
+<p><span class="math inline">\(S_1, S_2, S_ 3\)</span> und <span class="math inline">\(S_4\)</span> stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet wenn die Spannung zwischen Gate und Source, <span class="math inline">\(U_{GS}\)</span>, die Threshold-Spannung <span class="math inline">\(U_{GS,Threshold}\)</span> überschreitet. In Bild <a href="#fig-H-BrueckeMS">Abbildung&nbsp;<span>4.1</span></a> sind alle Schalter offen. Da es sich um N-Kanal Selbstsperrende MOSFET handelt müssen, für diesen Zustand, alle Potentiale, <span class="math inline">\(S_1\)</span> bis <span class="math inline">\(S_4\)</span>, <span class="math inline">\(0 \ \mathrm{V}\)</span> sein.</p>
 <p>Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzukehren. Dies gelingt wie folgt.</p>
 <section id="linkslauf" class="level4" data-number="4.1.1.1">
 <h4 data-number="4.1.1.1" class="anchored" data-anchor-id="linkslauf"><span class="header-section-number">4.1.1.1</span> Linkslauf</h4>
 <div id="fig-H-BrueckeMSLL" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/Hbruecke/MitSchalternLL.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.3: Ersatzschaltbild H-Brücke mit Schaltern, Linkslauf</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;4.2: Ersatzschaltbild H-Brücke mit Schaltern, Linkslauf</figcaption>
 </figure>
 </div>
 <p>Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_3\)</span> müssen auf HIGH sein. Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_4\)</span> müssen auf LOW sein.</p>
@@ -468,7 +470,7 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <div id="fig-H-BrueckeMSRL" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/Hbruecke/MitSchalternRL.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.4: Ersatzschaltbild H-Brücke mit Schaltern, Rechtslauf</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;4.3: Ersatzschaltbild H-Brücke mit Schaltern, Rechtslauf</figcaption>
 </figure>
 </div>
 <p>Potential <span class="math inline">\(S_1\)</span> und <span class="math inline">\(S_4\)</span> müssen auf HIGH sein. Potential <span class="math inline">\(S_2\)</span> und <span class="math inline">\(S_3\)</span> müssen auf LOW sein.</p>
@@ -479,7 +481,7 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <div id="fig-H-BrueckeMSBremse" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/Hbruecke/MitSchalternBremse.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;4.5: Ersatzschaltbild H-Brücke mit Schaltern, Bremsen</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;4.4: Ersatzschaltbild H-Brücke mit Schaltern, Bremsen</figcaption>
 </figure>
 </div>
 </section>
@@ -614,9 +616,9 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <td>0</td>
 <td>1</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>0</td>
@@ -634,9 +636,9 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <td>1</td>
 <td>1</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>1</td>
@@ -729,13 +731,13 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 <p><span class="math inline">\(\displaystyle S_{1} = B \wedge E \wedge P \wedge \neg D\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{2} = E \wedge P \wedge \left(D \vee \neg B\right)\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{2} = E \wedge \left(D \vee P\right) \wedge \left(D \vee \neg B\right)\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(\displaystyle S_{3} = E \wedge P \wedge \neg B \wedge \neg D\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{4} = E \wedge P \wedge \left(B \vee D\right)\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{4} = E \wedge \left(B \vee D\right) \wedge \left(D \vee P\right)\)</span></p>
 </div>
 </div>
 <p>Aus den Gleichungen können nun die Schaltungen gezeichnet werden.</p>
