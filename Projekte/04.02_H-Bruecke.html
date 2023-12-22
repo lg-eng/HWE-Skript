@@ -96,6 +96,8 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -428,9 +430,10 @@ Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in fol
 </li>
 <li>Plausibilität und Qualitätsbeurteilung mittels Simulation<br>
 </li>
-<li>Hierarchisches Design in Schaltplänen</li>
+<li>Hierarchisches Design in Schaltplänen, Tutorial Video</li>
 <li>Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit</li>
 </ul>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="Grafiken/Hbruecke/HierarchischesDesign.mp4"></video></div>
 <section id="beschreibung-der-h-brücke" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="beschreibung-der-h-brücke"><span class="header-section-number">4.1</span> Beschreibung der H-Brücke</h2>
 <p>Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.<br>
@@ -1032,6 +1035,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
