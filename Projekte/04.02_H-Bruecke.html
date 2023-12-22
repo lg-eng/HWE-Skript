@@ -96,8 +96,6 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -430,10 +428,11 @@ Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in fol
 </li>
 <li>Plausibilität und Qualitätsbeurteilung mittels Simulation<br>
 </li>
-<li>Hierarchisches Design in Schaltplänen, Tutorial Video</li>
+<li>Hierarchisches Design in Schaltplänen</li>
 <li>Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="Grafiken/Hbruecke/HierarchischesDesign.mp4"></video></div>
+<p><strong>Hilfestellung</strong></p>
+<p><a href="https://htlanichstrasse.sharepoint.com/:v:/s/HWE_G1_GoetL_4CHEL_2324/EZasQb_YxYJFhKNIHozMHHEBL6wJfvGr8gDUHmqqvegymg?e=bt8iiY&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D">Hierarchisches Design</a></p>
 <section id="beschreibung-der-h-brücke" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="beschreibung-der-h-brücke"><span class="header-section-number">4.1</span> Beschreibung der H-Brücke</h2>
 <p>Im einfachsten Fall wird die Stromversorgung, welche eine entsprechende Leistung hat, mit einem Schalter eingeschaltet und der Motor dreht sich. Um einen Motor drehzahlgesteuert zu betreiben, bedarf es ein Steuersignal und der entsprechenden Leistung für den Motor. In den meisten Fällen ist es so, dass das Steuersignal selbst nicht ausreichend Leistung hat, da es aus einem Mikrocontroller kommt.<br>
@@ -726,7 +725,7 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 </div>
 </div>
 </div>
-<p>Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.</p>
+<p>Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung Form ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.</p>
 <div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(\displaystyle S_{1} = B \wedge E \wedge P \wedge \neg D\)</span></p>
@@ -1035,7 +1034,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
