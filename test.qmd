@@ -1,0 +1,55 @@
+```{python}
+#| code-fold: true
+#| echo: false
+
+import pandas as pd
+from quantiphy import Quantity
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+
+time_formatter = FuncFormatter(lambda v, p: str(Quantity(v, 's')))
+volt_formatter = FuncFormatter(lambda v, p: str(Quantity(v, 'V')))
+
+df = pd.read_csv('Transient Analysis.csv',sep=';',decimal=',')
+#display(df)
+#display(df.time.apply(Quantity))
+plot = df.plot(x='time',y=['v(signal_in)','v(signal_out)'],xlabel='Time in s',figsize=(10,6))
+ax = plt.gca()
+ax.xaxis.set_major_formatter(time_formatter)
+ax.yaxis.set_major_formatter(volt_formatter)
+
+plot.grid()
+
+plt.show()
+#plt.savefig('Transient Analysis.svg')
+
+
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv('Transient Analysis.csv',sep=';',decimal=',')
+
+fig = px.line(df, x="time", y=['v(signal_in)','v(signal_out)'], title='Transient Analysis')
+#display(df.timeF)
+
+fig.update_layout(
+
+    legend_title="Values",
+
+    xaxis_title="Time",
+    xaxis_tickformat = ".3s",
+    xaxis_ticksuffix="s",
+
+    yaxis_title="Voltage",
+    yaxis_tickformat = ".3s",
+    yaxis_ticksuffix="V",
+    font=dict(
+        family="Arial",
+        size=14,
+        color="RebeccaPurple"
+    )
+)
+fig.update_traces(patch={"line": {"color": "black", "width": 3, "dash": 'dash'}}, selector={"legendgroup": "v(signal_out)"})
+fig.show()
+
+```
