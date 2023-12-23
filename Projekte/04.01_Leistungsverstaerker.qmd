@@ -28,12 +28,58 @@ Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund ein
 Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt und die die Betriebsart wird als B bezeichnet.
 Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.
 
-![Bipolartransistoren in Gegentakt ](Grafiken/01_LV_Gegentaktendstufe.png){#fig-BJT_Gegen}
+
+
+
+
+![Bipolartransistoren in Gegentakt ](Grafiken/01_LV_Gegentaktendstufe.png){#fig-BJT_Gegen} 
 
 
 Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.
 
-![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/01_GegentaktendstufeSimulation.png){#fig-BJT_Gegen_Sim1}
+```{python}
+#| code-fold: true
+#| echo: false
+#| label: fig-BJT_Gegen_Sim1
+#| fig-cap: "Bipolartransistoren in Gegentakt, Simulationsergebnisse"
+
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv('Grafiken/01_Transient Analysis.csv',sep=';',decimal=',')
+fig = px.line(df, x="time", y=['v(uin)','v(uout)'], title=None)
+
+fig.update_layout(
+    legend_title=None,
+
+    xaxis_title="Time",
+    xaxis_tickformat = ".3s",
+    xaxis_ticksuffix="s",
+
+    yaxis_visible=True,
+#    yaxis_title=None,
+    yaxis_title="Voltage",
+    yaxis_tickformat = ".3s",
+    yaxis_ticksuffix="V",
+    font=dict(
+        family="Arial",
+        size=14,
+        color="black"
+    ),
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=0.99,
+        xanchor="left",
+        x=0.01
+    )
+)
+fig.update_traces(patch={"line": {"color": "black", "width": 2, "dash": 'dash'}}, selector={"legendgroup": "v(uout)"})
+fig.show()
+
+```
+
+<!-- ![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/01_GegentaktendstufeSimulation.png){#fig-BJT_Gegen_Sim1} -->
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|

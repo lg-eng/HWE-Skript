@@ -92,7 +92,7 @@ display(Markdown(df.to_markdown(index=False,tablefmt="github", colalign ='center
 
 ```
 
-Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung Form ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.
+Mittels KV-Diagram oder Boolescher Algebra kann aus der Wahrheitstabelle die einfachste Boolesche Gleichung ermittelt werden. Da die Logik sehr einfach ist kann das Ergebnis auch direkt aus der Wahrheitstabelle abgelesen werden.
 
 ```{python}
 #| code-fold: true

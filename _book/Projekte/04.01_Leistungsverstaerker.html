@@ -132,6 +132,25 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.12.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -443,12 +462,40 @@ cookieconsent.run({
 </figure>
 </div>
 <p>Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.</p>
-<div id="fig-BJT_Gegen_Sim1" class="quarto-figure quarto-figure-center anchored">
+<div class="cell" data-execution_count="3">
+<div id="fig-bjt_gegen_sim1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Grafiken/01_GegentaktendstufeSimulation.png" class="img-fluid figure-img"></p>
+
+<div>                            <div id="cbf8b5f1-83b5-48ff-b9ee-dbb9466a2ae3" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("cbf8b5f1-83b5-48ff-b9ee-dbb9466a2ae3")) {                    Plotly.newPlot(                        "cbf8b5f1-83b5-48ff-b9ee-dbb9466a2ae3",                        [{"hovertemplate":"variable=v(uin)<br>time=%{x}<br>value=%{y}<extra></extra>","legendgroup":"v(uin)","line":{"color":"#636efa","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines","name":"v(uin)","orientation":"v","showlegend":true,"x":[0.0,2.00000002337219e-07,2.19984585214661e-07,2.59953736758689e-07,3.39892068268455e-07,4.99768702866277e-07,8.19521972061921e-07,1.45902856729663e-06,2.43210411099426e-06,4.05387118007638e-06,6.89823855282157e-06,1.25869737530593e-05,2.396444324404e-05,4.39644427387975e-05,6.3964442233555e-05,8.39644417283125e-05,0.000103964441223,0.0001239644479937,0.0001439644402125,0.0001639644469833,0.0001839644392021,0.0002039644459728,0.0002239644381916,0.0002439644449623,0.0002639644371811,0.0002839644439518,0.0003039644507225,0.0003239644574932,0.0003439644351601,0.0003639644419308,0.0003839644487015,0.0004039644554723,0.0004239644331391,0.0004439644399099,0.0004639644466806,0.0004839644534513,0.0005039644311182,0.0005239644669927,0.0005439644446596,0.0005639644223265,0.000583964458201,0.0006039644358679,0.0006239644717425,0.0006439644494093,0.0006639644270762,0.0006839644629508,0.0007039644406177,0.0007239644182845,0.0007439644541591,0.000763964431826,0.0007839644677005,0.0008039644453674,0.0008239644230343,0.0008439644589088,0.0008639644365757,0.0008839644724503,0.0009039644501172,0.000923964427784,0.0009439644636586,0.0009639644413255,0.0009839644189924,0.0010039644548669,0.0010239644907414,0.0010439644102007,0.0010639644460752,0.0010839644819498,0.001103964401409,0.0011239644372835,0.0011439644731581,0.0011639643926173,0.0011839644284918,0.0012039644643664,0.0012239645002409,0.0012439644197002,0.0012639644555747,0.0012839644914493,0.0013039644109085,0.001323964446783,0.0013439644826576,0.0013639644021168,0.0013839644379913,0.0014039644738659,0.0014239643933251,0.0014439644291997,0.0014639644650742,0.0014839645009487,0.001503964420408,0.0015239644562825,0.0015439644921571,0.0015639644116163,0.0015839644474908,0.0016039644833654,0.0016239644028246,0.0016439644386991,0.0016639644745737,0.0016839643940329,0.0017039644299075,0.001723964465782,0.0017439645016565,0.0017639644211158,0.0017839644569903,0.0018039644928649,0.0018239644123241,0.0018439644481986,0.0018639644840732,0.0018839644035324,0.0019039644394069,0.0019239644752815,0.0019439643947407,0.0019639644306153,0.0019839643500745,0.0020039645023644,0.0020239644218236,0.0020439643412828,0.0020639644935727,0.0020839644130319,0.0021039643324911,0.002123964484781,0.0021439644042402,0.0021639645565301,0.0021839644759893,0.0022039643954485,0.0022239645477384,0.0022439644671976,0.0022639643866568,0.0022839645389467,0.0023039644584059,0.0023239643778652,0.002343964530155,0.0023639644496142,0.0023839643690735,0.0024039645213633,0.0024239644408226,0.0024439643602818,0.0024639645125716,0.0024839644320309,0.0025039643514901,0.00252396450378,0.0025439644232392,0.0025639643426984,0.0025839644949883,0.0026039644144475,0.0026239643339067,0.0026439644861966,0.0026639644056558,0.0026839645579457,0.0027039644774049,0.0027239643968641,0.002743964549154,0.0027639644686132,0.0027839643880724,0.0028039645403623,0.0028239644598215,0.0028439643792808,0.0028639645315706,0.0028839644510299,0.0029039643704891,0.0029239645227789,0.0029439644422382,0.0029639643616974,0.0029839645139873,0.003000000026077],"xaxis":"x","y":[0.0,0.0012566366931423,0.0013822034234181,0.0016333367675542,0.002135603222996,0.0031401342712342,0.0051491856575012,0.009167218580842,0.0152807654812932,0.0254684705287218,0.0433293431997299,0.0790038704872131,0.150004714727402,0.272736996412277,0.391168087720871,0.503430187702179,0.607752919197082,0.702490985393524,0.786150395870209,0.857411682605743,0.915151119232178,0.958458065986633,0.986649572849274,0.999281048774719,0.996153235435486,0.977315485477448,0.943064868450165,0.893941581249237,0.83072030544281,0.754398047924042,0.666178524494171,0.567452907562256,0.459778249263763,0.3448526263237,0.224488466978073,0.100583985447884,-0.0249067600816488,-0.150004714727402,-0.272736996412277,-0.391168087720871,-0.503430187702179,-0.607752919197082,-0.702490985393524,-0.786150395870209,-0.857411682605743,-0.915151119232178,-0.958458065986633,-0.986649572849274,-0.999281048774719,-0.996153235435486,-0.977315485477448,-0.943064868450165,-0.893941581249237,-0.83072030544281,-0.754398047924042,-0.666178524494171,-0.567452907562256,-0.459778249263763,-0.3448526263237,-0.224488466978073,-0.100583985447884,0.0249067600816488,0.150004714727402,0.272736996412277,0.391168087720871,0.503430187702179,0.607752919197082,0.702490985393524,0.786150395870209,0.857411682605743,0.915151119232178,0.958458065986633,0.986649572849274,0.999281048774719,0.996153235435486,0.977315485477448,0.943064868450165,0.893941581249237,0.83072030544281,0.754398047924042,0.666178524494171,0.567452907562256,0.459778249263763,0.3448526263237,0.224488466978073,0.100583985447884,-0.0249067600816488,-0.150004714727402,-0.272736996412277,-0.391168087720871,-0.503430187702179,-0.607752919197082,-0.702490985393524,-0.786150395870209,-0.857411682605743,-0.915151119232178,-0.958458065986633,-0.986649572849274,-0.999281048774719,-0.996153235435486,-0.977315485477448,-0.943064868450165,-0.893941581249237,-0.83072030544281,-0.754398047924042,-0.666178524494171,-0.567452907562256,-0.459778249263763,-0.3448526263237,-0.224488466978073,-0.100583985447884,0.0249067600816488,0.150004714727402,0.272736996412277,0.391168087720871,0.503430187702179,0.607752919197082,0.702490985393524,0.786150395870209,0.857411682605743,0.915151119232178,0.958458065986633,0.986649572849274,0.999281048774719,0.996153235435486,0.977315485477448,0.943064868450165,0.893941581249237,0.83072030544281,0.754398047924042,0.666178524494171,0.567452907562256,0.459778249263763,0.3448526263237,0.224488466978073,0.100583985447884,-0.0249067600816488,-0.150004714727402,-0.272736996412277,-0.391168087720871,-0.503430187702179,-0.607752919197082,-0.702490985393524,-0.786150395870209,-0.857411682605743,-0.915151119232178,-0.958458065986633,-0.986649572849274,-0.999281048774719,-0.996153235435486,-0.977315485477448,-0.943064868450165,-0.893941581249237,-0.83072030544281,-0.754398047924042,-0.666178524494171,-0.567452907562256,-0.459778249263763,-0.3448526263237,-0.224488466978073,-0.100583985447884,-7.34788058611542e-16],"yaxis":"y","type":"scatter"},{"hovertemplate":"variable=v(uout)<br>time=%{x}<br>value=%{y}<extra></extra>","legendgroup":"v(uout)","line":{"color":"black","dash":"dash","width":2},"marker":{"symbol":"circle"},"mode":"lines","name":"v(uout)","orientation":"v","showlegend":true,"x":[0.0,2.00000002337219e-07,2.19984585214661e-07,2.59953736758689e-07,3.39892068268455e-07,4.99768702866277e-07,8.19521972061921e-07,1.45902856729663e-06,2.43210411099426e-06,4.05387118007638e-06,6.89823855282157e-06,1.25869737530593e-05,2.396444324404e-05,4.39644427387975e-05,6.3964442233555e-05,8.39644417283125e-05,0.000103964441223,0.0001239644479937,0.0001439644402125,0.0001639644469833,0.0001839644392021,0.0002039644459728,0.0002239644381916,0.0002439644449623,0.0002639644371811,0.0002839644439518,0.0003039644507225,0.0003239644574932,0.0003439644351601,0.0003639644419308,0.0003839644487015,0.0004039644554723,0.0004239644331391,0.0004439644399099,0.0004639644466806,0.0004839644534513,0.0005039644311182,0.0005239644669927,0.0005439644446596,0.0005639644223265,0.000583964458201,0.0006039644358679,0.0006239644717425,0.0006439644494093,0.0006639644270762,0.0006839644629508,0.0007039644406177,0.0007239644182845,0.0007439644541591,0.000763964431826,0.0007839644677005,0.0008039644453674,0.0008239644230343,0.0008439644589088,0.0008639644365757,0.0008839644724503,0.0009039644501172,0.000923964427784,0.0009439644636586,0.0009639644413255,0.0009839644189924,0.0010039644548669,0.0010239644907414,0.0010439644102007,0.0010639644460752,0.0010839644819498,0.001103964401409,0.0011239644372835,0.0011439644731581,0.0011639643926173,0.0011839644284918,0.0012039644643664,0.0012239645002409,0.0012439644197002,0.0012639644555747,0.0012839644914493,0.0013039644109085,0.001323964446783,0.0013439644826576,0.0013639644021168,0.0013839644379913,0.0014039644738659,0.0014239643933251,0.0014439644291997,0.0014639644650742,0.0014839645009487,0.001503964420408,0.0015239644562825,0.0015439644921571,0.0015639644116163,0.0015839644474908,0.0016039644833654,0.0016239644028246,0.0016439644386991,0.0016639644745737,0.0016839643940329,0.0017039644299075,0.001723964465782,0.0017439645016565,0.0017639644211158,0.0017839644569903,0.0018039644928649,0.0018239644123241,0.0018439644481986,0.0018639644840732,0.0018839644035324,0.0019039644394069,0.0019239644752815,0.0019439643947407,0.0019639644306153,0.0019839643500745,0.0020039645023644,0.0020239644218236,0.0020439643412828,0.0020639644935727,0.0020839644130319,0.0021039643324911,0.002123964484781,0.0021439644042402,0.0021639645565301,0.0021839644759893,0.0022039643954485,0.0022239645477384,0.0022439644671976,0.0022639643866568,0.0022839645389467,0.0023039644584059,0.0023239643778652,0.002343964530155,0.0023639644496142,0.0023839643690735,0.0024039645213633,0.0024239644408226,0.0024439643602818,0.0024639645125716,0.0024839644320309,0.0025039643514901,0.00252396450378,0.0025439644232392,0.0025639643426984,0.0025839644949883,0.0026039644144475,0.0026239643339067,0.0026439644861966,0.0026639644056558,0.0026839645579457,0.0027039644774049,0.0027239643968641,0.002743964549154,0.0027639644686132,0.0027839643880724,0.0028039645403623,0.0028239644598215,0.0028439643792808,0.0028639645315706,0.0028839644510299,0.0029039643704891,0.0029239645227789,0.0029439644422382,0.0029639643616974,0.0029839645139873,0.003000000026077],"xaxis":"x","y":[1.47837256325722e-10,0.0009781519183889,0.0010731918737292,0.0012580160982906,0.0015978269511833,0.0021733497269451,0.0030045695602893,0.0038883481174707,0.0043252231553196,0.004438389558345,0.004447550047189,0.0044859559275209,0.0045493156649172,0.0047025568783283,0.006655195262283,0.0390830039978027,0.113627254962921,0.194230660796165,0.269192069768906,0.334761410951614,0.388485133647919,0.429217725992203,0.455816656351089,0.467796295881271,0.464809775352478,0.447021663188934,0.41470855474472,0.368694871664047,0.309974819421768,0.240408092737198,0.162406623363495,0.0817187577486038,0.0151376286521554,-0.004375547170639,-0.0042318371124565,-0.004832312464714,-0.0041309860534966,-0.004483541008085,-0.003909695893526,-0.0054875039495527,-0.0340165458619595,-0.106912173330784,-0.186981812119484,-0.261758983135223,-0.327199339866638,-0.380873799324036,-0.421559870243073,-0.448151916265488,-0.460112005472183,-0.457139760255814,-0.439352959394455,-0.407078951597214,-0.361098110675812,-0.302471339702606,-0.233032405376434,-0.155360087752342,-0.0754530653357506,-0.0121003976091743,0.0038920501247048,0.0037315036170184,0.0046196728944778,0.0041475719772279,0.004799123853445,0.0044879121705889,0.006827637553215,0.0390137657523155,0.113655097782612,0.194212451577187,0.269205152988434,0.334750711917877,0.388491690158844,0.429211050271988,0.455823451280594,0.467789679765701,0.464816510677338,0.447014808654785,0.414715886116028,0.368687003850937,0.309983730316162,0.24039489030838,0.162424877285957,0.0816882029175758,0.0152093637734652,-0.0044779912568628,-0.0041421991772949,-0.0049096355214715,-0.0040639317594468,-0.0045419372618198,-0.0038587739691138,-0.0055299829691648,-0.0339989364147186,-0.106919229030609,-0.186977118253708,-0.261762350797653,-0.327196568250656,-0.380875468254089,-0.421558171510696,-0.448153644800186,-0.460110276937485,-0.457141488790512,-0.439351171255112,-0.407080858945847,-0.361096054315567,-0.302473664283752,-0.233028918504715,-0.155364975333214,-0.0754446685314178,-0.0121207563206553,0.0039196950383484,0.0037069767713546,0.0046410853974521,0.0041289441287517,0.0048152464441955,0.0044740587472915,0.0068387701176106,0.039009302854538,0.113656885921955,0.194211274385452,0.269205987453461,0.334750026464462,0.388492107391357,0.429210603237152,0.45582389831543,0.467789262533188,0.464816927909851,0.447014361619949,0.414716333150864,0.368686497211456,0.309984296560287,0.240394040942192,0.162426054477692,0.0816862285137177,0.0152139971032739,-0.0044846041128039,-0.0041364128701388,-0.0049146269448101,-0.0040596034377813,-0.0045457067899406,-0.0038554868660867,-0.0055327252484858,-0.0339977964758873,-0.106919683516026,-0.186976820230484,-0.26176255941391,-0.327196389436722,-0.380875557661057,-0.421558052301407,-0.448153764009476,-0.460110187530518,-0.457141607999802,-0.439351052045822,-0.407080978155136,-0.361095935106277,-0.302473813295364,-0.233028680086136,-0.155365288257599,-0.0754441246390343,-0.0121220704168081,0.0039214785210788,0.0037053944543004,0.0046424670144915,0.0041105602867901],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Time"},"tickformat":".3s","ticksuffix":"s"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Voltage"},"visible":true,"tickformat":".3s","ticksuffix":"V"},"legend":{"title":{},"tracegroupgap":0,"orientation":"h","yanchor":"bottom","y":0.99,"xanchor":"left","x":0.01},"margin":{"t":60},"font":{"family":"Arial","size":14,"color":"black"}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('cbf8b5f1-83b5-48ff-b9ee-dbb9466a2ae3');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
 <figcaption class="figure-caption">Abbildung&nbsp;3.3: Bipolartransistoren in Gegentakt, Simulationsergebnisse</figcaption>
 </figure>
 </div>
+</div>
+<!-- ![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/01_GegentaktendstufeSimulation.png){#fig-BJT_Gegen_Sim1} -->
 <table class="table">
 <thead>
 <tr class="header">
@@ -643,19 +690,19 @@ In <a href="#fig-BJT_GegenRueckVorReal">Abbildung&nbsp;<span>3.12</span></a> wir
 <p>Dabei wird die Schaltung analytisch, also mit Formeln berechnet.<br>
 Es soll wie bei der Dimensionierung der Emitterverstärkerschaltung klar gekennzeichnet werden woher die Formeln und Werte kommen.<br>
 Gesucht wird <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> so, dass <span class="math inline">\(U_{out}\)</span> der gesuchten Vorspannung aus <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;3.3</span></a> entspricht.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <p><span class="math display">\[U_{out} = \mathtt{\text{1.35}} \ \mathtt{\text{V}}\]</span></p>
 </div>
 </div>
 <p>Der maximale Laststrom <span class="math inline">\(I_{Lmax}\)</span> wurde in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;3.3</span></a> bestimmt.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <p><span class="math display">\[I_{Lmax} = \mathtt{\text{500}} \ \mathtt{\text{uA}}\]</span></p>
 </div>
 </div>
 <p>Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere, und damit kompliziertere, Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse groß sind. Folgende <em>Faustegeln</em> gelten für die Berechnung:</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <p><span id="eq-I1_eq"><span class="math display">\[
 I_{1} = I_{2} + I_{B}
@@ -679,7 +726,7 @@ I_{Spg} = 20 I_{Lmax}
 </div>
 </div>
 <p>Mit Maschengleichung 1 <span class="math inline">\(M_1\)</span> erhält man den Zusammenhang zwischen <span class="math inline">\(U_1\)</span> und <span class="math inline">\(U_{BE}\)</span>.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <p><span id="eq-M1_eq"><span class="math display">\[
 0 = - U_{2} + U_{BE}
@@ -695,7 +742,7 @@ U_{2} = U_{BE}
 </div>
 </div>
 <p>Mit Maschengleichung 2 <span class="math inline">\(M_2\)</span> lässt sich <span class="math inline">\(U_1\)</span> berechnen.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <p><span id="eq-M2_eq"><span class="math display">\[
 0 = U_{1} + U_{2} - U_{out}
@@ -711,7 +758,7 @@ U_{1} = - U_{2} + U_{out}
 </div>
 </div>
 <p><span class="math inline">\(I_1\)</span> kann aus dem Knoten 2 berechnet werden indem <a href="#eq-I2_eq">Gleichung&nbsp;<span>3.10</span></a> eingesetz wird.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <p><span id="eq-K2_eq"><span class="math display">\[
 0 = I_{1} - I_{2} - I_{B}
@@ -734,7 +781,7 @@ I_{1} = 11 I_{B}
 </div>
 </div>
 <p>Wird nun noch <a href="#eq-Ib_eq">Gleichung&nbsp;<span>3.16</span></a> in <a href="#eq-I1_eq2">Gleichung&nbsp;<span>3.11</span></a> eingesetzt erhält man eine Gleich für <span class="math inline">\(I_1\)</span> in Abhängigkeit von <span class="math inline">\(I_C\)</span>.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <p><span id="eq-I1_eq3"><span class="math display">\[
 I_{1} = \frac{11 I_{C}}{100}
@@ -742,7 +789,7 @@ I_{1} = \frac{11 I_{C}}{100}
 </div>
 </div>
 <p>Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. Für <span class="math inline">\(I_L\)</span> muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in <a href="#sec-LV_Vorspannen"><span>Kapitel&nbsp;3.3</span></a> ermittelt werden. Der Strom <span class="math inline">\(I_{spg}\)</span> kann mit der Faustregel <a href="#eq-Ispg_eq">Gleichung&nbsp;<span>3.3</span></a> bestimmt werden. Werden diese Informationen und <a href="#eq-I1_eq3">Gleichung&nbsp;<span>3.17</span></a> in Knoten 1 <a href="#eq-K1_eq">Gleichung&nbsp;<span>3.13</span></a> eingesetzt, kann durch umformen, <span class="math inline">\(I_c\)</span> berechnet werden.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <p><span id="eq-K1_eq"><span class="math display">\[
 0 = - I_{1} - I_{C} - I_{L} + I_{Spg}
@@ -763,7 +810,7 @@ I_{C} = \frac{1900 I_{Lmax}}{111}
 </div>
 </div>
 <p>Durch einsetzen der Zahlenwerte können nun <span class="math inline">\(R_{sq1}\)</span> und <span class="math inline">\(R_{sq2}\)</span> berechnet werden.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <p><span id="eq-Ib_eq"><span class="math display">\[
 I_{B} = \frac{I_{C}}{100}

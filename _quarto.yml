@@ -15,9 +15,7 @@ book:
       type: express
     chapters:
     - index.qmd
-#    - part: Projekt
-#      chapter: 
-#        - Projekt/Grundlagen.qmd
+#    - test.qmd
     - part: 1. Jahrgang
       chapters:
         - Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.qmd
