@@ -1,6 +1,72 @@
 # Leistungsverstärker
 {{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
 
+```{python}
+#| code-fold: true
+#| echo: false
+
+
+import pandas as pd
+from plotly.subplots import make_subplots
+import plotly.express as px
+import plotly.graph_objects as go
+
+def plot_transient_analysis(filepath):
+
+    df = pd.read_csv(filepath,sep=';',decimal=',')
+
+    #https://plotly.com/python/subplots/
+    fig = make_subplots(
+        rows=4, cols=1, subplot_titles=("Ein- und Ausgangsspannung", "Spannungsdifferenz", "Ströme")
+    )
+
+    lineDic = {"color": "black", "width": 2, "dash": 'dash'}
+    fig.add_trace(go.Scatter(x=df.time.values, y=df['v(uin)'].values,name='v(Uin)',line = lineDic), row=1, col=1)
+    fig.add_trace(go.Scatter(x=df.time.values, y=df['v(uout)'].values, name='v(Uout)'), row=1, col=1)
+    fig.update_xaxes(title_text=None, tickformat = ".3s", ticksuffix="s",  row=1, col=1)
+    fig.update_yaxes(title='Voltage', ticksuffix="V",tickformat = ".3s", row=1, col=1)
+
+
+    fig.add_trace(go.Scatter(x=df.time.values, y=(df['v(uin)']-df['v(uout)']).values,name = 'v(Uin)-v(Uout)'), row=2, col=1)
+    fig.update_xaxes(title_text=None, tickformat = ".3s", ticksuffix="s",  row=2, col=1)
+    fig.update_yaxes(title='Voltage', ticksuffix="V",tickformat = ".3s", row=2, col=1)
+
+    lineDic = {"color": "black", "width": 2, "dash": 'dot'}
+    fig.add_trace(go.Scatter(x=df.time.values, y=df['i(rlast)'].values,name='I(RLast)',line=lineDic), row=3, col=1)
+    fig.add_trace(go.Scatter(x=df.time.values, y=df['ic(t1)'].values,name='Ic(T1)'), row=3, col=1)
+    fig.add_trace(go.Scatter(x=df.time.values, y=df['ic(t2)'].values,name='Ic(T2)'), row=3, col=1)
+    fig.update_xaxes(title=None, tickformat = ".3s", ticksuffix="s",  row=3, col=1)
+    fig.update_yaxes(title='Current', ticksuffix="A",tickformat = ".3s", row=3, col=1)
+
+    fig.add_trace(go.Scatter(x=df.time.values, y=df['i(rshunt)'].values,name='I(Rshunt)'), row=4, col=1)
+    fig.update_xaxes(title='Time', tickformat = ".3s", ticksuffix="s",  row=4, col=1)
+    fig.update_yaxes(title='Current', ticksuffix="A",tickformat = ".3s", row=4, col=1)
+
+    fig.update_layout(
+        legend_title=None,
+
+        font=dict(
+            family="Arial",
+            size=12,
+            color="black"
+        ),
+        legend=dict(
+           orientation="h",
+           yanchor="top",
+           y=-0.15,
+           xanchor="left",
+           x=0.01
+        ),
+        height=1000,
+ #       width=800,
+    )
+    fig.update_traces(patch={"line": {"color": "black", "width": 2, "dash": 'dash'}}, selector={"legendgroup": "v(uout)"})
+    fig.write_image(filepath.replace('.csv','.svg'))
+    fig.show()
+
+
+```
+
 **Lernziele**  
 
 * Auslegung von analogen Schaltungen  
@@ -8,13 +74,6 @@
 * Plausibilität und Qualitätsbeurteilung mittels Simulation  
 * Übersichtliches zeichnen komplexer Schaltpläne  
 * Strukturiertes, Zeitoptimiertes Dokumentieren der Arbeit  
-
-
-```{python}
-#| code-fold: true
-#| echo: false
-
-```
 
 Transistorverstärker, wie sie bisher bekannt sind @sec-BJT, in denen ein Transistor in einem Arbeitspunkt betrieben wird, haben bei höheren Leistungen eine zu hohe Verlustleistung. Die Verlustleistung ist proportional zum Strom durch den Kollektor $I_C$ in Ruhe, also ohne Signal am Eingang.
 Bei der Emitterschaltung ist der Ruhestrom höher, da der Arbeitspunkt auf der Kennlinie weiter "oben" ist. Diese Betriebsart wird auch A - Betrieb genannt.
@@ -28,56 +87,27 @@ Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund ein
 Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt und die die Betriebsart wird als B bezeichnet.
 Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.
 
-
-
-
-
 ![Bipolartransistoren in Gegentakt ](Grafiken/01_LV_Gegentaktendstufe.png){#fig-BJT_Gegen} 
 
 
 Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.
 
-```{python}
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_Gegen_Sim1}
+```{python  .content-hidden when-format="docx"}
 #| code-fold: true
 #| echo: false
-#| label: fig-BJT_Gegen_Sim1
-#| fig-cap: "Bipolartransistoren in Gegentakt, Simulationsergebnisse"
 
-import pandas as pd
-import plotly.express as px
-
-df = pd.read_csv('Grafiken/01_Transient Analysis.csv',sep=';',decimal=',')
-fig = px.line(df, x="time", y=['v(uin)','v(uout)'], title=None)
-
-fig.update_layout(
-    legend_title=None,
-
-    xaxis_title="Time",
-    xaxis_tickformat = ".3s",
-    xaxis_ticksuffix="s",
-
-    yaxis_visible=True,
-#    yaxis_title=None,
-    yaxis_title="Voltage",
-    yaxis_tickformat = ".3s",
-    yaxis_ticksuffix="V",
-    font=dict(
-        family="Arial",
-        size=14,
-        color="black"
-    ),
-    legend=dict(
-        orientation="h",
-        yanchor="bottom",
-        y=0.99,
-        xanchor="left",
-        x=0.01
-    )
-)
-fig.update_traces(patch={"line": {"color": "black", "width": 2, "dash": 'dash'}}, selector={"legendgroup": "v(uout)"})
-fig.show()
+plot_transient_analysis('Grafiken/01_Transient Analysis.csv')
 
 ```
+Bipolartransistoren in Gegentakt, Simulationsergebnisse
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/01_Transient Analysis.svg){#fig-BJT_Gegen_Sim1}
+:::
 
 <!-- ![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/01_GegentaktendstufeSimulation.png){#fig-BJT_Gegen_Sim1} -->
 
@@ -97,7 +127,24 @@ Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier ka
 Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In Abbildung @fig-BJT-AP_Ruhestrom lässt sich erkennen, dass sich in der Nähe des Ursprunges ein Knick befindet. Erst ab einer $U_{BE} \ $ größer von ca. $0,7 \ \mathrm{V}$  beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.  
 Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er stark abhängig von der Frequenz. Je schneller im Verhältnis zum Signal der OPV sein Ausgangssignal ändern kann, umso kleiner sind die Verzerrungen. Wie schnell der OPV seinen Ausgang ändern kann, hängt von der Slew-Rate mit der Einheit $\mathrm{\frac{V}{s}}$ ab.
 
-![Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse ](Grafiken/02_Rueckkopplung_Sim12.png){#fig-BJT_GegenRueck}
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_GegenRueckSim}
+```{python .content-hidden unless-format="html" }
+#| code-fold: true
+#| echo: false
+#| 
+plot_transient_analysis('Grafiken/02_Transient Analysis.csv')
+
+```
+Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse Spannung
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/02_Transient Analysis.svg){#fig-BJT_GegenRueckSim}
+:::
+
+<!-- ![Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse ](Grafiken/02_Rueckkopplung_Sim12.png){#fig-BJT_GegenRueckSim} --> 
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
@@ -112,21 +159,106 @@ Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wen
 
 ![Gegentaktendstufe mit vorgespannten Transistoren ](Grafiken/03_LV_Vorspannung.png){#fig-BJT_GegenRueckVor}
 
-Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten $I_C$ eingestellt werden. Der $I_C$ ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der $I_C$ ein Zehntel des maximalen Laststromes betragen.
-![Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep ](Grafiken/03_Vorspannung_DCSweepSim12.png){#fig-BJT_GegenRueckVorDCSw}
+Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten $I_C$ eingestellt werden. Der $I_C$ ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der $I_C$ ein Zehntel des maximalen Laststromes betragen.  
+
+:::{.content-hidden unless-format="html"}
+:::{#fig-BJT_GegenRueckVorDCSw}
+```{python .content-hidden unless-format="html" }
+#| code-fold: true
+#| echo: false
+#| 
+import plotly.express as px
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from quantiphy import Quantity
+import numpy as np
+
+# Read the CSV file
+df = pd.read_csv('Grafiken/03_DCSweepVorspannung.csv',sep=';',decimal=',')
+
+# Create the figure
+fig = make_subplots(
+        rows=1, cols=1,
+    )
+lineDic = {"color": "black", "width": 2, "dash": 'dash'}
+fig.add_trace(go.Scatter(x=df['v(sweep)'].values, y=df['ic(t1)'].values, name='ic(t1)', line=lineDic), row=1, col=1)
+fig.add_trace(go.Scatter(x=df['v(sweep)'].values, y=df['ic(t2)'].values, name='ic(t2)', line={}), row=1, col=1)
+fig.update_xaxes(title_text='v(Uvor)', tickformat=".3s", ticksuffix="V", row=1, col=1)
+fig.update_yaxes(title='Current', ticksuffix="A", tickformat=".3s", row=1, col=1)
+
+# Add crosshair at 10mA on ic(t1) trace
+input = 0.015
+# Find the index of the closest value in ic(t1)
+index = np.abs(df['ic(t1)'] - input).idxmin()
+# Interpolate the corresponding v(sweep) value
+crosshair_x = np.interp(input, df['ic(t1)'], df['v(sweep)'])
+
+
+crosshair_y = input
+fig.add_trace(go.Scatter(x=[crosshair_x], y=[crosshair_y], mode='markers', marker=dict(color='red', size=8), name='Crosshair (ic(t1))'), row=1, col=1)
+
+# Show v(sweep) value
+fig.add_annotation(x=crosshair_x, y=crosshair_y, text='v(Uvor)= ' + str(Quantity(crosshair_x,'V')), showarrow=True, arrowhead=1, ax=-40, ay=-40)
+
+# Add crosshair at 10mA on ic(t2) trace
+input2 = input
+# Find the index of the closest value in ic(t2)
+index2 = np.abs(df['ic(t2)'] - input2).idxmin()
+# Interpolate the corresponding v(sweep) value
+crosshair_x2 = np.interp(input2, df['ic(t2)'], df['v(sweep)'])
+
+crosshair_y2 = input
+fig.add_trace(go.Scatter(x=[crosshair_x2], y=[crosshair_y2], mode='markers', marker=dict(color='blue', size=8), name='Crosshair (ic(t2))'), row=1, col=1)
+
+# Show v(sweep) value
+fig.add_annotation(x=crosshair_x2, y=crosshair_y2, text='v(Uvor)= ' + str(Quantity(crosshair_x2,'V')), showarrow=True, arrowhead=1, ax=40, ay=40)
+
+fig.update_layout(
+    legend_title=None,
+
+    font=dict(
+        family="Arial",
+        size=12,
+        color="black"
+    ),
+    legend=dict(
+        orientation="h",
+        yanchor="top",
+        y=-0.15,
+        xanchor="left",
+        x=0.01
+    ),
+#    height=1000,
+#       width=800,
+)
+#fig.update_traces(patch={"line": {"color": "black", "width": 2, "dash": 'dash'}}, selector={"legendgroup": "v(uout)"})
+fig.write_image('Grafiken/03_DCSweepVorspannung.svg')
+fig.show()
+
+```
+Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep](Grafiken/03_DCSweepVorspannung.svg){#fig-BJT_GegenRueckVorDCSw}
+:::
+
+<!-- ![Gegentaktendstufe mit vorgespannten Transistoren, DC-Sweep ](Grafiken/03_Vorspannung_DCSweepSim12.png){#fig-BJT_GegenRueckVorDCSw} --> 
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
-| $V_{vor}$ min         | 1,2 V  |        |   
+| $V_{vor}$ min         | 1 V  |        |   
 | $V_{vor}$ max        | 1,4 V     |        |  
-| $V_{vor}$ step size  | 1 mV       |        | 
+| $V_{vor}$ step size  | 10 mV       |        | 
 
 Mit dem Cursor können die Ergebnisse exakt abgelesen werden.  
 
 | Simulationsergebnis | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
 | $V_{vor}$ bei $I_C$ = 15 mA an T1        | 1,3479  V  |        |   
-| $V_{vor}$ bei $I_C$ = 15 mA an T2       | 1,3489  V     |        |  
+| $V_{vor}$ bei $I_C$ = 15 mA an T2       | 1,3488  V     |        |  
 
 Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zusammenhang zwischen $U_{BE}$ und $I_C$ ein anderer. Da die Werte sehr nahe beieinander liegen kann ein gerundetes arithmetisches Mittel als Ergebnis für $V_{Vor}$ verwendet werden.
 
@@ -135,7 +267,25 @@ Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zus
 
 Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt, um Beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung und der Ausgangsspannung zu erkennen. 
 
-![Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse ](Grafiken/03_Vorspannung_Sim1.png){#fig-BJT_GegenRueckVorSim1}
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_GegenRueckVorSim1}
+```{python .content-hidden unless-format="html" }
+#| code-fold: true
+#| echo: false
+
+plot_transient_analysis('Grafiken/03_Transient Analysis.csv')
+
+```
+Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Bipolartransistoren in Gegentakt, Simulationsergebnisse ](Grafiken/03_Transient Analysis.svg){#fig-BJT_GegenRueckVorSim1}
+:::
+
+<!-- ![Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse ](Grafiken/03_Vorspannung_Sim1.png){#fig-BJT_GegenRueckVorSim1} -->
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
@@ -149,7 +299,7 @@ Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang wü
 
 ## Reale Spannungsquelle
 Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, pp. 301].  
-In @fig-BJT_GegenRueckVorReal wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus  @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
+In @fig-BJT_GegenRueckVorReal2 wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus  @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
 
 ![Reale Spannungsquelle, $U_{BE}$-Vervielfacher](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
 
@@ -163,6 +313,7 @@ Gesucht wird $R_{sq1}$ und $R_{sq2}$ so, dass $U_{out}$ der gesuchten Vorspannun
 ```{python}
 #| code-fold: true
 #| echo: false
+#| output: true
 
 Rsq1 = MySymbol('R_sq1',description='Widerstand 1 am Spannungsteiler für die AP einstellung',unit=u.ohm)
 Rsq2 = MySymbol('R_sq2',description='Widerstand 2 am Spannungsteiler für die AP einstellung',unit=u.ohm)
@@ -381,14 +532,31 @@ Eine neuerliche Simulation bestätigt das Ergebnis.
 
 Der zuvor dimensionierte $U_{BE}$-Vervielfacher kann nun in die Schaltung eingebaut werden. 
 
-![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal} 
+<!-- ![Gegentaktendstufe mit realer Vorspannungsquelle ](Grafiken/04_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal} -->
 
 Es gilt aufs neue die Qualität zu überprüfen. Dabei werden die selben Parameter wie in @sec-LV_Vorspannen zur Beurteilung heran gezogen.
 Zuerst wird wieder eine Operating Point Analyse (OP) durchgeführt um den Arbeitspunkt zu kontrollieren, @fig-BJT_GegenRueckVorReal3. Bereits hier ist zu erkennen, dass die gewünschte Vorspannung nicht erreicht wird.
 
 ![Gegentaktendstufe mit realer Vorspannungsquelle, Simulation 1 ](Grafiken/04_LV_Reale_VorspannungDCSim1.png){#fig-BJT_GegenRueckVorReal3}
 
-![Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation ](Grafiken/04_LV_Reale_VorspannungTRANSim1.png){#fig-BJT_GegenRueckVorReal4}
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_GegenRueckVorReal4}
+```{python .content-hidden unless-format="html" }
+#| code-fold: true
+#| echo: false
+
+plot_transient_analysis('Grafiken/04_Transient Analysis.csv')
+
+```
+Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation](Grafiken/04_Transient Analysis.svg){#fig-BJT_GegenRueckVorReal4}
+:::
+
+<!-- ![Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation ](Grafiken/04_LV_Reale_VorspannungTRANSim1.png){#fig-BJT_GegenRueckVorReal4} -->
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
@@ -411,7 +579,24 @@ Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und
 
 Mittels Arbeitspunktsimulation ist zu sehen, dass die Vorspannung durch, den einbau der Stromquellen erreicht wird. Die Höhe des Stromes richtet sich nach der Dimensionierung von $I_{spqg}$ in @sec-ube_verf_bere. 
 
-![Gegentaktendstufe mit Stromversorgung, Transienten Simulation](Grafiken/05_LV_StromquellenTRANSim1.png){#fig-BJT_GegenRueckVorRealStromTRANSim1}  
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_GegenRueckVorRealStromTRANSim1}
+```{python .content-hidden unless-format="html" }
+#| code-fold: true
+#| echo: false
+
+plot_transient_analysis('Grafiken/05_Transient Analysis.csv')
+
+```
+Gegentaktendstufe mit Stromversorgung, Transienten Simulation
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Gegentaktendstufe mit Stromversorgung, Transienten Simulation](Grafiken/05_Transient Analysis.svg){#fig-BJT_GegenRueckVorRealStromTRANSim1}
+:::
+
+<!-- ![Gegentaktendstufe mit Stromversorgung, Transienten Simulation](Grafiken/05_LV_StromquellenTRANSim1.png){#fig-BJT_GegenRueckVorRealStromTRANSim1}  -->
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
@@ -434,8 +619,24 @@ Nachdem die ausreichende Stabilität gezeigt wurde können die Stromquellen eing
 
 ![Gegentaktendstufe mit realen Stromquellen, Arbeitspunktanalyse ](Grafiken/06_LV_Real.png){#fig-BJT_06_LV_Real}  
 
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_06_LV_Real_TRANSim1}
+```{python}
+#| code-fold: true
+#| echo: false
 
-![Gegentaktendstufe mit realen Stromquellen, Transienten Analyse ](Grafiken/06_LV_Real_TRANSim1.png){#fig-BJT_06_LV_Real_TRANSim1}  
+plot_transient_analysis('Grafiken/06_Transient Analysis.csv')
+
+```
+Gegentaktendstufe mit realen Stromquellen, Transienten Analyse
+:::
+:::
+
+::: {.content-hidden when-format="html"}
+![Gegentaktendstufe mit realen Stromquellen, Transienten Analyse](Grafiken/06_Transient Analysis.svg){#fig-BJT_06_LV_Real_TRANSim1}
+::: 
+
+<!-- ![Gegentaktendstufe mit realen Stromquellen, Transienten Analyse ](Grafiken/06_LV_Real_TRANSim1.png){#fig-BJT_06_LV_Real_TRANSim1}  -->
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|

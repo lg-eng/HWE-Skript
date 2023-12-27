@@ -59,23 +59,26 @@ format:
     toc-expand: 4
     theme: cosmo
     default-image-extension: svg
+    echo: true
 
   # pdf:
   #   documentclass: scrreprt
   #   default-image-extension: pdf
   #   fig-pos: "H"
+  #   echo: false
 
   docx:
     toc: true
     number-sections: true
     default-image-extension: svg
+    echo: false
 
 downloads: [pdf,docx]
 sidebar:
     pinned: true
     
 execute:
-    echo: false
+#    echo: false
     output: true
     
  
