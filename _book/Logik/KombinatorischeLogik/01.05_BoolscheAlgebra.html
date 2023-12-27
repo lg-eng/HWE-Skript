@@ -590,11 +590,11 @@ cookieconsent.run({
 <span class="math inline">\((\bar{D} \land {C} \land {B} \land \bar{A}) \lor (\bar{D} \land {C} \land {B} \land {A}) = \bar{D} \land {C} \land {B}\)</span><br>
 <span class="math inline">\(({D} \land \bar{C} \land {B} \land {A}) \lor ({D} \land \bar{C} \land \bar{B} \land {A}) = {D} \land \bar{C} \land {A}\)</span> x<br>
 <span class="math inline">\(({D} \land {C} \land \bar{B} \land \bar{A}) \lor ({D} \land {C} \land \bar{B} \land {A}) = {D} \land {C} \land \bar{B}\)</span></p>
-<p>Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde. Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.<br>
-<span class="math inline">\((\bar{D} \land \bar{C} \land {A}) \lor ({D} \land \bar{C} \land {A}) = \bar{C} \land {A}\)</span><br>
+<p>Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde. Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
+<p><span class="math inline">\((\bar{D} \land \bar{C} \land {A}) \lor ({D} \land \bar{C} \land {A}) = \bar{C} \land {A}\)</span><br>
 <span class="math inline">\((\bar{D} \land \bar{B} \land {A}) \lor (\bar{D} \land {B} \land {A}) = \bar{D} \land {A}\)</span><br>
-<span class="math inline">\((\bar{C} \land \bar{B} \land {A}) \lor (\bar{C} \land {B} \land {A}) = \bar{C} \land {A}\)</span><br>
-Mit dem Idempotenzgesetze der Disjunktion $ A A = A$ kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.</p>
+<span class="math inline">\((\bar{C} \land \bar{B} \land {A}) \lor (\bar{C} \land {B} \land {A}) = \bar{C} \land {A}\)</span></p>
+<p>Mit dem Idempotenzgesetze der Disjunktion <span class="math inline">\(A \lor A = A\)</span> kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.</p>
 <p>Das Ergebnis:<br>
 <span id="eq-bool2"><span class="math display">\[Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B}) \tag{1.1}\]</span></span></p>
 </section>
@@ -782,19 +782,19 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 \tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(C\)</span> … C Eingang</p>
+<p><span class="math inline">\(D\)</span> … D Eingang</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(A\)</span> … A Eingang</p>
 </div>
 <div class="cell-output cell-output-display">
+<p><span class="math inline">\(C\)</span> … C Eingang</p>
+</div>
+<div class="cell-output cell-output-display">
 <p><span class="math inline">\(B\)</span> … B Eingang</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(D\)</span> … D Eingang</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
 </div>
 </div>
 <p><a href="#eq-bool2">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>

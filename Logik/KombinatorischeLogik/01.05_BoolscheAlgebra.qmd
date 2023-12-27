@@ -38,10 +38,12 @@ $({D} \land \bar{C} \land {B} \land   {A}) \lor ({D} \land \bar{C} \land \bar{B}
 $({D} \land {C} \land \bar{B} \land   \bar{A}) \lor ({D} \land {C} \land \bar{B} \land   {A}) = {D} \land {C} \land \bar{B}$  
 
 Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde.  Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.  
+
 $(\bar{D} \land \bar{C} \land   {A}) \lor ({D} \land \bar{C}  \land   {A}) =  \bar{C}  \land   {A}$  
 $(\bar{D}  \land \bar{B} \land {A}) \lor (\bar{D} \land {B} \land   {A}) = \bar{D} \land   {A}$  
 $(\bar{C} \land \bar{B} \land   {A}) \lor (\bar{C} \land {B} \land   {A}) = \bar{C}  \land   {A}$  
-Mit dem Idempotenzgesetze der Disjunktion $ A \lor A = A$ kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.
+
+Mit dem Idempotenzgesetze der Disjunktion $A \lor A = A$ kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.
 
 Das Ergebnis:  
 $$Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B})$$  {#eq-bool2}
@@ -54,7 +56,6 @@ Zur Überprüfung wird das Ergebnis mittels Sympy berechnet.
 
 ```{python}
 #| code-fold: true
-#| echo: true
 #| label: tbl-Wahrheitstabelle
 #| tbl-cap: Wahrheitstabelle
 
@@ -67,7 +68,8 @@ from IPython.display import Markdown, Latex
 df = pd.read_csv('Wahrheitstabelle.csv',sep=';')
 display(Markdown(df.to_markdown(index=False, colalign ='left')))
 
-```
+```  
+  
 
 ::: {.callout-note}
 $\bar{A} = \neg A$
@@ -75,7 +77,6 @@ $\bar{A} = \neg A$
 
 ```{python}
 #| code-fold: true
-#| echo: true
 
 D = MySymbol('D',description='D Eingang')
 C = MySymbol('C',description='C Eingang')
@@ -93,7 +94,7 @@ QBookHelpers.print_equation(Yeq,label='eq-Yeq')
 
 QBookHelpers.print_description(Yeq.free_symbols)
 
-```
+```  
 
 @eq-bool2 und @eq-Yeq stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt. 
 
@@ -105,7 +106,6 @@ Es handelt sich um eine automatisch generierte Schaltung mit amerikanischen Symb
 
 ```{python}
 #| code-fold: true
-#| echo: true
 #| label: fig-SchaltungS1
 #| fig-cap: Logik Schaltung für Ausgang Y
 
