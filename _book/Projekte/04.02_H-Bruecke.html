@@ -280,7 +280,10 @@ cookieconsent.run({
   <li><a href="#bremsen" id="toc-bremsen" class="nav-link" data-scroll-target="#bremsen"><span class="header-section-number">4.1.1.3</span> Bremsen</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#entwicklung-der-logik" id="toc-entwicklung-der-logik" class="nav-link" data-scroll-target="#entwicklung-der-logik"><span class="header-section-number">4.2</span> Entwicklung der Logik</a></li>
+  <li><a href="#entwicklung-der-logik" id="toc-entwicklung-der-logik" class="nav-link" data-scroll-target="#entwicklung-der-logik"><span class="header-section-number">4.2</span> Entwicklung der Logik</a>
+  <ul>
+  <li><a href="#logik-schaltung" id="toc-logik-schaltung" class="nav-link" data-scroll-target="#logik-schaltung"><span class="header-section-number">4.2.1</span> Logik Schaltung</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -741,22 +744,211 @@ Hinweis
 </div>
 <div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{1} = B \wedge E \wedge P \wedge \neg D\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{1} = D \wedge E \wedge P \wedge \neg B\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{2} = E \wedge \left(D \vee P\right) \wedge \left(D \vee \neg B\right)\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{2} = E \wedge \left(B \vee P\right) \wedge \left(B \vee \neg D\right)\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(\displaystyle S_{3} = E \wedge P \wedge \neg B \wedge \neg D\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><span class="math inline">\(\displaystyle S_{4} = E \wedge \left(B \vee D\right) \wedge \left(D \vee P\right)\)</span></p>
+<p><span class="math inline">\(\displaystyle S_{4} = E \wedge \left(B \vee D\right) \wedge \left(B \vee P\right)\)</span></p>
 </div>
 </div>
-<p>Aus den Gleichungen können nun die Schaltungen gezeichnet werden.</p>
-<!--
+<p>Zur Überpürfung wird aus den Gleichungen die Wahrheitstabelle erstellt und mit der oben definierten Wahrheitstabelle <span class="quarto-unresolved-ref">?tbl-Wahrheitstabelle</span> verglichen.</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div id="tbl-wahrheitstabellekont" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Tabelle&nbsp;4.3: Wahrheitstabelle Kontrolle</caption>
+<thead>
+<tr class="header">
+<th>P</th>
+<th>E</th>
+<th>D</th>
+<th>B</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+<th>S4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Die Tabellen stimmen überein. Die Gleichungen sind somit richtig.</p>
+<section id="logik-schaltung" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="logik-schaltung"><span class="header-section-number">4.2.1</span> Logik Schaltung</h3>
+<!-- 
+::: {.callout-note}
+Es handelt sich um eine automatisch generierte Schaltung mit amerikanischen Symbolen! Diese Schaltung entspricht NICHT europäischen Normen und ist rein informativ.
+:::
 
-::: {#fig-schaltungs1 .cell tbl-cap='Logik Schaltung für Steuersignal S1' execution_count=4}
+::: {#fig-schaltungs1 .cell tbl-cap='Logik Schaltung für Steuersignal S1' execution_count=5}
 
 ::: {.cell-output .cell-output-display}
 ![](04.02_H-Bruecke_files/figure-html/fig-schaltungs1-output-1.svg){#fig-schaltungs1-1}
@@ -777,6 +969,7 @@ Hinweis
 
 
 -->
+<p>Aus wirtschaftlichen Gründen sollte eine Logikschaltung aus möglichst wenigen verschiedenen Logikgattern bestehen. Es bietet sich an die Schaltung mit NAND oder NOR Gattern aufzubauen.</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
@@ -787,6 +980,7 @@ Hinweis
 <div class="csl-left-margin">2. </div><div class="csl-right-inline">Biezl V Vierquadrantensteller steuert Gleichstrommotor. <a href="https://commons.wikimedia.org/w/index.php?curid=4792919">https://commons.wikimedia.org/w/index.php?curid=4792919</a>. Accessed 13 Dez 2023</div>
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
