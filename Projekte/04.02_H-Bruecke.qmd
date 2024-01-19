@@ -1,3 +1,60 @@
+```{python}
+#| code-fold: true
+#| echo: false
+
+import pandas as pd
+from plotly.subplots import make_subplots
+import plotly.express as px
+import plotly.graph_objects as go
+
+def trans_plot(filepath, thing_to_plot):
+    df = pd.read_csv(filepath,sep=';',decimal=',')
+
+    for key in thing_to_plot:
+        suplotnumber_max = 0
+        if max(thing_to_plot[key]) > 0:
+            suplotnumber_max = max(thing_to_plot[key])
+
+    fig = make_subplots(
+        rows=suplotnumber_max, cols=1,
+    )
+
+    for key in thing_to_plot:
+        for i in thing_to_plot[key]:
+            fig.add_trace(go.Scatter(x=df.time.values, y=df[key].values,name=key), row=thing_to_plot[key][0], col=1)
+            fig.update_xaxes(title_text=None, tickformat = ".3s", ticksuffix="s",  row=thing_to_plot[key][0], col=1)
+            if key[0] == 'v':
+                ticksuff = 'V'
+            elif key[0] == 'i':
+                ticksuff = 'A'
+            else:
+                ticksuff = ''
+            fig.update_yaxes(title=key, ticksuffix=ticksuff,tickformat = ".3s", row=thing_to_plot[key][0], col=1)
+
+    fig.update_layout(
+        hovermode="x unified",
+        legend_title=None,
+
+        font=dict(
+            family="Arial",
+            size=12,
+            color="black"
+        ),
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.15,
+            xanchor="left",
+            x=0.01
+        ),
+        height=1000/8*suplotnumber_max,
+        width=800,
+    )
+
+    fig.write_image(filepath.replace('.csv','.svg'))
+    fig.show()
+
+```
 
 
 # H-Brücke {#sec-H-Bruecke}  
@@ -63,6 +120,7 @@ Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass
 
 
 ## Entwicklung der Logik
+### Von der Wahrheitstabelle zur Booleschen Gleichung
 Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen Zustand und dem physikalischen Wert definiert werden.
 
 |Eingang / Ausgang|Bezeichnung|Zuordnung|Beschreibung|
@@ -80,7 +138,7 @@ In der Wahrheitstabelle wird nun der Schaltzustand der Ausgänge in Abhängigkei
 ```{python}
 #| code-fold: true
 #| echo: false
-#| label: tbl-Wahrheitstabelle
+#| label: #tbl-Wahrheitstabelle
 #| tbl-cap: Wahrheitstabelle
 
 import pandas as pd
@@ -139,7 +197,7 @@ display(S4eq)
 
 ```
 
-Zur Überpürfung wird aus den Gleichungen die Wahrheitstabelle erstellt und mit der oben definierten Wahrheitstabelle @tbl-Wahrheitstabelle verglichen.  
+Zur Überprüfung wird aus den Gleichungen die Wahrheitstabelle erstellt und mit der oben definierten Wahrheitstabelle verglichen.  
 
 ```{python}
 
@@ -195,9 +253,17 @@ display(Markdown(df1.to_markdown(index=False,tablefmt="github", colalign ='cente
 
 Die Tabellen stimmen überein. Die Gleichungen sind somit richtig.
 
-### Logik Schaltung
+### Schaltung
+Die Logik kann mit verschiedenen Technologien umgesetzt werden. Hier wurde eine Lösung mittels TTL Gattern gewählt. Die Schaltung ist in @fig-LogikSchaltung dargestellt. In einer modernen Anwendung würde die Logik mittels Mikrocontroller realisiert werden. Quartus oder PSoC creator bieten hier Lösungen an. In Quartus lässt sich die Logik aus simulieren.
 
-<!-- 
+::: {.callout-note}
+Aus wirtschaftlichen Gründen sollte eine Logikschaltung aus möglichst wenigen verschiedenen Logikgattern bestehen. Es bietet sich an, die Schaltung mit NAND oder NOR Gattern aufzubauen. Aus zeitgründen wird im Moment hier darauf verzichtet. Mit der Regel von DeMorgan kann die Schaltung in die jeweilige schreibweise übergeführt werden.
+$$\overline{A \land B} = \overline{A} \lor  \overline{B}$$
+$$\overline{A \lor B} = \overline{A} \land  \overline{B}$$
+:::
+
+
+<!--
 ::: {.callout-note}
 Es handelt sich um eine automatisch generierte Schaltung mit amerikanischen Symbolen! Diese Schaltung entspricht NICHT europäischen Normen und ist rein informativ.
 :::
@@ -224,11 +290,80 @@ display(logicparse(S3string, outlabel='$S3$',gateH=1.2))
 S4string = str(S4eq.rhs).replace('&','and').replace('|','or').replace('~','not ')
 display(logicparse(S4string, outlabel='$S4$'))
 
-
 ```
 -->
 
-Aus wirtschaftlichen Gründen sollte eine Logikschaltung aus möglichst wenigen verschiedenen Logikgattern bestehen. Es bietet sich an die Schaltung mit NAND oder NOR Gattern aufzubauen. 
+
+![Logikschaltung mit TTL ](Grafiken/Hbruecke/LogicCirciut.png){#fig-LogikSchaltung}
+
+Mittels simulation kann die Funktion der Schaltung überprüft werden. Dazu wird der zeitliche verlauf mit der Wahrheitstabelle verglichen. Stimmen die Signale überein, ist die Schaltung richtig.  
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-LogikSchaltungSim}
+```{python}
+#| code-fold: true
+#| echo: false
 
 
+filepath = 'Grafiken/Hbruecke/Transient Analysis.csv'
+thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'v(vpwm)':[4], 'v(s1)':[5], 'v(s2)':[6], 'v(s3)':[7], 'v(s4)':[8]}
 
+trans_plot(filepath, thing_to_plot)
+
+```
+Simulation Logikschaltung mit TTL
+:::
+:::
+
+Der Signallaufplan passt mit der Wahrheitstabelle überein. Somit ist davon auszugehen, dass die TTL-Schaltung korrekt umgesetzt wurde.
+
+## Ansteuerung der H-Brücke
+Die H-Brücke besteht aus P-Kanal Mosfets und N-Kanal Mosfets. Mosfets werden über den Potentialunterschied zwischen Gate und Source gesteuert. Bei den N-Kanal Mosfets T2 und T4 könnte direkt der Ausgang der Logikschaltung verwendet werden. Bei den P-Kanal Mosfets T1 und T3 ist dies nicht möglich, da die Logikschaltung nicht das geeignete Potential liefern kann. Die P-Kanal Mosfets sperren wenn am Gate die selbe Spannung anliegt wie am Source Eingang. Sie leiten wenn am Gate Ground anliegt. Es muss also eine Schaltung entworfen werden, welche die Potentiale anpasst. Aus der obigen Überlegung ergibt sich folgende Anforderung an die Pegelanpassung.
+
+| Ausgang TTL S1 und S3 | Potential am Source Eingang |
+|----------|----------|
+| 0 V   | $U_s$  |
+| 5 V   | 0 V  |
+
+Diese Anpassung lässt sich mittels OPV's realisieren, welche mit der Zwischenkreisspannung, diese liegt am Source Eingang von T1 und T3 an, und Ground versorgt werden. Das TTL Signal wird am negativen Eingang des OPV angelegt um die invertierung zu erreichen. Der OPV verstärkt das Signal und liefert am Ausgang das gewünschte Potential. Die Schaltung ist in @fig-OPV-Schaltung dargestellt. Da das Ausgangssignal der TTL Schaltung nicht genau 0 V beträgt wird am positiven Eingang eine Referenzspannung von 2 V angelegt. Als OPV's müssen Rail to Rail OPV's verwendet werden. Diese können bis auf 0 V herunter schalten. Werden andere verwendet schalten die Mosfets nicht ganz durch und es kommt zu Leistungsverlusten.
+
+![OPV Schaltung ](Grafiken/Hbruecke/OPV-Schaltung.png){#fig-OPV-Schaltung}
+
+## Simulation der H-Brücke
+Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit der Pegelanpassung, die H-Brücke und das Motormodel zusammengeführt werden. Die Schaltung ist in @fig-TopSheet dargestellt. Der Motor kann über das einfache Modell @fig-SimpleMotorModel simuliert werden. Das erweiterte Modell @fig-ExtendedMotorModel liefert auch Informationen über die Drehzahl und das Massenträgheitsmoment, damit kann auch der Bremsvorgang betrachtet werden.
+
+![Zusammengeführte Schaltung ](Grafiken/Hbruecke/TopSheet.png){#fig-TopSheet}  
+
+![Einfaches Motormodel ](Grafiken/Hbruecke/SimpleMotorModel.png){#fig-SimpleMotorModel height=50%}
+
+![Erweitertes Motormodel, @MotorModel ](Grafiken/Hbruecke/AdvancedMotorModel.png){#fig-ExtendedMotorModel width=80%}
+
+Nun können die Betriebzustände simuliert werden. Die Simulation ist in @fig-BridgeSim dargestellt. Die Simulation zeigt, dass die H-Brücke wie gewünscht funktioniert. Die Drehzahl lässt sich mittels PWM verändern. Die Drehrichtung lässt sich mittels D ändern. Die Bremsfunktion lässt sich mittels B aktivieren. 
+
+::: {#nte-noteAltiumSim .callout-note}
+Nicht alle Betriebszustände konnten mit Altium simuliert werden wenn sowohl die Logik als auch die H-Brücke mit Motormodel berücksichtig wurde. Speziell das höherfrequente PWM Signal führte zu Fehlern in der Simulation. Auch konnte die Drehrichtung bei verwendung des erweiterten Motormodells nicht gewechselt werden, ohne einen Fehler in der Simulation zu verursachen. Jeder Hinweis zu einer Lösung des Problems wird dankend entgegen genommen!
+:::
+
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BridgeSim}
+```{python}
+#| code-fold: true
+#| echo: false
+
+
+filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightBreak.csv'
+thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4]}
+
+trans_plot(filepath, thing_to_plot)
+
+```
+Simulation Brücke  Linkslauf, Rechtslauf und Bremsen
+:::
+:::
+
+Aufgrund der oben beschriebenen Sitaution in Altium wird der einfluss von PWM, hochfrequente Schaltvorgänge, getrennt betrachtet. 
+
+## PWM und induktive Lasten
+
+**To Be Continued**
