@@ -95,7 +95,7 @@ Für die Erklärung der Funktionsweise werden die MOSFET's durch gedachte Schalt
 
 ![Ersatzschaltbild H-Brücke mit Schaltern ](Grafiken/Hbruecke/MitSchaltern.png){#fig-H-BrueckeMS}
 
-$S_1, S_2, S_ 3$ und $S_4$ stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet wenn die Spannung zwischen Gate und Source, $U_{GS}$, die Threshold-Spannung $U_{GS,Threshold}$ überschreitet. In Bild @fig-H-BrueckeMS sind alle Schalter offen. Da es sich um N-Kanal Selbstsperrende MOSFET handelt müssen, für diesen Zustand, alle Potentiale, $S_1$ bis $S_4$, $0 \ \mathrm{V}$ sein.
+$S_1, S_2, S_ 3$ und $S_4$ stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet wenn die Spannung zwischen Gate und Source, $U_{GS}$, die Threshold-Spannung $U_{GS,Threshold}$ überschreitet. 
 
 Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzukehren. Dies gelingt wie folgt.
 
@@ -103,18 +103,18 @@ Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzu
 
 ![Ersatzschaltbild H-Brücke mit Schaltern, Linkslauf ](Grafiken/Hbruecke/MitSchalternLL.png){#fig-H-BrueckeMSLL}
 
-Potential $S_2$ und $S_3$ müssen auf HIGH sein. Potential $S_1$ und $S_4$ müssen auf LOW sein.
+Transistoren $S_2$ und $S_3$ müssen durchschalten. Transistoren $S_1$ und $S_4$ müssen gesperrt sein.
 
 
 #### Rechtslauf
 
 ![Ersatzschaltbild H-Brücke mit Schaltern, Rechtslauf ](Grafiken/Hbruecke/MitSchalternRL.png){#fig-H-BrueckeMSRL}
 
-Potential $S_1$ und $S_4$ müssen auf HIGH sein. Potential $S_2$ und $S_3$ müssen auf LOW sein.
+Transistoren $S_1$ und $S_4$ müssen durchschalten. Transistoren $S_2$ und $S_3$ müssen gesperrt sein.
 
 #### Bremsen  
 
-Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass Potential $S_2$ und $S_4$ auf HIGH sind und Potential $S_1$ und $S_3$  auf LOW sind.
+Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass die Transistoren $S_2$ und $S_4$ durchgeschaltet sind und die Transistoren $S_1$ und $S_3$  gesperrt sind.
 
 ![Ersatzschaltbild H-Brücke mit Schaltern, Bremsen ](Grafiken/Hbruecke/MitSchalternBremse.png){#fig-H-BrueckeMSBremse}
 
@@ -129,7 +129,7 @@ Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen 
 |Eingang|B ... Break|0 … Disabled; 1 … Enabled|Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.|
 |Eingang|D ... Direction|0 … Linkslauf; 1 … Rechtslauf|Gibt die Drehrichtung vor.|
 |Eingang|P ... PWM|PWM Signal|Gibt die Drehzahl vor.|
-|Ausgänge|S1, S2, S3, S4|0 … MOSFET aus; 1 … MOSFET ein|PWM Signal für die Transistoren.|
+|Ausgänge|S1, S2, S3, S4|0 … MOSFET aus; 1 … MOSFET ein|Steuersignal für die Transistoren, diese entsprechen noch nicht dem benötigten Potentialen!|
 
 : Zuordnungstabelle {#tbl-Zuordnung}  
 
