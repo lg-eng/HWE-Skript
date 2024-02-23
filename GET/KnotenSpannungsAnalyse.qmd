@@ -45,7 +45,7 @@ display(Markdown('Knotengleichungen'))
 display(Markdown('Es gibt keinen Knoten'))
 ```
 
-**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+**5. Ohmsche Gesetze für die Widerstände anschreiben**   
 
 ```{python}
 #| code-fold: true  
@@ -131,7 +131,7 @@ QBookHelpers.print_equation(K1,label='eq-K1')
 
 ```
 
-**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+**5. Ohmsche Gesetze für die Widerstände anschreiben**   
 
 ```{python}
 #| code-fold: true  
@@ -226,7 +226,7 @@ QBookHelpers.print_equation(K1,label='eq-K1')
 
 ```
 
-**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+**5. Ohmsche Gesetze für die Widerstände anschreiben**   
 
 ```{python}
 #| code-fold: true  
@@ -338,7 +338,7 @@ QBookHelpers.print_equation(K3,label='eq-K2')
 
 ```
 
-**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+**5. Ohmsche Gesetze für die Widerstände anschreiben**   
 
 ```{python}
 #| code-fold: true  
@@ -464,7 +464,7 @@ QBookHelpers.print_equation(K4,label='eq-K4')
 
 ```
 
-**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+**5. Ohmsche Gesetze für die Widerstände anschreiben**   
 
 ```{python}
 #| code-fold: true  
