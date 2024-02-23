@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript - 2&nbsp; Knoten- Spannungsanalyse</title>
+<title>HWE-Skript - 2&nbsp; Knoten- Spannungs- Analyse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../GET/KnotenSpannungsAnalyse.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungsanalyse</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../GET/KnotenSpannungsAnalyse.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungs- Analyse</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -197,7 +197,7 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../GET/KnotenSpannungsAnalyse.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungsanalyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungs- Analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -259,9 +259,10 @@ cookieconsent.run({
    
   <ul>
   <li><a href="#beispiel-1" id="toc-beispiel-1" class="nav-link active" data-scroll-target="#beispiel-1"><span class="header-section-number">2.1</span> Beispiel 1</a></li>
-  <li><a href="#beispiel-3" id="toc-beispiel-3" class="nav-link" data-scroll-target="#beispiel-3"><span class="header-section-number">2.2</span> Beispiel 3</a></li>
-  <li><a href="#beispiel-4" id="toc-beispiel-4" class="nav-link" data-scroll-target="#beispiel-4"><span class="header-section-number">2.3</span> Beispiel 4</a></li>
-  <li><a href="#beispiel-5" id="toc-beispiel-5" class="nav-link" data-scroll-target="#beispiel-5"><span class="header-section-number">2.4</span> Beispiel 5</a></li>
+  <li><a href="#beispiel-2" id="toc-beispiel-2" class="nav-link" data-scroll-target="#beispiel-2"><span class="header-section-number">2.2</span> Beispiel 2</a></li>
+  <li><a href="#beispiel-3" id="toc-beispiel-3" class="nav-link" data-scroll-target="#beispiel-3"><span class="header-section-number">2.3</span> Beispiel 3</a></li>
+  <li><a href="#beispiel-4" id="toc-beispiel-4" class="nav-link" data-scroll-target="#beispiel-4"><span class="header-section-number">2.4</span> Beispiel 4</a></li>
+  <li><a href="#beispiel-5" id="toc-beispiel-5" class="nav-link" data-scroll-target="#beispiel-5"><span class="header-section-number">2.5</span> Beispiel 5</a></li>
   </ul>
 </nav>
     </div>
@@ -270,7 +271,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungsanalyse</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungs- Analyse</span></h1>
 </div>
 
 
@@ -405,18 +406,72 @@ Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werde
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>R1 <span class="op">=</span> MySymbol(<span class="st">'R1'</span>,description<span class="op">=</span><span class="st">'Widerstand 1'</span>,unit<span class="op">=</span>u.ohm,value<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>R2 <span class="op">=</span> MySymbol(<span class="st">'R2'</span>,description<span class="op">=</span><span class="st">'Widerstand 2'</span>,unit<span class="op">=</span>u.ohm,value<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>R3 <span class="op">=</span> MySymbol(<span class="st">'R3'</span>,description<span class="op">=</span><span class="st">'Widerstand 3'</span>,unit<span class="op">=</span>u.ohm,value<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Uq <span class="op">=</span> MySymbol(<span class="st">'U_q'</span>,description<span class="op">=</span><span class="st">'Quellspannung'</span>,unit<span class="op">=</span>u.V,value<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>U1 <span class="op">=</span> MySymbol(<span class="st">'U1'</span>,description<span class="op">=</span><span class="st">'Spannung an R1'</span>,unit<span class="op">=</span>u.V)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>U2 <span class="op">=</span> MySymbol(<span class="st">'U2'</span>,description<span class="op">=</span><span class="st">'Spannung an R2'</span>,unit<span class="op">=</span>u.V)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>U3 <span class="op">=</span> MySymbol(<span class="st">'U3'</span>,description<span class="op">=</span><span class="st">'Spannung an R3'</span>,unit<span class="op">=</span>u.V)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>I1 <span class="op">=</span> MySymbol(<span class="st">'I1'</span>,description<span class="op">=</span><span class="st">'Strom durch R1'</span>,unit<span class="op">=</span>u.A)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>I2 <span class="op">=</span> MySymbol(<span class="st">'I2'</span>,description<span class="op">=</span><span class="st">'Strom durch R2'</span>,unit<span class="op">=</span>u.A)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> MySymbol(<span class="st">'I'</span>,description<span class="op">=</span><span class="st">'Gesamtstrom'</span>,unit<span class="op">=</span>u.A)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_description([R1,R2,R3,Uq,U1,U2,U3,I1,I2,I])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(R\)</span> … Widerstand</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(U_{q}\)</span> … Quellspannung</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(U_{R}\)</span> … Spannung am Widerstand</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(I\)</span> … Strom</p>
+</div>
+</div>
+<p><strong>3. Knoten und Maschen einzeichnen</strong><br>
+Siehe <a href="#fig-KSA1">Abbildung&nbsp;<span>2.1</span></a><br>
+<strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p>Maschengleichungen</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle 0 = U_{R} - U_{q}\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p>Knotengleichungen</p>
+</div>
+<div class="cell-output cell-output-display">
+<p>Es gibt keinen Knoten</p>
+</div>
+</div>
+<p><strong>5. Ohmsche Gesetz für die Widerstände anschreiben</strong></p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p>Ohmsches Gesetz</p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle U_{R} = I R\)</span></p>
+</div>
+</div>
+<p><strong>6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</strong><br>
+Passt, es gibt 2 Gleichungen und 2 Unbekannte.</p>
+<p><strong>7. Gleichungssystem lösen</strong><br>
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle U_{R} = U_{q}\)</span></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><span class="math inline">\(\displaystyle I = \frac{U_{q}}{R}\)</span></p>
+</div>
+</div>
+<p>Für so eine einfache Schaltung würde man die Knoten-Spannungs-Analyse nicht verwenden. Die Methode lässt sich allerdings auf beliebig Komplexe Schaltungen anwenden.</p>
+</section>
+<section id="beispiel-2" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="beispiel-2"><span class="header-section-number">2.2</span> Beispiel 2</h2>
+<p>In Grafik <a href="#fig-KSA2">Abbildung&nbsp;<span>2.2</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
+<div id="fig-KSA2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Grafiken/KSA_2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;2.2: Netzwerk</figcaption>
+</figure>
+</div>
+<p>Vorgehensweise<br>
+<strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
+<strong>2. Unbekannte Größen definieren</strong></p>
+<div class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(R_{1}\)</span> … Widerstand 1</p>
 </div>
@@ -449,9 +504,9 @@ Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werde
 </div>
 </div>
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
-Siehe <span class="quarto-unresolved-ref">?fig-KSA2</span><br>
+Siehe <a href="#fig-KSA2">Abbildung&nbsp;<span>2.2</span></a><br>
 <strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <p>Maschengleichungen</p>
 </div>
@@ -475,7 +530,7 @@ Siehe <span class="quarto-unresolved-ref">?fig-KSA2</span><br>
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetz für die Widerstände anschreiben</strong></p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -499,7 +554,7 @@ U_{3} = I_{2} R_{3}
 Passt, es gibt 6 Gleichungen und 6 Unbekannte.</p>
 <p><strong>7. Gleichungssystem lösen</strong><br>
 Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <p><span id="eq-U1"><span class="math display">\[
 U_{1} = U_{q}
@@ -550,19 +605,19 @@ I = \frac{R_{1} U_{q} + R_{2} U_{q} + R_{3} U_{q}}{R_{1} R_{2} + R_{1} R_{3}}
 </div>
 </div>
 </section>
-<section id="beispiel-3" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="beispiel-3"><span class="header-section-number">2.2</span> Beispiel 3</h2>
-<p>In Grafik <a href="#fig-KSA3">Abbildung&nbsp;<span>2.2</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
+<section id="beispiel-3" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="beispiel-3"><span class="header-section-number">2.3</span> Beispiel 3</h2>
+<p>In Grafik <a href="#fig-KSA3">Abbildung&nbsp;<span>2.3</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/KSA_3.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;2.2: Netzwerk</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;2.3: Netzwerk</figcaption>
 </figure>
 </div>
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <p><span class="math inline">\(R_{1}\)</span> … Widerstand 1</p>
 </div>
@@ -598,9 +653,9 @@ I = \frac{R_{1} U_{q} + R_{2} U_{q} + R_{3} U_{q}}{R_{1} R_{2} + R_{1} R_{3}}
 </div>
 </div>
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
-Siehe <a href="#fig-KSA3">Abbildung&nbsp;<span>2.2</span></a></p>
+Siehe <a href="#fig-KSA3">Abbildung&nbsp;<span>2.3</span></a></p>
 <p><strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <p>Maschengleichungen</p>
 </div>
@@ -624,7 +679,7 @@ Siehe <a href="#fig-KSA3">Abbildung&nbsp;<span>2.2</span></a></p>
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetz für die Widerstände anschreiben</strong></p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -648,7 +703,7 @@ U_{3} = I_{2} R_{3}
 Passt, es gibt 6 Gleichungen und 6 Unbekannte.</p>
 <p><strong>7. Gleichungssystem lösen</strong><br>
 Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <p><span id="eq-U1"><span class="math display">\[
 U_{1} = U_{q1} - U_{q2}
@@ -699,19 +754,19 @@ I = \frac{R_{1} U_{q1} + R_{2} U_{q1} - R_{2} U_{q2} + R_{3} U_{q1} - R_{3} U_{q
 </div>
 </div>
 </section>
-<section id="beispiel-4" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="beispiel-4"><span class="header-section-number">2.3</span> Beispiel 4</h2>
-<p>In Grafik <a href="#fig-KSA4">Abbildung&nbsp;<span>2.3</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
+<section id="beispiel-4" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="beispiel-4"><span class="header-section-number">2.4</span> Beispiel 4</h2>
+<p>In Grafik <a href="#fig-KSA4">Abbildung&nbsp;<span>2.4</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/KSA_4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;2.3: Netzwerk</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;2.4: Netzwerk</figcaption>
 </figure>
 </div>
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <p>Bekannte Größen</p>
 </div>
@@ -777,9 +832,9 @@ I = \frac{R_{1} U_{q1} + R_{2} U_{q1} - R_{2} U_{q2} + R_{3} U_{q1} - R_{3} U_{q
 </div>
 </div>
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
-Siehe <a href="#fig-KSA4">Abbildung&nbsp;<span>2.3</span></a></p>
+Siehe <a href="#fig-KSA4">Abbildung&nbsp;<span>2.4</span></a></p>
 <p><strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <p>Maschengleichungen</p>
 </div>
@@ -818,7 +873,7 @@ Siehe <a href="#fig-KSA4">Abbildung&nbsp;<span>2.3</span></a></p>
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetz für die Widerstände anschreiben</strong></p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -840,8 +895,9 @@ U_{3} = I_{3} R_{3}
 </div>
 <p><strong>6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</strong></p>
 <p>Pass, es gibt 9 Gleichungen und 9 Unbekannte.</p>
-<p><strong>7. Gleichungssystem lösen</strong></p>
-<div class="cell" data-execution_count="13">
+<p><strong>7. Gleichungssystem lösen</strong><br>
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.</p>
+<div class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <p><span id="eq-U1"><span class="math display">\[
 U_{1} = U_{q1} - U_{q2}
@@ -916,19 +972,19 @@ I = \frac{R_{1} U_{q1} - R_{1} U_{q2} + R_{2} U_{q1} - R_{2} U_{q2}}{R_{1} R_{2}
 </div>
 </div>
 </section>
-<section id="beispiel-5" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="beispiel-5"><span class="header-section-number">2.4</span> Beispiel 5</h2>
-<p>In Grafik <a href="#fig-KSA5">Abbildung&nbsp;<span>2.4</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
+<section id="beispiel-5" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="beispiel-5"><span class="header-section-number">2.5</span> Beispiel 5</h2>
+<p>In Grafik <a href="#fig-KSA5">Abbildung&nbsp;<span>2.5</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Grafiken/KSA_5.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;2.4: Netzwerk</figcaption>
+<figcaption class="figure-caption">Abbildung&nbsp;2.5: Netzwerk</figcaption>
 </figure>
 </div>
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <p><strong>Bekannte Größen</strong></p>
 </div>
@@ -1024,9 +1080,9 @@ I = \frac{R_{1} U_{q1} - R_{1} U_{q2} + R_{2} U_{q1} - R_{2} U_{q2}}{R_{1} R_{2}
 </div>
 </div>
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
-Siehe <a href="#fig-KSA5">Abbildung&nbsp;<span>2.4</span></a></p>
+Siehe <a href="#fig-KSA5">Abbildung&nbsp;<span>2.5</span></a></p>
 <p><strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <p>Maschengleichungen</p>
 </div>
@@ -1070,7 +1126,7 @@ Siehe <a href="#fig-KSA5">Abbildung&nbsp;<span>2.4</span></a></p>
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetz für die Widerstände anschreiben</strong></p>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -1107,7 +1163,7 @@ U_{R5} = I_{5} R_{5}
 </div>
 </div>
 <p><strong>6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</strong></p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <p>Anzahl der Gleichungen:</p>
 </div>
@@ -1125,7 +1181,7 @@ U_{R5} = I_{5} R_{5}
 </div>
 </div>
 <p><strong>7. Gleichungssystem lösen</strong></p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <p><span id="eq-U_R1"><span class="math display">\[
 U_{R1} = \frac{- R_{1} R_{2} R_{3} U_{1} - R_{1} R_{2} R_{4} U_{1} - R_{1} R_{2} R_{5} U_{1} - R_{1} R_{3} R_{4} U_{1} - R_{1} R_{3} R_{5} U_{1} + R_{1} R_{3} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}
