@@ -19,6 +19,7 @@ book:
     - part: 1. Jahrgang
       chapters:
         - Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.qmd
+        - GET/KnotenSpannungsAnalyse.qmd
     - part: 3. Jahrgang
       chapters:
         - Transistoren/01_Transistoren.qmd

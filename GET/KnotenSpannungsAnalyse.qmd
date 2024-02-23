@@ -1,0 +1,533 @@
+
+# Knoten- Spannungs- Analyse
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+Die Knoten-Spannungsanalyse ist eine Methode zur Berechnung der unbekannten elektrischen Größen in einem Netzwerk von elektrischen oder elektronischen Komponenten.  
+Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werden für Gleichungen aufgestellt. Es entsteht ein lineares Gleichungssystem, das gelöst werden kann.
+
+## Beispiel 1
+In Grafik @fig-KSA1 ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.  
+
+![Netzwerk](Grafiken/KSA_1.png){#fig-KSA1}
+
+Vorgehensweise  
+**1. Alle Ströme und Spannungen einzeichnen**  
+**2. Unbekannte Größen definieren** 
+```{python}
+#| code-fold: true
+#| echo: false
+
+from sympy import *
+
+# Variablen
+R = MySymbol('R',description='Widerstand',unit='Ohm')
+Uq = MySymbol('U_q',description='Quellspannung',unit='V')
+UR = MySymbol('U_R',description='Spannung am Widerstand',unit='V')
+I = MySymbol('I',description='Strom',unit='A')
+
+QBookHelpers.print_description([R,Uq,UR,I])
+
+```
+
+**3. Knoten und Maschen einzeichnen**  
+Siehe @fig-KSA1  
+**4. Knoten- und Maschengleichungen aufstellen**  
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungen
+display(Markdown('Maschengleichungen'))
+M1 = Eq(0, -Uq + UR)
+display(M1)
+
+display(Markdown('Knotengleichungen'))
+display(Markdown('Es gibt keinen Knoten'))
+```
+
+**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+
+```{python}
+#| code-fold: true  
+#| echo: false
+
+
+display(Markdown('Ohmsches Gesetz'))
+O1 = Eq(UR, R*I)
+display(O1)
+
+```
+
+**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+Passt, es gibt 2 Gleichungen und 2 Unbekannte.  
+
+**7. Gleichungssystem lösen**  
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungssystem lösen
+unknowns = [UR,I]
+sol = linsolve([M1,O1],unknowns)
+#display(sol)
+for unk in unknowns:
+    display(Eq(unk,sol.args[0][unknowns.index(unk)]))
+
+```
+
+Für so eine einfache Schaltung würde man die Knoten-Spannungs-Analyse nicht verwenden. Die Methode lässt sich allerdings auf beliebig Komplexe Schaltungen anwenden.
+
+## Beispiel 2
+
+In Grafik @fig-KSA2 ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.  
+
+![Netzwerk](Grafiken/KSA_2.png){#fig-KSA2}
+
+Vorgehensweise  
+**1. Alle Ströme und Spannungen einzeichnen**  
+**2. Unbekannte Größen definieren** 
+```{python}
+#| code-fold: true
+#| echo: false
+
+from sympy import *
+
+# Variablen
+R1 = MySymbol('R1',description='Widerstand 1',unit=u.ohm,value=1000)
+R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=1000)
+R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=1000)
+Uq = MySymbol('U_q',description='Quellspannung',unit=u.V,value=10)
+U1 = MySymbol('U1',description='Spannung an R1',unit=u.V)
+U2 = MySymbol('U2',description='Spannung an R2',unit=u.V)
+U3 = MySymbol('U3',description='Spannung an R3',unit=u.V)
+I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
+I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
+I = MySymbol('I',description='Gesamtstrom',unit=u.A)
+
+QBookHelpers.print_description([R1,R2,R3,Uq,U1,U2,U3,I1,I2,I])
+
+```
+
+**3. Knoten und Maschen einzeichnen**  
+Siehe @fig-KSA2  
+**4. Knoten- und Maschengleichungen aufstellen**  
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungen
+display(Markdown('Maschengleichungen'))
+M1 = Eq(0, -Uq + U1)
+M2 = Eq(0, -U1 + U2 + U3)
+QBookHelpers.print_equation(M1,label='eq-M1')
+QBookHelpers.print_equation(M2,label='eq-M2')
+
+display(Markdown('Knotengleichungen'))
+K1 = Eq(0, I - I1 - I2)
+QBookHelpers.print_equation(K1,label='eq-K1')
+
+```
+
+**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+
+```{python}
+#| code-fold: true  
+#| echo: false
+
+
+display(Markdown('Ohmsches Gesetz'))
+O1 = Eq(U1, R1*I1)
+O2 = Eq(U2, R2*I2)
+O3 = Eq(U3, R3*I2)
+QBookHelpers.print_equation(O1,label='eq-O1')
+QBookHelpers.print_equation(O2,label='eq-O2')
+QBookHelpers.print_equation(O3, label='eq-O3')
+
+
+```
+
+**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+Passt, es gibt 6 Gleichungen und 6 Unbekannte.  
+
+**7. Gleichungssystem lösen**  
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungssystem lösen
+unknowns = [U1,U2,U3,I1,I2,I]
+sol = linsolve([M1,M2,K1,O1,O2,O3],unknowns)
+#display(sol)
+for unk in unknowns:
+    eq = Eq(unk,sol.args[0][unknowns.index(unk)])
+    QBookHelpers.print_equation(eq,label='eq-' + unk.name)
+    QBookHelpers.calculate_num_value(eq)
+    QBookHelpers.print_values([unk])
+
+
+```
+
+## Beispiel 3
+
+In Grafik @fig-KSA3 ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.  
+
+![Netzwerk](Grafiken/KSA_3.png){#fig-KSA3}
+
+Vorgehensweise  
+**1. Alle Ströme und Spannungen einzeichnen**  
+**2. Unbekannte Größen definieren** 
+```{python}
+#| code-fold: true
+#| echo: false
+
+from sympy import *
+
+# Variablen
+R1 = MySymbol('R1',description='Widerstand 1',unit=u.ohm,value=1000)
+R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=1000)
+R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=1000)
+Uq1 = MySymbol('U_q1',description='Quellspannung',unit=u.V,value=10)
+Uq2 = MySymbol('U_q2',description='Quellspannung',unit=u.V,value=1)
+U1 = MySymbol('U1',description='Spannung an R1',unit=u.V)
+U2 = MySymbol('U2',description='Spannung an R2',unit=u.V)
+U3 = MySymbol('U3',description='Spannung an R3',unit=u.V)
+I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
+I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
+I = MySymbol('I',description='Gesamtstrom',unit=u.A)
+
+QBookHelpers.print_description([R1,R2,R3,Uq1,Uq2,U1,U2,U3,I1,I2,I])
+
+```
+
+**3. Knoten und Maschen einzeichnen**  
+Siehe @fig-KSA3
+
+**4. Knoten- und Maschengleichungen aufstellen**  
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungen
+display(Markdown('Maschengleichungen'))
+M1 = Eq(0, -Uq1 + U1 + Uq2)
+M2 = Eq(0, -U1 -Uq2 + U2 + U3)
+QBookHelpers.print_equation(M1,label='eq-M1')
+QBookHelpers.print_equation(M2,label='eq-M2')
+
+display(Markdown('Knotengleichungen'))
+K1 = Eq(0, I - I1 - I2)
+QBookHelpers.print_equation(K1,label='eq-K1')
+
+```
+
+**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+
+```{python}
+#| code-fold: true  
+#| echo: false
+
+
+display(Markdown('Ohmsches Gesetz'))
+O1 = Eq(U1, R1*I1)
+O2 = Eq(U2, R2*I2)
+O3 = Eq(U3, R3*I2)
+QBookHelpers.print_equation(O1,label='eq-O1')
+QBookHelpers.print_equation(O2,label='eq-O2')
+QBookHelpers.print_equation(O3, label='eq-O3')
+
+
+```
+
+**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+Passt, es gibt 6 Gleichungen und 6 Unbekannte.  
+
+**7. Gleichungssystem lösen**  
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungssystem lösen
+unknowns = [U1,U2,U3,I1,I2,I]
+sol = linsolve([M1,M2,K1,O1,O2,O3],unknowns)
+#display(sol)
+for unk in unknowns:
+    eq = Eq(unk,sol.args[0][unknowns.index(unk)])
+    QBookHelpers.print_equation(eq,label='eq-' + unk.name)
+    QBookHelpers.calculate_num_value(eq)
+    QBookHelpers.print_values([unk])
+
+
+```
+
+
+## Beispiel 4
+
+In Grafik @fig-KSA4 ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.  
+
+![Netzwerk](Grafiken/KSA_4.png){#fig-KSA4}
+
+Vorgehensweise  
+**1. Alle Ströme und Spannungen einzeichnen**  
+**2. Unbekannte Größen definieren** 
+```{python}
+#| code-fold: true
+#| echo: false
+
+from sympy import *
+
+# Variablen
+R1 = MySymbol('R1',description='Widerstand 1',unit=u.ohm,value=1000)
+R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=1000)
+R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=1000)
+Uq1 = MySymbol('U_q1',description='Quellspannung',unit=u.V,value=10)
+Uq2 = MySymbol('U_q2',description='Quellspannung',unit=u.V,value=1)
+U1 = MySymbol('U1',description='Spannung an R1',unit=u.V)
+U2 = MySymbol('U2',description='Spannung an R2',unit=u.V)
+U3 = MySymbol('U3',description='Spannung an R3',unit=u.V)
+I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
+I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
+I3 = MySymbol('I3',description='Strom durch R3',unit=u.A)
+I4 = MySymbol('I4',description='Strom durch Quelle $U_{q2}$',unit=u.A)
+I5 = MySymbol('I5',description='Querstrom',unit=u.A)
+I = MySymbol('I',description='Gesamtstrom',unit=u.A)
+
+display(Markdown('Bekannte Größen'))
+knowns = [R1,R2,R3,Uq1,Uq2]
+QBookHelpers.print_description(knowns)
+QBookHelpers.print_values(knowns)
+
+display(Markdown('Unbekannte Größen'))
+unknowns = [U1,U2,U3,I1,I2,I3,I4,I5,I]
+QBookHelpers.print_description(unknowns)
+
+```
+
+**3. Knoten und Maschen einzeichnen**  
+Siehe @fig-KSA4
+
+**4. Knoten- und Maschengleichungen aufstellen**  
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungen
+display(Markdown('Maschengleichungen'))
+M1 = Eq(0, -Uq1 + U1 + Uq2)
+M2 = Eq(0, -U1 + U2)
+M3 = Eq(0, -Uq2 + U3)
+QBookHelpers.print_equation(M1,label='eq-M1')
+QBookHelpers.print_equation(M2,label='eq-M2')
+QBookHelpers.print_equation(M3,label='eq-M3')
+
+display(Markdown('Knotengleichungen'))
+K1 = Eq(0, I - I1 - I2)
+K2 = Eq(0, I1 - I4 + I5)
+K3 = Eq(0, I2 - I5 - I3)
+QBookHelpers.print_equation(K1,label='eq-K1')
+QBookHelpers.print_equation(K2,label='eq-K2')
+QBookHelpers.print_equation(K3,label='eq-K2')
+
+```
+
+**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+
+```{python}
+#| code-fold: true  
+#| echo: false
+
+
+display(Markdown('Ohmsches Gesetz'))
+O1 = Eq(U1, R1*I1)
+O2 = Eq(U2, R2*I2)
+O3 = Eq(U3, R3*I3)
+QBookHelpers.print_equation(O1,label='eq-O1')
+QBookHelpers.print_equation(O2,label='eq-O2')
+QBookHelpers.print_equation(O3, label='eq-O3')
+
+
+```
+
+**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+
+Pass, es gibt 9 Gleichungen und 9 Unbekannte. 
+
+**7. Gleichungssystem lösen**  
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungssystem lösen
+sol = linsolve([M1,M2,M3,K1,K2,K3,O1,O2,O3],unknowns)
+#display(sol)
+if sol == EmptySet:
+    display(Markdown('Das Gleichungssystem hat keine Lösung'))
+else:
+    for unk in unknowns:
+        eq = Eq(unk,sol.args[0][unknowns.index(unk)])
+        QBookHelpers.print_equation(eq,label='eq-' + unk.name)
+        QBookHelpers.calculate_num_value(eq)
+        QBookHelpers.print_values([unk])
+
+```
+
+
+## Beispiel 5
+
+In Grafik @fig-KSA5 ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.  
+
+![Netzwerk](Grafiken/KSA_5.png){#fig-KSA5}
+
+Vorgehensweise  
+**1. Alle Ströme und Spannungen einzeichnen**  
+**2. Unbekannte Größen definieren** 
+```{python}
+#| code-fold: true
+#| echo: false
+
+from sympy import *
+
+# Variablen
+R1 = MySymbol('R1',description='Widerstand 1',unit=u.ohm,value=15)
+R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=10)
+R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=10)
+R4 = MySymbol('R4',description='Widerstand 3',unit=u.ohm,value=10)
+R5 = MySymbol('R5',description='Widerstand 3',unit=u.ohm,value=5)
+U1 = MySymbol('U_1',description='Quellspannung',unit=u.V,value=12)
+U2 = MySymbol('U_2',description='Quellspannung',unit=u.V,value=4)
+UR1 = MySymbol('U_R1',description='Spannung an R1',unit=u.V)
+UR2 = MySymbol('U_R2',description='Spannung an R2',unit=u.V)
+UR3 = MySymbol('U_R3',description='Spannung an R3',unit=u.V)
+UR4 = MySymbol('U_R4',description='Spannung an R4',unit=u.V)
+UR5 = MySymbol('U_R5',description='Spannung an R5',unit=u.V)
+I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
+I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
+I3 = MySymbol('I3',description='Strom durch R3',unit=u.A)
+I4 = MySymbol('I4',description='Strom durch R4',unit=u.A)
+I5 = MySymbol('I5',description='Strom durch R5',unit=u.A)
+I6 = MySymbol('I6',description='Querstrom',unit=u.A)
+
+display(Markdown('**Bekannte Größen**'))
+knowns = [R1,R2,R3,R4,R5,U1,U2]
+QBookHelpers.print_description(knowns)
+QBookHelpers.print_values(knowns)
+display(Markdown('Anzahl der bekannten Größen:'))
+display(len(knowns))
+
+display(Markdown('**Unbekannte Größen**'))
+unknowns = [UR1,UR2,UR3,UR4,UR5,I1,I2,I3,I4,I5,I6]
+QBookHelpers.print_description(unknowns)
+display(Markdown('Anzahl der unbekannten Größen:'))
+display(len(unknowns))
+
+```
+
+**3. Knoten und Maschen einzeichnen**  
+Siehe @fig-KSA5
+
+**4. Knoten- und Maschengleichungen aufstellen**  
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungen
+display(Markdown('Maschengleichungen'))
+M1 = Eq(0, U1+UR1+UR5)
+M2 = Eq(0, -UR5+UR4-UR3)
+M3 = Eq(0, +UR3-U2+UR2)
+QBookHelpers.print_equation(M1,label='eq-M1')
+QBookHelpers.print_equation(M2,label='eq-M2')
+QBookHelpers.print_equation(M3,label='eq-M3')
+
+display(Markdown('Knotengleichungen'))
+K1 = Eq(0, I1-I2-I6)
+K2 = Eq(0, I6+I3-I5)
+K3 = Eq(0, I4+I5-I1)
+K4 = Eq(0, I2-I4-I3)
+
+QBookHelpers.print_equation(K1,label='eq-K1')
+QBookHelpers.print_equation(K2,label='eq-K2')
+QBookHelpers.print_equation(K3,label='eq-K3')
+QBookHelpers.print_equation(K4,label='eq-K4')
+
+
+```
+
+**5. Ohmsche Gesetz für die Widerstände anschreiben**   
+
+```{python}
+#| code-fold: true  
+#| echo: false
+
+
+display(Markdown('Ohmsches Gesetz'))
+O1 = Eq(UR1, R1*I1)
+O2 = Eq(UR2, R2*I2)
+O3 = Eq(UR3, R3*I3)
+O4 = Eq(UR4, R4*I4)
+O5 = Eq(UR5, R5*I5)
+QBookHelpers.print_equation(O1,label='eq-O1')
+QBookHelpers.print_equation(O2,label='eq-O2')
+QBookHelpers.print_equation(O3, label='eq-O3')
+QBookHelpers.print_equation(O4, label='eq-O4')
+QBookHelpers.print_equation(O5, label='eq-O5')
+
+equations = [M1,M2,M3,K1,K2,K3,K4,O1,O2,O3,O4,O5]
+display(Markdown('Anzahl der Gleichungen:'))
+display(len(equations))
+
+```
+
+**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+
+```{python}	
+#| code-fold: true
+#| echo: false
+
+display(Markdown('Anzahl der Gleichungen:'))
+display(len(equations))
+display(Markdown('Anzahl der Unbekannten:'))
+display(len(unknowns))
+
+if len(equations) > len(unknowns):
+    display(Markdown('Das Gleichungssystem ist überbestimmt. Es gibt mehr Gleichungen als Unbekannte. Das bedeutet, dass Gleichungen abhängig sind. Eine Gleichung kann aus den anderen abgeleitet werden. Wird diese Gleichung aus dem Gleichungssystem entfernt, so ist das Gleichungssystem lösbar. Mit Sympy kann das Gleichungssystem gelöst werden. Die überflüssigen Gleichungen werden ignoriert.'))
+elif len(equations) < len(unknowns):
+    display(Markdown('Das Gleichungssystem ist unterbestimmt. Es gibt mehr Unbekannte als Gleichungen. Das Gleichungssystem kann nicht gelöst werden.'))
+elif len(equations) == len(unknowns):
+    display(Markdown('Das Gleichungssystem hat gleich viele Gleichungen wie Unbekannte. Es kann gelöst werden sofern es nicht widersprüchlich ist.'))
+else:
+    display(Markdown('Fehler'))
+
+```
+
+**7. Gleichungssystem lösen**    
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+# Gleichungssystem lösen
+sol = linsolve(equations,unknowns)
+#display(sol)
+if sol == EmptySet:
+    display(Markdown('Das Gleichungssystem hat keine Lösung.'))
+else:
+    for unk in unknowns:
+        eq = Eq(unk,sol.args[0][unknowns.index(unk)])
+        QBookHelpers.print_equation(eq,label='eq-' + unk.name)
+        QBookHelpers.calculate_num_value(eq)
+        QBookHelpers.print_values([unk])
+
+```
+
