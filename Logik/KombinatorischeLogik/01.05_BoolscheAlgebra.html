@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Keine Treffer",
     "search-matching-documents-text": "Treffer",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "weitere Treffer in diesem Dokument",
     "search-more-matches-text": "weitere Treffer in diesem Dokument",
     "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Abbrechen",
     "search-submit-button-title": "Abschicken",
     "search-label": "Suchen"
@@ -109,6 +116,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"de"
   });
 });
 </script> 
@@ -116,6 +125,33 @@ cookieconsent.run({
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -125,12 +161,12 @@ cookieconsent.run({
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -140,12 +176,12 @@ cookieconsent.run({
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">HWE-Skript</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/lg-eng/HWE-Skript" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/lg-eng/HWE-Skript" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -240,6 +276,12 @@ cookieconsent.run({
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Projekte/04.03_Oszillator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -251,7 +293,7 @@ cookieconsent.run({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
@@ -271,7 +313,7 @@ cookieconsent.run({
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></h1>
 </div>
@@ -286,10 +328,12 @@ cookieconsent.run({
   </div>
   
 
+
 </header>
 
-<div class="cell" data-execution_count="1">
-<details>
+
+<div id="bf79df16" class="cell" data-execution_count="1">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import sys</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adding Folder_2 to the system path</span></span>
@@ -306,8 +350,8 @@ cookieconsent.run({
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MySymbol(Symbol):</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__new__</span>(cls, name, description<span class="op">=</span><span class="st">''</span>,unit<span class="op">=</span><span class="st">''</span>,value<span class="op">=</span><span class="st">''</span>):</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        obj <span class="op">=</span> Symbol.<span class="fu">__new__</span>(cls, name)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__new__</span>(cls, name, description<span class="op">=</span><span class="st">''</span>,unit<span class="op">=</span><span class="st">''</span>,value<span class="op">=</span><span class="st">''</span>,<span class="op">**</span>kwargs):</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        obj <span class="op">=</span> Symbol.<span class="fu">__new__</span>(cls, name,<span class="op">**</span>kwargs)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        obj.description <span class="op">=</span> description</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        obj.unit <span class="op">=</span> unit</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        obj.value <span class="op">=</span> value</span>
@@ -343,54 +387,68 @@ cookieconsent.run({
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value,<span class="bu">str</span>(vari.unit.abbrev))</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            quant_string <span class="op">=</span> QuantValue.render(prec<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">0</span>]</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> quant_string[<span class="op">-</span><span class="dv">1</span>].isdigit():</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">''</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">1</span>]</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span>:</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(re.split('(\d+)',QuantValue.render(prec=2)))</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = re.split('(\d+)',QuantValue.render(prec=2))[-1]</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = ''</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = re.split('(\d+)',QuantValue.render(prec=2))[1]</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = QuantValue.render(prec=2)</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> uni.find(<span class="st">'ohm'</span>) <span class="op">&gt;=</span><span class="dv">0</span>:</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">'\ \mathrm{'</span> <span class="op">+</span> uni.replace(<span class="st">'ohm'</span>,<span class="st">'\Omega'</span>) <span class="op">+</span> <span class="st">'}'</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="bu">str</span>(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' \ '</span> <span class="op">+</span> latex(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> kwargs <span class="op">!=</span> {}:</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>                label <span class="op">=</span> kwargs[<span class="st">'label'</span>]</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> disp_string <span class="op">+</span> <span class="ss">f'</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>            display(Markdown(disp_string))</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str(vari.value) + f'$\ {latex(vari.unit)}$' ))            </span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str("%.2f" % round(vari.value, 2)) + f'$\ {latex(vari.unit)}$' ))</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(QuantValue.render()) + f'$$' ))</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(quant) + f'$$' ))</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + str(vari.value) + f'\ {latex(vari.unit)}$$' ))</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_num_value(eqn):</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>            case <span class="op">=</span> {sym:sym.value}</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>            replacement.update(case)</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(replacement)</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>        <span class="co">#return Eq(eqn.lhs,eqn.rhs.evalf(subs=replacement))</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>        eqn.lhs.value <span class="op">=</span> eqn.rhs.evalf(subs<span class="op">=</span>replacement)</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>        <span class="co">#display(eqn.lhs.value)</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> logic_parser(eqn):</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">str</span>(eqn).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            quant_string <span class="op">=</span> QuantValue.render(prec<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">0</span>]</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> quant_string[<span class="op">-</span><span class="dv">1</span>].isdigit():</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">1</span>]</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span>:</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(re.split('(\d+)',QuantValue.render(prec=2)))</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = re.split('(\d+)',QuantValue.render(prec=2))[-1]</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = ''</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = re.split('(\d+)',QuantValue.render(prec=2))[1]</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = QuantValue.render(prec=2)</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> uni.find(<span class="st">'ohm'</span>) <span class="op">&gt;=</span><span class="dv">0</span>:</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">'\ \mathrm{'</span> <span class="op">+</span> uni.replace(<span class="st">'ohm'</span>,<span class="st">'\Omega'</span>) <span class="op">+</span> <span class="st">'}'</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="bu">str</span>(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' \ '</span> <span class="op">+</span> latex(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> kwargs <span class="op">!=</span> {}:</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>                label <span class="op">=</span> kwargs[<span class="st">'label'</span>]</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> disp_string <span class="op">+</span> <span class="ss">f'</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>            display(Markdown(disp_string))</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str(vari.value) + f'$\ {latex(vari.unit)}$' ))            </span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str("%.2f" % round(vari.value, 2)) + f'$\ {latex(vari.unit)}$' ))</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(QuantValue.render()) + f'$$' ))</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(quant) + f'$$' ))</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + str(vari.value) + f'\ {latex(vari.unit)}$$' ))</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_num_value(eqn):</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(replacement)</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>        <span class="co">#return Eq(eqn.lhs,eqn.rhs.evalf(subs=replacement))</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>        eqn.lhs.value <span class="op">=</span> eqn.rhs.evalf(subs<span class="op">=</span>replacement)</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>        <span class="co">#display(eqn.lhs.value)</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> replace_num_value(eqn):</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(replacement)</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>        eqn <span class="op">=</span> Eq(eqn.lhs,eqn.rhs.evalf(subs<span class="op">=</span>replacement))</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> eqn</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> logic_parser(eqn):</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">str</span>(eqn).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="von-der-wahrheitstabelle-zur-booleschen-gleichung" class="level2" data-number="1.1">
@@ -439,7 +497,7 @@ cookieconsent.run({
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\(\bar{D} \land \bar{C} \land \bar{B} \land {A}\)</span></td>
+<td><span class="math inline">\(\bar{D} \land \bar{C} \land \bar{B} \land   {A}\)</span></td>
 <td>x</td>
 </tr>
 <tr class="odd">
@@ -459,7 +517,7 @@ cookieconsent.run({
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\(\bar{D} \land \bar{C} \land {B} \land {A}\)</span></td>
+<td><span class="math inline">\(\bar{D} \land \bar{C} \land {B} \land   {A}\)</span></td>
 <td>xy</td>
 </tr>
 <tr class="odd">
@@ -479,7 +537,7 @@ cookieconsent.run({
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\(\bar{D} \land {C} \land \bar{B} \land {A}\)</span></td>
+<td><span class="math inline">\(\bar{D} \land {C} \land \bar{B} \land   {A}\)</span></td>
 <td>x</td>
 </tr>
 <tr class="odd">
@@ -489,7 +547,7 @@ cookieconsent.run({
 <td>1</td>
 <td>0</td>
 <td>1</td>
-<td><span class="math inline">\(\bar{D} \land {C} \land {B} \land \bar{A}\)</span></td>
+<td><span class="math inline">\(\bar{D} \land {C} \land {B} \land   \bar{A}\)</span></td>
 <td>-</td>
 </tr>
 <tr class="even">
@@ -499,7 +557,7 @@ cookieconsent.run({
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\(\bar{D} \land {C} \land {B} \land {A}\)</span></td>
+<td><span class="math inline">\(\bar{D} \land {C} \land {B} \land   {A}\)</span></td>
 <td>y</td>
 </tr>
 <tr class="odd">
@@ -519,7 +577,7 @@ cookieconsent.run({
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\({D} \land \bar{C} \land \bar{B} \land {A}\)</span></td>
+<td><span class="math inline">\({D} \land \bar{C} \land \bar{B} \land   {A}\)</span></td>
 <td>x</td>
 </tr>
 <tr class="odd">
@@ -539,7 +597,7 @@ cookieconsent.run({
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\({D} \land \bar{C} \land {B} \land {A}\)</span></td>
+<td><span class="math inline">\({D} \land \bar{C} \land {B} \land   {A}\)</span></td>
 <td>y</td>
 </tr>
 <tr class="odd">
@@ -549,7 +607,7 @@ cookieconsent.run({
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td><span class="math inline">\({D} \land {C} \land \bar{B} \land \bar{A}\)</span></td>
+<td><span class="math inline">\({D} \land {C} \land \bar{B} \land   \bar{A}\)</span></td>
 <td>-</td>
 </tr>
 <tr class="even">
@@ -559,7 +617,7 @@ cookieconsent.run({
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td><span class="math inline">\({D} \land {C} \land \bar{B} \land {A}\)</span></td>
+<td><span class="math inline">\({D} \land {C} \land \bar{B} \land   {A}\)</span></td>
 <td>-</td>
 </tr>
 <tr class="odd">
@@ -588,18 +646,18 @@ cookieconsent.run({
 <section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
 <p>Da gilt <span class="math inline">\(A \lor A = A\)</span> (Idempotenzgesetze der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden bis alle Terme einmal benutzt wurden! Gibt es zu einem Term, keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
-<p><span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor (\bar{D} \land \bar{C} \land {B} \land {A}) = \bar{D} \land \bar{C} \land {A}\)</span> x<br>
-<span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor (\bar{D} \land {C} \land \bar{B} \land {A}) = \bar{D} \land \bar{B} \land {A}\)</span> y<br>
-<span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land {A}) \lor ({D} \land \bar{C} \land \bar{B} \land {A}) = \bar{C} \land \bar{B} \land {A}\)</span> z<br>
-<span class="math inline">\((\bar{D} \land \bar{C} \land {B} \land {A}) \lor (\bar{D} \land {C} \land {B} \land {A}) = \bar{D} \land {B} \land {A}\)</span> y<br>
-<span class="math inline">\((\bar{D} \land \bar{C} \land {B} \land {A}) \lor ({D} \land \bar{C} \land {B} \land {A}) = \bar{C} \land {B} \land {A}\)</span> z<br>
-<span class="math inline">\((\bar{D} \land {C} \land {B} \land \bar{A}) \lor (\bar{D} \land {C} \land {B} \land {A}) = \bar{D} \land {C} \land {B}\)</span><br>
-<span class="math inline">\(({D} \land \bar{C} \land {B} \land {A}) \lor ({D} \land \bar{C} \land \bar{B} \land {A}) = {D} \land \bar{C} \land {A}\)</span> x<br>
-<span class="math inline">\(({D} \land {C} \land \bar{B} \land \bar{A}) \lor ({D} \land {C} \land \bar{B} \land {A}) = {D} \land {C} \land \bar{B}\)</span></p>
+<p><span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land \bar{C} \land {B} \land   {A}) = \bar{D} \land \bar{C} \land   {A}\)</span> x<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land {C} \land \bar{B} \land   {A}) = \bar{D}  \land \bar{B} \land   {A}\)</span> y<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor ({D} \land \bar{C} \land \bar{B} \land   {A}) =  \bar{C} \land \bar{B} \land   {A}\)</span> z<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land {B} \land   {A}) \lor (\bar{D} \land {C} \land {B} \land   {A})  = \bar{D} \land {B} \land   {A}\)</span> y<br>
+<span class="math inline">\((\bar{D} \land \bar{C} \land {B} \land   {A}) \lor ({D} \land \bar{C} \land {B} \land   {A}) =  \bar{C} \land {B} \land   {A}\)</span> z<br>
+<span class="math inline">\((\bar{D} \land {C} \land {B} \land   \bar{A}) \lor (\bar{D} \land {C} \land {B} \land   {A}) = \bar{D} \land {C} \land {B}\)</span><br>
+<span class="math inline">\(({D} \land \bar{C} \land {B} \land   {A}) \lor ({D} \land \bar{C} \land \bar{B} \land   {A}) = {D} \land \bar{C}  \land   {A}\)</span> x<br>
+<span class="math inline">\(({D} \land {C} \land \bar{B} \land   \bar{A}) \lor ({D} \land {C} \land \bar{B} \land   {A}) = {D} \land {C} \land \bar{B}\)</span></p>
 <p>Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde. Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
-<p><span class="math inline">\((\bar{D} \land \bar{C} \land {A}) \lor ({D} \land \bar{C} \land {A}) = \bar{C} \land {A}\)</span><br>
-<span class="math inline">\((\bar{D} \land \bar{B} \land {A}) \lor (\bar{D} \land {B} \land {A}) = \bar{D} \land {A}\)</span><br>
-<span class="math inline">\((\bar{C} \land \bar{B} \land {A}) \lor (\bar{C} \land {B} \land {A}) = \bar{C} \land {A}\)</span></p>
+<p><span class="math inline">\((\bar{D} \land \bar{C} \land   {A}) \lor ({D} \land \bar{C}  \land   {A}) =  \bar{C}  \land   {A}\)</span><br>
+<span class="math inline">\((\bar{D}  \land \bar{B} \land {A}) \lor (\bar{D} \land {B} \land   {A}) = \bar{D} \land   {A}\)</span><br>
+<span class="math inline">\((\bar{C} \land \bar{B} \land   {A}) \lor (\bar{C} \land {B} \land   {A}) = \bar{C}  \land   {A}\)</span></p>
 <p>Mit dem Idempotenzgesetze der Disjunktion <span class="math inline">\(A \lor A = A\)</span> kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.</p>
 <p>Das Ergebnis:<br>
 <span id="eq-bool2"><span class="math display">\[Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B}) \tag{1.1}\]</span></span></p>
@@ -608,7 +666,7 @@ cookieconsent.run({
 <h3 data-number="1.1.3" class="anchored" data-anchor-id="überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</h3>
 <p>Zur Überprüfung wird das Ergebnis mittels Sympy berechnet.</p>
 <div class="cell" data-execution_count="2">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
@@ -619,10 +677,11 @@ cookieconsent.run({
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'Wahrheitstabelle.csv'</span>,sep<span class="op">=</span><span class="st">';'</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>display(Markdown(df.to_markdown(index<span class="op">=</span><span class="va">False</span>, colalign <span class="op">=</span><span class="st">'left'</span>)))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<div id="tbl-wahrheitstabelle" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Tabelle&nbsp;1.1: Wahrheitstabelle</caption>
+<div id="tbl-wahrheitstabelle" class="cell quarto-float anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-wahrheitstabelle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="do-not-create-environment cell table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th>D</th>
@@ -749,6 +808,11 @@ cookieconsent.run({
 </table>
 </div>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-wahrheitstabelle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;1.1: Wahrheitstabelle
+</figcaption>
+</figure>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -763,8 +827,8 @@ Hinweis
 <p><span class="math inline">\(\bar{A} = \neg A\)</span></p>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
-<details>
+<div id="5a1affe7" class="cell" data-execution_count="3">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> MySymbol(<span class="st">'C'</span>,description<span class="op">=</span><span class="st">'C Eingang'</span>)</span>
@@ -782,28 +846,28 @@ Hinweis
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_description(Yeq.free_symbols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Yeq"><span class="math display">\[
 Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B \wedge C \wedge \neg D\right) \vee \left(C \wedge D \wedge \neg B\right)
 \tag{1.2}\]</span></span></p>
 </div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(A\)</span> … A Eingang</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(C\)</span> … C Eingang</p>
-</div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
-<div class="cell-output cell-output-display">
-<p><span class="math inline">\(D\)</span> … D Eingang</p>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(C\)</span> … C Eingang</p>
 </div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(A\)</span> … A Eingang</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
 </div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(D\)</span> … D Eingang</p>
 </div>
-<p><a href="#eq-bool2">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>
+</div>
+<p><a href="#eq-bool2" class="quarto-xref">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq" class="quarto-xref">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>
 </section>
 <section id="schaltung" class="level3" data-number="1.1.4">
 <h3 data-number="1.1.4" class="anchored" data-anchor-id="schaltung"><span class="header-section-number">1.1.4</span> Schaltung</h3>
@@ -820,8 +884,8 @@ Hinweis
 <p>Es handelt sich um eine automatisch generierte Schaltung mit amerikanischen Symbolen! Diese Schaltung entspricht NICHT europäischen Normen und ist rein informativ.</p>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<details>
+<div id="cell-fig-SchaltungS1" class="cell" data-execution_count="4">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> schemdraw.parsing <span class="im">import</span> logicparse</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#https://schemdraw.readthedocs.io/en/latest/elements/logic.html</span></span>
@@ -832,10 +896,14 @@ Hinweis
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>display(logicparse(Yeqstring, outlabel<span class="op">=</span><span class="st">'$Y$'</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-schaltungs1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="01.05_BoolscheAlgebra_files/figure-html/fig-schaltungs1-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Abbildung&nbsp;1.1: Logik Schaltung für Ausgang Y</figcaption>
+<div id="fig-schaltungs1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schaltungs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01.05_BoolscheAlgebra_files/figure-html/fig-schaltungs1-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schaltungs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;1.1: Logik Schaltung für Ausgang Y
+</figcaption>
 </figure>
 </div>
 </div>
@@ -925,10 +993,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -938,8 +1005,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -952,6 +1028,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -995,6 +1190,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1020,6 +1216,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1081,12 +1303,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../index.html" class="pagination-link">
+      <a href="../../index.html" class="pagination-link" aria-label="Willkommen zum Skript">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Willkommen zum Skript</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../GET/KnotenSpannungsAnalyse.html" class="pagination-link">
+      <a href="../../GET/KnotenSpannungsAnalyse.html" class="pagination-link" aria-label="Knoten- Spannungs- Analyse">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungs- Analyse</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1097,12 +1319,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
