@@ -393,7 +393,6 @@ Vorgehensweise
 **2. Unbekannte Größen definieren** 
 ```{python}
 #| code-fold: true
-#| echo: false
 
 from sympy import *
 
@@ -439,7 +438,6 @@ Siehe @fig-KSA5
 
 ```{python}
 #| code-fold: true
-#| echo: false
 
 # Gleichungen
 display(Markdown('Maschengleichungen'))
@@ -468,7 +466,7 @@ QBookHelpers.print_equation(K4,label='eq-K4')
 
 ```{python}
 #| code-fold: true  
-#| echo: false
+
 
 
 display(Markdown('Ohmsches Gesetz'))
@@ -493,7 +491,6 @@ display(len(equations))
 
 ```{python}	
 #| code-fold: true
-#| echo: false
 
 display(Markdown('Anzahl der Gleichungen:'))
 display(len(equations))
@@ -515,7 +512,7 @@ else:
 
 ```{python}
 #| code-fold: true
-#| echo: false
+
 
 # Gleichungssystem lösen
 sol = linsolve(equations,unknowns)

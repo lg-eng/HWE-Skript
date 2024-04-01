@@ -1,0 +1,160 @@
+```{python}
+#| code-fold: true
+##| echo: false
+from sympy import *
+from sympy.abc import s
+from sympy.physics.control.lti import TransferFunction, Series
+from sympy.physics.control.control_plots import step_response_plot, step_response_numerical_data, bode_plot
+
+```
+
+# Oszillator - Schwingkreis {#sec-Oszillator}  
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+
+
+Oszillatoren werden für folgende Anwendungen benötigt:  
+
+* Taktgeber für digitale Schaltungen  
+* Erzeugung von Trägersignalen für Drahtlose Kommunikation  
+* Frequenzgeneratoren  
+* Taktsignale für die Zeitmessung  
+* Erzeugung von Sinuswellen für die Audiotechnik  
+
+Und viele weitere Anwendungen. Oszillatorschaltungen sind damit grundlegende Schaltungen der Elektronik.  
+
+## Grundlagen
+**Schwingkreis** Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um Schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.
+
+**Oszillator** Ein Oszillator ist eine elektronische Schaltung, die aus einem Schwingkreis und einer Verstärkerschaltung besteht und den Zweck hat eine periodische Spannung zu erzeugen.
+
+### Oszillatorschaltungen
+Ein System ist schwingfähig, wenn es mindestens zwei Energiespeicher enthält. Zum Beispiel zwei Kondensatoren oder einen Kondensator und eine Spule. 
+
+Es gibt verschiedene Arten von Oszillatorschaltungen, die auf unterschiedlichen Prinzipien basieren. Die häufigsten Typen sind:  
+* LC-Oszillatoren  
+* RC-Oszillatoren  
+* Kristalloszillatoren  
+* Relaxationsoszillatoren  
+* MEMS-Oszillatoren  
+* Phasenverschobene Oszillatoren  
+
+Jeder dieser Oszillatoren hat seine eigenen Vor- und Nachteile und wird für spezifische Anwendungen eingesetzt. In diesem Kapitel werden wir uns auf die RC-Oszillatoren konzentrieren, die auf einem Schwingkreis basieren, der aus Widerständen und Kondensatoren besteht.  
+Es soll ein Wien-Robinson-Oszillator erarbeitet werden. 
+ 
+
+Weitere Links zum Thema [Altium Designer - Oscillators](https://resources.altium.com/p/everything-you-need-know-about-oscillators)
+
+### Blockschaltbild eines Oszillators
+Als Blockschaltbild lässt sich ein Oszillator aus zwei Teilen darstellen. Einem Frequenzbestimmendem System, dem Schwingkreis, und einem Verstärker.  
+
+![Blockschaltbild eines Oszillator ](Oszillator/OszillatorBlockschaltbild.png){#fig-BlockschaltbildOszillator}  
+  
+
+### Die Übertragungsfunktion eines Oszillators {#sec-OscÜbertragungsfunktion}
+Jeder der in @fig-BlockschaltbildOszillator gezeigten Blöcke lässt sich mathematisch beschreiben. Auch das gesamte System lässt sich mathematisch beschreiben.  
+Mathematisch kann ein Schwingkreis durch eine Differentialgleichung beschrieben werden. Besser eignet sich die Beschreibung durch eine Übertragungsfunktion im Frequenzbereich, die die Beziehung zwischen Eingang und Ausgang des Schwingkreises beschreibt. Die Theorie der Übertragungsfunktionen wird unter anderem in der Regelungstechnik verwendet. Es unterscheidet sich lediglich die [Nomenklatur](https://de.wikipedia.org/wiki/Nomenklatur) und die Anwendung, die Mathematik ist die gleiche. Weiters ist die Zweitortheorie sehr eng mit der Theorie der Übertragungsfunktionen verwandt. Wer hier die genauen Zusammenhänge verstehen möchte muss sich mit der [Laplace-Transformation](https://de.wikipedia.org/wiki/Laplace-Transformation) auseinandersetzen.  
+Grafisch lässt sich die Übertragungsfunktion mit dem Bode-Diagramm gut Darstellen.
+
+Hier wird die Übertragungsfunktion dazu benutzt die korrekten Bauteilwerte für einen Wien-Robinson-Oszillator zu berechnen.
+
+<!---
+Mathematisch ist ein schwingfähiges System an der Differentialgleichung zweiter Ordnung, oder höher, zu erkennen. In der Übertragungsfunktion muss das $s^2$ vorkommen.  
+Weiters darf das System nicht gedämpft sein um das Abklingen der Schwingung zu verhindern. Die Dämpfung wird durch den Dämpfungsfaktor $D$ beschrieben. Die Frequenz des Schwingkreises wird durch die Eigenfrequenz $\omega_0$ beschrieben. $K$ ist der Verstärkungsfaktor des Schwingkreises. $K$ darf nicht zu groß sein um ein aufschwingen des Systems zu verhindern.  
+In Formeln und Zahlen sehen diese Anforderungen wie folgt aus. Zunächst werden die Übertragungsfunktionen der einzelnen Blöcke betrachtet und im anschluss die Übertragungsfunktion des gesamten Systems.
+-->
+
+## Dimensionierung eines Wien-Robinson-Oszillator
+Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltung ist in @boehmer17 zu finden.  Schematisch ist die Schaltung als Blockschaltbild in @fig-BlockschaltbildOszillator dargestellt. Die zwei Blöcke können getrennt betrachtet werden. Der Schwingkreis und der Verstärker.
+
+### Übertragungsfunktion des Schwingkreises $H_1(\omega)$
+Übertragungsfunktionen werden im Frequenzbereich betrachtet. das bedeutet, dass unsere Gleichungen nicht von der Zeit abhängen sondern von der Frequenz. 
+<!-- Statt dem bekannten $j\omega$, der Komplexen Kreisfrequenz, wird die Laplace-Variable $s$ verwendet. Mehr Informationen dazu finden sich unter @sec-OscÜbertragungsfunktion.  -->
+Beim Wien-Robinson-Oszillator wird eine Schaltung aus zwei Widerständen und einem Kondensator verwendet, @fig-RCSchwingkreis.
+
+![RC Schwingkreis](Oszillator/RCSchwingkreis.png){#fig-RCSchwingkreis  width=10cm}  
+
+Die Übertragungsfunktion lässt sich nun auf zwei Arten darstellen. Entweder mathematisch mittels der Komplexen Wechselstromrechnung oder mittels Simulation.
+
+#### Mathematische Berechnung
+Die Übertragungsfunktion lässt sich mittels Spannungsteileregel anschreiben.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+Rw1 = MySymbol('Rw1',real=True,positive=True)
+Rw2 = MySymbol('Rw2',real=True,positive=True)
+Cw1 = MySymbol('Cw1',real=True,positive=True)
+Cw2 = MySymbol('Cw2',real=True,positive=True)
+Uin = MySymbol('U_{in}',real=True,positive=True)
+Uout = MySymbol('U_{out}',real=True,positive=True)
+w = MySymbol('w',real=True,positive=True)
+Zin = MySymbol('Z_{in}')
+Zout = MySymbol('Z_{out}')
+
+Zout = 1/(1/Rw2+I*w*Cw2)
+Zin = Zout + Rw1 + 1/(I*w*Cw1)
+
+SpgT_eq = Eq(Uout/Uin, Zout/(Zin))  
+QBookHelpers.print_equation(SpgT_eq)
+
+```
+
+Werden die zwei Widerstände und die zwei Kondensatoren als gleich angenommen, also $Rw1=Rw2=R$ und $Cw1=Cw2=C$ ergibt sich folgende Vereinfachung.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+R = MySymbol('R',real=True,positive=True)
+C = MySymbol('C',real=True,positive=True)
+
+SpgT_eq = simplify(SpgT_eq.subs({Rw1:Rw2,Rw2:R,Cw1:Cw2,Cw2:C}))
+QBookHelpers.print_equation(SpgT_eq) #Would be way bette if the I was in the denominator, don't know how to do that.
+
+```
+
+Bei der Schwingfrequenz des Oszillators handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit $i/i$, kann nur der Imaginärteil des Nenners betrachtet werden.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+imNenner = MySymbol('im(Nenner)',real=True)
+w0 = MySymbol('w_0',real=True,positive=True)
+
+#Using the denominator of the Transferfunction, need multiply by I to get correct form
+n,d=fraction(SpgT_eq.rhs)
+
+eq_imNenner = Eq(imNenner,im(simplify(d*I)))
+QBookHelpers.print_equation(eq_imNenner)
+
+```
+
+Wird die Gleichung nach $\omega$ aufgelöst ergibt sich die Gleichung für die Eigenfrequenz des Schwingkreises.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+w0_eq = Eq(w0,solve(im(d*I),w)[0])
+QBookHelpers.print_equation(w0_eq)
+
+""" 
+#Using the imaginary part of the entire Transferfunction, hard to do by hand
+imSpgT = MySymbol('im(SpgT)',real=True)
+imSpgT_eq = Eq(imSpgT,im(SpgT_eq.rhs))
+QBookHelpers.print_equation(imSpgT_eq)
+display(solve(im(SpgT_eq.rhs),w)) """
+
+#Transferfunction
+H1 = MySymbol('H_1')
+H1_eq = Eq(H1,TransferFunction(n.subs({I*w:s}),d.subs({I*w:s}),s))
+#QBookHelpers.print_equation(H1_eq)
+
+```
+
+
+
+#### Simulation

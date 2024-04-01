@@ -227,8 +227,6 @@ display(S4eq)
 Zur Überprüfung wird aus den Gleichungen die Wahrheitstabellen erstellt und mit der oben definierten Wahrheitstabellen verglichen.  
 
 ```{python}
-
-```{python}
 #| code-fold: true
 #| echo: false
 #| label: tbl-WahrheitstabelleKontS1S3
@@ -262,8 +260,6 @@ df1 = df1.assign(S3=tt3)
 display(Markdown(df1.to_markdown(index=False,tablefmt="github")))
 
 ```
-
-```{python}
 
 ```{python}
 #| code-fold: true

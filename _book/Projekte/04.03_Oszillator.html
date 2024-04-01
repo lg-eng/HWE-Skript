@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>HWE-Skript - 6&nbsp; Oszillator - Schwingkreis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
+<link href="../Projekte/04.02_H-Bruecke.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"de"
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.03_Oszillator.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">HWE-Skript</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/lg-eng/HWE-Skript" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../HWE-Skript.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../HWE-Skript.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Willkommen zum Skript</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">1. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../GET/KnotenSpannungsAnalyse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungs- Analyse</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">3. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">4. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.03_Oszillator.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#grundlagen" id="toc-grundlagen" class="nav-link active" data-scroll-target="#grundlagen"><span class="header-section-number">6.1</span> Grundlagen</a>
+  <ul>
+  <li><a href="#oszillatorschaltungen" id="toc-oszillatorschaltungen" class="nav-link" data-scroll-target="#oszillatorschaltungen"><span class="header-section-number">6.1.1</span> Oszillatorschaltungen</a></li>
+  <li><a href="#blockschaltbild-eines-oszillators" id="toc-blockschaltbild-eines-oszillators" class="nav-link" data-scroll-target="#blockschaltbild-eines-oszillators"><span class="header-section-number">6.1.2</span> Blockschaltbild eines Oszillators</a></li>
+  <li><a href="#sec-OscÜbertragungsfunktion" id="toc-sec-OscÜbertragungsfunktion" class="nav-link" data-scroll-target="#sec-OscÜbertragungsfunktion"><span class="header-section-number">6.1.3</span> Die Übertragungsfunktion eines Oszillators</a></li>
+  </ul></li>
+  <li><a href="#dimensionierung-eines-wien-robinson-oszillator" id="toc-dimensionierung-eines-wien-robinson-oszillator" class="nav-link" data-scroll-target="#dimensionierung-eines-wien-robinson-oszillator"><span class="header-section-number">6.2</span> Dimensionierung eines Wien-Robinson-Oszillator</a>
+  <ul>
+  <li><a href="#übertragungsfunktion-des-schwingkreises-h_1omega" id="toc-übertragungsfunktion-des-schwingkreises-h_1omega" class="nav-link" data-scroll-target="#übertragungsfunktion-des-schwingkreises-h_1omega"><span class="header-section-number">6.2.1</span> Übertragungsfunktion des Schwingkreises <span class="math inline">\(H_1(\omega)\)</span></a>
+  <ul class="collapse">
+  <li><a href="#mathematische-berechnung" id="toc-mathematische-berechnung" class="nav-link" data-scroll-target="#mathematische-berechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</a></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">6.2.1.2</span> Simulation</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.03_Oszillator.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-Oszillator" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="83606d8c" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.abc <span class="im">import</span> s</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.physics.control.lti <span class="im">import</span> TransferFunction, Series</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.physics.control.control_plots <span class="im">import</span> step_response_plot, step_response_numerical_data, bode_plot</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="d61f2f95" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import sys</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adding Folder_2 to the system path</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sys.path.insert(0, '../../../Common/QuartoBookHelpers')</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#import QuartoBookHelpers</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, Latex</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy.physics.units <span class="im">as</span> u</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> quantiphy <span class="im">import</span> Quantity</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MySymbol(Symbol):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__new__</span>(cls, name, description<span class="op">=</span><span class="st">''</span>,unit<span class="op">=</span><span class="st">''</span>,value<span class="op">=</span><span class="st">''</span>,<span class="op">**</span>kwargs):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        obj <span class="op">=</span> Symbol.<span class="fu">__new__</span>(cls, name,<span class="op">**</span>kwargs)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        obj.description <span class="op">=</span> description</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        obj.unit <span class="op">=</span> unit</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        obj.value <span class="op">=</span> value</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> obj</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyFunction(Function):</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__new__</span>(cls, name, description<span class="op">=</span><span class="st">''</span>,unit<span class="op">=</span><span class="st">''</span>,value<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        obj <span class="op">=</span> Function.<span class="fu">__new__</span>(cls, name)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        obj.description <span class="op">=</span> description</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        obj.unit <span class="op">=</span> unit</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        obj.value <span class="op">=</span> value</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> obj</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> QBookHelpers():</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_description(dic):</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> vari <span class="kw">in</span> dic:</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            display(Markdown(<span class="ss">f'$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">$'</span> <span class="op">+</span> <span class="st">' ... '</span> <span class="op">+</span> vari.description))</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_equation(eq,<span class="op">**</span>kwargs):</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(kwargs)</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> kwargs <span class="op">!=</span> {}:</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            label <span class="op">=</span> kwargs[<span class="st">'label'</span>]</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(label)</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            display(Markdown(<span class="ss">f'$$</span><span class="ch">\n</span><span class="sc">{</span>latex(eq)<span class="sc">}</span><span class="ch">\n</span><span class="ss">$$</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span>))</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:      </span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            display(Markdown(<span class="ss">f'$$</span><span class="ch">\n</span><span class="sc">{</span>latex(eq)<span class="sc">}</span><span class="ch">\n</span><span class="ss">$$</span><span class="ch">{{</span><span class="ss">#eq-Dummy</span><span class="ch">}}</span><span class="ss">'</span>))</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_values(dic,<span class="op">**</span>kwargs):</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> vari <span class="kw">in</span> dic:</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value,<span class="bu">str</span>(vari.unit.abbrev))</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            quant_string <span class="op">=</span> QuantValue.render(prec<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">0</span>]</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> quant_string[<span class="op">-</span><span class="dv">1</span>].isdigit():</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">1</span>]</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span>:</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(re.split('(\d+)',QuantValue.render(prec=2)))</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = re.split('(\d+)',QuantValue.render(prec=2))[-1]</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = ''</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = re.split('(\d+)',QuantValue.render(prec=2))[1]</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = QuantValue.render(prec=2)</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> uni.find(<span class="st">'ohm'</span>) <span class="op">&gt;=</span><span class="dv">0</span>:</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">'\ \mathrm{'</span> <span class="op">+</span> uni.replace(<span class="st">'ohm'</span>,<span class="st">'\Omega'</span>) <span class="op">+</span> <span class="st">'}'</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="bu">str</span>(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' \ '</span> <span class="op">+</span> latex(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> kwargs <span class="op">!=</span> {}:</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>                label <span class="op">=</span> kwargs[<span class="st">'label'</span>]</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> disp_string <span class="op">+</span> <span class="ss">f'</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>            display(Markdown(disp_string))</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str(vari.value) + f'$\ {latex(vari.unit)}$' ))            </span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str("%.2f" % round(vari.value, 2)) + f'$\ {latex(vari.unit)}$' ))</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(QuantValue.render()) + f'$$' ))</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(quant) + f'$$' ))</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + str(vari.value) + f'\ {latex(vari.unit)}$$' ))</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_num_value(eqn):</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(replacement)</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>        <span class="co">#return Eq(eqn.lhs,eqn.rhs.evalf(subs=replacement))</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>        eqn.lhs.value <span class="op">=</span> eqn.rhs.evalf(subs<span class="op">=</span>replacement)</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>        <span class="co">#display(eqn.lhs.value)</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> replace_num_value(eqn):</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(replacement)</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>        eqn <span class="op">=</span> Eq(eqn.lhs,eqn.rhs.evalf(subs<span class="op">=</span>replacement))</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> eqn</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> logic_parser(eqn):</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">str</span>(eqn).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Oszillatoren werden für folgende Anwendungen benötigt:</p>
+<ul>
+<li>Taktgeber für digitale Schaltungen<br>
+</li>
+<li>Erzeugung von Trägersignalen für Drahtlose Kommunikation<br>
+</li>
+<li>Frequenzgeneratoren<br>
+</li>
+<li>Taktsignale für die Zeitmessung<br>
+</li>
+<li>Erzeugung von Sinuswellen für die Audiotechnik</li>
+</ul>
+<p>Und viele weitere Anwendungen. Oszillatorschaltungen sind damit grundlegende Schaltungen der Elektronik.</p>
+<section id="grundlagen" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="grundlagen"><span class="header-section-number">6.1</span> Grundlagen</h2>
+<p><strong>Schwingkreis</strong> Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um Schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.</p>
+<p><strong>Oszillator</strong> Ein Oszillator ist eine elektronische Schaltung, die aus einem Schwingkreis und einer Verstärkerschaltung besteht und den Zweck hat eine periodische Spannung zu erzeugen.</p>
+<section id="oszillatorschaltungen" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="oszillatorschaltungen"><span class="header-section-number">6.1.1</span> Oszillatorschaltungen</h3>
+<p>Ein System ist schwingfähig, wenn es mindestens zwei Energiespeicher enthält. Zum Beispiel zwei Kondensatoren oder einen Kondensator und eine Spule.</p>
+<p>Es gibt verschiedene Arten von Oszillatorschaltungen, die auf unterschiedlichen Prinzipien basieren. Die häufigsten Typen sind:<br>
+* LC-Oszillatoren<br>
+* RC-Oszillatoren<br>
+* Kristalloszillatoren<br>
+* Relaxationsoszillatoren<br>
+* MEMS-Oszillatoren<br>
+* Phasenverschobene Oszillatoren</p>
+<p>Jeder dieser Oszillatoren hat seine eigenen Vor- und Nachteile und wird für spezifische Anwendungen eingesetzt. In diesem Kapitel werden wir uns auf die RC-Oszillatoren konzentrieren, die auf einem Schwingkreis basieren, der aus Widerständen und Kondensatoren besteht.<br>
+Es soll ein Wien-Robinson-Oszillator erarbeitet werden.</p>
+<p>Weitere Links zum Thema <a href="https://resources.altium.com/p/everything-you-need-know-about-oscillators">Altium Designer - Oscillators</a></p>
+</section>
+<section id="blockschaltbild-eines-oszillators" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="blockschaltbild-eines-oszillators"><span class="header-section-number">6.1.2</span> Blockschaltbild eines Oszillators</h3>
+<p>Als Blockschaltbild lässt sich ein Oszillator aus zwei Teilen darstellen. Einem Frequenzbestimmendem System, dem Schwingkreis, und einem Verstärker.</p>
+<div id="fig-BlockschaltbildOszillator" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BlockschaltbildOszillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oszillator/OszillatorBlockschaltbild.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BlockschaltbildOszillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.1: Blockschaltbild eines Oszillator
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-OscÜbertragungsfunktion" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="sec-OscÜbertragungsfunktion"><span class="header-section-number">6.1.3</span> Die Übertragungsfunktion eines Oszillators</h3>
+<p>Jeder der in <a href="#fig-BlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a> gezeigten Blöcke lässt sich mathematisch beschreiben. Auch das gesamte System lässt sich mathematisch beschreiben.<br>
+Mathematisch kann ein Schwingkreis durch eine Differentialgleichung beschrieben werden. Besser eignet sich die Beschreibung durch eine Übertragungsfunktion im Frequenzbereich, die die Beziehung zwischen Eingang und Ausgang des Schwingkreises beschreibt. Die Theorie der Übertragungsfunktionen wird unter anderem in der Regelungstechnik verwendet. Es unterscheidet sich lediglich die <a href="https://de.wikipedia.org/wiki/Nomenklatur">Nomenklatur</a> und die Anwendung, die Mathematik ist die gleiche. Weiters ist die Zweitortheorie sehr eng mit der Theorie der Übertragungsfunktionen verwandt. Wer hier die genauen Zusammenhänge verstehen möchte muss sich mit der <a href="https://de.wikipedia.org/wiki/Laplace-Transformation">Laplace-Transformation</a> auseinandersetzen.<br>
+Grafisch lässt sich die Übertragungsfunktion mit dem Bode-Diagramm gut Darstellen.</p>
+<p>Hier wird die Übertragungsfunktion dazu benutzt die korrekten Bauteilwerte für einen Wien-Robinson-Oszillator zu berechnen.</p>
+<!---
+Mathematisch ist ein schwingfähiges System an der Differentialgleichung zweiter Ordnung, oder höher, zu erkennen. In der Übertragungsfunktion muss das $s^2$ vorkommen.  
+Weiters darf das System nicht gedämpft sein um das Abklingen der Schwingung zu verhindern. Die Dämpfung wird durch den Dämpfungsfaktor $D$ beschrieben. Die Frequenz des Schwingkreises wird durch die Eigenfrequenz $\omega_0$ beschrieben. $K$ ist der Verstärkungsfaktor des Schwingkreises. $K$ darf nicht zu groß sein um ein aufschwingen des Systems zu verhindern.  
+In Formeln und Zahlen sehen diese Anforderungen wie folgt aus. Zunächst werden die Übertragungsfunktionen der einzelnen Blöcke betrachtet und im anschluss die Übertragungsfunktion des gesamten Systems.
+-->
+</section>
+</section>
+<section id="dimensionierung-eines-wien-robinson-oszillator" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="dimensionierung-eines-wien-robinson-oszillator"><span class="header-section-number">6.2</span> Dimensionierung eines Wien-Robinson-Oszillator</h2>
+<p>Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltung ist in <span class="citation" data-cites="boehmer17">[<a href="../references.html#ref-boehmer17" role="doc-biblioref">1</a>]</span> zu finden. Schematisch ist die Schaltung als Blockschaltbild in <a href="#fig-BlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a> dargestellt. Die zwei Blöcke können getrennt betrachtet werden. Der Schwingkreis und der Verstärker.</p>
+<section id="übertragungsfunktion-des-schwingkreises-h_1omega" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="übertragungsfunktion-des-schwingkreises-h_1omega"><span class="header-section-number">6.2.1</span> Übertragungsfunktion des Schwingkreises <span class="math inline">\(H_1(\omega)\)</span></h3>
+<p>Übertragungsfunktionen werden im Frequenzbereich betrachtet. das bedeutet, dass unsere Gleichungen nicht von der Zeit abhängen sondern von der Frequenz. <!-- Statt dem bekannten $j\omega$, der Komplexen Kreisfrequenz, wird die Laplace-Variable $s$ verwendet. Mehr Informationen dazu finden sich unter @sec-OscÜbertragungsfunktion.  --> Beim Wien-Robinson-Oszillator wird eine Schaltung aus zwei Widerständen und einem Kondensator verwendet, <a href="#fig-RCSchwingkreis" class="quarto-xref">Abbildung&nbsp;<span>6.2</span></a>.</p>
+<div id="fig-RCSchwingkreis" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RCSchwingkreis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oszillator/RCSchwingkreis.png" class="img-fluid figure-img" style="width:10cm">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RCSchwingkreis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.2: RC Schwingkreis
+</figcaption>
+</figure>
+</div>
+<p>Die Übertragungsfunktion lässt sich nun auf zwei Arten darstellen. Entweder mathematisch mittels der Komplexen Wechselstromrechnung oder mittels Simulation.</p>
+<section id="mathematische-berechnung" class="level4" data-number="6.2.1.1">
+<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="mathematische-berechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</h4>
+<p>Die Übertragungsfunktion lässt sich mittels Spannungsteileregel anschreiben.</p>
+<div id="a3155fdd" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Rw1 <span class="op">=</span> MySymbol(<span class="st">'Rw1'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Rw2 <span class="op">=</span> MySymbol(<span class="st">'Rw2'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Cw1 <span class="op">=</span> MySymbol(<span class="st">'Cw1'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Cw2 <span class="op">=</span> MySymbol(<span class="st">'Cw2'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Uin <span class="op">=</span> MySymbol(<span class="st">'U_</span><span class="sc">{in}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>Uout <span class="op">=</span> MySymbol(<span class="st">'U_</span><span class="sc">{out}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> MySymbol(<span class="st">'w'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>Zin <span class="op">=</span> MySymbol(<span class="st">'Z_</span><span class="sc">{in}</span><span class="st">'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Zout <span class="op">=</span> MySymbol(<span class="st">'Z_</span><span class="sc">{out}</span><span class="st">'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>Zout <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">/</span>Rw2<span class="op">+</span>I<span class="op">*</span>w<span class="op">*</span>Cw2)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>Zin <span class="op">=</span> Zout <span class="op">+</span> Rw1 <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>(I<span class="op">*</span>w<span class="op">*</span>Cw1)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>SpgT_eq <span class="op">=</span> Eq(Uout<span class="op">/</span>Uin, Zout<span class="op">/</span>(Zin))  </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(SpgT_eq)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+\frac{U_{out}}{U_{in}} = \frac{1}{\left(i Cw_{2} w + \frac{1}{Rw_{2}}\right) \left(Rw_{1} + \frac{1}{i Cw_{2} w + \frac{1}{Rw_{2}}} - \frac{i}{Cw_{1} w}\right)}
+\tag{6.1}\]</span></span></p>
+</div>
+</div>
+<p>Werden die zwei Widerstände und die zwei Kondensatoren als gleich angenommen, also <span class="math inline">\(Rw1=Rw2=R\)</span> und <span class="math inline">\(Cw1=Cw2=C\)</span> ergibt sich folgende Vereinfachung.</p>
+<div id="b603a93a" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+\frac{U_{out}}{U_{in}} = \frac{i C R w}{- C^{2} R^{2} w^{2} + 3 i C R w + 1}
+\tag{6.2}\]</span></span></p>
+</div>
+</div>
+<p>Bei der Schwingfrequenz des Oszillators handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit <span class="math inline">\(i/i\)</span>, kann nur der Imaginärteil des Nenners betrachtet werden.</p>
+<div id="3501e1ff" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+im(Nenner) = - C^{2} R^{2} w^{2} + 1
+\tag{6.3}\]</span></span></p>
+</div>
+</div>
+<p>Wird die Gleichung nach <span class="math inline">\(\omega\)</span> aufgelöst ergibt sich die Gleichung für die Eigenfrequenz des Schwingkreises.</p>
+<div id="e0f62c85" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+w_{0} = \frac{1}{C R}
+\tag{6.4}\]</span></span></p>
+</div>
+</div>
+</section>
+<section id="simulation" class="level4" data-number="6.2.1.2">
+<h4 data-number="6.2.1.2" class="anchored" data-anchor-id="simulation"><span class="header-section-number">6.2.1.2</span> Simulation</h4>
+
+
+<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-boehmer17" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">E. Böhmer WO D. Ehrhardt (2018) Elemente der angewandten Elektronik. Springer Verlag, Wiesbaden</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Projekte/04.02_H-Bruecke.html" class="pagination-link" aria-label="H-Brücke">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">H-Brücke</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

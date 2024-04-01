@@ -1,0 +1,204 @@
+# Oszillator - Schwingkreis {#sec-Oszillator}  
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+Oszillatoren werden für folgende Anwendungen benötigt:  
+
+* Taktgeber für digitale Schaltungen  
+* Erzeugung von Trägersignalen für Drahtlose Kommunikation  
+* Frequenzgeneratoren  
+* Taktsignale für die Zeitmessung  
+* Erzeugung von Sinuswellen für die Audiotechnik  
+
+Und viele weitere Anwendungen. Oszillatorschaltungen sind damit grundlegende Schaltungen der Elektronik.  
+
+## Grundlagen
+**Schwingkreis** Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um Schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.
+
+**Oszillator** Ein Oszillator ist eine elektronische Schaltung, die aus einem Schwingkreis und einer Verstärkerschaltung besteht und den Zweck hat eine periodische Spannung zu erzeugen.
+
+
+### Blockschaltbild eines Oszillators
+Als Blockschaltbild lässt sich ein Oszillator aus zwei Teilen darstellen. Einem Frequenzbestimmendem System, dem Schwingkreis, und einem Verstärker.  
+
+![Blockschaltbild eines Oszillator ](Oszillator/OszillatorBlockschaltbild.png){#fig-BlockschaltbildOszillator}  
+
+Das Blockschaltbild muss jetzt mit einer realen elektronisches Schaltung umgesetzt werden. Am einfachsten geschieht das wenn man zunächst die Mathematik der Blockschaltung betrachtet und dann die Mathematik der Schaltungen. Draus lassen sich Bauteilwerte berechnen.  
+
+### Die Übertragungsfunktion eines Oszillators
+Mathematisch wird ein Schwingkreis durch eine Differentialgleichung beschrieben. Besser eignet sich die Beschreibung durch eine Übertragungsfunktion im Frequenzbereich, die die Beziehung zwischen Eingang und Ausgang des Schwingkreises beschreibt. Die Theorie der Übertragungsfunktionen wird unter anderem in der Regelungstechnik verwendet. Es unterscheidet sich lediglich die Nomenklatur und die Anwendung, die Mathematik ist die gleiche. Weiters ist die Zweitortheorie sehr eng mit der Theorie der Übertragungsfunktionen verwandt. Wer hier die genauen Zusammenhänge verstehen möchte muss sich mit der Laplacetransformation auseinandersetzen.  
+
+Mathematisch ist ein schwingfähiges System an der Differentialgleichung zweiter Ordnung, oder höher, zu erkennen. In der Übertragungsfunktion muss das $s^2$ vorkommen.  
+Weiters darf das System nicht gedämpft sein um das Abklingen der Schwingung zu verhindern. Die Dämpfung wird durch den Dämpfungsfaktor $D$ beschrieben. Die Frequenz des Schwingkreises wird durch die Eigenfrequenz $\omega_0$ beschrieben. $K$ ist der Verstärkungsfaktor des Schwingkreises. $K$ darf nicht zu groß sein um ein aufschwingen des Systems zu verhindern.  
+In Formeln und Zahlen sehen diese Anforderungen wie folgt aus. Zunächst werden die Übertragungsfunktionen der einzelnen Blöcke betrachtet und im anschluss die Übertragungsfunktion des gesamten Systems.
+
+#### Übertragungsfunktion des Schwingkreises $H_1(s)$
+$s$ ist die Laplace-Variable. Für unsere Zwecke kann $s$ statt dem bekannten $j\omega$ eingesetzt werden.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+
+from sympy import *
+from sympy.abc import s
+from sympy.physics.control.lti import TransferFunction, Series
+from sympy.physics.control.control_plots import step_response_plot, step_response_numerical_data, bode_plot
+
+
+D = MySymbol('D',value=0,real=True,positive=True)
+K = MySymbol('K',value=1,real=True,positive=True)
+R = MySymbol('R')
+G = MySymbol('G')
+F = MySymbol('F')
+w0 = MySymbol('w_0',real=True,positive=True)
+wn = MySymbol('w_n',value=1, unit=u.rad/u.s,real=True,positive=True)
+
+R = MySymbol('R',real=True,positive=True)
+C = MySymbol('C',real=True,positive=True)
+G = MySymbol('G')
+F = MySymbol('F')
+H = MySymbol('H')
+H1 = MySymbol('H_1')
+tau = MySymbol('tau')
+
+#Übertragungsfunktion des Schwingkreises
+
+#H1_eqrhs = TransferFunction(1, 3 + s*tau+1/(s*tau), s) # Passt eh aber es muss mit K, D und Omega_0 sein.
+H1_eqrhs = simplify(TransferFunction(1,1+(R+1/(s*C))+(1/R+s*C), s))
+display(H1_eqrhs.expand())
+display(H1_eqrhs.poles())
+display((H1_eqrhs.poles()[1]).subs({R:1000,C:10*10**-6}).evalf())
+H1_eq = Eq(H1,H1_eqrhs)
+QBookHelpers.print_equation(H1_eq)
+
+H_eqrhs = simplify((H1_eqrhs*TransferFunction(K,1,s)))
+H_eq = Eq(H,H_eqrhs)
+QBookHelpers.print_equation(H_eq)
+
+G_eqrhs = simplify(H_eqrhs/(TransferFunction(1,1,s)+H_eqrhs))
+display(G_eqrhs.poles())
+print(G_eqrhs.expand())
+#G_eq = Eq(G,G_eqrhs.poles())
+#QBookHelpers.print_equation(G_eq)
+
+
+```
+
+**ToContinue**
+Mit Variablen aus den Schwingbedingungen gleichsetzten.
+
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+w0_eq = Eq(w0, wn*sqrt(1-D**2))
+QBookHelpers.print_equation(w0_eq)
+
+#Übertragungsfunktion der Strecke
+display(Markdown("Die Übertragungsfunktion eines Schwingkreises:"))
+G_eqrhs = TransferFunction(K, (1/wn)**2*s**2+2*1/wn*D*s+1, s)
+G_eq = Eq(G,G_eqrhs)
+QBookHelpers.print_equation(G_eq)
+
+#Zahlenwerte
+display(Markdown("Um ein schwingfäiges System mit einer Verstärkung von 1 zu erhalten dessen Frequenz durch $w_n$ bestimmt ist muss das System folgende Werte haben:"))
+QBookHelpers.print_values([K,D,wn])
+
+display(Markdown("Die Übertragungsfunktion der Strecke mit Werten:"))
+G_eq_vals = QBookHelpers.replace_num_value(G_eq)
+QBookHelpers.print_equation(G_eq_vals)
+
+G_eqrhs_vals = G_eq_vals.rhs
+#Sprungantwort der Strecke
+#step_response_plot(G_eqrhs_vals) 
+
+#Bodediagramm der Strecke
+#bode_plot(G_eqrhs_vals, initial_exp=-4, final_exp=5)
+
+```
+
+Es gilt nun eine Schaltung zu entwickeln mit der sich die oben gezeigte Übertragungsfunktion $G$ realisieren lässt. Es muss ein Zusammenhang zwischen $K$, $D$ und $w_n$ und den Bauteilwerten der Schaltung hergestellt werden.
+
+## Oszillatorschaltungen
+Ein System ist schwingfähig, wenn es mindestens zwei Energiespeicher enthält. Zum Beispiel zwei Kondensatoren oder einen Kondensator und eine Spule. 
+
+
+
+Es gibt verschiedene Arten von Oszillatorschaltungen, die auf unterschiedlichen Prinzipien basieren. Die häufigsten Typen sind:
+* LC-Oszillatoren  
+* RC-Oszillatoren  
+* Kristalloszillatoren  
+* Relaxationsoszillatoren  
+* Phasenverschobene Oszillatoren  
+
+Jeder dieser Oszillatoren hat seine eigenen Vor- und Nachteile und wird für spezifische Anwendungen eingesetzt. In diesem Kapitel werden wir uns auf die RC-Oszillatoren konzentrieren, die auf einem Schwingkreis basieren, der aus Widerständen und Kondensatoren besteht.  
+Es soll ein Wien-Robinson-Oszillator erarbeitet werden.
+
+## Wien-Robinson-Oszillator
+Der Wien-Robinson-Oszillator ist ein RC-Oszillator, der auf einem Schwingkreis basiert, der aus Widerständen und Kondensatoren besteht. Dieser Schwingkreis ist die frequenzbestimmende Komponenten.  
+Um eine Dämpfung $D=0$ zu erreichen wird ein Operationsverstärker verwendet.  
+Der Wien-Robinson-Oszillator lässt sich gut als Blockschaltbild darstellen.
+
+## Schaltung
+Auch der Oszillator lässt sich aus Teilshaltungen zusammensetzen. 
+
+### Simulation 
+
+```{python}
+#| code-fold: true
+#| echo: false
+#| tags: [simulation]
+#| name: Wien-Robinson-Oszillator
+#| description: Simulation eines Wien-Robinson-Oszillators
+""" 
+import pandas as pd
+from plotly.subplots import make_subplots
+import plotly.express as px
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('Oszillator/Transient Analysis.csv',delimiter=';', decimal=',')
+display(df)
+
+#Plot with plotly
+fig = make_subplots(rows=2, cols=1, shared_xaxes=True, vertical_spacing=0.02)
+fig.add_trace(go.Scatter(x=df['time'], y=df['v(uout)'], name="v(uout)"), row=1, col=1)
+fig.update_layout(title="Transient Analysis of Wien-Robinson-Oszillator", xaxis_title="Time in s", yaxis_title="Voltage in V", showlegend=True)
+fig.show()
+
+#FFT of Signal
+#plot with plotly
+
+
+
+import numpy as np
+from scipy.fft import fft, fftfreq
+# Number of sample points
+N = len(df['time'])
+# sample spacing
+T = df['time'][1]-df['time'][0]
+y = df['v(uout)'].values
+yf = fft(y)
+xf = fftfreq(N, T)[:N//2]
+plt.plot(xf, 2.0/N * np.abs(yf[0:N//2]))
+plt.xlim(0, 10000)
+plt.xlabel('Frequency in Hz')
+plt.ylabel('Amplitude')
+plt.title('FFT of Wien-Robinson-Oszillator')
+plt.grid()
+plt.show()
+
+
+ """
+
+```
+
+
+
+Schwingkreis
+Verstärkung
+Anschwingbedingung
+Amplitudenregelung
+
+https://resources.altium.com/p/everything-you-need-know-about-oscillators   

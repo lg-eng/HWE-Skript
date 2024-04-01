@@ -28,6 +28,7 @@ book:
         #- Projekte/Grundlagen_Projektmanagement.qmd
         - Projekte/04.01_Leistungsverstaerker.qmd
         - Projekte/04.02_H-Bruecke.qmd
+        - Projekte/04.03_Oszillator.qmd
 
     - references.qmd
 
