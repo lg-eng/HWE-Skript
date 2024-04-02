@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript - 6&nbsp; Oszillator - Schwingkreis</title>
+<title>HWE-Skript - 6&nbsp; Oszillator</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -183,7 +183,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.03_Oszillator.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.03_Oszillator.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -298,7 +298,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Projekte/04.03_Oszillator.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,7 +329,7 @@ window.Quarto = {
   <ul>
   <li><a href="#übertragungsfunktion-des-schwingkreises-h_1omega" id="toc-übertragungsfunktion-des-schwingkreises-h_1omega" class="nav-link" data-scroll-target="#übertragungsfunktion-des-schwingkreises-h_1omega"><span class="header-section-number">6.2.1</span> Übertragungsfunktion des Schwingkreises <span class="math inline">\(H_1(\omega)\)</span></a>
   <ul class="collapse">
-  <li><a href="#mathematische-berechnung" id="toc-mathematische-berechnung" class="nav-link" data-scroll-target="#mathematische-berechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</a></li>
+  <li><a href="#sec-OscMathBerechnung" id="toc-sec-OscMathBerechnung" class="nav-link" data-scroll-target="#sec-OscMathBerechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</a></li>
   <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">6.2.1.2</span> Simulation</a></li>
   </ul></li>
   </ul></li>
@@ -339,9 +339,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.03_Oszillator.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.03_Oszillator.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-Oszillator" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator - Schwingkreis</span></span></h1>
+<h1 class="title"><span id="sec-Oszillator" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Oszillator</span></span></h1>
 </div>
 
 
@@ -358,7 +358,7 @@ window.Quarto = {
 </header>
 
 
-<div id="83606d8c" class="cell" data-execution_count="1">
+<div id="a0373cd9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -368,7 +368,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.physics.control.control_plots <span class="im">import</span> step_response_plot, step_response_numerical_data, bode_plot</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="d61f2f95" class="cell" data-execution_count="2">
+<div id="05e266e4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import sys</span></span>
@@ -416,75 +416,94 @@ window.Quarto = {
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            display(Markdown(<span class="ss">f'$$</span><span class="ch">\n</span><span class="sc">{</span>latex(eq)<span class="sc">}</span><span class="ch">\n</span><span class="ss">$$</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span>))</span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:      </span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            display(Markdown(<span class="ss">f'$$</span><span class="ch">\n</span><span class="sc">{</span>latex(eq)<span class="sc">}</span><span class="ch">\n</span><span class="ss">$$</span><span class="ch">{{</span><span class="ss">#eq-Dummy</span><span class="ch">}}</span><span class="ss">'</span>))</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_values(dic,<span class="op">**</span>kwargs):</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_values2(dic,<span class="op">**</span>kwargs):</span>
 <span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> vari <span class="kw">in</span> dic:</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value,<span class="bu">str</span>(vari.unit.abbrev))</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value)</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            quant_string <span class="op">=</span> QuantValue.render(prec<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">0</span>]</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> quant_string[<span class="op">-</span><span class="dv">1</span>].isdigit():</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">''</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">1</span>]</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span>:</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(re.split('(\d+)',QuantValue.render(prec=2)))</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = re.split('(\d+)',QuantValue.render(prec=2))[-1]</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = ''</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = re.split('(\d+)',QuantValue.render(prec=2))[1]</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = QuantValue.render(prec=2)</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> uni.find(<span class="st">'ohm'</span>) <span class="op">&gt;=</span><span class="dv">0</span>:</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">'\ \mathrm{'</span> <span class="op">+</span> uni.replace(<span class="st">'ohm'</span>,<span class="st">'\Omega'</span>) <span class="op">+</span> <span class="st">'}'</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="bu">str</span>(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' \ '</span> <span class="op">+</span> latex(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> kwargs <span class="op">!=</span> {}:</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>                label <span class="op">=</span> kwargs[<span class="st">'label'</span>]</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> disp_string <span class="op">+</span> <span class="ss">f'</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>            display(Markdown(disp_string))</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str(vari.value) + f'$\ {latex(vari.unit)}$' ))            </span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str("%.2f" % round(vari.value, 2)) + f'$\ {latex(vari.unit)}$' ))</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(QuantValue.render()) + f'$$' ))</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(quant) + f'$$' ))</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + str(vari.value) + f'\ {latex(vari.unit)}$$' ))</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            QuantValue <span class="op">=</span> Quantity(vari.value)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(QuantValue)</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            quant_string <span class="op">=</span> QuantValue.render(prec<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(quant_string)</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> re.split(<span class="st">'(\d+)'</span>, quant_string)[<span class="dv">1</span>]</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> re.split(<span class="st">'(\d+)'</span>, quant_string)[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'.'</span>:</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                val <span class="op">=</span> val <span class="op">+</span> re.split(<span class="st">'(\d+)'</span>, quant_string)[<span class="dv">2</span>] <span class="op">+</span> re.split(<span class="st">'(\d+)'</span>, quant_string)[<span class="dv">3</span>]</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(val)</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>                prefix <span class="op">=</span> re.split(<span class="st">'(\d+)'</span>, quant_string)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                prefix <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(prefix)</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>            uni <span class="op">=</span> vari.unit</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>            disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' \ '</span> <span class="op">+</span> latex(prefix) <span class="op">+</span> latex(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>            display(Markdown(disp_string))</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> print_values(dic,<span class="op">**</span>kwargs):</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> vari <span class="kw">in</span> dic:</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value,<span class="bu">str</span>(vari.unit.abbrev))</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>                QuantValue <span class="op">=</span> Quantity(vari.value)</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>            quant_string <span class="op">=</span> QuantValue.render(prec<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            val <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">0</span>]</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> quant_string[<span class="op">-</span><span class="dv">1</span>].isdigit():</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span>:</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string.split(<span class="st">' '</span>)[<span class="dv">1</span>]</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>                <span class="cf">except</span>:</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>                    uni <span class="op">=</span> quant_string[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>            <span class="co">#print(re.split('(\d+)',QuantValue.render(prec=2)))</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = re.split('(\d+)',QuantValue.render(prec=2))[-1]</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>            <span class="co">#uni = ''</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = re.split('(\d+)',QuantValue.render(prec=2))[1]</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>            <span class="co">#val = QuantValue.render(prec=2)</span></span>
 <span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_num_value(eqn):</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(replacement)</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>        <span class="co">#return Eq(eqn.lhs,eqn.rhs.evalf(subs=replacement))</span></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>        eqn.lhs.value <span class="op">=</span> eqn.rhs.evalf(subs<span class="op">=</span>replacement)</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>        <span class="co">#display(eqn.lhs.value)</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> replace_num_value(eqn):</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(replacement)</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>        eqn <span class="op">=</span> Eq(eqn.lhs,eqn.rhs.evalf(subs<span class="op">=</span>replacement))</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> eqn</span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> logic_parser(eqn):</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">str</span>(eqn).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> uni.find(<span class="st">'ohm'</span>) <span class="op">&gt;=</span><span class="dv">0</span>:</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>                uni <span class="op">=</span> <span class="st">'\ \mathrm{'</span> <span class="op">+</span> uni.replace(<span class="st">'ohm'</span>,<span class="st">'\Omega'</span>) <span class="op">+</span> <span class="st">'}'</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="bu">str</span>(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> <span class="ss">f'$$</span><span class="sc">{</span>latex(vari)<span class="sc">}</span><span class="ss">'</span> <span class="op">+</span> <span class="st">' = '</span> <span class="op">+</span> latex(val) <span class="op">+</span> <span class="st">' \ '</span> <span class="op">+</span> latex(uni) <span class="op">+</span> <span class="ss">f'$$'</span> </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> kwargs <span class="op">!=</span> {}:</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>                label <span class="op">=</span> kwargs[<span class="st">'label'</span>]</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>                disp_string <span class="op">=</span> disp_string <span class="op">+</span> <span class="ss">f'</span><span class="ch">{{</span><span class="ss">#'</span> <span class="op">+</span> label <span class="op">+</span> <span class="ss">f'</span><span class="ch">}}</span><span class="ss">'</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>            display(Markdown(disp_string))</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str(vari.value) + f'$\ {latex(vari.unit)}$' ))            </span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'${latex(vari)}$' + ' = ' + str("%.2f" % round(vari.value, 2)) + f'$\ {latex(vari.unit)}$' ))</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(QuantValue.render()) + f'$$' ))</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + latex(quant) + f'$$' ))</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>            <span class="co">#display(Markdown(f'$${latex(vari)}' + ' = ' + str(vari.value) + f'\ {latex(vari.unit)}$$' ))</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_num_value(eqn):</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(replacement)</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>        <span class="co">#return Eq(eqn.lhs,eqn.rhs.evalf(subs=replacement))</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>        eqn.lhs.value <span class="op">=</span> eqn.rhs.evalf(subs<span class="op">=</span>replacement)</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>        <span class="co">#display(eqn.lhs.value)</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> replace_num_value(eqn):</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>        replacement <span class="op">=</span> {}</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> sym <span class="kw">in</span> eqn.rhs.free_symbols:</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>                case <span class="op">=</span> {sym:sym.value}</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>                replacement.update(case)</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span>:</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>                <span class="cf">pass</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(replacement)</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>        eqn <span class="op">=</span> Eq(eqn.lhs,eqn.rhs.evalf(subs<span class="op">=</span>replacement))</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> eqn</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> logic_parser(eqn):</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">str</span>(eqn).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Oszillatoren werden für folgende Anwendungen benötigt:</p>
@@ -562,10 +581,10 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 </figure>
 </div>
 <p>Die Übertragungsfunktion lässt sich nun auf zwei Arten darstellen. Entweder mathematisch mittels der Komplexen Wechselstromrechnung oder mittels Simulation.</p>
-<section id="mathematische-berechnung" class="level4" data-number="6.2.1.1">
-<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="mathematische-berechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</h4>
+<section id="sec-OscMathBerechnung" class="level4" data-number="6.2.1.1">
+<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sec-OscMathBerechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</h4>
 <p>Die Übertragungsfunktion lässt sich mittels Spannungsteileregel anschreiben.</p>
-<div id="a3155fdd" class="cell" data-execution_count="3">
+<div id="8c67407b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -593,7 +612,7 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 </div>
 </div>
 <p>Werden die zwei Widerstände und die zwei Kondensatoren als gleich angenommen, also <span class="math inline">\(Rw1=Rw2=R\)</span> und <span class="math inline">\(Cw1=Cw2=C\)</span> ergibt sich folgende Vereinfachung.</p>
-<div id="b603a93a" class="cell" data-execution_count="4">
+<div id="8f197945" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 \frac{U_{out}}{U_{in}} = \frac{i C R w}{- C^{2} R^{2} w^{2} + 3 i C R w + 1}
@@ -601,24 +620,132 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 </div>
 </div>
 <p>Bei der Schwingfrequenz des Oszillators handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit <span class="math inline">\(i/i\)</span>, kann nur der Imaginärteil des Nenners betrachtet werden.</p>
-<div id="3501e1ff" class="cell" data-execution_count="5">
+<div id="6221bb8e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 im(Nenner) = - C^{2} R^{2} w^{2} + 1
 \tag{6.3}\]</span></span></p>
 </div>
 </div>
-<p>Wird die Gleichung nach <span class="math inline">\(\omega\)</span> aufgelöst ergibt sich die Gleichung für die Eigenfrequenz des Schwingkreises.</p>
-<div id="e0f62c85" class="cell" data-execution_count="6">
+<p>Wird die Gleichung nach <span class="math inline">\(\omega\)</span> aufgelöst ergibt sich die Gleichung für die Eigenfrequenz <span class="math inline">\(\omega_0\)</span> des Schwingkreises.</p>
+<div id="f1c3522d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 w_{0} = \frac{1}{C R}
 \tag{6.4}\]</span></span></p>
 </div>
 </div>
+<p>Mit den Zahlenwerten für die Bauteile ergibt sich folgender Wert für die Eigenfrequenz des Schwingkreises.</p>
+<div id="54bf5565" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[R = \mathtt{\text{1}} \ \mathtt{\text{k}}\Omega\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[C = \mathtt{\text{100}} \ \mathtt{\text{n}}\text{F}\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[w_{0} = \mathtt{\text{10}} \ \mathtt{\text{k}}\frac{\text{rad}}{\text{s}}\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+f_{0} = \frac{w_{0}}{2 \pi}
+\tag{6.5}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[f_{0} = \mathtt{\text{1.59}} \ \mathtt{\text{kHz}}\]</span></p>
+</div>
+</div>
+<p>Wird <span class="math inline">\(i \omega\)</span> mit <span class="math inline">\(s\)</span> ersetzt ergibt sich die Übertragungsfunktion des Schwingkreises in Laplace-Form. Damit kann die Übertragungsfunktion des gesamten Systems berechnet werden und der Bode-Plot erstellt werden.</p>
+<div id="e6bad086" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+H_{1} = \frac{C R s}{C^{2} R^{2} s^{2} + 3 C R s + 1}
+\tag{6.6}\]</span></span></p>
+</div>
+</div>
+<div id="fig-ACAnalysis" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="3b7a7443" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04.03_Oszillator_files/figure-html/cell-10-output-1.png" width="596" height="474" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.3: Simulation des Schwingkreises
+</figcaption>
+</figure>
+</div>
+<p>Im Bodediagramm ist die Eigenfrequenz an Punkt der größten Verstärkung zu sehen. Da bei <span class="math inline">\(\omega = \omega_0\)</span> gilt, dass der Imaginärteil Null ist muss bei der Eigenfrequenz auch die Phasenverschiebung Null sein. Damit ist aus dem Bodediagramm die Eigenfrequenz abzulesen. Es ist zu erkennen, dass die Eigenfrequenz des Schwingkreises beim berechneten Wert liegt.</p>
 </section>
 <section id="simulation" class="level4" data-number="6.2.1.2">
 <h4 data-number="6.2.1.2" class="anchored" data-anchor-id="simulation"><span class="header-section-number">6.2.1.2</span> Simulation</h4>
+<p>Mittels <em>AC-Analysis</em> kann die Übertragungsfunktion des Schwingkreises simuliert werden. Die Simulationseinstellungen richten sich nach der erwarteten Frequenz des Schwingkreises. Die Simulationseinstellungen für oben gewählte Werte</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>.PLOT AC {MAG(v(uout)/v(uin))} =PLOT(1) =AXIS(1)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>.PLOT AC {PHASE(v(uout)/v(uin))} =PLOT(1) =AXIS(2)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>*Selected Circuit Analyses:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>.AC DEC 10 10 10meg</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-ACBodeRCSchwingkreis" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ACBodeRCSchwingkreis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oszillator/ACAnalysis.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ACBodeRCSchwingkreis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.4: Bodediagramm des Schwingkreises
+</figcaption>
+</figure>
+</div>
+<div id="tbl-OscACAnalysis" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-OscACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Wave Name</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MAG(v(uout)/v(uin))</td>
+<td>1,5816 kHz</td>
+<td>333,30 m</td>
+</tr>
+<tr class="even">
+<td>PHASE(v(uout)/v(uin))</td>
+<td>1,5915 kHz</td>
+<td>-13,239 f°</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-OscACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;6.1: Simulations Ergebnisse für den Schwingkreis an der Eigenfrequenz <span class="math inline">\(\omega_0\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Um die Ergebnisse vergleichen zu können muss von der Frequenz auf die Kreisfrequenz umgerechnet werden.</p>
+<div id="9a5c55b1" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+w_{0sim} = 2 f_{0sim} \pi
+\tag{6.7}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[f_{0sim} = \mathtt{\text{1.59}} \ \mathtt{\text{k}}\text{Hz}\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[w_{0sim} = \mathtt{\text{10}} \ \mathtt{\text{k}}\frac{\text{rad}}{\text{s}}\]</span></p>
+</div>
+</div>
+<p>Das Simulationsergebnis stimmt mit dem berechneten Wert aus <a href="#sec-OscMathBerechnung" class="quarto-xref"><span>Kapitel 6.2.1.1</span></a> überein.</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
