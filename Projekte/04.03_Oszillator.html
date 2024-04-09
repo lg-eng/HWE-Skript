@@ -325,6 +325,20 @@ window.Quarto = {
   <li><a href="#sec-OscMathBerechnung" id="toc-sec-OscMathBerechnung" class="nav-link" data-scroll-target="#sec-OscMathBerechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</a></li>
   <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">6.2.1.2</span> Simulation</a></li>
   </ul></li>
+  <li><a href="#sec-OscRückkopplung" id="toc-sec-OscRückkopplung" class="nav-link" data-scroll-target="#sec-OscRückkopplung"><span class="header-section-number">6.2.2</span> Rückkopplung</a>
+  <ul class="collapse">
+  <li><a href="#sec-OscGedämpftesSignal" id="toc-sec-OscGedämpftesSignal" class="nav-link" data-scroll-target="#sec-OscGedämpftesSignal"><span class="header-section-number">6.2.2.1</span> Gedämpftes Signal</a></li>
+  <li><a href="#sec-OscInstabilesSystem" id="toc-sec-OscInstabilesSystem" class="nav-link" data-scroll-target="#sec-OscInstabilesSystem"><span class="header-section-number">6.2.2.2</span> Instabiles System</a></li>
+  <li><a href="#stabiles-system" id="toc-stabiles-system" class="nav-link" data-scroll-target="#stabiles-system"><span class="header-section-number">6.2.2.3</span> Stabiles System</a></li>
+  <li><a href="#open-loop-betrachtung" id="toc-open-loop-betrachtung" class="nav-link" data-scroll-target="#open-loop-betrachtung"><span class="header-section-number">6.2.2.4</span> Open Loop Betrachtung</a></li>
+  <li><a href="#closed-loop-betrachtung" id="toc-closed-loop-betrachtung" class="nav-link" data-scroll-target="#closed-loop-betrachtung"><span class="header-section-number">6.2.2.5</span> Closed Loop Betrachtung</a></li>
+  <li><a href="#sec-OscAnschwingen" id="toc-sec-OscAnschwingen" class="nav-link" data-scroll-target="#sec-OscAnschwingen"><span class="header-section-number">6.2.2.6</span> Anschwingen</a></li>
+  </ul></li>
+  <li><a href="#praktische-umsetzung" id="toc-praktische-umsetzung" class="nav-link" data-scroll-target="#praktische-umsetzung"><span class="header-section-number">6.2.3</span> Praktische Umsetzung</a>
+  <ul class="collapse">
+  <li><a href="#der-verstärker" id="toc-der-verstärker" class="nav-link" data-scroll-target="#der-verstärker"><span class="header-section-number">6.2.3.1</span> Der Verstärker</a></li>
+  <li><a href="#anschwingen-und-stabilität" id="toc-anschwingen-und-stabilität" class="nav-link" data-scroll-target="#anschwingen-und-stabilität"><span class="header-section-number">6.2.3.2</span> Anschwingen und stabilität</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -351,7 +365,7 @@ window.Quarto = {
 </header>
 
 
-<div id="71e54b81" class="cell" data-execution_count="1">
+<div id="f5e562e1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -361,7 +375,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.physics.control.control_plots <span class="im">import</span> step_response_plot, step_response_numerical_data, bode_plot</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="620a1e03" class="cell" data-execution_count="2">
+<div id="44aa916d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import sys</span></span>
@@ -514,7 +528,7 @@ window.Quarto = {
 <p>Und viele weitere Anwendungen. Oszillatorschaltungen sind damit grundlegende Schaltungen der Elektronik.</p>
 <section id="grundlagen" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="grundlagen"><span class="header-section-number">6.1</span> Grundlagen</h2>
-<p><strong>Schwingkreis</strong> Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um Schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.</p>
+<p><strong>Schwingkreis</strong> Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.</p>
 <p><strong>Oszillator</strong> Ein Oszillator ist eine elektronische Schaltung, die aus einem Schwingkreis und einer Verstärkerschaltung besteht und den Zweck hat eine periodische Spannung zu erzeugen.</p>
 <section id="oszillatorschaltungen" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="oszillatorschaltungen"><span class="header-section-number">6.1.1</span> Oszillatorschaltungen</h3>
@@ -533,12 +547,12 @@ Es soll ein Wien-Robinson-Oszillator erarbeitet werden.</p>
 <section id="blockschaltbild-eines-oszillators" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="blockschaltbild-eines-oszillators"><span class="header-section-number">6.1.2</span> Blockschaltbild eines Oszillators</h3>
 <p>Als Blockschaltbild lässt sich ein Oszillator aus zwei Teilen darstellen. Einem Frequenzbestimmendem System, dem Schwingkreis, und einem Verstärker.</p>
-<div id="fig-BlockschaltbildOszillator" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-OscBlockschaltbildOszillator" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-BlockschaltbildOszillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-OscBlockschaltbildOszillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Oszillator/OszillatorBlockschaltbild.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BlockschaltbildOszillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-OscBlockschaltbildOszillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Abbildung&nbsp;6.1: Blockschaltbild eines Oszillator
 </figcaption>
 </figure>
@@ -546,7 +560,7 @@ Abbildung&nbsp;6.1: Blockschaltbild eines Oszillator
 </section>
 <section id="sec-OscÜbertragungsfunktion" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="sec-OscÜbertragungsfunktion"><span class="header-section-number">6.1.3</span> Die Übertragungsfunktion eines Oszillators</h3>
-<p>Jeder der in <a href="#fig-BlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a> gezeigten Blöcke lässt sich mathematisch beschreiben. Auch das gesamte System lässt sich mathematisch beschreiben.<br>
+<p>Jeder der in <a href="#fig-OscBlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a> gezeigten Blöcke lässt sich mathematisch beschreiben. Auch das gesamte System lässt sich mathematisch beschreiben.<br>
 Mathematisch kann ein Schwingkreis durch eine Differentialgleichung beschrieben werden. Besser eignet sich die Beschreibung durch eine Übertragungsfunktion im Frequenzbereich, die die Beziehung zwischen Eingang und Ausgang des Schwingkreises beschreibt. Die Theorie der Übertragungsfunktionen wird unter anderem in der Regelungstechnik verwendet. Es unterscheidet sich lediglich die <a href="https://de.wikipedia.org/wiki/Nomenklatur">Nomenklatur</a> und die Anwendung, die Mathematik ist die gleiche. Weiters ist die Zweitortheorie sehr eng mit der Theorie der Übertragungsfunktionen verwandt. Wer hier die genauen Zusammenhänge verstehen möchte muss sich mit der <a href="https://de.wikipedia.org/wiki/Laplace-Transformation">Laplace-Transformation</a> auseinandersetzen.<br>
 Grafisch lässt sich die Übertragungsfunktion mit dem Bode-Diagramm gut Darstellen.</p>
 <p>Hier wird die Übertragungsfunktion dazu benutzt die korrekten Bauteilwerte für einen Wien-Robinson-Oszillator zu berechnen.</p>
@@ -559,7 +573,7 @@ In Formeln und Zahlen sehen diese Anforderungen wie folgt aus. Zunächst werden 
 </section>
 <section id="dimensionierung-eines-wien-robinson-oszillator" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="dimensionierung-eines-wien-robinson-oszillator"><span class="header-section-number">6.2</span> Dimensionierung eines Wien-Robinson-Oszillator</h2>
-<p>Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltung ist in <span class="citation" data-cites="boehmer17">[<a href="#ref-boehmer17" role="doc-biblioref">1</a>, chap.&nbsp;13.2]</span> zu finden. Schematisch ist die Schaltung als Blockschaltbild in <a href="#fig-BlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a> dargestellt. Die zwei Blöcke können getrennt betrachtet werden. Der Schwingkreis und der Verstärker.</p>
+<p>Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltung ist in <span class="citation" data-cites="boehmer17">[<a href="#ref-boehmer17" role="doc-biblioref">1</a>, chap.&nbsp;13.2]</span> zu finden. Schematisch ist die Schaltung als Blockschaltbild in <a href="#fig-OscBlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a> dargestellt. Die zwei Blöcke können getrennt betrachtet werden. Der Schwingkreis und der Verstärker.</p>
 <section id="übertragungsfunktion-des-schwingkreises-h_1omega" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="übertragungsfunktion-des-schwingkreises-h_1omega"><span class="header-section-number">6.2.1</span> Übertragungsfunktion des Schwingkreises <span class="math inline">\(H_1(\omega)\)</span></h3>
 <p>Übertragungsfunktionen werden im Frequenzbereich betrachtet. das bedeutet, dass unsere Gleichungen nicht von der Zeit abhängen sondern von der Frequenz. <!-- Statt dem bekannten $j\omega$, der Komplexen Kreisfrequenz, wird die Laplace-Variable $s$ verwendet. Mehr Informationen dazu finden sich unter @sec-OscÜbertragungsfunktion.  --> Beim Wien-Robinson-Oszillator wird eine Schaltung aus zwei Widerständen und einem Kondensator verwendet, <a href="#fig-RCSchwingkreis" class="quarto-xref">Abbildung&nbsp;<span>6.2</span></a>.</p>
@@ -577,7 +591,7 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 <section id="sec-OscMathBerechnung" class="level4" data-number="6.2.1.1">
 <h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sec-OscMathBerechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</h4>
 <p>Die Übertragungsfunktion lässt sich mittels Spannungsteileregel anschreiben.</p>
-<div id="44cd3b1c" class="cell" data-execution_count="3">
+<div id="a4dc339f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -605,15 +619,15 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 </div>
 </div>
 <p>Werden die zwei Widerstände und die zwei Kondensatoren als gleich angenommen, also <span class="math inline">\(Rw1=Rw2=R\)</span> und <span class="math inline">\(Cw1=Cw2=C\)</span> ergibt sich folgende Vereinfachung.</p>
-<div id="ef089653" class="cell" data-execution_count="4">
+<div id="463eda9f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 \frac{U_{out}}{U_{in}} = \frac{i C R w}{- C^{2} R^{2} w^{2} + 3 i C R w + 1}
 \tag{6.2}\]</span></span></p>
 </div>
 </div>
-<p>Bei der Schwingfrequenz des Oszillators handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit <span class="math inline">\(i/i\)</span>, kann nur der Imaginärteil des Nenners betrachtet werden.</p>
-<div id="e7bdb03d" class="cell" data-execution_count="5">
+<p>Bei der Schwingfrequenz des Oszillator handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit <span class="math inline">\(i/i\)</span>, kann nur der Imaginärteil des Nenners betrachtet werden.</p>
+<div id="1a45e1ca" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 im(Nenner) = - C^{2} R^{2} w^{2} + 1
@@ -621,7 +635,7 @@ im(Nenner) = - C^{2} R^{2} w^{2} + 1
 </div>
 </div>
 <p>Wird die Gleichung nach <span class="math inline">\(\omega\)</span> aufgelöst ergibt sich die Gleichung für die Eigenfrequenz <span class="math inline">\(\omega_0\)</span> des Schwingkreises.</p>
-<div id="31d3dc29" class="cell" data-execution_count="6">
+<div id="e0cba854" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 w_{0} = \frac{1}{C R}
@@ -629,7 +643,7 @@ w_{0} = \frac{1}{C R}
 </div>
 </div>
 <p>Mit den Zahlenwerten für die Bauteile ergibt sich folgender Wert für die Eigenfrequenz des Schwingkreises.</p>
-<div id="6408850d" class="cell" data-execution_count="7">
+<div id="aad83210" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[R = \mathtt{\text{1}} \ \mathtt{\text{k}}\Omega\]</span></p>
 </div>
@@ -649,17 +663,17 @@ f_{0} = \frac{w_{0}}{2 \pi}
 </div>
 </div>
 <p>Wird <span class="math inline">\(i \omega\)</span> mit <span class="math inline">\(s\)</span> ersetzt ergibt sich die Übertragungsfunktion des Schwingkreises in Laplace-Form. Damit kann die Übertragungsfunktion des gesamten Systems berechnet werden und der Bode-Plot erstellt werden.</p>
-<div id="49c8c50f" class="cell" data-execution_count="8">
+<div id="5939a408" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span id="eq-Dummy"><span class="math display">\[
+<p><span class="math display">\[
 H_{1} = \frac{C R s}{C^{2} R^{2} s^{2} + 3 C R s + 1}
-\tag{6.6}\]</span></span></p>
+\]</span>{#eq_OscH1}</p>
 </div>
 </div>
 <div id="fig-ACAnalysis" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="e1f320e0" class="cell" data-execution_count="9">
+<div id="245b2be9" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -674,7 +688,7 @@ Abbildung&nbsp;6.3: Simulation des Schwingkreises
 </figcaption>
 </figure>
 </div>
-<p>Im Bodediagramm ist die Eigenfrequenz an Punkt der größten Verstärkung zu sehen. Da bei <span class="math inline">\(\omega = \omega_0\)</span> gilt, dass der Imaginärteil Null ist muss bei der Eigenfrequenz auch die Phasenverschiebung Null sein. Damit ist aus dem Bodediagramm die Eigenfrequenz abzulesen. Es ist zu erkennen, dass die Eigenfrequenz des Schwingkreises beim berechneten Wert liegt.</p>
+<p>Im Bodediagramm ist die Eigenfrequenz am Punkt der größten Verstärkung zu sehen. Da bei <span class="math inline">\(\omega = \omega_0\)</span> gilt, dass der Imaginärteil Null ist muss bei der Eigenfrequenz auch die Phasenverschiebung Null sein. Damit ist aus dem Bodediagramm die Eigenfrequenz abzulesen. Es ist zu erkennen, dass die Eigenfrequenz des Schwingkreises beim berechneten Wert liegt.</p>
 </section>
 <section id="simulation" class="level4" data-number="6.2.1.2">
 <h4 data-number="6.2.1.2" class="anchored" data-anchor-id="simulation"><span class="header-section-number">6.2.1.2</span> Simulation</h4>
@@ -725,11 +739,11 @@ Tabelle&nbsp;6.1: Simulations Ergebnisse für den Schwingkreis an der Eigenfrequ
 </figure>
 </div>
 <p>Um die Ergebnisse vergleichen zu können muss von der Frequenz auf die Kreisfrequenz umgerechnet werden.</p>
-<div id="96c53b63" class="cell" data-execution_count="10">
+<div id="bebf5450" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 w_{0sim} = 2 f_{0sim} \pi
-\tag{6.7}\]</span></span></p>
+\tag{6.6}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[f_{0sim} = \mathtt{\text{1.59}} \ \mathtt{\text{k}}\text{Hz}\]</span></p>
@@ -739,6 +753,143 @@ w_{0sim} = 2 f_{0sim} \pi
 </div>
 </div>
 <p>Das Simulationsergebnis stimmt mit dem berechneten Wert aus <a href="#sec-OscMathBerechnung" class="quarto-xref"><span>Kapitel 6.2.1.1</span></a> überein.</p>
+</section>
+</section>
+<section id="sec-OscRückkopplung" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-OscRückkopplung"><span class="header-section-number">6.2.2</span> Rückkopplung</h3>
+<p>Um den Oszillator dauerhaft in Schwingung zu halten muss ein Teil des Ausgangssignals an den Eingang zurück gekoppelt werden, siehe <a href="#fig-OscBlockschaltbildOszillator" class="quarto-xref">Abbildung&nbsp;<span>6.1</span></a>.<br>
+Da das Signal am Ausgang des Schwingkreises eine kleinere Amplitude hat als das Signal am Eingang, das Signal wird gedämpft, muss dieser Verlust durch einen Verstärker ausgeglichen werden.</p>
+<section id="sec-OscGedämpftesSignal" class="level4" data-number="6.2.2.1">
+<h4 data-number="6.2.2.1" class="anchored" data-anchor-id="sec-OscGedämpftesSignal"><span class="header-section-number">6.2.2.1</span> Gedämpftes Signal</h4>
+<p>Wird kein Verstärker verwendet oder die Verstärkung ist zu klein, klingt die Schwingung ab. Das Signal wird kleiner.</p>
+</section>
+<section id="sec-OscInstabilesSystem" class="level4" data-number="6.2.2.2">
+<h4 data-number="6.2.2.2" class="anchored" data-anchor-id="sec-OscInstabilesSystem"><span class="header-section-number">6.2.2.2</span> Instabiles System</h4>
+<p>Ist die Verstärkung zu groß schwingt das System auf. Das Signal wird größer und größer. Das System ist instabil.</p>
+</section>
+<section id="stabiles-system" class="level4" data-number="6.2.2.3">
+<h4 data-number="6.2.2.3" class="anchored" data-anchor-id="stabiles-system"><span class="header-section-number">6.2.2.3</span> Stabiles System</h4>
+<p>Die Verstärkung des gesamten Systems muss so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schwingung nicht abklingt und auch nicht aufschwingt. Die gesamtverstärkung von Schwingkreis und Verstärker muss an der Eigenfrequenz 1 sein. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.<br>
+Wie in Abschnitt <a href="#sec-OscGedämpftesSignal" class="quarto-xref"><span>Kapitel 6.2.2.1</span></a> und <span class="quarto-unresolved-ref">?sec-sec-OscInstabilesSystem</span> gezeigt wurde, muss die Verstärkung “richtig” gewählt werden um sowohl ein Aufschwingen als auch ein Abklingen zu verhindern.<br>
+Das Ausgangssignal des Schwingkreises ist um den Faktor 3 gedämpft. Dies lässt sich aus dem Bodediagramm <a href="#fig-ACBodeRCSchwingkreis" class="quarto-xref">Abbildung&nbsp;<span>6.4</span></a> oder aus der Formel <span class="citation" data-cites="eq_OscH">[<a href="#ref-eq_OscH" role="doc-biblioref"><strong>eq_OscH?</strong></a>]</span> ablesen. Damit ergibt sich eine notwendige Verstärkung von 3. Die Übertragungsfunktion des Verstärkers ist <span class="math inline">\(H_2(s) = 3\)</span>.</p>
+</section>
+<section id="open-loop-betrachtung" class="level4" data-number="6.2.2.4">
+<h4 data-number="6.2.2.4" class="anchored" data-anchor-id="open-loop-betrachtung"><span class="header-section-number">6.2.2.4</span> Open Loop Betrachtung</h4>
+<p>Um die Funktion des Verstärkers in Kombination mit dem Schwingkreis zu betrachten kann das System ohne Rückkopplung betrachtet werden.</p>
+<div id="fig-OscOpenLoop" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-OscOpenLoop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oszillator/OszillatorBlockschaltbildOpenLoop.png" class="img-fluid figure-img" style="width:10cm">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-OscOpenLoop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.5: Open Loop
+</figcaption>
+</figure>
+</div>
+<div id="f5225ebd" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+H = H_{1} H_{2}
+\tag{6.7}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[
+H = \frac{3 C R s}{C^{2} R^{2} s^{2} + 3 C R s + 1}
+\]</span>{#eq_OscH2}</p>
+</div>
+</div>
+<div id="fig-ACAnalysis" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="c7571b4f" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04.03_Oszillator_files/figure-html/cell-13-output-1.png" width="596" height="474" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.6: Simulation des Schwingkreises mit Verstärker in Open Loop Konfiguration
+</figcaption>
+</figure>
+</div>
+<p>Es ist zu erkennen, dass mit einem Verstärker as Verhältnis von Eingangssignal zu Ausgangssignal bei der Eigenfrequenz tatsächlich 1 ist, <span class="math inline">\(0 \ \mathrm{dB}\)</span>. Der Verstärker wurde richtig dimensioniert.</p>
+</section>
+<section id="closed-loop-betrachtung" class="level4" data-number="6.2.2.5">
+<h4 data-number="6.2.2.5" class="anchored" data-anchor-id="closed-loop-betrachtung"><span class="header-section-number">6.2.2.5</span> Closed Loop Betrachtung</h4>
+<p>Wird nun der Kreis geschlossen, das Ausgangssignal wird am Eingang zurückgeführt, kann eine dauerhafte Schwingung aufrecht erhalten werden. Voraussetzung dafür ist, dass die Verstärkung des Verstärkers richtig gewählt wird.</p>
+</section>
+<section id="sec-OscAnschwingen" class="level4" data-number="6.2.2.6">
+<h4 data-number="6.2.2.6" class="anchored" data-anchor-id="sec-OscAnschwingen"><span class="header-section-number">6.2.2.6</span> Anschwingen</h4>
+<p>Es braucht eine “Störung” um das System erstmalig in Schwingung zu versetzten. Dies kann Entweder durch anlegen eines kurzen Impulses geschehen oder in dem die Störungen im System verstärkt werden.<br>
+Erstere Lösung würde einen zusätzlichen Aufwand bedeuten und nur funktionieren wenn das System stabil ist, das bedeutet, die Bauteile exakt eingestellt sind. Das ist alleine aufgrund der Temperaturabhängigkeit der Bauteile nicht möglich.<br>
+Zweitere Lösung bedeutet, dass kleine Signale im System verstärkt werden bis es schwingt. Es muss also mit Absicht ein instabiles System erzeugt werden. Die Schwingung soll aber eine bestimmte Amplitude nicht überschreiten. Das würde wiederum ein stabiles System erfordern. Um dies zu erreichen benötigt es eine Amplitudenregelung. Diese ist ohnehin notwendig um die Bauteiltoleranzen und Temperaturabhängigkeiten auszugleichen. Daher ist die zweite Lösung die praktikablere.</p>
+</section>
+</section>
+<section id="praktische-umsetzung" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="praktische-umsetzung"><span class="header-section-number">6.2.3</span> Praktische Umsetzung</h3>
+<section id="der-verstärker" class="level4" data-number="6.2.3.1">
+<h4 data-number="6.2.3.1" class="anchored" data-anchor-id="der-verstärker"><span class="header-section-number">6.2.3.1</span> Der Verstärker</h4>
+<p>Mit einem Nicht-Invertierten Verstärker lässt sich die Verstärkung realisieren.</p>
+<div id="fig-OscOpenLoopSchaltung" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-OscOpenLoopSchaltung-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oszillator/OpenLoop.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-OscOpenLoopSchaltung-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.7: Open Loop Schaltung
+</figcaption>
+</figure>
+</div>
+<div id="fig-OscOpenLoopSimulation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-OscOpenLoopSimulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Oszillator/RCOpenLoopBode.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-OscOpenLoopSimulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;6.8: Open Loop AC Analysis
+</figcaption>
+</figure>
+</div>
+<div id="tbl-OscACAnalysisOpenLoop" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-OscACAnalysisOpenLoop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Wave Name</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MAG(v(uout)/v(uin))</td>
+<td>1,5755 kHz</td>
+<td>999,69 m</td>
+</tr>
+<tr class="even">
+<td>PHASE(v(uout)/v(uin))</td>
+<td>1,5755 kHz</td>
+<td>-8,8818 f°</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-OscACAnalysisOpenLoop-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelle&nbsp;6.2: Simulations Ergebnisse für den Schwingkreis mit Verstärker an der Eigenfrequenz <span class="math inline">\(\omega_0\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Die Ergebnisse der Schaltung sind identisch mit den Berechnungen. Die Verstärkung ist 3 und die Phasenverschiebung ist 0 bei der Eigenfrequenz. Der Verstärker wurde richtig dimensioniert.</p>
+</section>
+<section id="anschwingen-und-stabilität" class="level4" data-number="6.2.3.2">
+<h4 data-number="6.2.3.2" class="anchored" data-anchor-id="anschwingen-und-stabilität"><span class="header-section-number">6.2.3.2</span> Anschwingen und stabilität</h4>
+<p>In der obigen, theoretische Erklärung, wird angenommen, dass die Verstärkung exakt eingestellt werden kann. In der Praxis ist das aufgrund der Bauteiltoleranzen und der Temperaturabhängigkeit der Bauteile nicht möglich. Es wird daher unweigerlich zu einer gedämpften oder instabilen Schwingung kommen.<br>
+Es braucht daher eine Amplitudenregelung. Damit kann auch das Anschwingen realisiert werden, siehe <a href="#sec-OscAnschwingen" class="quarto-xref"><span>Kapitel 6.2.2.6</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body" role="list">
