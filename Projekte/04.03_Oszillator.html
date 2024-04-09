@@ -365,7 +365,7 @@ window.Quarto = {
 </header>
 
 
-<div id="f5e562e1" class="cell" data-execution_count="1">
+<div id="22c349c9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -375,7 +375,7 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.physics.control.control_plots <span class="im">import</span> step_response_plot, step_response_numerical_data, bode_plot</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="44aa916d" class="cell" data-execution_count="2">
+<div id="381dfb39" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#import sys</span></span>
@@ -591,7 +591,7 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 <section id="sec-OscMathBerechnung" class="level4" data-number="6.2.1.1">
 <h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sec-OscMathBerechnung"><span class="header-section-number">6.2.1.1</span> Mathematische Berechnung</h4>
 <p>Die Übertragungsfunktion lässt sich mittels Spannungsteileregel anschreiben.</p>
-<div id="a4dc339f" class="cell" data-execution_count="3">
+<div id="d09e34f4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -619,7 +619,7 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 </div>
 </div>
 <p>Werden die zwei Widerstände und die zwei Kondensatoren als gleich angenommen, also <span class="math inline">\(Rw1=Rw2=R\)</span> und <span class="math inline">\(Cw1=Cw2=C\)</span> ergibt sich folgende Vereinfachung.</p>
-<div id="463eda9f" class="cell" data-execution_count="4">
+<div id="3b3aa80f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 \frac{U_{out}}{U_{in}} = \frac{i C R w}{- C^{2} R^{2} w^{2} + 3 i C R w + 1}
@@ -627,7 +627,7 @@ Abbildung&nbsp;6.2: RC Schwingkreis
 </div>
 </div>
 <p>Bei der Schwingfrequenz des Oszillator handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit <span class="math inline">\(i/i\)</span>, kann nur der Imaginärteil des Nenners betrachtet werden.</p>
-<div id="1a45e1ca" class="cell" data-execution_count="5">
+<div id="a12fb041" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 im(Nenner) = - C^{2} R^{2} w^{2} + 1
@@ -635,7 +635,7 @@ im(Nenner) = - C^{2} R^{2} w^{2} + 1
 </div>
 </div>
 <p>Wird die Gleichung nach <span class="math inline">\(\omega\)</span> aufgelöst ergibt sich die Gleichung für die Eigenfrequenz <span class="math inline">\(\omega_0\)</span> des Schwingkreises.</p>
-<div id="e0cba854" class="cell" data-execution_count="6">
+<div id="fdd16ebe" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 w_{0} = \frac{1}{C R}
@@ -643,7 +643,7 @@ w_{0} = \frac{1}{C R}
 </div>
 </div>
 <p>Mit den Zahlenwerten für die Bauteile ergibt sich folgender Wert für die Eigenfrequenz des Schwingkreises.</p>
-<div id="aad83210" class="cell" data-execution_count="7">
+<div id="57e260c0" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[R = \mathtt{\text{1}} \ \mathtt{\text{k}}\Omega\]</span></p>
 </div>
@@ -663,7 +663,7 @@ f_{0} = \frac{w_{0}}{2 \pi}
 </div>
 </div>
 <p>Wird <span class="math inline">\(i \omega\)</span> mit <span class="math inline">\(s\)</span> ersetzt ergibt sich die Übertragungsfunktion des Schwingkreises in Laplace-Form. Damit kann die Übertragungsfunktion des gesamten Systems berechnet werden und der Bode-Plot erstellt werden.</p>
-<div id="5939a408" class="cell" data-execution_count="8">
+<div id="6a42faa7" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[
 H_{1} = \frac{C R s}{C^{2} R^{2} s^{2} + 3 C R s + 1}
@@ -673,7 +673,7 @@ H_{1} = \frac{C R s}{C^{2} R^{2} s^{2} + 3 C R s + 1}
 <div id="fig-ACAnalysis" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="245b2be9" class="cell" data-execution_count="9">
+<div id="fe01d176" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -739,7 +739,7 @@ Tabelle&nbsp;6.1: Simulations Ergebnisse für den Schwingkreis an der Eigenfrequ
 </figure>
 </div>
 <p>Um die Ergebnisse vergleichen zu können muss von der Frequenz auf die Kreisfrequenz umgerechnet werden.</p>
-<div id="bebf5450" class="cell" data-execution_count="10">
+<div id="7d3d9cdd" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 w_{0sim} = 2 f_{0sim} \pi
@@ -786,7 +786,7 @@ Abbildung&nbsp;6.5: Open Loop
 </figcaption>
 </figure>
 </div>
-<div id="f5225ebd" class="cell" data-execution_count="11">
+<div id="664c62ff" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 H = H_{1} H_{2}
@@ -801,7 +801,7 @@ H = \frac{3 C R s}{C^{2} R^{2} s^{2} + 3 C R s + 1}
 <div id="fig-ACAnalysis" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ACAnalysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="c7571b4f" class="cell" data-execution_count="12">
+<div id="7ea75ff2" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -884,7 +884,8 @@ Tabelle&nbsp;6.2: Simulations Ergebnisse für den Schwingkreis mit Verstärker a
 </figcaption>
 </figure>
 </div>
-<p>Die Ergebnisse der Schaltung sind identisch mit den Berechnungen. Die Verstärkung ist 3 und die Phasenverschiebung ist 0 bei der Eigenfrequenz. Der Verstärker wurde richtig dimensioniert.</p>
+<p>Die Ergebnisse der Schaltung sind identisch mit den Berechnungen. Die Verstärkung ist 1 und die Phasenverschiebung ist 0 bei der Eigenfrequenz. Der Verstärker wurde richtig dimensioniert.<br>
+Die eigenfrequenz hat sich jedoch leicht verschoben. Dies ließe sich durch anpassen der Bauteile im Schwingkreis korrigieren, soll an dieser Stelle aber vernachlässigt werden.</p>
 </section>
 <section id="anschwingen-und-stabilität" class="level4" data-number="6.2.3.2">
 <h4 data-number="6.2.3.2" class="anchored" data-anchor-id="anschwingen-und-stabilität"><span class="header-section-number">6.2.3.2</span> Anschwingen und stabilität</h4>
