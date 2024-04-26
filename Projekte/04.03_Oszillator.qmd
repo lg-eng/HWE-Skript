@@ -335,7 +335,7 @@ Wird kein Verstärker verwendet oder die Verstärkung ist zu klein, würde der O
 Ist die Verstärkung zu groß schwingt das System auf. Das Signal wird größer und größer. Das System ist instabil. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, kleiner als 1 bei der Eigenfrequenz ist. 
 
 #### Closed Loop Betrachtung
-Wird nun der Kreis geschlossen, das Ausgangssignal wird am Eingang zurückgeführt, kann eine dauerhafte Schwingung aufrecht erhalten werden. Voraussetzung dafür ist, dass die Verstärkung des Verstärkers richtig gewählt wird.
+Wird nun der Kreis geschlossen, siehe @fig-OscBlockschaltbildOszillator, das Ausgangssignal wird am Eingang zurückgeführt, kann eine dauerhafte Schwingung aufrecht erhalten werden. Voraussetzung dafür ist, dass die Verstärkung des Verstärkers richtig gewählt wird.
 
 ```{python}
 #| code-fold: true
@@ -469,16 +469,109 @@ Die Schaltung wird nun geschlossen. Das Ausgangssignal wird am Eingang zurückge
 ![Closed Loop Schaltung](Oszillator/ClosedLoop.png){#fig-OscClosedLoopSchaltung}
 
 
-![Closed Loop Transienten Analyse im Stabilen Zustand](Oszillator/RCClosedLoopTransStable.png){#fig-OscClosedLoopSimulationStable}
+![Closed Loop Transienten Analyse im Stabilen Zustand $R_{v2}=2 \ \mathrm{k \Omega} \ R_{v1}=1 \ \mathrm{k \Omega}$ ](Oszillator/RCClosedLoopTransStable.png){#fig-OscClosedLoopSimulationStable}
 
-In @fig-OscClosedLoopSimulationStable ist zu erkennen, im stabilen Zustand das System nicht zu schwingen beginnt. Wie in @sec-OscAnschwingen beschrieben benötigt es eine Störung um das System in Schwingung zu versetzen. Alternativ dazu kann das System Instabil gemacht werden in dem die Verstärkung erhöht wird. Dann werden kleinste Störungen in der Schaltung, welche es immer gibt, verstärkt und das System schwingt @fig-OscClosedLoopSimulationInstable.
+In @fig-OscClosedLoopSimulationStable ist zu erkennen, dass im stabilen Zustand das System nicht zu schwingen beginnt. Wie in @sec-OscAnschwingen beschrieben benötigt es eine Störung um das System in Schwingung zu versetzen. Alternativ dazu kann das System Instabil gemacht werden in dem die Verstärkung erhöht wird. Dann werden kleinste Störungen in der Schaltung, welche es immer gibt, verstärkt und das System schwingt @fig-OscClosedLoopSimulationInstable.
 
-![Closed Loop Transienten Analyse im Instabilen Zustand](Oszillator/RCClosedLoopTransInst.png){#fig-OscClosedLoopSimulationInstable  }
+![Closed Loop Transienten Analyse im Instabilen Zustand $R_{v2}=2.2 \ \mathrm{k \Omega} \ R_{v1}=1 \ \mathrm{k \Omega}$ ](Oszillator/RCClosedLoopTransInst.png){#fig-OscClosedLoopSimulationInstable  }
 
-Der Nachteil des Instabilen Systems ist es, dass die Schwingung immer größer wird. Das System wird übersteuert. Das ist in der Praxis nicht erwünscht. Daher muss die Verstärkung so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, an der Eigenfrequenz 1 ist. Das System schwingt dann mit einer konstanten Amplitude
+Der Nachteil des Instabilen Systems ist es, dass die Schwingung immer größer wird. Das System wird übersteuert und dadurch stark verzerrt. Daher muss die Verstärkung so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, an der Eigenfrequenz 1 ist. Das System schwingt dann mit einer konstanten Amplitude
 
 Daraus folgt, dass es einen Verstärker bedarf der seine Verstärkung ändern kann. Das ist eine **Amplitudenregelung**. Diese ist ohnehin notwendig um die Bauteiltoleranzen und Temperaturabhängigkeiten auszugleichen.
 
-#### Anschwingen und stabilität
+#### Amplitudenregelung
 In der obigen, theoretische Erklärung, wird angenommen, dass die Verstärkung exakt eingestellt werden kann. In der Praxis ist das aufgrund der Bauteiltoleranzen und der Temperaturabhängigkeit der Bauteile nicht möglich. Es wird daher unweigerlich zu einer gedämpften oder instabilen Schwingung kommen.  
-Es braucht daher eine Amplitudenregelung. Damit kann auch das Anschwingen realisiert werden, siehe @sec-OscAnschwingen.
+Es braucht daher eine Amplitudenregelung. Damit kann auch das Anschwingen realisiert werden, siehe @sec-OscAnschwingen.  
+Es braucht also einen einstellbaren Verstärker. Das lässt sich realisieren indem einer der beiden Widerstände veränderbar gemacht wird. Da sich die Amplitude jedoch selbst regeln muss, und nicht von Hand nachgestellt werden soll und kann, wird eine elektronisch veränderbarer Widerstand benötigt. 
+
+#### Elektronisch veränderbarer Widerstand - VCR
+Ein elektronisch veränderbarer Widerstand, englisch Voltage Controlled Resistor, kurz VCR, ist ein Widerstand, dessen Widerstandswert durch eine Spannung verändert werden kann. Eine einfache Bauform lässt sich mit einem JFET realisieren. Der Widerstandswert eines JFETs ist proportional zur Gate-Source Spannung.  
+Folgende Überlegungen sind anzustellen.
+* Wird besser der Widerstand $R_{v1}$ oder $R_{v2}$ verändert?
+* Welcher JFET Typ ist geeignet? N-Kanal oder P-Kanal?
+  
+Der Regler soll die Verstärkung kleiner machen wenn die Amplitude der Ausgangsspannung zu groß wird und die Verstärkung erhöhen wenn die Amplitude der Ausgangsspannung zu klein ist. Es ist also ein indirekt-proportionaler Zusammenhang zwischen der Amplitude und der Verstärkung. Daraus folgt, dass der Widerstand $R_{v1}$ verändert werden soll, da er in der Formel für die Verstärkung im Nenner steht.
+$$V=1+\frac{R_{v2}}{R_{v1}}$$  
+
+Da das Ausgangssignal des Oszillators eine Sinuswelle ist, ist der JFET Typ egal. Es kann sowohl ein N-Kanal als auch ein P-Kanal JFET verwendet werden. Da sich sowohl die negative Steuerspannung für den N-Kanal JFET als auch die positive Steuerspannung für den P-Kanal JFET mit einem einfachen Gleichrichter realisieren lässt. Um die Bauteile der Amplitudenregelung bestimmen zu können, muss der Arbeitspunkt des VCR's bestimmt werden. Dazu wird eine DC-Sweep Analyse durchgeführt. Die Widerstände $R_{stab3}$ und $R_{stab4}$ dienen der Linearisierung des JFETs.
+
+![VCR](Oszillator/PKanalVCR.png){#fig-OscVCR}
+
+![VCR DC-Sweep](Oszillator/VCRDCSweep.png){#fig-OscVCRDCSweep}
+
+Der Arbeitspunkt muss möglichst mittig in einem linearen Teilstück des JFET liegen. Eine Steuerspannung zwischen 3 und 5 Volt ist ideal. Der Widerstandswert des JFETs zwischen Drain und Source ist dann ca. $r_{DS}= 200 \ \Omega$.  
+Dieser Wert wird nun vom oben eingebauten $R_{v1}$ abgezogen. Der neue Widerstand $R_{v11}$ wird also so dimensioniert, dass der Widerstand der Drain-Source Strecke und des Widerstandes $R_{v11}$ zusammen den  Widerstandswert von $R_{v1}$ ergeben.
+
+
+#### Die Oszillatorschaltung
+
+![Oszillatorschaltung](Oszillator/OszillatorPKanal.png){#fig-OscSchaltung}
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-OscACAnalysisPKanal}
+```{python}
+#| code-fold: true
+#| echo: false
+
+filepath = 'Oszillator/Transient AnalysisPKanal.csv'
+thing_to_plot = {'v(uout)':[1], 'v(ust)':[2]}
+
+QBookHelpers.trans_plot_matplotlib(filepath, thing_to_plot)
+
+
+```
+Simulation der Ausgangsspannung und der Steuerspannung für den Oszillator
+:::
+:::
+
+Es ist zu sehen, dass nach einer Einschwingphase die Amplitude der Ausgangsspannung konstant bleibt. Die Amplitudenregelung funktioniert. Der Oszillator funktioniert.  
+
+Um eine Aussage über die Qualität zu machen muss die Verzerrung des Signals betrachtet werden. Dazu wird das Signal in seine Fourierkoeffizienten zerlegt und die Oberwellen berechnet. Die Oberwellen dürfen nicht zu groß sein.  
+
+Es wurde ein einfacher, funktionsfähiger Oszillator dimensioniert. Es gibt jedoch noch viele Möglichkeiten zur Verbesserung.
+
+## Aufgabenstellung
+Hier werden einige Ideen für die Aufgabenstellung gegeben.  
+
+### Dimensionierung Schwingkreis
+Dimensionieren Sie ein Wien-Robinson Glied für Ihren Oszillator.   
+	1. Leiten Sie die Gleichungen für die Eigenfrequenz her und berechnen Sie die Bauteilwerte. Verwenden Sie Werte aus entsprechenden Normreihen.  
+	2. Überprüfen Sie Ihre Berechnungen mittels Simulation.  
+	3. Geben Sie an wie groß die Verstärkung eines nachgeschaltenen Verstärkers sein muss, damit die Amplitude am Eingang des Schwingkreises gleich groß ist wie die Amplitude nach dem Verstärker.  
+	4. Machen Sie einen Vorschlag für eine passende Verstärkerschaltung.  
+
+### Dimensionierung Verstärker  
+Dimensionieren Sie einen Verstärker so, dass  die Amplitude am Eingang des Schwingkreises gleich groß ist wie die Amplitude nach dem Verstärker bei der Resonanzfrequenz.  
+Überprüfen Sie Ihre Berechnung und machen Sie eine klare Aussage.  
+
+### Rückkopplung  
+Implementieren Sie die Rückkopplung wie im Skriptum gezeigt.  
+Betrachten Sie das Ausgangssignal  
+	- Welches Ergebnis erwarten Sie?  
+	- Welches Ergebnis haben Sie?  
+	- Erklären Sie die Abweichung.  
+Welche Ideen haben Sie um das erwartete Ergebnis zu erhalten?  
+
+### Amplitudenregelung  
+**Warum Amplitudenregelung**  
+Geben Sie kurz an warum eine Amplitudenregelung notwendig ist.  
+
+**Setzen Sie die Amplitudenregelung um**  
+Wählen Sie aus folgenden zwei Methoden:  
+	a. Mittels Hilfe des Buches E. Böhmer WO D. Ehrhardt Elemente der angewandten Elektronik. Kapitel 13.2.   
+	b. Mit dem im Unterricht aufgezeigten Weg  
+
+**Erklären der Schaltung**    
+Versuchen Sie die Schaltung in einzelne Teilschaltungen einzuteilen und erklären Sie die Schaltung.   
+Versuchen Sie es so zu erklären wie Sie es gerne erklärt haben würden.  
+Testen Sie Ihre Erklärung wechselseitig im Team.  
+Achten Sie darauf, dass Ihre Erklärung gängige Normen und Standards einhält.  
+
+### Ideen für den Einser
+Ideen für den Nachweis der Eigenständigkeit:  
+	• Verwenden Sie ein alternatives Frequenzbestimmendes Glied  
+	• Setzten Sie die Amplitudenregelung alternativ um  
+	• Nehmen Sie eine Schaltung aus der Literatur und erklären Sie die Vor- und Nachteile zu der im Unterricht entwickelten Schaltung.  
+	• …  
+	
+
