@@ -30,10 +30,11 @@ book:
         - Projekte/04.02_H-Bruecke.qmd
         - Projekte/04.03_Oszillator.qmd
 
-    - references.qmd
+#    - references.qmd
 
 bibliography: references.bib
 csl: diabetologia.csl
+#csl: nature.csl
 
 # format:
 #   html:

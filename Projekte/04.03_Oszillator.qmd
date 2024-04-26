@@ -4,7 +4,7 @@
 from sympy import *
 from sympy.abc import s
 from sympy.physics.control.lti import TransferFunction, Series
-from sympy.physics.control.control_plots import step_response_plot, step_response_numerical_data, bode_plot
+from sympy.physics.control.control_plots import * #impulse_response_plot, step_response_plot, step_response_numerical_data, bode_plot, pole_zero_plot, step_response_numerical_data
 
 ```
 
@@ -24,7 +24,7 @@ Oszillatoren werden für folgende Anwendungen benötigt:
 Und viele weitere Anwendungen. Oszillatorschaltungen sind damit grundlegende Schaltungen der Elektronik.  
 
 ## Grundlagen
-**Schwingkreis** Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um Schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.
+**Schwingkreis** Ein Schwingkreis ist ein physikalisches System, das eine periodische Schwingung erzeugt. Ein Schwingkreis benötigt mindestens zwei Energiespeicher, um schwingfähig zu sein. Die Energiespeicher können Kondensatoren oder Spulen sein aber auch ein mechanisches System wie ein Pendel bestehend aus einer Feder und einem Gewicht.
 
 **Oszillator** Ein Oszillator ist eine elektronische Schaltung, die aus einem Schwingkreis und einer Verstärkerschaltung besteht und den Zweck hat eine periodische Spannung zu erzeugen.
 
@@ -48,11 +48,11 @@ Weitere Links zum Thema [Altium Designer - Oscillators](https://resources.altium
 ### Blockschaltbild eines Oszillators
 Als Blockschaltbild lässt sich ein Oszillator aus zwei Teilen darstellen. Einem Frequenzbestimmendem System, dem Schwingkreis, und einem Verstärker.  
 
-![Blockschaltbild eines Oszillator ](Oszillator/OszillatorBlockschaltbild.png){#fig-BlockschaltbildOszillator}  
+![Blockschaltbild eines Oszillator ](Oszillator/OszillatorBlockschaltbild.png){#fig-OscBlockschaltbildOszillator}  
   
 
-### Die Übertragungsfunktion eines Oszillators {#sec-OscÜbertragungsfunktion}
-Jeder der in @fig-BlockschaltbildOszillator gezeigten Blöcke lässt sich mathematisch beschreiben. Auch das gesamte System lässt sich mathematisch beschreiben.  
+<!-- ### Die Übertragungsfunktion eines Oszillators {#sec-OscÜbertragungsfunktion} -->
+Jeder der in @fig-OscBlockschaltbildOszillator gezeigten Blöcke lässt sich mathematisch beschreiben. Auch das gesamte System lässt sich mathematisch beschreiben.  
 Mathematisch kann ein Schwingkreis durch eine Differentialgleichung beschrieben werden. Besser eignet sich die Beschreibung durch eine Übertragungsfunktion im Frequenzbereich, die die Beziehung zwischen Eingang und Ausgang des Schwingkreises beschreibt. Die Theorie der Übertragungsfunktionen wird unter anderem in der Regelungstechnik verwendet. Es unterscheidet sich lediglich die [Nomenklatur](https://de.wikipedia.org/wiki/Nomenklatur) und die Anwendung, die Mathematik ist die gleiche. Weiters ist die Zweitortheorie sehr eng mit der Theorie der Übertragungsfunktionen verwandt. Wer hier die genauen Zusammenhänge verstehen möchte muss sich mit der [Laplace-Transformation](https://de.wikipedia.org/wiki/Laplace-Transformation) auseinandersetzen.  
 Grafisch lässt sich die Übertragungsfunktion mit dem Bode-Diagramm gut Darstellen.
 
@@ -65,9 +65,9 @@ In Formeln und Zahlen sehen diese Anforderungen wie folgt aus. Zunächst werden 
 -->
 
 ## Dimensionierung eines Wien-Robinson-Oszillator
-Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltung ist in @boehmer17 zu finden.  Schematisch ist die Schaltung als Blockschaltbild in @fig-BlockschaltbildOszillator dargestellt. Die zwei Blöcke können getrennt betrachtet werden. Der Schwingkreis und der Verstärker.
+Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltung ist in [@boehmer17, chap. 13.2] zu finden.  Schematisch ist die Schaltung als Blockschaltbild in @fig-OscBlockschaltbildOszillator dargestellt. Die zwei Blöcke können getrennt betrachtet werden. Der Schwingkreis und der Verstärker.
 
-### Übertragungsfunktion des Schwingkreises $H_1(\omega)$
+### Übertragungsfunktion des Schwingkreises $H_1(\omega)$ {#sec-OscSchwingkreis}
 Übertragungsfunktionen werden im Frequenzbereich betrachtet. das bedeutet, dass unsere Gleichungen nicht von der Zeit abhängen sondern von der Frequenz. 
 <!-- Statt dem bekannten $j\omega$, der Komplexen Kreisfrequenz, wird die Laplace-Variable $s$ verwendet. Mehr Informationen dazu finden sich unter @sec-OscÜbertragungsfunktion.  -->
 Beim Wien-Robinson-Oszillator wird eine Schaltung aus zwei Widerständen und einem Kondensator verwendet, @fig-RCSchwingkreis.
@@ -107,15 +107,15 @@ Werden die zwei Widerstände und die zwei Kondensatoren als gleich angenommen, a
 #| code-fold: true
 #| echo: false
 
-R = MySymbol('R',real=True,positive=True,value=1*10**3,unit=u.ohm)
-C = MySymbol('C',real=True,positive=True,value=100*10**-9,unit=u.F)
+R = MySymbol('R',real=True,positive=True,value=1*10**3,unit=u.ohm)#3
+C = MySymbol('C',real=True,positive=True,value=1*10**-7,unit=u.F) #-7
 
 SpgT_eq = simplify(SpgT_eq.subs({Rw1:Rw2,Rw2:R,Cw1:Cw2,Cw2:C}))
 QBookHelpers.print_equation(SpgT_eq) #Would be way bette if the I was in the denominator, don't know how to do that.
 
 ```
 
-Bei der Schwingfrequenz des Oszillators handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit $i/i$, kann nur der Imaginärteil des Nenners betrachtet werden.
+Bei der Schwingfrequenz des Oszillator handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit $i/i$, kann nur der Imaginärteil des Nenners betrachtet werden.
 
 ```{python}
 #| code-fold: true
@@ -182,10 +182,12 @@ n,d = fraction(TFSpgT)
 
 H1 = MySymbol('H_1')
 H1_eq = Eq(H1,simplify(TransferFunction(n,d,s)).expand())
-QBookHelpers.print_equation(H1_eq)
+QBookHelpers.print_equation(H1_eq,label=f'eq_OscH1')
+
+
 #Bodeplot
 
-H1_eq_vals = QBookHelpers.replace_num_value(H1_eq)
+H1_eq_vals = QBookHelpers.replace_num_value(simplify(H1_eq))
 ```
 
 :::{ .content-hidden unless-format="html"}
@@ -201,7 +203,7 @@ Simulation des Schwingkreises
 :::
 :::
 
-Im Bodediagramm ist die Eigenfrequenz an Punkt der größten Verstärkung zu sehen. Da bei $\omega = \omega_0$ gilt, dass der Imaginärteil Null ist muss bei der Eigenfrequenz auch die Phasenverschiebung Null sein. Damit ist aus dem Bodediagramm die Eigenfrequenz abzulesen. Es ist zu erkennen, dass die Eigenfrequenz des Schwingkreises beim berechneten Wert liegt.
+Im Bodediagramm ist die Eigenfrequenz am Punkt der größten Verstärkung zu sehen. Da bei $\omega = \omega_0$ gilt, dass der Imaginärteil Null ist muss bei der Eigenfrequenz auch die Phasenverschiebung Null sein. Damit ist aus dem Bodediagramm die Eigenfrequenz abzulesen. Es ist zu erkennen, dass die Eigenfrequenz des Schwingkreises beim berechneten Wert liegt.
 
 #### Simulation
 Mittels *AC-Analysis* kann die Übertragungsfunktion des Schwingkreises simuliert werden. Die Simulationseinstellungen richten sich nach der erwarteten Frequenz des Schwingkreises. Die Simulationseinstellungen für oben gewählte Werte 
@@ -238,6 +240,245 @@ QBookHelpers.print_values2([f0_sim,w0_sim])
 
 ```
 
-
-
 Das Simulationsergebnis stimmt mit dem berechneten Wert aus @sec-OscMathBerechnung überein.
+
+### Übertragungsfunktion des Oszillators {#sec-OscRückkopplung}
+Um den Oszillator dauerhaft in Schwingung zu halten muss ein Teil des Ausgangssignals an den Eingang zurück gekoppelt werden, siehe @fig-OscBlockschaltbildOszillator.  
+Da das Signal am Ausgang des Schwingkreises eine kleinere Amplitude hat als das Signal am Eingang, wie im Bodediagramm @fig-ACAnalysis ersichtlich ist, muss diese Dämpfung durch einen Verstärker, $H_2$, ausgeglichen werden.
+
+#### Übertragungsfunktion des Verstärkers $H_2(s)$
+Die Übertragungsfunktion eines idealen Verstärkers ist eine Konstante. Eine reale OPV Verstärkerschaltung wird am besten mit einem PT1 oder PT2 Glied angenähert. ist die zu verstärkende Frequenz sehr klein im Verhältnis zu den Knickfrequenzen der Verstärkerschaltung ist aber das einfache Modelle einer Konstanten ausreichend. Für den hier gezeigten Fall trifft dies zu.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+T_OPV = MySymbol('T_{OPV}',real=True,positive=True,value=(1/(332.18*10**3*2*pi)))
+k_OPV = MySymbol('k_{OPV}',real=True,positive=True,value=3,description='Verstärkung des Verstärkers')
+D_OPV = MySymbol('D_{OPV}',real=True,positive=True,value=2)
+
+H2 = MySymbol('H_2')
+H2_eq = Eq(H2,k_OPV) # Als idealer Verstärker
+QBookHelpers.print_equation(H2_eq)
+
+H2_TFeq = Eq(H2,TransferFunction(H2_eq.rhs,1,s)) # Als idealer Verstärker
+#H2_eq = Eq(H2,TransferFunction(k_OPV,1+T_OPV*s,s)) #OPV mit PT1 Glied angenähert
+#H2_eq = Eq(H2,TransferFunction(k_OPV,1+ 2*D_OPV*T_OPV*s + T_OPV**2*s**2,s)) #OPV mit PT2 Glied angenähert
+
+H2_TFeq_vals = QBookHelpers.replace_num_value(H2_TFeq)
+H2_eq_vals = QBookHelpers.replace_num_value(H2_eq)
+
+QBookHelpers.print_description([k_OPV])
+
+```
+
+#### Open Loop Betrachtung
+Für die Beurteilung ob die Verstärkung des Verstärkers richtig gewählt wurde, kann das System ohne Rückkopplung betrachtet werden. Auch kann die Stabilität mittels Pol-Nullstellen Diagramm beurteilt werden.  
+Die Übertragungsfunktion des offenen Systems, also ohne Rückkopplung, auch Open-Loop genannt, ist das Produkt der Übertragungsfunktionen des Schwingkreises und des Verstärkers.
+
+![Open Loop](Oszillator/OszillatorBlockschaltbildOpenLoop.png){#fig-OscOpenLoop  width=10cm}  
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+H = MySymbol('H')
+
+H_eq1 = Eq(H,H1*H2)
+QBookHelpers.print_equation(H_eq1)
+
+H_eq2 = Eq(H,simplify(H1_eq.rhs*H2_TFeq.rhs).expand())
+QBookHelpers.print_equation(H_eq2)
+
+
+```
+
+
+#### Stabiles System {#sec-OscStableSignal}
+Die Verstärkung des gesamten Systems muss so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schwingung nicht abklingt und auch nicht aufschwingt. Die gesamtverstärkung von Schwingkreis und Verstärker muss an der Eigenfrequenz 1 sein. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.  
+Wie in Abschnitt @sec-OscGedämpftesSignal und @sec-OscInstabilesSystem gezeigt wurde, muss die Verstärkung "richtig" gewählt werden um sowohl ein Aufschwingen als auch ein Abklingen zu verhindern.  
+Das Ausgangssignal des Schwingkreises ist um den Faktor 3 gedämpft. Dies lässt sich aus dem Bodediagramm @fig-ACBodeRCSchwingkreis oder aus der Formel ablesen. Damit ergibt sich die notwendige Verstärkung. 
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-OscBodeOpenLoop}
+```{python}
+#| code-fold: true
+#| echo: false
+
+k_OPV.value = 3
+QBookHelpers.print_values([k_OPV])
+
+#Insert Values
+H_eq2_vals = QBookHelpers.replace_num_value(H_eq2)
+
+#QBookHelpers.print_equation(H2_eq_vals)
+#QBookHelpers.print_equation(H_eq2_vals)
+
+#bode_plot(H_eq2_vals.rhs,initial_exp=2, final_exp=6,phase_unit='deg',freq_unit='rad/sec')  
+
+sciTF = QBookHelpers.symTF_to_sciTF(H_eq2_vals.rhs)
+w = np.logspace(2,6,1000)
+w, mag, phase = signal.bode(sciTF,w=w)
+QBookHelpers.plotly_plot3(w,[mag,phase])
+
+```
+Bodediagramm des Schwingkreises mit Verstärker in Open Loop Konfiguration
+:::
+:::
+
+Es ist zu erkennen, dass mit einem Verstärker as Verhältnis von Eingangssignal zu Ausgangssignal bei der Eigenfrequenz tatsächlich 1 ist, $0 \ \mathrm{dB}$. Der Verstärker wurde richtig dimensioniert.  
+
+#### Gedämpftes Signal {#sec-OscGedämpftesSignal}
+Wird kein Verstärker verwendet oder die Verstärkung ist zu klein, würde der Oszillator nicht von selbst starten. Wird die Schwingung zum Beispiel mit einem Puls gestartet würde die Schwingung abklingen. Das Signal wird kleiner. Die Schleifenverstärkung, Schwingkreis und Verstärker, muss so gewählt werden, dass die die Gesamtverstärkung an der Eigenfrequenz 1 ist. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.
+
+#### Instabiles System {#sec-OscInstabilesSystem}
+Ist die Verstärkung zu groß schwingt das System auf. Das Signal wird größer und größer. Das System ist instabil. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, kleiner als 1 bei der Eigenfrequenz ist. 
+
+#### Closed Loop Betrachtung
+Wird nun der Kreis geschlossen, das Ausgangssignal wird am Eingang zurückgeführt, kann eine dauerhafte Schwingung aufrecht erhalten werden. Voraussetzung dafür ist, dass die Verstärkung des Verstärkers richtig gewählt wird.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+G = MySymbol('G')
+
+G_eq1 = Eq(G,H/(1-H))
+QBookHelpers.print_equation(G_eq1)
+
+G_eq2 = Eq(G,simplify(H_eq2.rhs/(TransferFunction(1,1,s)-H_eq2.rhs)))
+#QBookHelpers.print_equation(G_eq2,label=f'eq_OscG')
+
+```
+
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-OscLsimClosedLoopStable}
+```{python}
+#| code-fold: true
+#| echo: false
+
+#Insert Values
+k_OPV.value = 3
+QBookHelpers.print_values([k_OPV])
+G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2))
+
+#To scipy
+sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
+#print(pole_zero_numerical_data(H_eq2_vals.rhs))
+#print(pole_zero_numerical_data(G_eq2_vals.rhs))
+t=np.arange(0*10**-6,10*10**-3,10**-6)
+u=np.zeros(len(t))
+u[0]=1500
+t,y,x = signal.lsim(sciTF,U=u,T=t)
+#t,y = signal.step(sciTF,T=np.arange(100*10**-6,250*10**-6,10**-9))#
+QBookHelpers.plotly_plot(t,y,xtickformat = ".3s",yticksuffix=' V',xtitle_text='Time in s',ytitle_text='Output Voltage',yrange=[-15,15])
+
+```
+Zeitlicher Verlauf am Ausgang des Oszillators im stabilen Zustand @sec-OscStableSignal
+:::
+:::
+
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-OscLsimClosedLoopUnStable}
+```{python}
+#| code-fold: true
+#| echo: false
+
+#Insert Values
+k_OPV.value = 3.1
+QBookHelpers.print_values([k_OPV])
+G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2))
+
+#To scipy
+sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
+#print(pole_zero_numerical_data(H_eq2_vals.rhs))
+#print(pole_zero_numerical_data(G_eq2_vals.rhs))
+t=np.arange(0*10**-6,10*10**-3,10**-6)
+u=np.zeros(len(t))
+u[0]=15
+t,y,x = signal.lsim(sciTF,U=u,T=t)
+#t,y = signal.step(sciTF,T=np.arange(100*10**-6,250*10**-6,10**-9))#
+QBookHelpers.plotly_plot(t,y,xtickformat = ".3s",yticksuffix=' V',xtitle_text='Time in s',ytitle_text='Output Voltage',yrange=[-15,15])
+
+```
+Zeitlicher Verlauf am Ausgang des Oszillators im instabilen Zustand @sec-OscInstabilesSystem
+:::
+:::
+
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-OscLsimClosedLoopDamped}
+```{python}
+#| code-fold: true
+#| echo: false
+
+#Insert Values
+k_OPV.value = 2.9
+QBookHelpers.print_values([k_OPV])
+G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2))
+
+#To scipy
+sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
+#print(pole_zero_numerical_data(H_eq2_vals.rhs))
+#print(pole_zero_numerical_data(G_eq2_vals.rhs))
+t=np.arange(0*10**-6,10*10**-3,10**-6)
+u=np.zeros(len(t))
+u[0]=1500
+t,y,x = signal.lsim(sciTF,U=u,T=t)
+#t,y = signal.step(sciTF,T=np.arange(100*10**-6,250*10**-6,10**-9))#
+QBookHelpers.plotly_plot(t,y,xtickformat = ".3s",yticksuffix=' V',xtitle_text='Time in s',ytitle_text='Output Voltage',yrange=[-15,15])
+
+```
+Zeitlicher Verlauf am Ausgang des Oszillators im gedämpften Zustand @sec-OscGedämpftesSignal
+:::
+:::
+
+#### Anschwingvorgang {#sec-OscAnschwingen}
+Es braucht eine "Störung" um das System erstmalig in Schwingung zu versetzten. Dies kann Entweder durch anlegen eines kurzen Impulses geschehen oder in dem die Störungen im System verstärkt werden.  
+Erstere Lösung würde einen zusätzlichen Aufwand bedeuten und nur funktionieren wenn das System stabil ist, das bedeutet, die Bauteile exakt eingestellt sind. Das ist alleine aufgrund der Temperaturabhängigkeit der Bauteile nicht möglich.  
+Zweitere Lösung bedeutet, dass kleine Signale im System verstärkt werden bis es schwingt. Es muss also mit Absicht ein instabiles System erzeugt werden. Die Schwingung soll aber eine bestimmte Amplitude nicht überschreiten. Das würde wiederum ein stabiles System erfordern. Um dies zu erreichen benötigt es eine **Amplitudenregelung**. Diese ist ohnehin notwendig um die Bauteiltoleranzen und Temperaturabhängigkeiten auszugleichen. Daher ist die zweite Lösung die praktikablere.
+
+### Praktische Umsetzung
+Nun soll das theoretische Wissen mit einer Konkreten Schaltung umgesetzt werden.
+
+#### Der Schwingkreis
+Der wurde bereits in @sec-OscSchwingkreis berechnet und überprüft. Es folgte die Erkenntnisse, dass die Amplitude bei der Eigenfrequenz um den Faktor 3 gedämpft ist. Daraus folgt der nächste Schritt. Die Dimensionierung eines Verstärkers um die Schleifenverstärkung auf 1 zu bringen.
+
+#### Der Verstärker
+Die theoretischen Hintergründe wurden in @sec-OscRückkopplung behandelt. Da die Verstärkung größer als 1 sein muss, keine Phasendrehung gewünscht ist und eine hohe Eingangsimpedanz hilfreich ist, wird eine Nicht-Invertierende Operationsverstärkerschaltung verwendet.
+
+![Open Loop Schaltung](Oszillator/OpenLoop.png){#fig-OscOpenLoopSchaltung  }  
+
+![Open Loop AC Analysis](Oszillator/RCOpenLoopBode.png){#fig-OscOpenLoopSimulation  } 
+
+| Wave Name             | X       | Y         |
+| --------------------- | ------- | --------- |
+| MAG(v(uout)/v(uin))   | 1,5755 kHz | 999,69 m   |
+| PHASE(v(uout)/v(uin)) | 1,5755 kHz | -8,8818 f° |
+: Simulations Ergebnisse für den Schwingkreis mit Verstärker an der Eigenfrequenz $\omega_0$. {#tbl-OscACAnalysisOpenLoop}
+
+
+Die Ergebnisse der Schaltung sind identisch mit den Berechnungen aus @sec-OscStableSignal. Die Verstärkung ist 1 und die Phasenverschiebung ist 0 bei der Eigenfrequenz. Der Verstärker wurde richtig dimensioniert.  
+Die Eigenfrequenz hat sich jedoch leicht verschoben. Dies ließe sich durch anpassen der Bauteile im Schwingkreis korrigieren, soll an dieser Stelle aber vernachlässigt werden.
+
+#### Closed Loop Schaltung
+Die Schaltung wird nun geschlossen. Das Ausgangssignal wird am Eingang zurückgeführt. Damit ist eine dauerhafte Schwingung möglich. Es gilt die Stabilität zu überprüfen. Dies lässt sich gut mit einer Transienten Simulation zeigen.
+
+![Closed Loop Schaltung](Oszillator/ClosedLoop.png){#fig-OscClosedLoopSchaltung}
+
+
+![Closed Loop Transienten Analyse im Stabilen Zustand](Oszillator/RCClosedLoopTransStable.png){#fig-OscClosedLoopSimulationStable}
+
+In @fig-OscClosedLoopSimulationStable ist zu erkennen, im stabilen Zustand das System nicht zu schwingen beginnt. Wie in @sec-OscAnschwingen beschrieben benötigt es eine Störung um das System in Schwingung zu versetzen. Alternativ dazu kann das System Instabil gemacht werden in dem die Verstärkung erhöht wird. Dann werden kleinste Störungen in der Schaltung, welche es immer gibt, verstärkt und das System schwingt @fig-OscClosedLoopSimulationInstable.
+
+![Closed Loop Transienten Analyse im Instabilen Zustand](Oszillator/RCClosedLoopTransInst.png){#fig-OscClosedLoopSimulationInstable  }
+
+Der Nachteil des Instabilen Systems ist es, dass die Schwingung immer größer wird. Das System wird übersteuert. Das ist in der Praxis nicht erwünscht. Daher muss die Verstärkung so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, an der Eigenfrequenz 1 ist. Das System schwingt dann mit einer konstanten Amplitude
+
+Daraus folgt, dass es einen Verstärker bedarf der seine Verstärkung ändern kann. Das ist eine **Amplitudenregelung**. Diese ist ohnehin notwendig um die Bauteiltoleranzen und Temperaturabhängigkeiten auszugleichen.
+
+#### Anschwingen und stabilität
+In der obigen, theoretische Erklärung, wird angenommen, dass die Verstärkung exakt eingestellt werden kann. In der Praxis ist das aufgrund der Bauteiltoleranzen und der Temperaturabhängigkeit der Bauteile nicht möglich. Es wird daher unweigerlich zu einer gedämpften oder instabilen Schwingung kommen.  
+Es braucht daher eine Amplitudenregelung. Damit kann auch das Anschwingen realisiert werden, siehe @sec-OscAnschwingen.

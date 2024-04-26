@@ -1,15 +1,15 @@
-<mxfile host="Electron" modified="2024-04-01T20:56:14.511Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="074_gGwYHCLR4hgiQLoZ" version="22.1.2" type="device">
+<mxfile host="Electron" modified="2024-04-09T08:11:14.945Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="VWVxfb_U10weXGxBfzzg" version="22.1.2" type="device">
   <diagram name="Page-1" id="zyfTXjY__SACSDUyWdWg">
-    <mxGraphModel dx="1436" dy="838" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="567" dy="328" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="KmOND6TftdXHjGpdiIXF-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="KmOND6TftdXHjGpdiIXF-1" target="KmOND6TftdXHjGpdiIXF-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KmOND6TftdXHjGpdiIXF-14" value="U&lt;sub&gt;wo&lt;br&gt;&lt;/sub&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="KmOND6TftdXHjGpdiIXF-3" vertex="1" connectable="0">
+        <mxCell id="KmOND6TftdXHjGpdiIXF-14" value="U&lt;sub&gt;OSC&lt;br&gt;&lt;/sub&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="KmOND6TftdXHjGpdiIXF-3" vertex="1" connectable="0">
           <mxGeometry x="-0.1302" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint y="-10" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="KmOND6TftdXHjGpdiIXF-1" value="Schwingkreis&amp;nbsp;&lt;br&gt;H&lt;sub&gt;1&lt;/sub&gt;(f)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -20,14 +20,9 @@
             <mxPoint x="770" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KmOND6TftdXHjGpdiIXF-11" value="U" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="KmOND6TftdXHjGpdiIXF-4" vertex="1" connectable="0">
-          <mxGeometry x="0.5088" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="KmOND6TftdXHjGpdiIXF-12" value="U&lt;sub&gt;out&lt;br&gt;&lt;/sub&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="KmOND6TftdXHjGpdiIXF-4" vertex="1" connectable="0">
           <mxGeometry x="0.5549" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="-5" y="-11" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="KmOND6TftdXHjGpdiIXF-2" value="Verstärker H&lt;sub&gt;2&lt;/sub&gt;(f)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -44,10 +39,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="KmOND6TftdXHjGpdiIXF-15" value="U&lt;sub&gt;e&lt;/sub&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="KmOND6TftdXHjGpdiIXF-6" vertex="1" connectable="0">
-          <mxGeometry x="0.8977" y="2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
+        <mxCell id="E8EONBdBZP02IYfpcVug-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="330" y="210" width="360" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="E8EONBdBZP02IYfpcVug-2" value="H(f)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="324" y="205" width="40" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

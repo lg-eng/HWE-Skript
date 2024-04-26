@@ -2,57 +2,8 @@
 #| code-fold: true
 ##| echo: false
 
-import pandas as pd
-from plotly.subplots import make_subplots
-import plotly.express as px
-import plotly.graph_objects as go
 
-def trans_plot(filepath, thing_to_plot):
-    df = pd.read_csv(filepath,sep=';',decimal=',')
 
-    for key in thing_to_plot:
-        suplotnumber_max = 0
-        if max(thing_to_plot[key]) > 0:
-            suplotnumber_max = max(thing_to_plot[key])
-
-    fig = make_subplots(
-        rows=suplotnumber_max, cols=1,
-    )
-
-    for key in thing_to_plot:
-        for i in thing_to_plot[key]:
-            fig.add_trace(go.Scatter(x=df.time.values, y=df[key].values,name=key), row=thing_to_plot[key][0], col=1)
-            fig.update_xaxes(title_text=None, tickformat = ".3s", ticksuffix="s",  row=thing_to_plot[key][0], col=1)
-            if key[0] == 'v':
-                ticksuff = 'V'
-            elif key[0] == 'i':
-                ticksuff = 'A'
-            else:
-                ticksuff = ''
-            fig.update_yaxes(title=key, ticksuffix=ticksuff,tickformat = ".3s", row=thing_to_plot[key][0], col=1)
-
-    fig.update_layout(
-        hovermode="x unified",
-        legend_title=None,
-
-        font=dict(
-            family="Arial",
-            size=12,
-            color="black"
-        ),
-        legend=dict(
-            orientation="h",
-            yanchor="top",
-            y=-0.15,
-            xanchor="left",
-            x=0.01
-        ),
-        height=1000/8*suplotnumber_max,
-        width=800,
-    )
-
-    fig.write_image(filepath.replace('.csv','.svg'))
-    fig.show()
 
 ```
 
@@ -352,7 +303,7 @@ Mittels simulation kann die Funktion der Schaltung überprüft werden. Dazu wird
 filepath = 'Grafiken/Hbruecke/Transient Analysis.csv'
 thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'v(vpwm)':[4], 'v(s1)':[5], 'v(s2)':[6], 'v(s3)':[7], 'v(s4)':[8]}
 
-trans_plot(filepath, thing_to_plot)
+QBookHelpers.trans_plot(filepath, thing_to_plot)
 
 ```
 Simulation Logikschaltung mit TTL
@@ -406,7 +357,7 @@ Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-B
 filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightBreak.csv'
 thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4]}
 
-trans_plot(filepath, thing_to_plot)
+QBookHelpers.trans_plot(filepath, thing_to_plot)
 
 ```
 Simulation Brücke  Linkslauf, Rechtslauf und Bremsen
@@ -423,7 +374,7 @@ Simulation Brücke  Linkslauf, Rechtslauf und Bremsen
 filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightBreakPWM.csv'
 thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4],'v(ul_motor)':[5]}
 
-trans_plot(filepath, thing_to_plot)
+QBookHelpers.trans_plot(filepath, thing_to_plot)
 
 ```
 Simulation Brücke  Linkslauf, Rechtslauf und Bremsen mit PWM
