@@ -182,7 +182,7 @@ n,d = fraction(TFSpgT)
 
 H1 = MySymbol('H_1')
 H1_eq = Eq(H1,simplify(TransferFunction(n,d,s)).expand())
-QBookHelpers.print_equation(H1_eq,label=f'eq_OscH1')
+QBookHelpers.print_equation(H1_eq)
 
 
 #Bodeplot
@@ -499,8 +499,8 @@ Da das Ausgangssignal des Oszillators eine Sinuswelle ist, ist der JFET Typ egal
 
 ![VCR DC-Sweep](Oszillator/VCRDCSweep.png){#fig-OscVCRDCSweep}
 
-Der Arbeitspunkt muss möglichst mittig in einem linearen Teilstück des JFET liegen. Eine Steuerspannung zwischen 3 und 5 Volt ist ideal. Der Widerstandswert des JFETs zwischen Drain und Source ist dann ca. $r_{DS}= 200 \ \Omega$.  
-Dieser Wert wird nun vom oben eingebauten $R_{v1}$ abgezogen. Der neue Widerstand $R_{v11}$ wird also so dimensioniert, dass der Widerstand der Drain-Source Strecke und des Widerstandes $R_{v11}$ zusammen den  Widerstandswert von $R_{v1}$ ergeben.
+Der Arbeitspunkt muss möglichst mittig in einem linearen Teilstück des JFET liegen. Eine Steuerspannung zwischen 3 und 5 Volt ist ideal. Um diese Spannung $U_{st}$ zu aus dem Ausgangssignal $U_{out}$ zu gewinnen wird ein Spannungsteiler, realisiert mit einem Potentiometer, und ein Einweggleichrichter verwendet.  
+Der Widerstandswert des JFETs zwischen Drain und Source ist dann ca. $r_{DS}= 200 \ \Omega$. Dieser Wert wird nun vom oben eingebauten $R_{v1}$ abgezogen. Der neue Widerstand $R_{v11}$ wird also so dimensioniert, dass der Widerstand der Drain-Source Strecke und des Widerstandes $R_{v11}$ zusammen den  Widerstandswert von $R_{v1}$ ergeben.
 
 
 #### Die Oszillatorschaltung
