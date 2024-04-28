@@ -1,0 +1,17 @@
+Logik/KombinatorischeLogik/Wahrheitstabelle.csv
+Projekte/Grafiken/01_Transient Analysis.csv
+Projekte/Grafiken/02_Transient Analysis.csv
+Projekte/Grafiken/03_DCSweepVorspannung.csv
+Projekte/Grafiken/03_Transient Analysis.csv
+Projekte/Grafiken/04_Transient Analysis.csv
+Projekte/Grafiken/05_Transient Analysis.csv
+Projekte/Grafiken/06_Transient Analysis.csv
+Projekte/Grafiken/HBruecke/Transient Analysis.csv
+Projekte/Grafiken/HBruecke/Transient AnalysisLeftRightBreak.csv
+Projekte/Grafiken/HBruecke/Transient AnalysisLeftRightBreakPWM.csv
+Projekte/HBrücke_WahrheitstabelleS1S3.csv
+Projekte/HBrücke_WahrheitstabelleS2S4.csv
+Projekte/HBrücke_Wahrheitstabelle_bak.csv
+Projekte/HBrücke_Wahrheitstabelle_bak2.csv
+Projekte/Oszillator/Transient Analysis.csv
+Transient Analysis.csv
