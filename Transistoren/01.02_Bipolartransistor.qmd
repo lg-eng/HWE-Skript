@@ -31,7 +31,7 @@ Ein einfacher Spannungsverstärker. Der Re dient der Temperaturstabilisierung de
 
 
 ### Aufgabenstellung
-Entwerfen Sie einen Spannungsverstärker mit einer Verstärkung.
+Entwerfen Sie einen Spannungsverstärker mit gegebenen Werten.
 ```{python}
 #| code-fold: true
 #| echo: false
