@@ -26,7 +26,7 @@ Es soll mittels Boolescher Algebra die einfachste Boolesche Gleichung aus der Wa
 
 
 ### Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied 
-Da gilt $A \lor A = A$ (Idempotenzgesetze der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden bis alle Terme einmal benutzt wurden! Gibt es zu einem Term, keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.
+Da gilt $A \lor A = A$ (Idempotenzgesetz der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden, bis alle Terme einmal benutzt wurden! Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden Negation, so ist dieser vollständig in das Ergebnis zu übernehmen.
  
 $(\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land \bar{C} \land {B} \land   {A}) = \bar{D} \land \bar{C} \land   {A}$ x  
 $(\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land {C} \land \bar{B} \land   {A}) = \bar{D}  \land \bar{B} \land   {A}$ y  
@@ -37,13 +37,13 @@ $(\bar{D} \land {C} \land {B} \land   \bar{A}) \lor (\bar{D} \land {C} \land {B}
 $({D} \land \bar{C} \land {B} \land   {A}) \lor ({D} \land \bar{C} \land \bar{B} \land   {A}) = {D} \land \bar{C}  \land   {A}$ x  
 $({D} \land {C} \land \bar{B} \land   \bar{A}) \lor ({D} \land {C} \land \bar{B} \land   {A}) = {D} \land {C} \land \bar{B}$  
 
-Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde.  Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden negation so ist dieser vollständig in das Ergebnis zu übernehmen.  
+Nun wird erneut verglichen bis jeder Therm mindestens einmal verwendet wurde. Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden Negation, so ist dieser vollständig in das Ergebnis zu übernehmen.  
 
 $(\bar{D} \land \bar{C} \land   {A}) \lor ({D} \land \bar{C}  \land   {A}) =  \bar{C}  \land   {A}$  
 $(\bar{D}  \land \bar{B} \land {A}) \lor (\bar{D} \land {B} \land   {A}) = \bar{D} \land   {A}$  
 $(\bar{C} \land \bar{B} \land   {A}) \lor (\bar{C} \land {B} \land   {A}) = \bar{C}  \land   {A}$  
 
-Mit dem Idempotenzgesetze der Disjunktion $A \lor A = A$ kann der letzte dieser Term weg gelassen werden, da er bereits in der ersten Zeile vorkommt.
+Mit dem Idempotenzgesetz der Disjunktion $A \lor A = A$ kann der letzte dieser Terme weg gelassen werden, da er bereits in der ersten Zeile vorkommt.
 
 Das Ergebnis:  
 $$Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B})$$  {#eq-bool2}

@@ -1,7 +1,7 @@
 {{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
 
 # Grundlagen eines Projektes
-Die hier gezeigten Grundlagen und Methoden sind reduzierte Inhalte des Projektmanagagements adaptiert auf den Schulbetrieb. Wann immer sinnvoll werden Querverbindungen hergestellt.  
+Die hier gezeigten Grundlagen und Methoden sind reduzierte Inhalte des Projektmanagements adaptiert auf den Schulbetrieb. Wann immer sinnvoll werden Querverbindungen hergestellt.  
 
 ## Aufbau eines Projektes
 * Ziele
@@ -11,7 +11,7 @@ Die hier gezeigten Grundlagen und Methoden sind reduzierte Inhalte des Projektma
 * Conclusio
 
 ### Ziele
-Hier werden die Ziele formulier welche erreicht werden sollen. Als Qualitätsmerkmal eines Ziel ist die Überprüfung auf SMART
+Hier werden die Ziele formuliert, welche erreicht werden sollen. Als Qualitätsmerkmal eines Ziels gilt die Überprüfung mittels SMART:
 * S ... Spezifisch
 * M ... Messbar
 * A ... Erreichbar (achievable)
@@ -19,4 +19,4 @@ Hier werden die Ziele formulier welche erreicht werden sollen. Als Qualitätsmer
 * T ... Terminiert (Es gibt einen Anfang und ein Ende)
 
 ### Ist - Situation
-Bevor überlegt werden kann wie die Ziele erreicht werden können muss überlegt werden welche Mittel zur verfügung stehen. Unter Mittel ist jede Form von Resource gemeint, die hilfreich sein kann das Ziel zu erreichen. Wissen, Hardware, Software, Mitarbeiter*innen.
+Bevor überlegt werden kann, wie die Ziele erreicht werden können, muss überlegt werden, welche Mittel zur Verfügung stehen. Unter Mittel ist jede Form von Ressource gemeint, die hilfreich sein kann, um das Ziel zu erreichen. Wissen, Hardware, Software, Mitarbeiter*innen.

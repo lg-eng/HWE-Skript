@@ -80,17 +80,17 @@ Bei der Emitterschaltung ist der Ruhestrom höher, da der Arbeitspunkt auf der K
 
 ![Bipolartransistor Arbeitspunkt und Ruhestrom @BJT_Kennlinie](Grafiken/BJT_Kennlinie_AP_Ruhestrom.png){#fig-BJT-AP_Ruhestrom}
 
-Um höhere Leistungen und eine geringere Verlustleistung zu erreichen, muss der Arbeitspunkt nach "unten" also zu einem kleineren $I_C$ gebracht werden. Wird dies am Beispiel des Verstärkers in Emittergrundschaltung @sec-BJT gemacht, würde das bedeuten, dass nur noch eine Halbwelle verstärkt wird. Um dies zu verhindern, werden ein PNP und ein NPN Transistor in Gegentakt geschaltet. Jeder Transistor übernimmt nun die Verstärkung einer Halbewelle. Warum der $I_C$, und damit die Verlustleistung, trotzdem nicht ganz Null sein kann, sehen wir im folgenden Teil.
+Um höhere Leistungen und eine geringere Verlustleistung zu erreichen, muss der Arbeitspunkt nach "unten", also zu einem kleineren $I_C$ gebracht werden. Wird dies am Beispiel des Verstärkers in Emittergrundschaltung @sec-BJT gemacht, würde das bedeuten, dass nur noch eine Halbwelle verstärkt wird. Um dies zu verhindern, werden ein PNP und ein NPN Transistor in Gegentakt geschaltet. Jeder Transistor übernimmt nun die Verstärkung einer Halbewelle. Warum der $I_C$, und damit die Verlustleistung, trotzdem nicht ganz Null sein kann, sehen wir im folgenden Teil.
 
 ## Die Gegentaktendstufe
 Um zu vermeiden, dass der Arbeitspunkt eine höhere Verlustleistung aufgrund eines höheren $I_C$ verursacht, und trotzdem ein symmetrisches Signal verstärkt werden kann, können zwei Transistoren eingesetzt werden.
-Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt und die die Betriebsart wird als B bezeichnet.
-Wird eine reale Schaltung entwickelt ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.
+Damit ist auch die maximale Leistung höher, da der Arbeitsbereich pro Transistor besser ausgenutzt wird. Ein Transistor verstärkt die positiven Signale. Der andere die negativen. Dies wird Gegentaktendstufe genannt. Die Betriebsart wird hier als B bezeichnet.
+Wird eine reale Schaltung entwickelt, ist stets darauf zu achten, dass die Bauteileigenschaften berücksichtigt werden. Speziell die Maximalwerte dürfen nicht überschritten werden.
 
 ![Bipolartransistoren in Gegentakt ](Grafiken/01_LV_Gegentaktendstufe.png){#fig-BJT_Gegen} 
 
 
-Wird diese Schaltung einem Test unterzogen zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinuiden Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.
+Wird diese Schaltung einem Test unterzogen, zeigt sich, dass das Ergebnis wenig zufriedenstellend ist. Weder wird die Amplitude erreicht, das Signal wird gedämpft, noch folgt der Ausgang dem sinusförmigen Verlauf des Eingangs. Speziell an den Nulldurchgängen gibt es beträchtliche Verzerrungen. Als Qualitätskriterium soll von nun an die Differenz zwischen Ausgangsspannung und Eingangsspannung herangezogen werden.
 
 :::{ .content-hidden unless-format="html"}
 :::{#fig-BJT_Gegen_Sim1}
@@ -120,7 +120,7 @@ Bipolartransistoren in Gegentakt, Simulationsergebnisse
 
 ## Rückkopplung
 Um den Verlauf der Ausgangsspannung an den Verlauf der Eingangsspannung anzupassen, wird eine Gegenkopplung verwendet. Dazu ist eine Subtraktion des Ausgangssignals vom Eingangssignal notwendig. Als Transistorschaltung würde sich eine Differenzverstärkerschaltung anbieten. Für ein noch besseres Ergebnis wird hier ein OPV eingesetzt. Durch die Rückkopplung der gesamten Ausgangsspannung wird eine Spannungsverstärkung von Eins erreicht. Das Ausgangssignal folgt dem Eingangssignal. 
-Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus um beispielsweise Lautsprecher zu betreiben.
+Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus, um beispielsweise Lautsprecher zu betreiben.
 
 ![Gegentaktendstufe mit Rückkopplung ](Grafiken/02_LV_Rueckkopplung.png){#fig-BJT_GegenRueck}
 
@@ -154,12 +154,12 @@ Gegentaktendstufe mit Rückkopplung, Simulationsergebnisse Spannung
 
 
 ## Vorspannen {#sec-LV_Vorspannen}
-Um die Übergabeverzerrungen zu eliminieren wird die B-E Strecke vorgespannt. Das bedeutet eine Spannung anzulegen welche größer ist als die Schwellspannung der Basis- Emitter Strecke. Damit ist der Transistor bereits im leitenden Bereich und wird nur noch vom Eingangssignal weiter ausgesteuert.  
-Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt wenn am Eingang $0 \ \mathrm{V} \ $ anliegen erhöhen sich die Verluste. Dieser Kollektorstrom wird auch als Ruhestrom bezeichnet $I_{C,Ruhe} \ $. Um den Ruhestrom möglichst klein zu halten muss die Spannungsquelle an die Transistoren und deren Fertigungstoleranzen angepasst werden. 
+Um die Übergabeverzerrungen zu eliminieren wird die B-E Strecke vorgespannt. Das bedeutet eine Spannung anzulegen, welche größer ist als die Schwellspannung der Basis- Emitter Strecke. Damit ist der Transistor bereits im leitenden Bereich und wird nur noch vom Eingangssignal weiter ausgesteuert.  
+Da durch das Vorspannen auch ein Kollektorstrom durch den Transistor fließt, wenn am Eingang $0 \ \mathrm{V} \ $ anliegen erhöhen sich die Verluste. Dieser Kollektorstrom wird auch als Ruhestrom bezeichnet $I_{C,Ruhe} \ $. Um den Ruhestrom möglichst klein zu halten, muss die Spannungsquelle an die Transistoren und deren Fertigungstoleranzen angepasst werden. 
 
 ![Gegentaktendstufe mit vorgespannten Transistoren ](Grafiken/03_LV_Vorspannung.png){#fig-BJT_GegenRueckVor}
 
-Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten $I_C$ eingestellt werden. Der $I_C$ ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein als Möglich sein um die Verluste gering zu halten. Hier soll der $I_C$ ein Zehntel des maximalen Laststromes betragen.  
+Mittels DC-Sweep kann die Spannungsquelle auf einen gewünschten $I_C$ eingestellt werden. Der $I_C$ ist so zu wählen, dass der Arbeitspunkt außerhalb des nichtlinearen Bereichs der Transistorkennlinie liegt. Gleichzeitig soll er so klein wie möglich sein, um die Verluste gering zu halten. Hier soll der $I_C$ ein Zehntel des maximalen Laststromes betragen.  
 
 :::{.content-hidden unless-format="html"}
 :::{#fig-BJT_GegenRueckVorDCSw}
@@ -260,12 +260,12 @@ Mit dem Cursor können die Ergebnisse exakt abgelesen werden.
 | $V_{vor}$ bei $I_C$ = 15 mA an T1        | 1,3479  V  |        |   
 | $V_{vor}$ bei $I_C$ = 15 mA an T2       | 1,3488  V     |        |  
 
-Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zusammenhang zwischen $U_{BE}$ und $I_C$ ein anderer. Da die Werte sehr nahe beieinander liegen kann ein gerundetes arithmetisches Mittel als Ergebnis für $V_{Vor}$ verwendet werden.
+Da es sich um unterschiedliche Transistoren handelt, ist natürlich auch der Zusammenhang zwischen $U_{BE}$ und $I_C$ ein anderer. Da die Werte sehr nahe beieinander liegen, kann ein gerundetes arithmetisches Mittel als Ergebnis für $V_{Vor}$ verwendet werden.
 
 
 
 
-Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt, um Beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung und der Ausgangsspannung zu erkennen. 
+Der Verstärker hat nun eine Qualität, welche das Verstärken von niederfrequenten Signalen in ausreichender Güte erlaubt, um beispielsweise Musik zu verstärken. Dies ist am geringen Unterschied zwischen der Eingangsspannung und der Ausgangsspannung zu erkennen. 
 
 
 :::{ .content-hidden unless-format="html"}
@@ -294,12 +294,12 @@ Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse
 | Simulierte Perioden  | 3       |        |   
 
 ::: {.callout-note}
-Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang würden sich eignen um Nachzuweisen, dass die Verzerrung akzeptabel ist?
+Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang würden sich eignen um nachzuweisen, dass die Verzerrung akzeptabel ist?
 :::
 
 ## Reale Spannungsquelle
-Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen die die Aufgabe erledigen kann ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, pp. 301].  
-In @fig-BJT_GegenRueckVorReal2 wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus  @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
+Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus Kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen, welche die Aufgabe erledigen kann, ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, pp. 301].  
+In @fig-BJT_GegenRueckVorReal2 wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren, kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus  @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
 
 ![Reale Spannungsquelle, $U_{BE}$-Vervielfacher](Grafiken/04.01_LV_Reale_Vorspannung.png){#fig-BJT_GegenRueckVorReal2}
 
@@ -307,7 +307,7 @@ Der Ablauf ist wie folgt und gilt für alle Dimensionierungsaufgaben von Schaltu
 
 ### $U_{BE}$-Vervielfacher berechnen. {#sec-ube_verf_bere}
 Dabei wird die Schaltung analytisch, also mit Formeln berechnet.  
-Es soll wie bei der Dimensionierung der Emitterverstärkerschaltung klar gekennzeichnet werden woher die Formeln und Werte kommen.  
+Es soll, wie bei der Dimensionierung der Emitterverstärkerschaltung, klar gekennzeichnet werden, woher die Formeln und Werte kommen.  
 Gesucht wird $R_{sq1}$ und $R_{sq2}$ so, dass $U_{out}$ der gesuchten Vorspannung aus  @sec-LV_Vorspannen entspricht.
 
 ```{python}
@@ -395,7 +395,7 @@ QBookHelpers.print_values([ILmax])
 
 ```
 
-Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere, und damit kompliziertere, Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse groß sind. Folgende *Faustegeln* gelten für die Berechnung:
+Die Berechnung von Transistorschaltungen erfolgt immer mit gewissen Annahmen. Eine exaktere und damit kompliziertere Berechnung ist nicht sinnvoll, da die Bauteiltoleranzen und Temperatureinflüsse zu groß sind. Folgende *Faustregeln* gelten für die Berechnung:
 ```{python}
 #| code-fold: true
 #| echo: false
@@ -434,7 +434,7 @@ QBookHelpers.print_values([U1])
 
 
 
-$I_1$ kann aus dem Knoten 2 berechnet werden indem @eq-I2_eq eingesetz wird.
+$I_1$ kann aus dem Knoten 2 berechnet werden, indem @eq-I2_eq eingesetz wird.
 
 ```{python}
 #| code-fold: true
@@ -448,7 +448,7 @@ QBookHelpers.print_equation(I1_eq2,label='eq-I1_eq2')
 
 ```
 
-Wird nun noch  @eq-Ib_eq in  @eq-I1_eq2 eingesetzt erhält man eine Gleich für $I_1$ in Abhängigkeit von $I_C$.
+Wird nun noch  @eq-Ib_eq in  @eq-I1_eq2 eingesetzt, erhält man eine Gleichung für $I_1$ in Abhängigkeit von $I_C$.
 
 ```{python}
 #| code-fold: true
@@ -458,7 +458,7 @@ QBookHelpers.print_equation(I1_eq3,label='eq-I1_eq3')
 
 ```
 
-Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. Für $I_L$ muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in  @sec-LV_Vorspannen ermittelt werden. Der Strom $I_{spg}$ kann mit der Faustregel @eq-Ispg_eq bestimmt werden. Werden diese Informationen und  @eq-I1_eq3 in Knoten 1 @eq-K1_eq eingesetzt, kann durch umformen, $I_c$ berechnet werden. 
+Über den Knoten 1 wird der Zusammenhang zwischen den Strömen dargestellt. Für $I_L$ muss der maximale Lastrom eingesetz werden. Dieser kann aus einer Transientensimulation in  @sec-LV_Vorspannen ermittelt werden. Der Strom $I_{spg}$ kann mit der Faustregel @eq-Ispg_eq bestimmt werden. Werden diese Informationen und  @eq-I1_eq3 in Knoten 1 @eq-K1_eq eingesetzt, kann durch Umformen $I_c$ berechnet werden. 
 
 ```{python}
 #| code-fold: true
@@ -473,7 +473,7 @@ QBookHelpers.print_values([Ic])
 
 ```
 
-Durch einsetzen der Zahlenwerte können nun $R_{sq1}$ und $R_{sq2}$ berechnet werden.
+Durch Einsetzen der Zahlenwerte können nun $R_{sq1}$ und $R_{sq2}$ berechnet werden.
 
 ```{python}
 #| code-fold: true
@@ -501,11 +501,13 @@ Wird der Spannungsteiler aus $R_{sq1}$ und $R_{sq2}$ als unbelastet betrachtet, 
 :::
 
 ### Überprüfen und einstellen mittels Simulation
-Nun wird mittels Simulation die Berechnung überprüft und die Schaltung exakt eingestellt. Zur Überpürfung wird eine "OP" Simulation verwendet. Um die Schaltung einzustellen kann eine "DC-Sweep" Simulation, wie dies zum Beispiel in @sec-LV_Vorspannen zur Bestimmung der korrekten Vorspannung gemacht wurde, verwendet werden.
+Nun wird mittels Simulation die Berechnung überprüft und die Schaltung exakt eingestellt. Zur Überprüfung wird eine "OP" (Operating Point) Simulation verwendet. Um die Schaltung einzustellen, kann eine "DC-Sweep" Simulation, wie dies zum Beispiel in @sec-LV_Vorspannen zur Bestimmung der korrekten Vorspannung gemacht wurde, verwendet werden.
 
 ![Reale Spannungsquelle, Simulation 1](Grafiken/04.01_LV_RealeSpannungsquelleSim1.png){#fig-BJT_LV_RealeSpannungsquelleSim1}
 
-Werden die oben berechneten Werte mittels Simulation überpürft, erhält man eine gute Übereinstimmung für $U_{out}$. Um eine noch Bessere Übereinstimmung zu erzielen können die Widerstände mittels DC-Sweep eingestellt werden. Dazu wird $R_{sq1}$ laut Berechnung gewählt und Widerstand $R_{sq2}$ "gesweept". Ziel ist es Den Widerstandswert $R_{sq2}$ so zu bestimmen, dass $U_{out}$ den notwendigen Wert der Vorspannung hat, welcher in  @sec-LV_Vorspannen mittels "DC-Sweep" ermittelt wurde $U_{out} = 1.35 \ \mathrm{V}$.
+Werden die oben berechneten Werte mittels Simulation überprüft, erhält man eine gute Übereinstimmung für $U_{out}$. Um eine noch Bessere Übereinstimmung zu erzielen, können die Widerstände mittels DC-Sweep eingestellt werden. Dazu wird $R_{sq1}$ laut Berechnung gewählt und Widerstand $R_{sq2}$ "gesweept". Ziel ist es, den Widerstandswert $R_{sq2}$ so zu bestimmen, dass $U_{out}$ den notwendigen Wert der Vorspannung hat, welcher in  @sec-LV_Vorspannen mittels "DC-Sweep" ermittelt wurde.
+
+$U_{out} = 1.35 \ \mathrm{V}$.
 
 ![Reale Spannungsquelle, DC-Sweep](Grafiken/04.01_LV_RealeSpannungsquelleSim2.png){#fig-BJT_LV_RealeSpannungsquelleSim2}
 
@@ -524,8 +526,8 @@ Eine neuerliche Simulation bestätigt das Ergebnis.
 
 
 ### Aufbau
- Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potentiometer in der realen Schaltung vorgesehen werden um die diese Effekte zu kompensieren. Beim $U_{BE}$-Vervielfacher würde $R_{sq2}$ als Trimpotentiometer ausgeführt werden.
- Weiters ist zu beachten, dass für einen realen Aufbau Widerstandswerte aus den E-Reihen zu wählen sind!
+Ist aus dem Schaltungsaufbau zu erwarten, dass Bauteiltoleranzen und Umgebungsbedingungen (z.B. Temperatur) eine Rolle spielen, müssen Potentiometer in der realen Schaltung vorgesehen werden, um diese Effekte zu kompensieren. Beim $U_{BE}$-Vervielfacher würde $R_{sq2}$ als Trimpotentiometer ausgeführt werden.
+Außerdem ist zu beachten, dass für einen realen Aufbau Widerstandswerte aus den E-Reihen zu wählen sind!
 
 
 ### Reale Spannungsquelle in der Schaltung {#sec-RealeVorspannung}
@@ -564,10 +566,10 @@ Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation
 | $V_{in}$ Amplitude        | 1 V     |        |  
 | Simulierte Perioden  | 3       |        |  
 
-In der Simulation über die Zeit, der Transientensimulation, sind auch eindeutig die Übergabeverzerrungen zu sehen. DEr Grund dafür liegt in der fehlenden Stromversorgung der Spannungsquelle.
+In der Simulation über die Zeit der Transientensimulation sind auch eindeutig die Übergabeverzerrungen zu sehen. Der Grund dafür liegt in der fehlenden Stromversorgung der Spannungsquelle.
 
 ::: {.callout-note}
-Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
+Welche noch kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
 Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung genutzt?
 :::
 
@@ -577,7 +579,7 @@ Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und
 
 ![Gegentaktendstufe mit Stromversorgung, Simulation 1 ](Grafiken/05_LV_StromquellenDCSim1.png){#fig-BJT_GegenRueckVorRealStromDCSim1}  
 
-Mittels Arbeitspunktsimulation ist zu sehen, dass die Vorspannung durch, den einbau der Stromquellen erreicht wird. Die Höhe des Stromes richtet sich nach der Dimensionierung von $I_{spqg}$ in @sec-ube_verf_bere. 
+Mittels Arbeitspunktsimulation ist zu sehen, dass die Vorspannung durch den Einbau der Stromquellen erreicht wird. Die Höhe des Stromes richtet sich nach der Dimensionierung von $I_{spqg}$ in @sec-ube_verf_bere. 
 
 :::{ .content-hidden unless-format="html"}
 :::{#fig-BJT_GegenRueckVorRealStromTRANSim1}
@@ -607,15 +609,15 @@ Gegentaktendstufe mit Stromversorgung, Transienten Simulation
 Die Verzerrungen sind wieder auf dem Niveau aus @sec-LV_Vorspannen und damit akzeptabel. Nun müssen nur noch die idealen Stromquellen mit realen ersetzt werden.
 
 ## Reale Stromquelle
-Als geeignete Stromquellen bietet sich der sogenannte Stromspiegel an. Dieser kann wieder Analytisch berechnet werden nach [@boehmer17, pp. 157] oder mittels DC-Sweeps des Widerstandes bestimmt werden. Zur Simulation eignen sich als Last Spannungsgesteuerte Spannungsquellen. 
+Als geeignete Stromquellen bietet sich der sogenannte Stromspiegel an. Dieser kann wieder analytisch berechnet werden nach [@boehmer17, pp. 157] oder mittels DC-Sweeps des Widerstandes bestimmt werden. Zur Simulation eignen sich als Last Spannungsgesteuerte Spannungsquellen. 
 
 ![Gegentaktendstufe mit realen Stromquellen, Simulation 1 ](Grafiken/05.01_RealeStromquellenOPSim1.png){#fig-BJT_GegenRueckVorRealStromOPSim1}  
 
-Die Stabilität der Stromquelle kann ermittelt werden indem die Lastspannung "gesweept" wird. Dabei soll der Verlauf des Stromes möglichst horizontal, konstant, sein.
+Die Stabilität der Stromquelle kann ermittelt werden, indem die Lastspannung "gesweept" wird. Dabei soll der Verlauf des Stromes möglichst horizontal und konstant sein.
 
 ![Gegentaktendstufe mit realen Stromquellen, DC Sweep ](Grafiken/05.01_RealeStromquelleDCSim1.png){#fig-BJT_GegenRueckVorRealStromDCsweepSim1}  
 
-Nachdem die ausreichende Stabilität gezeigt wurde können die Stromquellen eingebaut werden und die gesamte Schaltung auf ihre Qualität überprüft werden. 
+Nachdem die ausreichende Stabilität gezeigt wurde, können die Stromquellen eingebaut und die gesamte Schaltung auf ihre Qualität überprüft werden. 
 
 ![Gegentaktendstufe mit realen Stromquellen, Arbeitspunktanalyse ](Grafiken/06_LV_Real.png){#fig-BJT_06_LV_Real}  
 
@@ -644,19 +646,19 @@ Gegentaktendstufe mit realen Stromquellen, Transienten Analyse
 | $V_{in}$ Amplitude        | 1 V     |        |  
 | Simulierte Perioden  | 5       |        |  
 
-Vergleicht man nun Ergebnis @fig-BJT_GegenRueckVorSim1, bei welchem die Vorspannung ideal ausgeführt wurde und das Ergebnis @fig-BJT_06_LV_Real_TRANSim1 mit realen, und damit tatsächlich fertigbar, Quellen ist die Qualitätsunterschied zu vernachlässigen. Das Schaltung gilt damit als fertig dimensioniert. Natürlich kann die Schaltung erweitert, adaptiert und verbessert werden. Siehe dazu @sec-AbwErw.
+Vergleicht man nun Ergebnis @fig-BJT_GegenRueckVorSim1, bei welchem die Vorspannung ideal ausgeführt wurde, und das Ergebnis @fig-BJT_06_LV_Real_TRANSim1 mit realen und damit tatsächlich fertigbar Quellen, ist die Qualitätsunterschied zu vernachlässigen. Die Schaltung gilt damit als fertig dimensioniert. Natürlich kann die Schaltung erweitert, adaptiert und verbessert werden. Siehe dazu @sec-AbwErw.
 
 
 
 ## Praktische Herangehensweise
-* welche Last muss versorgt werden.
-* welche Lastströme sind gewünscht.
+* Welche Last muss versorgt werden?
+* Welche Lastströme sind gewünscht?
 * Auswahl passender Transistoren in Bezug auf die maximale Werte.
-* Definition der Qualitätsparameter, z.B. Differenz der ein und Ausgangspannungen, Oberwellen Anteile, ...
+* Definition der Qualitätsparameter, z.B. Differenz der Ein- und Ausgangspannungen, Oberwellen Anteile, ...
 
 ## Abwandlungen und Erweiterungen {#sec-AbwErw}
-Wie könnte eine Strombegrenzung, Kurzschlusssicherheit, umgesetzt werden?  
-Wie könnte die Rückkopplung die hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker -->  
+Wie könnte eine Strombegrenzung oder Kurzschlusssicherheit umgesetzt werden?  
+Wie könnte die Rückkopplung, welche hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker -->  
 Wie könnte die Vorspannung mit Dioden umgesetzt werden?  
 Wie könnte die Leistung weiter erhöht werden? <!-- Darlingtontransistoren -->
 
