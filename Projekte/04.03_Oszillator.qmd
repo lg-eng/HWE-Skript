@@ -493,13 +493,13 @@ Folgende Überlegungen sind anzustellen.
 Der Regler soll die Verstärkung kleiner machen wenn die Amplitude der Ausgangsspannung zu groß wird und die Verstärkung erhöhen wenn die Amplitude der Ausgangsspannung zu klein ist. Es ist also ein indirekt-proportionaler Zusammenhang zwischen der Amplitude und der Verstärkung. Daraus folgt, dass der Widerstand $R_{v1}$ verändert werden soll, da er in der Formel für die Verstärkung im Nenner steht.
 $$V=1+\frac{R_{v2}}{R_{v1}}$$  
 
-Da das Ausgangssignal des Oszillators eine Sinuswelle ist, ist der JFET Typ egal. Es kann sowohl ein N-Kanal als auch ein P-Kanal JFET verwendet werden. Da sich sowohl die negative Steuerspannung für den N-Kanal JFET als auch die positive Steuerspannung für den P-Kanal JFET mit einem einfachen Gleichrichter realisieren lässt. Um die Bauteile der Amplitudenregelung bestimmen zu können, muss der Arbeitspunkt des VCR's bestimmt werden. Dazu wird eine DC-Sweep Analyse durchgeführt. Die Widerstände $R_{stab3}$ und $R_{stab4}$ dienen der Linearisierung des JFETs.
+Da das Ausgangssignal des Oszillators eine Sinuswelle ist, ist der JFET Typ egal. Es kann sowohl ein N-Kanal als auch ein P-Kanal JFET verwendet werden. Da sich sowohl die negative Steuerspannung für den N-Kanal JFET als auch die positive Steuerspannung für den P-Kanal JFET mit einem einfachen Gleichrichter realisieren lässt. Um die Bauteile der Amplitudenregelung bestimmen zu können, muss der Arbeitspunkt des VCR's bestimmt werden. Dazu wird eine DC-Sweep Analyse durchgeführt. Die Widerstände $R_{stab3}$ und $R_{stab4}$ dienen der Linearisierung des JFETs. Der Widerstand $R_{s2}$ dient als Shuntwiderstand zur Messung des Stromes.
 
 ![VCR](Oszillator/PKanalVCR.png){#fig-OscVCR}
 
 ![VCR DC-Sweep](Oszillator/VCRDCSweep.png){#fig-OscVCRDCSweep}
 
-Der Arbeitspunkt muss möglichst mittig in einem linearen Teilstück des JFET liegen. Eine Steuerspannung zwischen 3 und 5 Volt ist ideal. Um diese Spannung $U_{st}$ zu aus dem Ausgangssignal $U_{out}$ zu gewinnen wird ein Spannungsteiler, realisiert mit einem Potentiometer, und ein Einweggleichrichter verwendet.  
+Der Arbeitspunkt muss möglichst mittig in einem linearen Teilstück des JFET liegen. Eine Steuerspannung zwischen 3 und 5 Volt ist ideal. Um diese Spannung $U_{st}$ aus dem Ausgangssignal $U_{out}$ zu gewinnen, wird ein Spannungsteiler, realisiert mit einem Potentiometer, und ein Einweggleichrichter verwendet.  
 Der Widerstandswert des JFETs zwischen Drain und Source ist dann ca. $r_{DS}= 200 \ \Omega$. Dieser Wert wird nun vom oben eingebauten $R_{v1}$ abgezogen. Der neue Widerstand $R_{v11}$ wird also so dimensioniert, dass der Widerstand der Drain-Source Strecke und des Widerstandes $R_{v11}$ zusammen den  Widerstandswert von $R_{v1}$ ergeben.
 
 
@@ -525,6 +525,7 @@ Simulation der Ausgangsspannung und der Steuerspannung für den Oszillator
 :::
 
 Es ist zu sehen, dass nach einer Einschwingphase die Amplitude der Ausgangsspannung konstant bleibt. Die Amplitudenregelung funktioniert. Der Oszillator funktioniert.  
+
 
 Um eine Aussage über die Qualität zu machen muss die Verzerrung des Signals betrachtet werden. Dazu wird das Signal in seine Fourierkoeffizienten zerlegt und die Oberwellen berechnet. Die Oberwellen dürfen nicht zu groß sein.  
 

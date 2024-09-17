@@ -381,8 +381,6 @@ Simulation Brücke  Linkslauf, Rechtslauf und Bremsen mit PWM
 :::
 :::
 
-
-
 ## PWM und induktive Lasten
 
 **To Be Continued**

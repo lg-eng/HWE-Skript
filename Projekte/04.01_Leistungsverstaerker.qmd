@@ -564,7 +564,7 @@ Gegentaktendstufe mit realer Vorspannungsquelle, Transienten Simulation
 | $V_{in}$ Amplitude        | 1 V     |        |  
 | Simulierte Perioden  | 3       |        |  
 
-In der Simulation über die Zeit, der Transientensimulation, sind auch eindeutig die Übergabeverzerrungen zu sehen. DEr Grund dafür liegt in der fehlenden Stromversorgung der Spannungsquelle.
+In der Simulation über die Zeit, der Transientensimulation, sind auch eindeutig die Übergabeverzerrungen zu sehen. Der Grund dafür liegt in der fehlenden Stromversorgung der Spannungsquelle.
 
 ::: {.callout-note}
 Welche noch Kostengünstigere Variante zur Realisierung der Vorspannung mit Dioden gibt es? Welchen Nachteile hat diese Lösung? 
@@ -572,7 +572,9 @@ Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung g
 :::
 
 ## Stromversorgung
-Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und @fig-BJT_GegenRueckVorReal4 sichtbar ist, fehlt für die reale Vorspannungsquelle noch die Stromversorgung.
+Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und @fig-BJT_GegenRueckVorReal4 sichtbar ist, reicht der ausgangsstrom des OPV's nicht aus um die reale Vorspannungsquelle zu versorgen. Daher müssen zusätzliche Stromquellen eingebaut werden. Da der Verstärker symetrisch aussteuert, müssen zwei Stromquellen eingebaut werden. Eine für die negative und eine für die positive Versorgung.
+
+
 <!-- ![Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle](Grafiken/05_LV_Stromquellen.png){#fig-BJT_GegenRueckVorRealStrom} -->
 
 ![Gegentaktendstufe mit Stromversorgung, Simulation 1 ](Grafiken/05_LV_StromquellenDCSim1.png){#fig-BJT_GegenRueckVorRealStromDCSim1}  
