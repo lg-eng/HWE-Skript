@@ -1,18 +1,18 @@
 ## Feldeffekttransistor {#sec-MOSFET}
 
-Die einfachste und die gleichzeitig eine der wichtigsten Anwendungen des MOSFET's ist der Schalter. Mittels Spannnung am Gate wird der MOSFET ein- und ausgeschalten.
+Die einfachste und gleichzeitig eine der wichtigsten Anwendungen des MOSFETs ist der Schalter. Mittels Spannung am Gate wird der MOSFET ein- und ausgeschalten.
 
 ![N-Kanal MOSFET als Schalter](Grafiken/NChannelenhancementSwitch){#fig-n-Channel_switch}
 
-Die notwendigen und zulässigen Spannungen sind aus dem Datenblatt des gewählten Transistors zu entnehmen. Die kleinste Spannung, welche für das Schalten zwischen Gate und Source anliegen muss, wird Threshold-Spannung $U_{GS,Threshhold}$ genannt. Am Gate wird kein Vorwiderstand benötigt, da der Eingangswiderstand des MOSFET's sehr hoch ist und dadurch, in den meisten Fällen, mit $I_D = 0 \ \mathrm{A}$ angenommen werden kann.
+Die notwendigen und zulässigen Spannungen sind aus dem Datenblatt des gewählten Transistors zu entnehmen. Die kleinste Spannung, welche für das Schalten zwischen Gate und Source anliegen muss, wird Threshold-Spannung $U_{GS,Threshhold}$ genannt. Am Gate wird kein Vorwiderstand benötigt, da der Eingangswiderstand des MOSFETs sehr hoch ist und dadurch in den meisten Fällen mit $I_D = 0 \ \mathrm{A}$ angenommen werden kann.
 
 ### Aufgabe
 
 #### Teil 1: N-Kanal Anreicherungstyp
-Simulieren Sie die Schaltung. Wählen Sie die Spannungen aus dem Datenblatt aus. Geben Sie für zwei Eingangspulse den Strom durch, und die Spannung über den Widerstand.
-Verwenden Sie dafür die Transientenanalyse und geben Sie deutlich an ob das Ergebnis den Erwartungen entspricht oder nicht. Argumentieren Sie Ihre Aussage.
+Simulieren Sie die gegebene Schaltung. Wählen Sie die Spannungen aus dem Datenblatt aus. Geben Sie für zwei Eingangspulse den Strom durch, und die Spannung über den Widerstand an.
+Verwenden Sie dafür die Transientenanalyse und geben Sie deutlich an, ob das Ergebnis den Erwartungen entspricht oder nicht. Argumentieren Sie Ihre Aussage.
 
 #### Teil 2: P-Kanal Anreicherungstyp
-Simulieren Sie die Schaltung erneut unter der verwendung eines P-Kanal Anreicherungstypen. Passen Sie die Spannungen so an, dass auch dieser als Schalter funktioniert. Verwenden Sie dazu erneut das passende Datenblatt.
-Geben Sie deutlich an ob das Ergebnis den Erwartungen entspricht oder nicht. Argumentieren Sie Ihre Aussage.
+Simulieren Sie die Schaltung erneut unter der Verwendung eines P-Kanal Anreicherungstypen. Passen Sie die Spannungen so an, dass auch dieser als Schalter funktioniert. Verwenden Sie dazu erneut das passende Datenblatt.
+Geben Sie deutlich an, ob das Ergebnis den Erwartungen entspricht oder nicht. Argumentieren Sie Ihre Aussage.
 

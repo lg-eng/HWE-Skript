@@ -13,13 +13,13 @@
 Der Markt für DC-Motoren belief sich im Jahr 2022 auf ca. 20,1 Milliarden US-Dollar und es wurde erwartet, dass sich das Volumen bis 2031 auf 49,3 Milliarden erhöht [@DC-Motor_Market]. Jeder dieser Motoren braucht eine mehr oder weniger komplizierte Ansteuerung. Eine mögliche Ansteuerung soll hier gezeigt werden.
 
 **Ziel**  
-Es soll eine Schaltung entworfen werden welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:  
+Es soll eine Schaltung entworfen werden, welche es erlaubt, einen DC-Motor in folgenden Betriebsarten zu betreiben:  
 
 * Linkslauf  
 * Rechtslauf   
 * Bremsen  
 
-Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels *Puls-Weiten-Modulation* (PWM) zu ändern.
+Bei den ersten beiden Punkten soll es möglich sein, die Drehzahl mittels *Puls-Weiten-Modulation* (PWM) zu ändern.
 
 **Lernziele**  
   
@@ -28,7 +28,7 @@ Bei den ersten beiden Punkten soll es Möglich sein, die Drehzahl mittels *Puls-
 * Plausibilität und Qualitätsbeurteilung mittels Simulation  
 * Hierarchisches Design in Schaltplänen
 * Strukturiertes, zeitoptimiertes Dokumentieren der Arbeit  
-* Application Notes der Hersteller lesen und verstehen
+* Application Notes/Datenblätter der Hersteller lesen und verstehen
 
 **Hilfestellung**  
 
@@ -44,11 +44,11 @@ Um die oben geforderten Betriebszustände zu erreichen, bedarf es der H-Brücke,
 ![H-Brücke [@HBruecke] ](Grafiken/Hbruecke/Vierquadrantensteller.png){#fig-H-Bruecke}
 
 ### Funktionsweise
-Für die Erklärung der Funktionsweise werden die MOSFET's durch gedachte Schalter ersetzt. Dies ist Zulässig, da der MOSFET als Schalter betrieben werden kann. Siehe dazu @sec-MOSFET. 
+Für die Erklärung der Funktionsweise werden die MOSFET's durch gedachte Schalter ersetzt. Dies ist zulässig, da der MOSFET als Schalter betrieben werden kann. Siehe dazu @sec-MOSFET. 
 
 ![Ersatzschaltbild H-Brücke mit Schaltern ](Grafiken/Hbruecke/MitSchaltern.png){#fig-H-BrueckeMS}
 
-$S_1, S_2, S_ 3$ und $S_4$ stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet wenn die Spannung zwischen Gate und Source, $U_{GS}$, die Threshold-Spannung $U_{GS,Threshold}$ überschreitet. 
+$S_1, S_2, S_ 3$ und $S_4$ stellen dabei Potentiale dar. Zur Erinnerung, ein MOSFET schaltet, wenn die Spannung zwischen Gate und Source, $U_{GS}$, die Threshold-Spannung $U_{GS,Threshold}$ überschreitet. 
 
 Der Trick ist, den Stromfluss durch den Motor für Rechtslauf und Linkslauf umzukehren. Dies gelingt wie folgt.
 
@@ -67,7 +67,7 @@ Transistoren $S_1$ und $S_4$ müssen durchschalten. Transistoren $S_2$ und $S_3$
 
 #### Bremsen  
 
-Um den Motor zu bremsen muss er Kurzgeschlossen werden. Daraus ergibt sich, dass die Transistoren $S_2$ und $S_4$ durchgeschaltet sind und die Transistoren $S_1$ und $S_3$  gesperrt sind.
+Um den Motor zu bremsen, muss er kurzgeschlossen werden. Daraus ergibt sich, dass die Transistoren $S_2$ und $S_4$ durchgeschaltet sind und die Transistoren $S_1$ und $S_3$  gesperrt sind.
 
 ![Ersatzschaltbild H-Brücke mit Schaltern, Bremsen ](Grafiken/Hbruecke/MitSchalternBremse.png){#fig-H-BrueckeMSBremse}
 
@@ -78,11 +78,11 @@ Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen 
 
 |Eingang / Ausgang|Bezeichnung|Zuordnung|Beschreibung|
 |:----|:----|:----|:----|
-|Eingang|E ... Enable|0 … Disabled;  1 … Enabled|Damit wird die Schaltung Betriebsbereit, Ist Enable deaktiviert kann an den anderen Eingängen ein beliebiges Signal anliegen, der Motor darf sich trotzdem nicht bewegen.|
+|Eingang|E ... Enable|0 … Disabled;  1 … Enabled|Damit wird die Schaltung betriebsbereit. Ist Enable deaktiviert, kann an den anderen Eingängen ein beliebiges Signal anliegen, der Motor darf sich trotzdem nicht bewegen.|
 |Eingang|B ... Break|0 … Disabled; 1 … Enabled|Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.|
 |Eingang|D ... Direction|0 … Linkslauf; 1 … Rechtslauf|Gibt die Drehrichtung vor.|
 |Eingang|P ... PWM|PWM Signal|Gibt die Drehzahl vor.|
-|Ausgänge|S1, S2, S3, S4|0 … MOSFET aus; 1 … MOSFET ein|Steuersignal für die Transistoren, diese entsprechen noch nicht dem benötigten Potentialen!|
+|Ausgänge|S1, S2, S3, S4|0 … MOSFET aus; 1 … MOSFET ein|Steuersignal für die Transistoren. Diese entsprechen noch nicht dem benötigten Potentialen!|
 
 : Zuordnungstabelle {#tbl-Zuordnung}  
 
@@ -175,7 +175,7 @@ display(S4eq)
 
 ```
 
-Zur Überprüfung wird aus den Gleichungen die Wahrheitstabellen erstellt und mit der oben definierten Wahrheitstabellen verglichen.  
+Zur Überprüfung werden aus den Gleichungen die Wahrheitstabellen erstellt und mit den oben definierten Wahrheitstabellen verglichen.  
 
 ```{python}
 #| code-fold: true
@@ -291,7 +291,7 @@ display(logicparse(S4string, outlabel='$S4$'))
 
 ![Logikschaltung mit TTL ](Grafiken/Hbruecke/LogicCirciut.png){#fig-LogikSchaltung}
 
-Mittels simulation kann die Funktion der Schaltung überprüft werden. Dazu wird der zeitliche verlauf mit der Wahrheitstabelle verglichen. Stimmen die Signale überein, ist die Schaltung richtig.  
+Mittels Simulation kann die Funktion der Schaltung überprüft werden. Dazu wird der zeitliche verlauf mit der Wahrheitstabelle verglichen. Stimmen die Signale überein, ist die Schaltung richtig.  
 
 :::{ .content-hidden unless-format="html"}
 :::{#fig-LogikSchaltungSim}
@@ -313,7 +313,7 @@ Simulation Logikschaltung mit TTL
 Der Signallaufplan passt mit der Wahrheitstabelle überein. Somit ist davon auszugehen, dass die TTL-Schaltung korrekt umgesetzt wurde.
 
 ## Ansteuerung der H-Brücke
-Die H-Brücke besteht aus P-Kanal Mosfets und N-Kanal Mosfets. Mosfets werden über den Potentialunterschied zwischen Gate und Source gesteuert. Bei den N-Kanal Mosfets T2 und T4 könnte direkt der Ausgang der Logikschaltung verwendet werden, sofern die notwendige Leistung zur verfügung steht. Bei den P-Kanal Mosfets T1 und T3 ist dies nicht möglich, da die Logikschaltung nicht das geeignete Potential liefern kann. Die P-Kanal Mosfets sperren wenn am Gate die selbe Spannung anliegt wie am Source Eingang. Sie leiten wenn am Gate Ground anliegt. Es muss also eine Schaltung entworfen werden, welche die Potentiale anpasst. Aus der obigen Überlegung ergibt sich folgende Anforderung an die Pegelanpassung.
+Die H-Brücke besteht aus P-Kanal MOSFETs und N-Kanal MOSFETs. MOSFETs werden über den Potentialunterschied zwischen Gate und Source gesteuert. Bei den N-Kanal MOSFETs T2 und T4 könnte direkt der Ausgang der Logikschaltung verwendet werden, sofern die notwendige Leistung zur Verfügung steht. Bei den P-Kanal MOSFETs T1 und T3 ist dies nicht möglich, da die Logikschaltung nicht das geeignete Potential liefern kann. Die P-Kanal MOSFETs sperren, wenn am Gate dieselbe Spannung anliegt wie am Source Eingang. Sie leiten, wenn am Gate Ground anliegt. Es muss also eine Schaltung entworfen werden, welche die Potentiale anpasst. Aus der obigen Überlegung ergibt sich folgende Anforderung an die Pegelanpassung.
 
 | Ausgang TTL S1 und S3 | Potential am Source Eingang |
 |----------|----------|
@@ -321,22 +321,22 @@ Die H-Brücke besteht aus P-Kanal Mosfets und N-Kanal Mosfets. Mosfets werden ü
 | 5 V   | 0 V  |
 
 ### Umsetzung für die Simulation
-Diese Pegelanpassung lässt sich einfach mit OPV's realisieren. Durch die Slew-Rate der OPV's entstehen dabei aber deutliche Verluste bei jedem Schaltvorgang. Für die Funktion und Simulation wird trotz der Nachteile diese Lösung gewählt. Wichtig ist dabei, dass die OPV's Ausgangsspannungen deutlich unter bzw. deutlich über der Threshholdspannung der Mosfets ausgeben.  
+Diese Pegelanpassung lässt sich einfach mit OPVs realisieren. Durch die Slew-Rate der OPVs entstehen dabei aber deutliche Verluste bei jedem Schaltvorgang. Für die Funktion und Simulation wird trotz der Nachteile diese Lösung gewählt. Wichtig ist dabei, dass die OPVs Ausgangsspannungen deutlich unter bzw. deutlich über der Threshholdspannung der MOSFETs ausgeben.  
 
 ![Pegelanpassung mit OPV ](Grafiken/Hbruecke/OPV-Schaltung.png){#fig-OPV-Schaltung}
 
 ### Umsetzung in der Praxis
-Wird eine H-Brücke in der Paxis verwendet wird eine integrierte oder teilintegrierte Lösung, sogenannte H-Brückentreiber, gewählt. 
-Folgende Lösungen, und viele Andere von verschiedenen Herstellern, sind verfügbar:  
+Wird eine H-Brücke in der Praxis verwendet, wird eine integrierte oder teilintegrierte Lösung, sogenannte H-Brückentreiber, gewählt. 
+Folgende Lösungen und viele andere von verschiedenen Herstellern, sind verfügbar:  
 
 * Treiber für H-Brücken in einem IC @DriverTLE7182EM  
 * Logik und Treiber in einem IC  @LogicDriverL99H02  
 * Logik, Treiber und H-Brücke in einem IC @LogicDriverBridgeIFX9201SG @LogicDriverBridgeL298  
 
-Im Datenblatt der Bauteile sind Anwendungsbeispile, *Application Notes*, zu finden. Diese sind eine gute Quelle für die Entwicklung der Schaltugen.
+Im Datenblatt der Bauteile sind Anwendungsbeispiele und *Application Notes* zu finden. Diese sind eine gute Quelle für die Entwicklung der Schaltungen.
 
 ## Simulation der H-Brücke
-Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit der Pegelanpassung, der H-Brücke und das Motormodel zusammengeführt werden. Die Schaltung ist in @fig-TopSheet dargestellt. Der Motor kann über das einfache Modell @fig-SimpleMotorModel simuliert werden. Das erweiterte Modell @fig-ExtendedMotorModel liefert auch Informationen über die Drehzahl und das Massenträgheitsmoment, damit kann auch der Bremsvorgang betrachtet werden.
+Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit der Pegelanpassung, die H-Brücke und das Motormodel zusammengeführt werden. Die Schaltung ist in @fig-TopSheet dargestellt. Der Motor kann über das einfache Modell @fig-SimpleMotorModel simuliert werden. Das erweiterte Modell @fig-ExtendedMotorModel liefert auch Informationen über die Drehzahl und das Massenträgheitsmoment, damit kann auch der Bremsvorgang betrachtet werden.
 
 ![Zusammengeführte Schaltung ](Grafiken/Hbruecke/TopSheet.png){#fig-TopSheet}  
 
@@ -344,7 +344,7 @@ Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit 
 
 ![Erweitertes Motormodel, @MotorModel ](Grafiken/Hbruecke/AdvancedMotorModel.png){#fig-ExtendedMotorModel width=80%}
 
-Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-BridgeSim dargestellt. Die Simulation zeigt, dass die H-Brücke wie gewünscht funktioniert. Die Drehzahl lässt sich mittels PWM verändern. Die Drehrichtung lässt sich mittels D ändern. Die Bremsfunktion lässt sich mittels B aktivieren. 
+Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-BridgeSim dargestellt. Die Simulation zeigt, dass die H-Brücke wie gewünscht funktioniert. Die Drehzahl lässt sich mittels PWM verändern. Die Drehrichtung lässt sich mittels Direction ändern. Die Bremsfunktion lässt sich mittels Break aktivieren. 
 
 
 :::{ .content-hidden unless-format="html"}

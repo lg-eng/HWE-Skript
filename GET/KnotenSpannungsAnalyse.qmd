@@ -2,7 +2,8 @@
 # Knoten- Spannungs- Analyse
 {{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
 Die Knoten-Spannungsanalyse ist eine Methode zur Berechnung der unbekannten elektrischen Größen in einem Netzwerk von elektrischen oder elektronischen Komponenten.  
-Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werden für Gleichungen aufgestellt. Es entsteht ein lineares Gleichungssystem, das gelöst werden kann.
+Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werden Gleichungen aufgestellt, welche die Schaltung rechnerisch beschreiben. 
+Es entsteht ein lineares Gleichungssystem, das gelöst werden kann.
 
 ## Beispiel 1
 In Grafik @fig-KSA1 ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.  
@@ -21,7 +22,7 @@ from sympy import *
 # Variablen
 R = MySymbol('R',description='Widerstand',unit='Ohm')
 Uq = MySymbol('U_q',description='Quellspannung',unit='V')
-UR = MySymbol('U_R',description='Spannung am Widerstand',unit='V')
+UR = MySymbol('U_R',description='Spannungsabfall am Widerstand',unit='V')
 I = MySymbol('I',description='Strom',unit='A')
 
 QBookHelpers.print_description([R,Uq,UR,I])
@@ -58,11 +59,11 @@ display(O1)
 
 ```
 
-**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+**6. Überprüfen, ob es gleich viele Gleichungen wie Unbekannte gibt**  
 Passt, es gibt 2 Gleichungen und 2 Unbekannte.  
 
 **7. Gleichungssystem lösen**  
-Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.    
 
 ```{python}
 #| code-fold: true
@@ -99,9 +100,9 @@ R1 = MySymbol('R1',description='Widerstand 1',unit=u.ohm,value=1000)
 R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=1000)
 R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=1000)
 Uq = MySymbol('U_q',description='Quellspannung',unit=u.V,value=10)
-U1 = MySymbol('U1',description='Spannung an R1',unit=u.V)
-U2 = MySymbol('U2',description='Spannung an R2',unit=u.V)
-U3 = MySymbol('U3',description='Spannung an R3',unit=u.V)
+U1 = MySymbol('U1',description='Spannungsabfall an R1',unit=u.V)
+U2 = MySymbol('U2',description='Spannungsabfall an R2',unit=u.V)
+U3 = MySymbol('U3',description='Spannungsabfall an R3',unit=u.V)
 I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
 I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
 I = MySymbol('I',description='Gesamtstrom',unit=u.A)
@@ -153,7 +154,7 @@ QBookHelpers.print_equation(O3, label='eq-O3')
 Passt, es gibt 6 Gleichungen und 6 Unbekannte.  
 
 **7. Gleichungssystem lösen**  
-Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.    
 
 ```{python}
 #| code-fold: true
@@ -193,9 +194,9 @@ R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=1000)
 R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=1000)
 Uq1 = MySymbol('U_q1',description='Quellspannung',unit=u.V,value=10)
 Uq2 = MySymbol('U_q2',description='Quellspannung',unit=u.V,value=1)
-U1 = MySymbol('U1',description='Spannung an R1',unit=u.V)
-U2 = MySymbol('U2',description='Spannung an R2',unit=u.V)
-U3 = MySymbol('U3',description='Spannung an R3',unit=u.V)
+U1 = MySymbol('U1',description='Spannungsabfall an R1',unit=u.V)
+U2 = MySymbol('U2',description='Spannungsabfall an R2',unit=u.V)
+U3 = MySymbol('U3',description='Spannungsabfall an R3',unit=u.V)
 I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
 I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
 I = MySymbol('I',description='Gesamtstrom',unit=u.A)
@@ -248,7 +249,7 @@ QBookHelpers.print_equation(O3, label='eq-O3')
 Passt, es gibt 6 Gleichungen und 6 Unbekannte.  
 
 **7. Gleichungssystem lösen**  
-Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.    
 
 ```{python}
 #| code-fold: true
@@ -289,9 +290,9 @@ R2 = MySymbol('R2',description='Widerstand 2',unit=u.ohm,value=1000)
 R3 = MySymbol('R3',description='Widerstand 3',unit=u.ohm,value=1000)
 Uq1 = MySymbol('U_q1',description='Quellspannung',unit=u.V,value=10)
 Uq2 = MySymbol('U_q2',description='Quellspannung',unit=u.V,value=1)
-U1 = MySymbol('U1',description='Spannung an R1',unit=u.V)
-U2 = MySymbol('U2',description='Spannung an R2',unit=u.V)
-U3 = MySymbol('U3',description='Spannung an R3',unit=u.V)
+U1 = MySymbol('U1',description='Spannungsabfall an R1',unit=u.V)
+U2 = MySymbol('U2',description='Spannungsabfall an R2',unit=u.V)
+U3 = MySymbol('U3',description='Spannungsabfall an R3',unit=u.V)
 I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
 I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
 I3 = MySymbol('I3',description='Strom durch R3',unit=u.A)
@@ -357,11 +358,10 @@ QBookHelpers.print_equation(O3, label='eq-O3')
 ```
 
 **6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
-
-Pass, es gibt 9 Gleichungen und 9 Unbekannte. 
+Passt, es gibt 9 Gleichungen und 9 Unbekannte. 
 
 **7. Gleichungssystem lösen**  
-Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll ein Computerprogramm zu verwenden.    
+Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.    
 
 ```{python}
 #| code-fold: true
@@ -404,11 +404,11 @@ R4 = MySymbol('R4',description='Widerstand 3',unit=u.ohm,value=10)
 R5 = MySymbol('R5',description='Widerstand 3',unit=u.ohm,value=5)
 U1 = MySymbol('U_1',description='Quellspannung',unit=u.V,value=12)
 U2 = MySymbol('U_2',description='Quellspannung',unit=u.V,value=4)
-UR1 = MySymbol('U_R1',description='Spannung an R1',unit=u.V)
-UR2 = MySymbol('U_R2',description='Spannung an R2',unit=u.V)
-UR3 = MySymbol('U_R3',description='Spannung an R3',unit=u.V)
-UR4 = MySymbol('U_R4',description='Spannung an R4',unit=u.V)
-UR5 = MySymbol('U_R5',description='Spannung an R5',unit=u.V)
+UR1 = MySymbol('U_R1',description='Spannungsabfall an R1',unit=u.V)
+UR2 = MySymbol('U_R2',description='Spannungsabfall an R2',unit=u.V)
+UR3 = MySymbol('U_R3',description='Spannungsabfall an R3',unit=u.V)
+UR4 = MySymbol('U_R4',description='Spannungsabfall an R4',unit=u.V)
+UR5 = MySymbol('U_R5',description='Spannungsabfall an R5',unit=u.V)
 I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
 I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
 I3 = MySymbol('I3',description='Strom durch R3',unit=u.A)
@@ -502,7 +502,7 @@ if len(equations) > len(unknowns):
 elif len(equations) < len(unknowns):
     display(Markdown('Das Gleichungssystem ist unterbestimmt. Es gibt mehr Unbekannte als Gleichungen. Das Gleichungssystem kann nicht gelöst werden.'))
 elif len(equations) == len(unknowns):
-    display(Markdown('Das Gleichungssystem hat gleich viele Gleichungen wie Unbekannte. Es kann gelöst werden sofern es nicht widersprüchlich ist.'))
+    display(Markdown('Das Gleichungssystem hat gleich viele Gleichungen wie Unbekannte. Es kann gelöst werden, sofern es nicht widersprüchlich ist'))
 else:
     display(Markdown('Fehler'))
 
