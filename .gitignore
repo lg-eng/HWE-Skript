@@ -1,5 +1,7 @@
-/.quarto/
-/_site/
+.quarto/
+.ipynb_checkpoints/
+_site/
+_book/
 Projekte/Oszillator/Transient AnalysisPKanal.csv
 Projekte/Oszillator/Transient Analysis.csv
 bfg.jar
