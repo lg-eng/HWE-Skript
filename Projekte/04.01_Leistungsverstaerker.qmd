@@ -650,7 +650,75 @@ Gegentaktendstufe mit realen Stromquellen, Transienten Analyse
 
 Vergleicht man nun Ergebnis @fig-BJT_GegenRueckVorSim1, bei welchem die Vorspannung ideal ausgeführt wurde, und das Ergebnis @fig-BJT_06_LV_Real_TRANSim1 mit realen und damit tatsächlich fertigbar Quellen, ist die Qualitätsunterschied zu vernachlässigen. Die Schaltung gilt damit als fertig dimensioniert. Natürlich kann die Schaltung erweitert, adaptiert und verbessert werden. Siehe dazu @sec-AbwErw.
 
+## Strombegrenzung
+Um die Schaltung im Kurzschlussfall zu schützen, kann eine Strombegrenzung eingebaut werden @boehmer17, Abb. 18.30 c . Die Strombegrenzung besteht aus einem Widerstand und einem weiteren Transistor @fig-BJT_07_LV_StromBeg.  
+Die Widerstände $R_{sb1}$ und $R_{sb2}$ werden so dimensioniert, dass beim erreichen des maximal erlaubten Stroms durch die Transistoren $T_1$ und $T_2$, die Spannung zwischen Basis und Emitter der Transistoren $T_{sb1}$ und $T_{sb2}$ so groß ist, dass diese zu leiten beginnen. Damit wird die Basis-Emitter Strecke der Transistoren $T_{1}$ und $T_2$ kurzgeschlossen und der Stromfluss unterbrochen.
 
+![Gegentaktendstufe mit Strombegrenzung](Grafiken/07_LV_StromBeg.png){#fig-BJT_07_LV_StromBeg}
+
+Die Berechnung der Widerstände kann vereinfacht durch die Annahme erfolgen, dass die Spannung $U_{BE}$ der Transistoren $T_{sb1}$ und $T_{sb2}$ größer $0,7 \ \mathrm{V}$ sein muss um zu leiten. 
+
+```{python}
+#| code-fold: true
+#| echo: false
+#| output: true
+
+Rsb1 = MySymbol('R_sb1',description='Widerstand 1 am Spannungsteiler für die AP einstellung',unit=u.ohm)
+Rsb2 = MySymbol('R_sb2',description='Widerstand 2 am Spannungsteiler für die AP einstellung',unit=u.ohm)
+UBETsb = MySymbol('U_{BE,Tsb}',description='Minimale Basis-Emitter Spannung um den Transistor zum leiten zu bringen',unit=u.V,value=0.7)
+IT1max = MySymbol('I_{T1,max}',description='Maximal erlaubter Strom durch Transistor 1 laut Datenblatt',unit=u.A,value=0.8)
+IT2max = MySymbol('I_{T2,max}',description='Maximal erlaubter Strom durch Transistor 2 laut Datenblatt',unit=u.A,value=0.6)
+
+QBookHelpers.print_values([UBETsb,IT1max,IT2max])
+
+#Ohm
+Rsb1_eq = Eq(Rsb1,UBETsb/IT1max)
+Rsb2_eq = Eq(Rsb2,UBETsb/IT2max)
+
+QBookHelpers.calculate_num_value(Rsb1_eq)
+QBookHelpers.calculate_num_value(Rsb2_eq)
+
+QBookHelpers.print_equation(Rsb1_eq,label='eq-Rsb1_eq')
+QBookHelpers.print_values([Rsb1])
+
+QBookHelpers.print_equation(Rsb2_eq,label='eq-Rsb2_eq')
+QBookHelpers.print_values([Rsb2])
+
+```
+
+Die Widerstände $R_{sb1}$ und $R_{sb2}$ werden zum nächsten Wert der E12 Reihe ausgewählt und die Schaltung mittels Simualtion überprüft.
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_07_LV_StromGeb_Shorted_TRANSim1}
+```{python}
+#| code-fold: true
+#| echo: false
+
+plot_transient_analysis('Grafiken/07_Transient Analysis_ShortedOperation.csv')
+
+```
+Gegentaktendstufe mit Strombegrenzung im Kurzschlussfall, Transienten Analyse
+:::
+:::
+
+Es ist gut zu erkennen wie die Ströme durch die Transistoren $T_1$ und $T_2$ korrekt begrenzt werden. Nun gilt es, mittels Simulation, nachzuweisen, dass die Schaltung auch im Normalbetrieb noch funktioniert.  
+
+
+:::{ .content-hidden unless-format="html"}
+:::{#fig-BJT_07_LV_StromGeb_Normal_TRANSim1}
+```{python}
+#| code-fold: true
+#| echo: false
+
+plot_transient_analysis('Grafiken/07_Transient Analysis_NormalOperation.csv')
+
+```
+Gegentaktendstufe mit Strombegrenzung im Normalbetrieb, Transienten Analyse
+:::
+:::
+
+Werden die Werte mit Strombegrenzung @fig-BJT_07_LV_StromGeb_Normal_TRANSim1 mit den Werten ohne Strombegrenzung @fig-BJT_06_LV_Real_TRANSim1 verglichen, ist zu erkennen, dass die Schaltung eine leicht höhere Abweichung zwischen Eingangsspannung und Ausgangsspannung aufweist. Ob die Abweichung akzeptabel ist, muss im Einzelfall entschieden werden. Für unsere Zwecke stellen wir fest, dass die Schaltung nach wie vor das Signal in ausreichender Qualität verstärkt.  
+Somit ist festzuhalten, dass die erweiterung um die Strombegrenzung lediglich in der Verlustleistung zu Buche schlägt, jedoch keine Auswirkungen auf die Qualität der Verstärkung hat.
 
 ## Praktische Herangehensweise
 * Welche Last muss versorgt werden?
@@ -659,7 +727,6 @@ Vergleicht man nun Ergebnis @fig-BJT_GegenRueckVorSim1, bei welchem die Vorspann
 * Definition der Qualitätsparameter, z.B. Differenz der Ein- und Ausgangspannungen, Oberwellen Anteile, ...
 
 ## Abwandlungen und Erweiterungen {#sec-AbwErw}
-Wie könnte eine Strombegrenzung oder Kurzschlusssicherheit umgesetzt werden?  
 Wie könnte die Rückkopplung, welche hier mit einem OPV umgesetzt wurde noch realisiert werden? <!-- Differenzverstärker -->  
 Wie könnte die Vorspannung mit Dioden umgesetzt werden?  
 Wie könnte die Leistung weiter erhöht werden? <!-- Darlingtontransistoren -->

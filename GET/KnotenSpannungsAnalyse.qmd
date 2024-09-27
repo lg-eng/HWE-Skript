@@ -179,9 +179,11 @@ In Grafik @fig-KSA3 ist ein Netzwerk aus Widerständen und Spannungsquellen darg
 
 ![Netzwerk](Grafiken/KSA_3.png){#fig-KSA3}
 
-Vorgehensweise  
-**1. Alle Ströme und Spannungen einzeichnen**  
-**2. Unbekannte Größen definieren** 
+
+### Alle Ströme und Spannungen einzeichnen  
+
+### Bekannte Größen  
+
 ```{python}
 #| code-fold: true
 #| echo: false
@@ -201,14 +203,25 @@ I1 = MySymbol('I1',description='Strom durch R1',unit=u.A)
 I2 = MySymbol('I2',description='Strom durch R2',unit=u.A)
 I = MySymbol('I',description='Gesamtstrom',unit=u.A)
 
-QBookHelpers.print_description([R1,R2,R3,Uq1,Uq2,U1,U2,U3,I1,I2,I])
+#QBookHelpers.print_description([R1,R2,R3,Uq1,Uq2])
+QBookHelpers.print_values([R1,R2,R3,Uq1,Uq2])
 
 ```
 
-**3. Knoten und Maschen einzeichnen**  
+
+### Unbekannte Größen definieren 
+
+```{python}
+#| code-fold: true
+#| echo: false
+#| 
+QBookHelpers.print_description([U1,U2,U3,I1,I2,I])
+```  
+
+### Knoten und Maschen einzeichnen  
 Siehe @fig-KSA3
 
-**4. Knoten- und Maschengleichungen aufstellen**  
+### Knoten- und Maschengleichungen aufstellen  
 
 ```{python}
 #| code-fold: true
@@ -227,7 +240,7 @@ QBookHelpers.print_equation(K1,label='eq-K1')
 
 ```
 
-**5. Ohmsche Gesetze für die Widerstände anschreiben**   
+### Ohmsche Gesetze für die Widerstände anschreiben   
 
 ```{python}
 #| code-fold: true  
@@ -245,10 +258,10 @@ QBookHelpers.print_equation(O3, label='eq-O3')
 
 ```
 
-**6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt**  
+### Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt  
 Passt, es gibt 6 Gleichungen und 6 Unbekannte.  
 
-**7. Gleichungssystem lösen**  
+### Gleichungssystem lösen  
 Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.    
 
 ```{python}
