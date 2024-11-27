@@ -385,7 +385,7 @@ QBookHelpers.calculate_num_value(R1_eq)
 
 ```
 
-Der maximale Laststrom $I_{Lmax}$ wurde in @sec-LV_Vorspannen bestimmt.
+Der maximale Laststrom $I_{Lmax}$ wurde in @sec-LV_Vorspannen bestimmt, indem der maximale Strom der Vorspannungsquelle im Betrieb mittels Simulation bestimmt wurde und mit einer gewissen Sicherheit aufgerundet wurde.
 
 ```{python}
 #| code-fold: true
@@ -408,7 +408,7 @@ QBookHelpers.print_values([Ube])
 
 ```
 
-Mit Maschengleichung 1 $M_1$ erhält man den Zusammenhang zwischen $U_1$ und $U_{BE}$.
+Mit Maschengleichung 1 $M_1$ erhält man den Zusammenhang zwischen $U_2$ und $U_{BE}$.
 
 ```{python}
 #| code-fold: true
@@ -434,7 +434,7 @@ QBookHelpers.print_values([U1])
 
 
 
-$I_1$ kann aus dem Knoten 2 berechnet werden, indem @eq-I2_eq eingesetz wird.
+$I_1$ kann aus dem Knoten 2 berechnet werden, indem @eq-I2_eq eingesetzt wird.
 
 ```{python}
 #| code-fold: true

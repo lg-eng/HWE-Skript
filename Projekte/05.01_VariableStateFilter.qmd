@@ -1,0 +1,31 @@
+```{python}
+#| code-fold: true
+##| echo: false
+from sympy import *
+from sympy.abc import s
+from sympy.physics.control.lti import TransferFunction, Series
+from sympy.physics.control.control_plots import * #impulse_response_plot, step_response_plot, step_response_numerical_data, bode_plot, pole_zero_plot, step_response_numerical_data
+
+```
+
+# State Variable Filter {#sec-VarStatFilter}  
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+Filter allgemein werden eingesetzt um Signale zu verarbeiten. Ein Filter kann dabei unterschiedliche Aufgaben übernehmen. Ein Filter kann z.B. dazu verwendet werden, um ein Signal zu glätten, um Störungen zu unterdrücken oder um Signale zu trennen. Filter können dabei unterschiedliche Strukturen aufweisen.  
+
+Der hier vorgestellte *State Variable Filter*, @fig-svf_sch ist ein Filter, welcher mit einer Schaltung sowohl als Tiefpassfilter, Hochpassfilter, Bandpassfilter oder Bandsperre verwendet werden kann. Welcher Filter auf das Eingangssignal angewandt wird, wird durch die Auswahl des Ausganges bestimmt.  
+
+![Schaltung eines *State Variable Filters*](SVF/SVF_Circuit.png){#fig-svf_sch}  
+
+Das Verhalten von Filtern kann am besten mit deren Übertragungsfunktion beschrieben werden. Dabei geht es immer darum, das Verhältnis von Ausgangssignal zu Eingangssignal zu beschreiben. Da sich das Wort Filter auf Frequenzen bezieht, wird die Übertragungsfunktion in der Regel im Frequenzbereich betrachtet. Ob dabei nun die komplexe schreibweise $j\omega$ oder die Laplace-Transformation $s$ verwendet wird, hängt im wesentlichen davon ab welche Art von Eingangssignalen betrachtet werden sollen.  
+
+Für den hier gezeigten *State Variable Filter* müssen die Übertragungsfunktionen für die vier möglichen Filtertypen analytisch berechnet werden.  
+
+Die analytisch berechneten Übertragungsfunktionen der Filter werden verwendet, um Bodediagramme zu erstellen. Diese Bodediagramme geben Aufschluss über das Frequenzverhalten des Systems, indem sie die Verstärkung und Phasenverschiebung in Abhängigkeit von der Frequenz darstellen. Im Anschluss an die Berechnung der Bodediagramme auf analytischer Basis erfolgt der Vergleich mit numerischen Simulationsergebnissen, die in *Altium* durchgeführt werden.  
+
+Der Vergleich zwischen analytischen und simulierten Ergebnissen ermöglicht eine Überprüfung der Genauigkeit des mathematischen Modells sowie der Simulationseinstellungen in Altium. Eventuelle Abweichungen können auf Vereinfachungen im analytischen Modell, numerische Fehler oder auf die verwendeten Bauteilparameter in der Simulation zurückzuführen sein.
+
+
+
+## Analytische Herleitung der Übertragungsfunktionen  
+
