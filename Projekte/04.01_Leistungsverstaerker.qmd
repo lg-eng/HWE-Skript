@@ -1,10 +1,10 @@
 # Leistungsverstärker
 {{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
 
+
 ```{python}
 #| code-fold: true
 #| echo: false
-
 
 import pandas as pd
 from plotly.subplots import make_subplots
@@ -297,6 +297,7 @@ Gegentaktendstufe mit vorgespannten Transistoren, Simulationsergebnisse
 Welche anderen Darstellungen des Verhältnisses zwischen Ausgang und Eingang würden sich eignen um nachzuweisen, dass die Verzerrung akzeptabel ist?
 :::
 
+
 ## Reale Spannungsquelle
 Ideale Spannungsquellen, wie oben eingezeichnet, existieren nicht. Daher muss die ideale Spannungsquelle mit einer realen Spannungsquelle ersetzt werden. Aus Kostengründen muss dies mit möglichst wenigen Bauteilen geschehen. Daher fällt ein Netzteil aus. Eine Schaltung mit nur drei Bauteilen, welche die Aufgabe erledigen kann, ist ein sogenannter "$U_{BE}$-Vervielfacher" [@boehmer17, pp. 301].  
 In @fig-BJT_GegenRueckVorReal2 wird die Schaltung gezeigt. Um die Schaltung zu dimensionieren, kann der $U_{BE}$-Vervielfacher alleine betrachtet werden. $U_{out}$ ist aus  @sec-LV_Vorspannen bekannt. Es müssen nun also die Widerstände $R_{sq1}$ und $R_{sq2}$ so dimensioniert werden. 
@@ -321,7 +322,7 @@ Ispg = MySymbol('I_Spg',description='Versorgungsstrom',unit=u.A)
 I1 = MySymbol('I_1',description='Strom durch den Widerstand 1',unit=u.A)
 I2 = MySymbol('I_2',description='Strom durch den Widerstand 2',unit=u.A)
 IL = MySymbol('I_L',description='Strom durch die Last',unit=u.A)
-ILmax = MySymbol('I_Lmax',description='Maximaler Strom durch die Last',value=500*10**(-6),unit=u.A)
+ILmaxVvor = MySymbol('I_LmaxVvor',description='Maximaler Strom der Vorspannungsquelle',value=500*10**(-6),unit=u.A)
 Ic = MySymbol('I_C',description='Strom in den Kollektor',unit=u.A)
 Ib = MySymbol('I_B',description='Strom in die Basis',unit=u.A)
 Ie = MySymbol('I_E',description='Strom aus dem Emitter',unit=u.A)
@@ -338,7 +339,7 @@ QBookHelpers.print_values([Uout])
 
 I2_eq = Eq(I2,10* Ib)
 Ib_eq = Eq(Ib,Ic/100)
-Ispg_eq = Eq(Ispg,ILmax*20)
+Ispg_eq = Eq(Ispg,ILmaxVvor*20)
 QBookHelpers.calculate_num_value(Ispg_eq)
 
 #Masche1
@@ -368,7 +369,7 @@ I1_eq2 = Eq(I1,I1_eq.rhs.subs(I2,I2_eq.rhs))
 I1_eq3 = Eq(I1,I1_eq2.rhs.subs(Ib,Ib_eq.rhs))
 
 
-Ic_eq = Eq(K1_eq.lhs,K1_eq.rhs.subs([(I1, I1_eq3.rhs), (IL, ILmax), (Ispg, Ispg_eq.rhs)]))
+Ic_eq = Eq(K1_eq.lhs,K1_eq.rhs.subs([(I1, I1_eq3.rhs), (IL, ILmaxVvor), (Ispg, Ispg_eq.rhs)]))
 Ic_eq2 = Eq(Ic,solve(Ic_eq,Ic)[0])
 
 QBookHelpers.calculate_num_value(Ic_eq2)
@@ -385,13 +386,14 @@ QBookHelpers.calculate_num_value(R1_eq)
 
 ```
 
-Der maximale Laststrom $I_{Lmax}$ wurde in @sec-LV_Vorspannen bestimmt, indem der maximale Strom der Vorspannungsquelle im Betrieb mittels Simulation bestimmt wurde und mit einer gewissen Sicherheit aufgerundet wurde.
+Der maximale Laststrom der Vorspannungsquelle $I_{LmaxVvor}$ wurde in @sec-LV_Vorspannen bestimmt, indem der maximale Strom der Vorspannungsquelle im Betrieb mittels Simulation bestimmt wurde und mit einer gewissen Sicherheit aufgerundet wurde.
+
 
 ```{python}
 #| code-fold: true
 #| echo: false
 
-QBookHelpers.print_values([ILmax])
+QBookHelpers.print_values([ILmaxVvor])
 
 ```
 
@@ -444,7 +446,6 @@ QBookHelpers.print_equation(K2_eq,label='eq-K2_eq')
 QBookHelpers.print_equation(I1_eq,label='eq-I1_eq')
 QBookHelpers.print_equation(I2_eq,label='eq-I2_eq')
 QBookHelpers.print_equation(I1_eq2,label='eq-I1_eq2')
-
 
 ```
 
@@ -513,7 +514,7 @@ $U_{out} = 1.35 \ \mathrm{V}$.
 
 | Simulationsparameter | Wert | Bemerkung |
 |----------------------|:-------:|:------:|
-| Rsq2 Sweep Bereich         | 1 Ohm bis 20 kOhm in 100 Ohm Schritten | 
+| $R_{sq2}$ Sweep Bereich         | $1 \ \Omega$ bis $20 \ \mathrm{k \Omega}$ in $100 \ \Omega$ Schritten | 
 
 | Simulationsergebnis | Wert | Bemerkung |
 |----------------------|:-------:|:------:|

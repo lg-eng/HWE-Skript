@@ -346,7 +346,7 @@ G = MySymbol('G')
 G_eq1 = Eq(G,H/(1-H))
 QBookHelpers.print_equation(G_eq1)
 
-G_eq2 = Eq(G,simplify(H_eq2.rhs/(TransferFunction(1,1,s)-H_eq2.rhs)))
+G_eq2 = Eq(G,simplify((H_eq2.rhs/(TransferFunction(1,1,s)-H_eq2.rhs)).doit()))
 #QBookHelpers.print_equation(G_eq2,label=f'eq_OscG')
 
 ```
@@ -361,7 +361,7 @@ G_eq2 = Eq(G,simplify(H_eq2.rhs/(TransferFunction(1,1,s)-H_eq2.rhs)))
 #Insert Values
 k_OPV.value = 3
 QBookHelpers.print_values([k_OPV])
-G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2))
+G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2.doit()))
 
 #To scipy
 sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
