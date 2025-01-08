@@ -120,11 +120,12 @@ Bipolartransistoren in Gegentakt, Simulationsergebnisse
 
 ## Rückkopplung
 Um den Verlauf der Ausgangsspannung an den Verlauf der Eingangsspannung anzupassen, wird eine Gegenkopplung verwendet. Dazu ist eine Subtraktion des Ausgangssignals vom Eingangssignal notwendig. Als Transistorschaltung würde sich eine Differenzverstärkerschaltung anbieten. Für ein noch besseres Ergebnis wird hier ein OPV eingesetzt. Durch die Rückkopplung der gesamten Ausgangsspannung wird eine Spannungsverstärkung von Eins erreicht. Das Ausgangssignal folgt dem Eingangssignal. 
-Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus, um beispielsweise Lautsprecher zu betreiben.
+Eine legitime Frage ist, warum nicht einfach nur der OPV verwendet wird? Hier kann auf die Überschrift verwiesen werden. Es soll Leistung verstärkt werden. Und die Ausgangsleistung eines OPV reicht in der Regel nicht aus, um beispielsweise einen Lautsprecher zu betreiben.
+
 
 ![Gegentaktendstufe mit Rückkopplung ](Grafiken/02_LV_Rueckkopplung.png){#fig-BJT_GegenRueck}
 
-Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In Abbildung @fig-BJT-AP_Ruhestrom lässt sich erkennen, dass sich in der Nähe des Ursprunges ein Knick befindet. Erst ab einer $U_{BE} \ $ größer von ca. $0,7 \ \mathrm{V}$  beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.  
+Mittels Simulation kann nun erneut die Qualität überprüft werden. Es ist zu erkennen, dass die Amplitude erreicht wird. An den Nulldurchgängen sind jedoch noch Störungen zu sehen. Die Ursache dieser Störungen sind die Kennlinien der Transistoren. In  @fig-BJT-AP_Ruhestrom lässt sich erkennen, dass sich in der Nähe des Ursprunges ein Knick befindet. Erst ab einer $U_{BE} \ $ größer von ca. $0,7 \ \mathrm{V}$  beginnt der Transistor zu leiten. Das bedeutet, dass Eingangssignale kleiner als diese minimal notwendige Basis- Emitterspannung nicht verstärkt werden.  
 Der OPV wirkt zwar auch den Übergabeverzerrungen entgegen, allerdings ist er stark abhängig von der Frequenz. Je schneller im Verhältnis zum Signal der OPV sein Ausgangssignal ändern kann, umso kleiner sind die Verzerrungen. Wie schnell der OPV seinen Ausgang ändern kann, hängt von der Slew-Rate mit der Einheit $\mathrm{\frac{V}{s}}$ ab.
 
 :::{ .content-hidden unless-format="html"}
@@ -575,7 +576,7 @@ Warum wird nicht einfach eine Stromquelle mit einem Widerstand zur Vorspannung g
 :::
 
 ## Stromversorgung
-Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und @fig-BJT_GegenRueckVorReal4 sichtbar ist, reicht der ausgangsstrom des OPV's nicht aus um die reale Vorspannungsquelle zu versorgen. Daher müssen zusätzliche Stromquellen eingebaut werden. Da der Verstärker symetrisch aussteuert, müssen zwei Stromquellen eingebaut werden. Eine für die negative und eine für die positive Versorgung.
+Wie in @sec-RealeVorspannung Simulationsergebnis @fig-BJT_GegenRueckVorReal3 und @fig-BJT_GegenRueckVorReal4 sichtbar ist, reicht der Ausgangsstrom des OPV's nicht aus um die reale Vorspannungsquelle zu versorgen. Daher müssen zusätzliche Stromquellen eingebaut werden. Da der Verstärker symetrisch aussteuert, müssen zwei Stromquellen eingebaut werden. Eine für die negative und eine für die positive Versorgung.
 
 
 <!-- ![Gegentaktendstufe mit Stromversorgung der Vorspannungsquelle](Grafiken/05_LV_Stromquellen.png){#fig-BJT_GegenRueckVorRealStrom} -->

@@ -9,7 +9,7 @@ book:
     title: "HWE-Skript"
     author: "Leopold Götsch"
     date: today
-    downloads: [pdf, docx]
+#    downloads: [pdf, docx]
     repo-url: "https://github.com/lg-eng/HWE-Skript"
     cookie-consent:
       type: express
@@ -34,6 +34,7 @@ book:
         - Projekte/05.01_VariableStateFilter.qmd
 
 #    - references.qmd
+
 
 bibliography: references.bib
 csl: diabetologia.csl
