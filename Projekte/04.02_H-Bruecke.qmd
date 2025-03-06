@@ -4,7 +4,6 @@
 
 
 
-
 ```
 
 
@@ -18,6 +17,7 @@ Es soll eine Schaltung entworfen werden, welche es erlaubt, einen DC-Motor in fo
 * Linkslauf  
 * Rechtslauf   
 * Bremsen  
+* Optional: Leerlauf
 
 Bei den ersten beiden Punkten soll es möglich sein, die Drehzahl mittels *Puls-Weiten-Modulation* (PWM) zu ändern.
 
@@ -79,7 +79,7 @@ Zunächst muss in der Zuordnungstabelle der Zusammenhang zwischen dem logischen 
 |Eingang / Ausgang|Bezeichnung|Zuordnung|Beschreibung|
 |:----|:----|:----|:----|
 |Eingang|E ... Enable|0 … Disabled;  1 … Enabled|Damit wird die Schaltung betriebsbereit. Ist Enable deaktiviert, kann an den anderen Eingängen ein beliebiges Signal anliegen, der Motor darf sich trotzdem nicht bewegen.|
-|Eingang|B ... Break|0 … Disabled; 1 … Enabled|Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.|
+|Eingang|B ... brake|0 … Disabled; 1 … Enabled|Aktivierung des Bremsbetriebs. Hat Vorrang über die Richtungswahl.|
 |Eingang|D ... Direction|0 … Linkslauf; 1 … Rechtslauf|Gibt die Drehrichtung vor.|
 |Eingang|P ... PWM|PWM Signal|Gibt die Drehzahl vor.|
 |Ausgänge|S1, S2, S3, S4|0 … MOSFET aus; 1 … MOSFET ein|Steuersignal für die Transistoren. Diese entsprechen noch nicht dem benötigten Potentialen!|
@@ -119,6 +119,7 @@ import pandas as pd
 
 dfS2S4 = pd.read_csv('HBrücke_WahrheitstabelleS2S4.csv',sep=';')
 
+
 display(Markdown(dfS2S4.to_markdown(index=False,tablefmt="github", colalign ='center')))
 
 ```
@@ -142,10 +143,10 @@ from sympy.logic.boolalg import to_cnf, to_dnf, ANFform
 
 PWM = MySymbol('P',description='PWM Eingang')
 Enable = MySymbol('E',description='Enable Eingang')
-Break = MySymbol('B',description='Break Eingang')
+brake = MySymbol('B',description='brake Eingang')
 Direction = MySymbol('D',description='Direction Eingang')
-EingaengeS1S3 = [Enable, Direction, Break]
-EingaengeS2S4 = [PWM, Enable, Direction, Break]
+EingaengeS1S3 = [Enable, Direction, brake]
+EingaengeS2S4 = [PWM, Enable, Direction, brake]
 
 S1 = MySymbol('S1',description='Steuersignal Transistor 1')
 mintermsS1 = dfS1S3[dfS1S3['S1'].isin([1])].iloc[:,0:3].values.tolist()
@@ -251,6 +252,11 @@ Die Tabellen stimmen überein. Die Gleichungen sind somit richtig.
 Die Logik kann mit verschiedenen Technologien umgesetzt werden. Hier wurde eine Lösung mittels TTL Gattern gewählt. Die Schaltung ist in @fig-LogikSchaltung dargestellt. In einer modernen Anwendung würde die Logik mittels Mikrocontroller realisiert werden. 
 Software technisch bieten hier Quartus oder PSoC Creator Lösungen an. In Quartus lässt sich die Logik auch simulieren.
 
+
+::: {.callout-note}
+Für die Simulation von hierarchischen Designs in Altium muss im *Simulation Dashboard* von *Document* auf *Project* umgestellt werden.
+:::
+
 ::: {.callout-note}
 Aus wirtschaftlichen Gründen sollte eine Logikschaltung aus möglichst wenigen verschiedenen Logikgattern bestehen. Es bietet sich an, die Schaltung mit NAND oder NOR Gattern aufzubauen. Aus zeitgründen wird im Moment hier darauf verzichtet. Mit der Regel von DeMorgan kann die Schaltung in die jeweilige schreibweise übergeführt werden.
 $$\overline{A \land B} = \overline{A} \lor  \overline{B}$$
@@ -301,7 +307,7 @@ Mittels Simulation kann die Funktion der Schaltung überprüft werden. Dazu wird
 
 
 filepath = 'Grafiken/Hbruecke/Transient Analysis.csv'
-thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'v(vpwm)':[4], 'v(s1)':[5], 'v(s2)':[6], 'v(s3)':[7], 'v(s4)':[8]}
+thing_to_plot = {'v(vbrake)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'v(vpwm)':[4], 'v(s1)':[5], 'v(s2)':[6], 'v(s3)':[7], 'v(s4)':[8]}
 
 QBookHelpers.trans_plot(filepath, thing_to_plot)
 
@@ -335,7 +341,7 @@ Folgende Lösungen und viele andere von verschiedenen Herstellern, sind verfügb
 
 Im Datenblatt der Bauteile sind Anwendungsbeispiele und *Application Notes* zu finden. Diese sind eine gute Quelle für die Entwicklung der Schaltungen.
 
-## Simulation der H-Brücke
+## Funktionsüberpürfung der H-Brücke
 Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit der Pegelanpassung, die H-Brücke und das Motormodel zusammengeführt werden. Die Schaltung ist in @fig-TopSheet dargestellt. Der Motor kann über das einfache Modell @fig-SimpleMotorModel simuliert werden. Das erweiterte Modell @fig-ExtendedMotorModel liefert auch Informationen über die Drehzahl und das Massenträgheitsmoment, damit kann auch der Bremsvorgang betrachtet werden.
 
 ![Zusammengeführte Schaltung ](Grafiken/Hbruecke/TopSheet.png){#fig-TopSheet}  
@@ -344,7 +350,7 @@ Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit 
 
 ![Erweitertes Motormodel, @MotorModel ](Grafiken/Hbruecke/AdvancedMotorModel.png){#fig-ExtendedMotorModel width=80%}
 
-Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-BridgeSim dargestellt. Die Simulation zeigt, dass die H-Brücke wie gewünscht funktioniert. Die Drehzahl lässt sich mittels PWM verändern. Die Drehrichtung lässt sich mittels Direction ändern. Die Bremsfunktion lässt sich mittels Break aktivieren. 
+Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-BridgeSim dargestellt. Die Simulation zeigt, dass die H-Brücke wie gewünscht funktioniert. Die Drehzahl lässt sich mittels PWM verändern. Die Drehrichtung lässt sich mittels Direction ändern. Die Bremsfunktion lässt sich mittels brake aktivieren. 
 
 
 :::{ .content-hidden unless-format="html"}
@@ -354,8 +360,8 @@ Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-B
 #| echo: false
 
 
-filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightBreak.csv'
-thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4]}
+filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightbrake.csv'
+thing_to_plot = {'v(vbrake)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4]}
 
 QBookHelpers.trans_plot(filepath, thing_to_plot)
 
@@ -371,8 +377,8 @@ Simulation Brücke  Linkslauf, Rechtslauf und Bremsen
 #| echo: false
 
 
-filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightBreakPWM.csv'
-thing_to_plot = {'v(vbreak)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4],'v(ul_motor)':[5]}
+filepath = 'Grafiken/Hbruecke/Transient AnalysisLeftRightbrakePWM.csv'
+thing_to_plot = {'v(vbrake)':[1], 'v(vdirection)':[2], 'v(venable)':[3], 'i(l_motor)':[4],'v(ul_motor)':[5]}
 
 QBookHelpers.trans_plot(filepath, thing_to_plot)
 

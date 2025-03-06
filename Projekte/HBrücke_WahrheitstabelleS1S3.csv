@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2155e7365898936da0dc8393b966f45e2fbec10968b2ea5d7fefdb4d21b391a6
-size 121
+﻿Enable;Direction;Brake;S1;S3
+0;0;0;0;0
+0;0;1;0;0
+0;1;0;0;0
+0;1;1;0;0
+1;0;0;0;1
+1;0;1;0;0
+1;1;0;1;0
+1;1;1;0;0
