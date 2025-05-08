@@ -148,7 +148,7 @@ Mit den Zahlenwerten für die Bauteile ergibt sich folgender Wert für die Eigen
 #| echo: false
 
 w0.value = QBookHelpers.replace_num_value(w0_eq).rhs
-QBookHelpers.print_values2([R,C,w0])
+QBH.print_values2([R,C,w0])
 
 f0 = MySymbol('f_0',real=True,positive=True,unit=u.Hz)
 f0_eq = Eq(f0,w0/(2*pi))
@@ -236,7 +236,7 @@ f0_sim = MySymbol('f_0sim',real=True,positive=True,unit=u.Hz,value=1.5915*10**3)
 eq_w0_sim = Eq(w0_sim,f0_sim*2*pi)
 QBookHelpers.print_equation(eq_w0_sim)
 w0_sim.value = QBookHelpers.replace_num_value(eq_w0_sim).rhs
-QBookHelpers.print_values2([f0_sim,w0_sim])
+QBH.print_values2([f0_sim,w0_sim])
 
 ```
 
@@ -316,7 +316,7 @@ H_eq2_vals = QBookHelpers.replace_num_value(H_eq2)
 
 #bode_plot(H_eq2_vals.rhs,initial_exp=2, final_exp=6,phase_unit='deg',freq_unit='rad/sec')  
 
-sciTF = QBookHelpers.symTF_to_sciTF(H_eq2_vals.rhs)
+sciTF = QBH.symTF_to_sciTF(H_eq2_vals.rhs)
 w = np.logspace(2,6,1000)
 w, mag, phase = signal.bode(sciTF,w=w)
 QBookHelpers.plotly_plot3(w,[mag,phase])
@@ -364,7 +364,7 @@ QBookHelpers.print_values([k_OPV])
 G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2.doit()))
 
 #To scipy
-sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
+sciTF = QBH.symTF_to_sciTF(G_eq2_vals.rhs)
 #print(pole_zero_numerical_data(H_eq2_vals.rhs))
 #print(pole_zero_numerical_data(G_eq2_vals.rhs))
 t=np.arange(0*10**-6,10*10**-3,10**-6)
@@ -392,7 +392,7 @@ QBookHelpers.print_values([k_OPV])
 G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2))
 
 #To scipy
-sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
+sciTF = QBH.symTF_to_sciTF(G_eq2_vals.rhs)
 #print(pole_zero_numerical_data(H_eq2_vals.rhs))
 #print(pole_zero_numerical_data(G_eq2_vals.rhs))
 t=np.arange(0*10**-6,10*10**-3,10**-6)
@@ -420,7 +420,7 @@ QBookHelpers.print_values([k_OPV])
 G_eq2_vals = QBookHelpers.replace_num_value(simplify(G_eq2))
 
 #To scipy
-sciTF = QBookHelpers.symTF_to_sciTF(G_eq2_vals.rhs)
+sciTF = QBH.symTF_to_sciTF(G_eq2_vals.rhs)
 #print(pole_zero_numerical_data(H_eq2_vals.rhs))
 #print(pole_zero_numerical_data(G_eq2_vals.rhs))
 t=np.arange(0*10**-6,10*10**-3,10**-6)
