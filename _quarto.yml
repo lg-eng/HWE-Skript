@@ -20,6 +20,10 @@ book:
       chapters:
         - Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.qmd
         - GET/KnotenSpannungsAnalyse.qmd
+    - part: 2. Jahrgang
+      chapters:
+        - GET/AC/Wechselstrom.qmd
+
     - part: 3. Jahrgang
       chapters:
         - Transistoren/01_Transistoren.qmd

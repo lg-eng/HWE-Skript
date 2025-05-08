@@ -1,10 +1,11 @@
-.quarto/
-_site/
-_book/
-.vscode/
-ef37abcc/
-.ipynb_checkpoints/
+/.quarto/
+/_site/
+/_book/
+/.vscode/
+/ef37abcc/
+/.ipynb_checkpoints/
 *.html
 Projekte/Oszillator/Transient AnalysisPKanal.csv
 Projekte/Oszillator/Transient Analysis.csv
 bfg.jar
+/.quarto/

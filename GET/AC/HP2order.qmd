@@ -1,0 +1,192 @@
+## Hochpass 2ter Ordnung
+Der Hochpass kann dazu benutzt werden, um die Frequenzen unterhalb einer bestimmten Grenzfrequenz zu dämpfen. Wird ein Hochpass zweiter Ordnung verwendet ist die Dämpfung unterhalb der Grenzfrequenz 40dB pro Dekade bei eine Hochpass erster Ordnung sind es nur 20dB pro Dekade.
+
+![Hochpass 2ter Ordnung](HP_2_Ordnung.png){#fig-HP2o}
+
+Das hier gezeigte Beispiel soll demonstrieren welche Untersuchungen, Berechnungen und Simulation bei einem Hochpass 2ter Ordnung durchgeführt werden können.
+
+### Eingangsimpedanz
+Hier muss einfach die Gesamtimpedanz des Hochpasses betrachtet werden, da die Eingangsspannung parallel zu den Bauteilen anliegt.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+from sympy import *
+
+Z = MySymbol(r'\underline{Z}',description='Gesamtimpedanz',unit=u.ohm)
+XC = MySymbol(r'\underline{X}_C',description='Kapazitive Impedanz',unit=u.ohm)
+XL = MySymbol(r'\underline{X}_L',description='Induktive Impedanz',unit=u.ohm)
+R = MySymbol('R',description='Widerstand',real=True,positive=True,value=1e3,unit=u.ohm)
+C = MySymbol('C',real=True,positive=True,description='Kapazität',value=1e-6,unit=u.F)
+L = MySymbol('L',real=True,positive=True,description='Induktivität',value=1e-3,unit=u.H)
+Uin = MySymbol(r'\underline{U_{in}}',real=True,positive=True,description='Eingangsspannung',value=1,unit=u.V)
+Uout = MySymbol(r'\underline{U_{out}}',real=True,positive=True,description='Ausgangsspannung',unit=u.V)
+w = MySymbol(r'\omega',real=True,positive=True,description='Kreisfrequenz',value=10e6,unit=u.rad/u.s)
+f = MySymbol('f',real=True,positive=True,description='Frequenz',unit=u.Hz)
+
+
+
+QBookHelpers.print_description([Z,XC,XL,R])
+
+XC_eq  = Eq(XC, 1/(I*w*C))
+XL_eq  = Eq(XL, I*w*L)
+Z_eq1   = Eq(Z, R + XL + XC)
+Z_eq2   = Eq(Z, R + XL_eq.rhs + XC_eq.rhs)
+
+QBookHelpers.print_equation(XC_eq)
+QBookHelpers.print_equation(XL_eq)
+QBookHelpers.print_equation(Z_eq1)
+QBookHelpers.print_equation(Z_eq2)
+
+QBookHelpers.calculate_num_value(Z_eq2)
+
+
+```
+
+Mit den Bauteilwerten kann nun die Gesamtimpedanz des Hochpasses berechnet werden.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+QBH.print_values2([R,C,L,Z])
+
+
+``` 
+
+### Resonanzfrequenz
+Die Resonanzfrequenz ist die Frequenz, bei der die Impedanz des Hochpasses minimal ist. Resonanz tritt ein wenn der Widerstand des Schaltung am kleinsten ist. Das ist der Fall wenn sich die induktive Impedanz und die kapazitive Impedanz aufheben. Der Imaginärteil also Null ist.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+
+wr = MySymbol(r'\omega_r',real=True,positive=True,description='Resonanzfrequenz',unit=u.rad/u.s)
+
+#wr_eq0 = Eq(0,im(Z_eq1.rhs),evaluate=False)
+#QBookHelpers.print_equation(wr_eq0)
+
+wr_eq1 = Eq(0,im(Z_eq2.rhs),evaluate=False)
+QBookHelpers.print_equation(wr_eq1)
+
+
+wr_eq2 = Eq(wr,simplify(solve(wr_eq1,w)[0]))
+wr_eq2_val = QBookHelpers.calculate_num_value(wr_eq2)
+
+QBookHelpers.print_equation(wr_eq2)
+
+QBH.print_values2([wr])
+
+
+```
+
+#### Zeigerdiagramm
+
+### Übertragungsfunktion
+Die Übertragungsfunktion beschreibt das Verhältnis zwischen der Eingangsgröße, hier die Eingangsspannung, und der Ausgangsgröße, hier die Ausgangsspannung. Sie ist eine Funktion der Frequenz und wird in der Regel in Form eines Bode-Diagramms dargestellt.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+H = MySymbol(r'\underline{H}',description='Übertragungsfunktion')
+
+H_eq1 = Eq(H,Uout/Uin)
+QBookHelpers.print_equation(H_eq1)
+
+```
+
+Da es sich hier um eine Einfache Serienschaltung handelt, kann die Übertragungsfunktion auch als Verhältnis der Impedanzen dargestellt werden. Es wird die Spannungsteilerregel verwendet.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+H = MySymbol(r'\underline{H}',description='Übertragungsfunktion')
+
+H_eq2 = Eq(H,XL/(R+XL+XC))
+QBookHelpers.print_equation(H_eq2)
+
+H_eq3 = Eq(H,H_eq2.rhs.subs(XC,XC_eq.rhs).subs(XL,XL_eq.rhs))
+QBookHelpers.print_equation(H_eq3)
+
+H_eq3 = Eq(H,(simplify(H_eq2.rhs.subs(XC,XC_eq.rhs).subs(XL,XL_eq.rhs).expand(complex=True))))
+QBookHelpers.print_equation(H_eq3)
+
+
+```
+
+#### Übertragungsfunktion bei Resonanz
+Mit der Übertragungsfunktion kann nun der Ausgang in Abhängigkeit der des Eingangs berechnet werden. Wird zum beispiel für $\omega$ die Resonanzfrequenz eingesetzt, so erhält man die Übertragungsfunktion bei Resonanz.
+
+```{python}
+#| code-fold: true 
+#| echo: false
+
+H_eq4 = Eq(H,H_eq3.rhs.subs(w,wr_eq2.rhs))
+QBookHelpers.print_equation(H_eq4)
+
+```
+
+#### Grenzfrequenz
+Die Grenzfrequenz ist die Frequenz, bei der die Übertragungsfunktion um 3dB abfällt. Wird der Betrag der Übertragungsfunktion betrachtet, so ist die Grenzfrequenz die Frequenz, bei der der Betrag der Übertragungsfunktion $\frac{1}{\sqrt(2)}$ beträgt.
+
+```{python}
+#| code-fold: true 
+#| echo: false
+
+H_abs = MySymbol(r'|H(\omega_{G})|',description='Betrag der Übertragungsfunktion')
+
+
+H_abs_eq5 = Eq(H_abs,Mul(S.One, Pow(2, S(-1)/2, evaluate=False)))
+
+QBookHelpers.print_equation(H_abs_eq5)
+
+```
+
+
+### Bode-Diagramm in Abhängigkeit der Bauteilwerte
+
+#### Ohne Resonanzüberhöhung
+
+#### Mit Resonanzüberhöhung
+
+#### Grenzfall
+Der Grenzfall wird erreicht wenn der Widerstand gerade so groß ist, dass eine Resonanzüberhöhung unterdrückt wird. Aber auch nicht so groß, dass unnötig viel Energie als Wärme verloren geht. In diesem Fall ist die Resonanzfrequenz gleich der Grenzfrequenz. Damit kann der Betrag der Übertragungsfunktion bei Resonanz gleich dem Betrag der Übertragungsfunktion bei der Grenzfrequenz gesetzt werden und R aus C und L berechnet werden.
+
+```{python}
+#| code-fold: true 
+#| echo: false
+
+H_res = MySymbol(r'|H(\omega_{R})|',description='Übertragungsfunlktion bei Resonanz')
+H_grenz = MySymbol(r'|H(\omega_{G})|',description='Übertragungsfunlktion bei Grenzfrequenz')
+
+H_res_eqaul_H_grenz_eq1 = Eq(H_res,H_grenz)
+QBookHelpers.print_equation(H_res_eqaul_H_grenz_eq1)
+
+H_res_eqaul_H_grenz_eq2 = Eq(abs(H_eq4.rhs),H_abs_eq5.rhs,evaluate=False)
+QBookHelpers.print_equation(H_res_eqaul_H_grenz_eq2)
+
+R_eq1 = Eq(R,simplify(solve(H_res_eqaul_H_grenz_eq2,R)[0]))
+R_eq1_val = QBookHelpers.calculate_num_value(R_eq1)
+
+QBookHelpers.print_equation(R_eq1)
+
+QBH.print_values2([R])
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+

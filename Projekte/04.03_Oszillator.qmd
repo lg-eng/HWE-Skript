@@ -70,7 +70,7 @@ Für dieses Beispiel wird der Wien-Robinson-Oszillator ausgewählt. Die Schaltun
 ### Übertragungsfunktion des Schwingkreises $H_1(\omega)$ {#sec-OscSchwingkreis}
 Übertragungsfunktionen werden im Frequenzbereich betrachtet. das bedeutet, dass unsere Gleichungen nicht von der Zeit abhängen sondern von der Frequenz. 
 <!-- Statt dem bekannten $j\omega$, der Komplexen Kreisfrequenz, wird die Laplace-Variable $s$ verwendet. Mehr Informationen dazu finden sich unter @sec-OscÜbertragungsfunktion.  -->
-Beim Wien-Robinson-Oszillator wird eine Schaltung aus zwei Widerständen und einem Kondensator verwendet, @fig-RCSchwingkreis.
+Beim Wien-Robinson-Oszillator wird eine Schaltung aus zwei Widerständen und zwei Kondensatoren verwendet, @fig-RCSchwingkreis.
 
 ![RC Schwingkreis](Oszillator/RCSchwingkreis.png){#fig-RCSchwingkreis  width=10cm}  
 
@@ -115,7 +115,7 @@ QBookHelpers.print_equation(SpgT_eq) #Would be way bette if the I was in the den
 
 ```
 
-Bei der Schwingfrequenz des Oszillator handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, erfordert ein erweitern der obigen Gleichung mit $i/i$, kann nur der Imaginärteil des Nenners betrachtet werden.
+Bei der Schwingfrequenz des Oszillators handelt es sich um die Eigenfrequenz des Schwingkreises. Bei der Schwingfrequenz ist der Imaginärteil Null. Das lässt sich benutzen, um die Eigenfrequenz zu berechnen. Ist der Zähler rein real, kann nur der Imaginärteil des Nenners betrachtet werden. Ist der Zähler nicht nur real kann dies eventuell durch erweitern mit $i/i$ erreicht werden. 
 
 ```{python}
 #| code-fold: true
@@ -132,7 +132,7 @@ QBookHelpers.print_equation(eq_imNenner)
 
 ```
 
-Wird die Gleichung nach $\omega$ aufgelöst ergibt sich die Gleichung für die Eigenfrequenz $\omega_0$ des Schwingkreises.
+Wird die Gleichung nach $\omega$ aufgelöst, ergibt sich die Gleichung für die Eigenfrequenz $\omega_0$ des Schwingkreises.
 
 ```{python}
 #| code-fold: true
@@ -247,7 +247,7 @@ Um den Oszillator dauerhaft in Schwingung zu halten muss ein Teil des Ausgangssi
 Da das Signal am Ausgang des Schwingkreises eine kleinere Amplitude hat als das Signal am Eingang, wie im Bodediagramm @fig-ACAnalysis ersichtlich ist, muss diese Dämpfung durch einen Verstärker, $H_2$, ausgeglichen werden.
 
 #### Übertragungsfunktion des Verstärkers $H_2(s)$
-Die Übertragungsfunktion eines idealen Verstärkers ist eine Konstante. Eine reale OPV Verstärkerschaltung wird am besten mit einem PT1 oder PT2 Glied angenähert. ist die zu verstärkende Frequenz sehr klein im Verhältnis zu den Knickfrequenzen der Verstärkerschaltung ist aber das einfache Modelle einer Konstanten ausreichend. Für den hier gezeigten Fall trifft dies zu.
+Die Übertragungsfunktion eines idealen Verstärkers ist eine Konstante. Eine reale OPV Verstärkerschaltung wird am besten mit einem PT1 oder PT2 Glied angenähert. Ist die zu verstärkende Frequenz sehr klein im Verhältnis zu den Knickfrequenzen der Verstärkerschaltung ist aber das einfache Modelle einer Konstanten ausreichend. Für den hier gezeigten Fall trifft dies zu.
 
 ```{python}
 #| code-fold: true
@@ -295,7 +295,7 @@ QBookHelpers.print_equation(H_eq2)
 
 
 #### Stabiles System {#sec-OscStableSignal}
-Die Verstärkung des gesamten Systems muss so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schwingung nicht abklingt und auch nicht aufschwingt. Die gesamtverstärkung von Schwingkreis und Verstärker muss an der Eigenfrequenz 1 sein. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.  
+Die Verstärkung des gesamten Systems muss so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schwingung nicht abklingt und auch nicht aufschwingt. Die Gesamtverstärkung von Schwingkreis und Verstärker muss an der Eigenfrequenz 1 sein. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.  
 Wie in Abschnitt @sec-OscGedämpftesSignal und @sec-OscInstabilesSystem gezeigt wurde, muss die Verstärkung "richtig" gewählt werden um sowohl ein Aufschwingen als auch ein Abklingen zu verhindern.  
 Das Ausgangssignal des Schwingkreises ist um den Faktor 3 gedämpft. Dies lässt sich aus dem Bodediagramm @fig-ACBodeRCSchwingkreis oder aus der Formel ablesen. Damit ergibt sich die notwendige Verstärkung. 
 
@@ -326,10 +326,10 @@ Bodediagramm des Schwingkreises mit Verstärker in Open Loop Konfiguration
 :::
 :::
 
-Es ist zu erkennen, dass mit einem Verstärker as Verhältnis von Eingangssignal zu Ausgangssignal bei der Eigenfrequenz tatsächlich 1 ist, $0 \ \mathrm{dB}$. Der Verstärker wurde richtig dimensioniert.  
+Es ist zu erkennen, dass mit einem Verstärker das Verhältnis von Eingangssignal zu Ausgangssignal bei der Eigenfrequenz tatsächlich 1 ist, $0 \ \mathrm{dB}$. Der Verstärker wurde richtig dimensioniert.  
 
 #### Gedämpftes Signal {#sec-OscGedämpftesSignal}
-Wird kein Verstärker verwendet oder die Verstärkung ist zu klein, würde der Oszillator nicht von selbst starten. Wird die Schwingung zum Beispiel mit einem Puls gestartet würde die Schwingung abklingen. Das Signal wird kleiner. Die Schleifenverstärkung, Schwingkreis und Verstärker, muss so gewählt werden, dass die die Gesamtverstärkung an der Eigenfrequenz 1 ist. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.
+Wird kein Verstärker verwendet oder die Verstärkung ist zu klein, würde der Oszillator nicht von selbst starten. Wird die Schwingung zum Beispiel mit einem Puls gestartet würde die Schwingung abklingen. Das Signal wird kleiner. Die Schleifenverstärkung, der Schwingkreis und der Verstärker, müssen so gewählt werden, dass die Gesamtverstärkung an der Eigenfrequenz 1 ist. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.
 
 #### Instabiles System {#sec-OscInstabilesSystem}
 Ist die Verstärkung zu groß schwingt das System auf. Das Signal wird größer und größer. Das System ist instabil. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, kleiner als 1 bei der Eigenfrequenz ist. 
@@ -471,11 +471,11 @@ Die Schaltung wird nun geschlossen. Das Ausgangssignal wird am Eingang zurückge
 
 ![Closed Loop Transienten Analyse im Stabilen Zustand $R_{v2}=2 \ \mathrm{k \Omega} \ R_{v1}=1 \ \mathrm{k \Omega}$ ](Oszillator/RCClosedLoopTransStable.png){#fig-OscClosedLoopSimulationStable}
 
-In @fig-OscClosedLoopSimulationStable ist zu erkennen, dass im stabilen Zustand das System nicht zu schwingen beginnt. Wie in @sec-OscAnschwingen beschrieben benötigt es eine Störung um das System in Schwingung zu versetzen. Alternativ dazu kann das System Instabil gemacht werden in dem die Verstärkung erhöht wird. Dann werden kleinste Störungen in der Schaltung, welche es immer gibt, verstärkt und das System schwingt @fig-OscClosedLoopSimulationInstable.
+In @fig-OscClosedLoopSimulationStable ist zu erkennen, dass im stabilen Zustand das System nicht zu schwingen beginnt. Wie in @sec-OscAnschwingen beschrieben benötigt es eine Störung um das System in Schwingung zu versetzen. Alternativ dazu kann das System instabil gemacht werden in dem die Verstärkung erhöht wird. Dann werden kleinste Störungen in der Schaltung, welche es immer gibt, verstärkt und das System schwingt @fig-OscClosedLoopSimulationInstable.
 
-![Closed Loop Transienten Analyse im Instabilen Zustand $R_{v2}=2.2 \ \mathrm{k \Omega} \ R_{v1}=1 \ \mathrm{k \Omega}$ ](Oszillator/RCClosedLoopTransInst.png){#fig-OscClosedLoopSimulationInstable  }
+![Closed Loop Transienten Analyse im instabilen Zustand $R_{v2}=2.2 \ \mathrm{k \Omega} \ R_{v1}=1 \ \mathrm{k \Omega}$ ](Oszillator/RCClosedLoopTransInst.png){#fig-OscClosedLoopSimulationInstable  }
 
-Der Nachteil des Instabilen Systems ist es, dass die Schwingung immer größer wird. Das System wird übersteuert und dadurch stark verzerrt. Daher muss die Verstärkung so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, an der Eigenfrequenz 1 ist. Das System schwingt dann mit einer konstanten Amplitude
+Der Nachteil des instabilen Systems ist es, dass die Schwingung immer größer wird. Das System wird übersteuert und dadurch stark verzerrt. Daher muss die Verstärkung so gewählt werden, dass das System stabil ist. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, an der Eigenfrequenz 1 ist. Das System schwingt dann mit einer konstanten Amplitude
 
 Daraus folgt, dass es einen Verstärker bedarf der seine Verstärkung ändern kann. Das ist eine **Amplitudenregelung**. Diese ist ohnehin notwendig um die Bauteiltoleranzen und Temperaturabhängigkeiten auszugleichen.
 

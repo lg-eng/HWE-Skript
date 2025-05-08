@@ -17,7 +17,7 @@ Der hier vorgestellte *State Variable Filter*, @fig-svf_sch ist ein Filter, welc
 
 ![Schaltung eines *State Variable Filters*](SVF/SVF_Circuit.png){#fig-svf_sch}  
 
-Das Verhalten von Filtern kann am besten mit deren Übertragungsfunktion beschrieben werden. Dabei geht es immer darum, das Verhältnis von Ausgangssignal zu Eingangssignal zu beschreiben. Da sich das Wort Filter auf Frequenzen bezieht, wird die Übertragungsfunktion in der Regel im Frequenzbereich betrachtet. Ob dabei nun die komplexe schreibweise $j\omega$ oder die Laplace-Transformation $s$ verwendet wird, hängt im wesentlichen davon ab welche Art von Eingangssignalen betrachtet werden sollen.  
+Das Verhalten von Filtern kann am besten mit deren Übertragungsfunktion beschrieben werden. Dabei geht es immer darum, das Verhältnis von Ausgangssignal zu Eingangssignal zu beschreiben. Da sich das Wort Filter auf Frequenzen bezieht, wird die Übertragungsfunktion in der Regel im Frequenzbereich betrachtet. Ob dabei nun die komplexe Schreibweise $j\omega$ oder die Laplace-Transformation $s$ verwendet wird, hängt im Wesentlichen davon ab welche Art von Eingangssignalen betrachtet werden sollen.  
 
 Für den hier gezeigten *State Variable Filter* müssen die Übertragungsfunktionen für die vier möglichen Filtertypen analytisch berechnet werden.  
 
