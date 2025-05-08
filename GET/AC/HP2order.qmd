@@ -1,12 +1,10 @@
 ## Hochpass 2ter Ordnung
-Der Hochpass kann dazu benutzt werden, um die Frequenzen unterhalb einer bestimmten Grenzfrequenz zu dämpfen. Wird ein Hochpass zweiter Ordnung verwendet ist die Dämpfung unterhalb der Grenzfrequenz 40dB pro Dekade bei eine Hochpass erster Ordnung sind es nur 20dB pro Dekade.
+Der Hochpass kann dazu benutzt werden, um die Frequenzen unterhalb einer bestimmten Grenzfrequenz zu dämpfen. Wird ein Hochpass zweiter Ordnung verwendet ist die Dämpfung unterhalb der Grenzfrequenz 40dB pro Dekade. Bei einem Hochpass erster Ordnung sind es nur 20dB pro Dekade.
 
 ![Hochpass 2ter Ordnung](HP_2_Ordnung.png){#fig-HP2o}
 
 Das hier gezeigte Beispiel soll demonstrieren welche Untersuchungen, Berechnungen und Simulation bei einem Hochpass 2ter Ordnung durchgeführt werden können.
 
-### Eingangsimpedanz
-Hier muss einfach die Gesamtimpedanz des Hochpasses betrachtet werden, da die Eingangsspannung parallel zu den Bauteilen anliegt.
 
 ```{python}
 #| code-fold: true
@@ -18,8 +16,8 @@ Z = MySymbol(r'\underline{Z}',description='Gesamtimpedanz',unit=u.ohm)
 XC = MySymbol(r'\underline{X}_C',description='Kapazitive Impedanz',unit=u.ohm)
 XL = MySymbol(r'\underline{X}_L',description='Induktive Impedanz',unit=u.ohm)
 R = MySymbol('R',description='Widerstand',real=True,positive=True,value=1e3,unit=u.ohm)
-C = MySymbol('C',real=True,positive=True,description='Kapazität',value=1e-6,unit=u.F)
-L = MySymbol('L',real=True,positive=True,description='Induktivität',value=1e-3,unit=u.H)
+C = MySymbol('C',real=True,positive=True,description='Kapazität',value=10e-6,unit=u.F)
+L = MySymbol('L',real=True,positive=True,description='Induktivität',value=100e-3,unit=u.H)
 Uin = MySymbol(r'\underline{U_{in}}',real=True,positive=True,description='Eingangsspannung',value=1,unit=u.V)
 Uout = MySymbol(r'\underline{U_{out}}',real=True,positive=True,description='Ausgangsspannung',unit=u.V)
 w = MySymbol(r'\omega',real=True,positive=True,description='Kreisfrequenz',value=10e6,unit=u.rad/u.s)
@@ -27,36 +25,74 @@ f = MySymbol('f',real=True,positive=True,description='Frequenz',unit=u.Hz)
 
 
 
-QBookHelpers.print_description([Z,XC,XL,R])
+#QBookHelpers.print_description([Z,XC,XL,R])
 
 XC_eq  = Eq(XC, 1/(I*w*C))
 XL_eq  = Eq(XL, I*w*L)
 Z_eq1   = Eq(Z, R + XL + XC)
 Z_eq2   = Eq(Z, R + XL_eq.rhs + XC_eq.rhs)
 
-QBookHelpers.print_equation(XC_eq)
-QBookHelpers.print_equation(XL_eq)
-QBookHelpers.print_equation(Z_eq1)
-QBookHelpers.print_equation(Z_eq2)
+#QBookHelpers.print_equation(XC_eq)
+#QBookHelpers.print_equation(XL_eq)
+#QBookHelpers.print_equation(Z_eq1)
+#QBookHelpers.print_equation(Z_eq2)
 
-QBookHelpers.calculate_num_value(Z_eq2)
+#QBookHelpers.calculate_num_value(Z_eq2)
 
 
 ```
 
-Mit den Bauteilwerten kann nun die Gesamtimpedanz des Hochpasses berechnet werden.
+<!-- Mit den Bauteilwerten kann nun die Gesamtimpedanz des Hochpasses berechnet werden. -->
 
 ```{python}
 #| code-fold: true
 ##| echo: false
 
-QBH.print_values2([R,C,L,Z])
+#QBH.print_values2([R,C,L,Z])
 
 
 ``` 
 
+
+
+### Übertragungsfunktion
+Die Übertragungsfunktion beschreibt das Verhältnis zwischen der Eingangsgröße, hier die Eingangsspannung, und der Ausgangsgröße, hier die Ausgangsspannung. Sie ist eine Funktion der Frequenz und wird in der Regel in Form eines Bode-Diagramms dargestellt.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+H = MySymbol(r'\underline{H(i \omega)}',description='Übertragungsfunktion')
+
+H_eq1 = Eq(H,Uout/Uin)
+QBookHelpers.print_equation(H_eq1)
+
+```
+
+Da es sich hier um eine Einfache Serienschaltung handelt, kann die Übertragungsfunktion auch als Verhältnis der Impedanzen dargestellt werden. Es wird die Spannungsteilerregel verwendet.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+H_eq2 = Eq(H,XL/(R+XL+XC))
+QBookHelpers.print_equation(H_eq2)
+
+H_eq3 = Eq(H,H_eq2.rhs.subs(XC,XC_eq.rhs).subs(XL,XL_eq.rhs))
+QBookHelpers.print_equation(H_eq3)
+
+H_eq3 = Eq(H,(simplify(H_eq2.rhs.subs(XC,XC_eq.rhs).subs(XL,XL_eq.rhs).expand(complex=True))))
+QBookHelpers.print_equation(H_eq3)
+
+
+```
+
 ### Resonanzfrequenz
-Die Resonanzfrequenz ist die Frequenz, bei der die Impedanz des Hochpasses minimal ist. Resonanz tritt ein wenn der Widerstand des Schaltung am kleinsten ist. Das ist der Fall wenn sich die induktive Impedanz und die kapazitive Impedanz aufheben. Der Imaginärteil also Null ist.
+Das Wissen über die Resonanzfrequenz ist nicht nur wichtig wenn das diese Bauteile in ganz ähnlicher Anordnung als Schwingkreis verwendet wird. Auch bei Hochpass und Tiefpassfiltern ist die Resonanzfrequenz wichtig. Auch wenn für Filter die Grenzfrequenz öfter herangezogen wird.  
+Da es sich bei dieser Schaltung um eine Schaltung mit zwei Energiespeichern handeln zwischen der die Energie hin und her Pendeln kann ist dieses System schwingfähig und in der Lage bei Resonanz eine Resonanzüberhöhung zu erzeugen. Das bedeutet, dass die Amplitude am Ausgang größer als der Eingang ist. Es ist leicht vorsstellbar, dass in solch einem Fall eine eventuell dahinter liegende Schaltung zerstört werden könnte. daher gilt es die Resonanzüberhöhung meistens zu vermeiden.
+
+Die Resonanzfrequenz ist die Frequenz, bei der die Impedanz des Hochpasses minimal ist. Resonanz tritt ein wenn der Widerstand des Schaltung am kleinsten ist. Das ist der Fall wenn sich die induktive Impedanz und die kapazitive Impedanz aufheben. Der Imaginärteil also Null ist. Damit lässt sich die Resonanzfrequenz berechnen.
+
 
 ```{python}
 #| code-fold: true
@@ -82,42 +118,6 @@ QBH.print_values2([wr])
 
 ```
 
-#### Zeigerdiagramm
-
-### Übertragungsfunktion
-Die Übertragungsfunktion beschreibt das Verhältnis zwischen der Eingangsgröße, hier die Eingangsspannung, und der Ausgangsgröße, hier die Ausgangsspannung. Sie ist eine Funktion der Frequenz und wird in der Regel in Form eines Bode-Diagramms dargestellt.
-
-```{python}
-#| code-fold: true
-##| echo: false
-
-H = MySymbol(r'\underline{H}',description='Übertragungsfunktion')
-
-H_eq1 = Eq(H,Uout/Uin)
-QBookHelpers.print_equation(H_eq1)
-
-```
-
-Da es sich hier um eine Einfache Serienschaltung handelt, kann die Übertragungsfunktion auch als Verhältnis der Impedanzen dargestellt werden. Es wird die Spannungsteilerregel verwendet.
-
-```{python}
-#| code-fold: true
-##| echo: false
-
-H = MySymbol(r'\underline{H}',description='Übertragungsfunktion')
-
-H_eq2 = Eq(H,XL/(R+XL+XC))
-QBookHelpers.print_equation(H_eq2)
-
-H_eq3 = Eq(H,H_eq2.rhs.subs(XC,XC_eq.rhs).subs(XL,XL_eq.rhs))
-QBookHelpers.print_equation(H_eq3)
-
-H_eq3 = Eq(H,(simplify(H_eq2.rhs.subs(XC,XC_eq.rhs).subs(XL,XL_eq.rhs).expand(complex=True))))
-QBookHelpers.print_equation(H_eq3)
-
-
-```
-
 #### Übertragungsfunktion bei Resonanz
 Mit der Übertragungsfunktion kann nun der Ausgang in Abhängigkeit der des Eingangs berechnet werden. Wird zum beispiel für $\omega$ die Resonanzfrequenz eingesetzt, so erhält man die Übertragungsfunktion bei Resonanz.
 
@@ -130,14 +130,14 @@ QBookHelpers.print_equation(H_eq4)
 
 ```
 
-#### Grenzfrequenz
+### Grenzfrequenz
 Die Grenzfrequenz ist die Frequenz, bei der die Übertragungsfunktion um 3dB abfällt. Wird der Betrag der Übertragungsfunktion betrachtet, so ist die Grenzfrequenz die Frequenz, bei der der Betrag der Übertragungsfunktion $\frac{1}{\sqrt(2)}$ beträgt.
 
 ```{python}
 #| code-fold: true 
 #| echo: false
 
-H_abs = MySymbol(r'|H(\omega_{G})|',description='Betrag der Übertragungsfunktion')
+H_abs = MySymbol(r'|H(i \omega_{G})|',description='Betrag der Übertragungsfunktion')
 
 
 H_abs_eq5 = Eq(H_abs,Mul(S.One, Pow(2, S(-1)/2, evaluate=False)))
@@ -146,12 +146,79 @@ QBookHelpers.print_equation(H_abs_eq5)
 
 ```
 
+Wird die Gleichung umgestellt, so erhält man die Grenzfrequenz.
+```{python}
+#| code-fold: true 
+#| echo: false
+
+wg = MySymbol(r'\omega_g',real=True,positive=True,description='Grenzfrequenz',unit=u.rad/u.s)
+
+wg_eq0 = Eq(simplify(abs(H_eq3.rhs)),1/sqrt(2), evaluate=False)
+#QBookHelpers.print_equation(wg_eq0)
+
+#wg_eq1 = Eq(wg,R/L) #falsch!!
+#QBookHelpers.print_equation(wg_eq1)
+#wg_eq1_val = QBookHelpers.calculate_num_value(wg_eq1)
+#QBH.print_values2([wg])
+
+#display(solve(wg_eq0,w))
+wg_eq1 = Eq(wg,expand(simplify(expand(solve(wg_eq0,w)[1])))) # can not be simplified
+#QBookHelpers.print_equation(wg_eq1)
+#wg_eq1_val = QBookHelpers.calculate_num_value(wg_eq1)
+#QBH.print_values2([wg])
+
+
+```
+
 
 ### Bode-Diagramm in Abhängigkeit der Bauteilwerte
+Das Bode-Diagramm ist eine grafische Darstellung der Übertragungsfunktion in Abhängigkeit von der Frequenz. Es wird in zwei Diagrammen dargestellt, einem für den Betrag der Übertragungsfunktion in dB und einem für die Phase der Übertragungsfunktion. Die Frequenz wird in logarithmischer Skala dargestellt. Die Phase der Übertragungsfunktion wird in Grad angegeben und gibt an, wie viel die Ausgangsspannung gegenüber der Eingangsspannung verschoben ist.  
+Aus dem Bode-Diagramm kann das Verhalten des Filter, welches mathematisch in der Übertragungsfunktion beschrieben ist, grafisch abgelesen werden.  
+Nicht nur Filter können mittels Bode-Diagramm gut analysiert werden. Auch andere Systeme welche einen Eingang und einen Ausgang haben, können mit Hilfe der Übertragungsfunktion und dem Bode-Diagramm analysiert werden.  
 
-#### Ohne Resonanzüberhöhung
+Ob es zu einer Resonanzüberhöhung kommt, davon ab wie Stark das System gedämpft ist. Bei einem Hochpass 2ter Ordnung ist die Dämpfung durch den Widerstand R maßgeblich bestimmt. 
+
+
+#### Ohne Resonanzüberhöhung - stark gedämpft
+
+```{python}
+#| code-fold: true 
+#| echo: false
+
+H_symTF_eq = Eq(H,C*L*s**2/(1+s*C*R+s**2*C*L))
+
+R.value = 1000
+wr_eq2_val = QBookHelpers.calculate_num_value(wr_eq2)
+wg_eq1_val = QBookHelpers.calculate_num_value(wg_eq1)
+QBH.print_values2([C,L,R,wr,wg])
+
+H_symTF_eq_vals = QBookHelpers.replace_num_value(H_symTF_eq)
+#QBookHelpers.print_equation(H_eq_vals)
+
+QBH.bode_from_symEqTransferFunction(H_symTF_eq_vals,wg=wg.value,wr=wr.value)
+
+
+```
 
 #### Mit Resonanzüberhöhung
+
+```{python}
+#| code-fold: true 
+#| echo: false
+
+
+R.value = 1
+wr_eq2_val = QBookHelpers.calculate_num_value(wr_eq2)
+wg_eq1_val = QBookHelpers.calculate_num_value(wg_eq1)
+QBH.print_values2([C,L,R,wr,wg])
+
+H_symTF_eq_vals = QBookHelpers.replace_num_value(H_symTF_eq)
+#QBookHelpers.print_equation(H_eq_vals)
+
+QBH.bode_from_symEqTransferFunction(H_symTF_eq_vals,wg=wg.value,wr=wr.value)
+
+
+```
 
 #### Grenzfall
 Der Grenzfall wird erreicht wenn der Widerstand gerade so groß ist, dass eine Resonanzüberhöhung unterdrückt wird. Aber auch nicht so groß, dass unnötig viel Energie als Wärme verloren geht. In diesem Fall ist die Resonanzfrequenz gleich der Grenzfrequenz. Damit kann der Betrag der Übertragungsfunktion bei Resonanz gleich dem Betrag der Übertragungsfunktion bei der Grenzfrequenz gesetzt werden und R aus C und L berechnet werden.
@@ -174,7 +241,14 @@ R_eq1_val = QBookHelpers.calculate_num_value(R_eq1)
 
 QBookHelpers.print_equation(R_eq1)
 
-QBH.print_values2([R])
+wr_eq2_val = QBookHelpers.calculate_num_value(wr_eq2)
+wg_eq1_val = QBookHelpers.calculate_num_value(wg_eq1)
+QBH.print_values2([C,L,R,wr,wg])
+
+H_symTF_eq_vals = QBookHelpers.replace_num_value(H_symTF_eq)
+#QBookHelpers.print_equation(H_eq_vals)
+
+QBH.bode_from_symEqTransferFunction(H_symTF_eq_vals,wg=wg.value,wr=wr.value)
 
 
 
