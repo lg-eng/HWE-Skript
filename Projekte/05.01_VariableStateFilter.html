@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript - 8&nbsp; State Variable Filter</title>
+<title>HWE-Skript - 9&nbsp; State Variable Filter</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Projekte/04.03_Oszillator.html" rel="prev">
+<link href="../Projekte/04.04_BuckBoost.html" rel="prev">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -163,7 +163,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html">5. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State Variable Filter</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html">5. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">State Variable Filter</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -281,6 +281,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Oszillator</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.04_BuckBoost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -295,7 +301,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Projekte/05.01_VariableStateFilter.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
   </div>
 </li>
       </ul>
@@ -310,16 +316,16 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#analytische-herleitung-der-übertragungsfunktionen" id="toc-analytische-herleitung-der-übertragungsfunktionen" class="nav-link active" data-scroll-target="#analytische-herleitung-der-übertragungsfunktionen"><span class="header-section-number">8.1</span> Analytische Herleitung der Übertragungsfunktionen</a></li>
+  <li><a href="#analytische-herleitung-der-übertragungsfunktionen" id="toc-analytische-herleitung-der-übertragungsfunktionen" class="nav-link active" data-scroll-target="#analytische-herleitung-der-übertragungsfunktionen"><span class="header-section-number">9.1</span> Analytische Herleitung der Übertragungsfunktionen</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html">5. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State Variable Filter</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html">5. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/05.01_VariableStateFilter.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">State Variable Filter</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-VarStatFilter" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></h1>
+<h1 class="title"><span id="sec-VarStatFilter" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></h1>
 </div>
 
 
@@ -336,7 +342,7 @@ window.Quarto = {
 </header>
 
 
-<div id="c1b4e764" class="cell" data-execution_count="1">
+<div id="986e7724" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -347,14 +353,14 @@ window.Quarto = {
 </details>
 </div>
 <p>Filter allgemein werden eingesetzt um Signale zu verarbeiten. Ein Filter kann dabei unterschiedliche Aufgaben übernehmen. Ein Filter kann z.B. dazu verwendet werden, um ein Signal zu glätten, um Störungen zu unterdrücken oder um Signale zu trennen. Filter können dabei unterschiedliche Strukturen aufweisen.</p>
-<p>Der hier vorgestellte <em>State Variable Filter</em>, <a href="#fig-svf_sch" class="quarto-xref">Abbildung&nbsp;<span>8.1</span></a> ist ein Filter, welcher mit einer Schaltung sowohl als Tiefpassfilter, Hochpassfilter, Bandpassfilter oder Bandsperre verwendet werden kann. Welcher Filter auf das Eingangssignal angewandt wird, wird durch die Auswahl des Ausganges bestimmt.</p>
+<p>Der hier vorgestellte <em>State Variable Filter</em>, <a href="#fig-svf_sch" class="quarto-xref">Abbildung&nbsp;<span>9.1</span></a> ist ein Filter, welcher mit einer Schaltung sowohl als Tiefpassfilter, Hochpassfilter, Bandpassfilter oder Bandsperre verwendet werden kann. Welcher Filter auf das Eingangssignal angewandt wird, wird durch die Auswahl des Ausganges bestimmt.</p>
 <div id="fig-svf_sch" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-svf_sch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="SVF/SVF_Circuit.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-svf_sch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;8.1: Schaltung eines <em>State Variable Filters</em>
+Abbildung&nbsp;9.1: Schaltung eines <em>State Variable Filters</em>
 </figcaption>
 </figure>
 </div>
@@ -362,8 +368,8 @@ Abbildung&nbsp;8.1: Schaltung eines <em>State Variable Filters</em>
 <p>Für den hier gezeigten <em>State Variable Filter</em> müssen die Übertragungsfunktionen für die vier möglichen Filtertypen analytisch berechnet werden.</p>
 <p>Die analytisch berechneten Übertragungsfunktionen der Filter werden verwendet, um Bodediagramme zu erstellen. Diese Bodediagramme geben Aufschluss über das Frequenzverhalten des Systems, indem sie die Verstärkung und Phasenverschiebung in Abhängigkeit von der Frequenz darstellen. Im Anschluss an die Berechnung der Bodediagramme auf analytischer Basis erfolgt der Vergleich mit numerischen Simulationsergebnissen, die in <em>Altium</em> durchgeführt werden.</p>
 <p>Der Vergleich zwischen analytischen und simulierten Ergebnissen ermöglicht eine Überprüfung der Genauigkeit des mathematischen Modells sowie der Simulationseinstellungen in Altium. Eventuelle Abweichungen können auf Vereinfachungen im analytischen Modell, numerische Fehler oder auf die verwendeten Bauteilparameter in der Simulation zurückzuführen sein.</p>
-<section id="analytische-herleitung-der-übertragungsfunktionen" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="analytische-herleitung-der-übertragungsfunktionen"><span class="header-section-number">8.1</span> Analytische Herleitung der Übertragungsfunktionen</h2>
+<section id="analytische-herleitung-der-übertragungsfunktionen" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="analytische-herleitung-der-übertragungsfunktionen"><span class="header-section-number">9.1</span> Analytische Herleitung der Übertragungsfunktionen</h2>
 
 
 </section>
@@ -758,8 +764,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Projekte/04.03_Oszillator.html" class="pagination-link" aria-label="Oszillator">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Oszillator</span></span>
+      <a href="../Projekte/04.04_BuckBoost.html" class="pagination-link" aria-label="DC-DC Konverter">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

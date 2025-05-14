@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>HWE-Skript - 8&nbsp; DC-DC Konverter</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Projekte/05.01_VariableStateFilter.html" rel="next">
+<link href="../Projekte/04.03_Oszillator.html" rel="prev">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"de"
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.04_BuckBoost.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">HWE-Skript</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/lg-eng/HWE-Skript" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Willkommen zum Skript</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">1. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../GET/KnotenSpannungsAnalyse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Knoten- Spannungs- Analyse</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">2. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../GET/AC/Wechselstrom.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Komplexe Wechselstromtechnik</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">3. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">4. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.03_Oszillator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Oszillator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/04.04_BuckBoost.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">5. Jahrgang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Projekte/05.01_VariableStateFilter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="4">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern" id="toc-grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern" class="nav-link active" data-scroll-target="#grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern"><span class="header-section-number">8.1</span> Grundlagen zur beurteilun der Qualität von DC-DC Konvertern</a>
+  <ul>
+  <li><a href="#wirkungsgrad" id="toc-wirkungsgrad" class="nav-link" data-scroll-target="#wirkungsgrad"><span class="header-section-number">8.1.1</span> Wirkungsgrad</a></li>
+  <li><a href="#stabilität" id="toc-stabilität" class="nav-link" data-scroll-target="#stabilität"><span class="header-section-number">8.1.2</span> Stabilität</a></li>
+  <li><a href="#leistung" id="toc-leistung" class="nav-link" data-scroll-target="#leistung"><span class="header-section-number">8.1.3</span> Leistung</a></li>
+  </ul></li>
+  <li><a href="#warum-ein-spannungsteiler-keine-gute-idee-ist" id="toc-warum-ein-spannungsteiler-keine-gute-idee-ist" class="nav-link" data-scroll-target="#warum-ein-spannungsteiler-keine-gute-idee-ist"><span class="header-section-number">8.2</span> Warum ein Spannungsteiler keine gute Idee ist</a>
+  <ul>
+  <li><a href="#wirkungsgrad-eine-spannungsteilers" id="toc-wirkungsgrad-eine-spannungsteilers" class="nav-link" data-scroll-target="#wirkungsgrad-eine-spannungsteilers"><span class="header-section-number">8.2.1</span> Wirkungsgrad eine Spannungsteilers</a></li>
+  <li><a href="#wirkungsgrad-1" id="toc-wirkungsgrad-1" class="nav-link" data-scroll-target="#wirkungsgrad-1"><span class="header-section-number">8.2.2</span> Wirkungsgrad</a></li>
+  </ul></li>
+  <li><a href="#abwärtswandler---buck-konverter" id="toc-abwärtswandler---buck-konverter" class="nav-link" data-scroll-target="#abwärtswandler---buck-konverter"><span class="header-section-number">8.3</span> Abwärtswandler - Buck-Konverter</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Projekte/04.01_Leistungsverstaerker.html">4. Jahrgang</a></li><li class="breadcrumb-item"><a href="../Projekte/04.04_BuckBoost.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-Buck" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>DC-DC-Konverter sind essenzielle Bausteine in der Leistungselektronik. Sie ermöglichen die effiziente Umwandlung von Gleichspannungen auf unterschiedliche Spannungsniveaus, was in zahlreichen Anwendungen erforderlich ist. Typische Einsatzgebiete umfassen die Stromversorgung von mobilen Geräten, elektrische Fahrzeuge, erneuerbare Energien und industrielle Steuerungen. Ihre Fähigkeit, Spannungen zu erhöhen (Boost), zu senken (Buck) oder beides zu kombinieren, macht sie vielseitig und unverzichtbar in modernen elektronischen Systemen.</p>
+<p>Wer sein Wissen zu Leistungselektronik vertiefen möchte wird bei MIT OpenCourseWare fündig, <a href="https://ocw.mit.edu/courses/6-622-power-electronics-spring-2023/">MIT OpenCourseWare Power Electronics</a>.</p>
+<section id="grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern"><span class="header-section-number">8.1</span> Grundlagen zur beurteilun der Qualität von DC-DC Konvertern</h2>
+<p>Die Qualität von DC-DC-Konvertern wird durch verschiedene Parameter bestimmt, die ihre Effizienz, Stabilität und Leistung beeinflussen. Zu den wichtigsten Kriterien gehören:<br>
+- <strong>Wirkungsgrad</strong>: Der Wirkungsgrad ist ein Maß dafür, wie effizient der Konverter die Eingangsleistung in Ausgangsleistung umwandelt. Ein hoher Wirkungsgrad bedeutet weniger Energieverluste und eine bessere Leistung.<br>
+- <strong>Stabilität</strong>: Die Stabilität des Konverters bezieht sich auf seine Fähigkeit, unter verschiedenen Lastbedingungen und Eingangsspannungen eine konstante Ausgangsspannung zu liefern. Eine stabile Regelung ist entscheidend für die Zuverlässigkeit des Systems.<br>
+- <strong>Leistung</strong>: Die Leistung des Konverters bezieht sich auf die maximale Ausgangsleistung, die er liefern kann. Dies ist wichtig, um sicherzustellen, dass der Konverter in der Lage ist, die Anforderungen der angeschlossenen Last zu erfüllen.</p>
+<section id="wirkungsgrad" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="wirkungsgrad"><span class="header-section-number">8.1.1</span> Wirkungsgrad</h3>
+<p>Der Wirkungsgrad wird allgemein als das Verhältnis von Ausgangsenergie <span class="math inline">\(E_{out}\)</span> zu Eingangsenergie <span class="math inline">\(E_{in}\)</span> definiert. Wichtig dabei ist, dass die Ausgangsenergie dabei nicht die gesamte Energie ist, denn da keine Energie verloren gehen kann wäre der Wirkungsgrad immer 1, sondern die Energie die genutzt werden soll. Bei einem DC-DC Konverter ist das die elektrische Energie am Ausgang.</p>
+<p><span class="math display">\[\eta = \frac{E_{out}}{E_{in}} = \frac{P_{out} \cdot t_{out}}{P_{in} \cdot t_{in}}\]</span></p>
+<p>wenn die Zeit in der die Energie am Eingang anliegt gleich der Zeit ist, in der die Energie am Ausgang ausgegeben wird, dann kann die Zeit gekürzt werden zu:</p>
+<p><span class="math display">\[\eta = \frac{P_{out}}{P_{in}}\]</span></p>
+<p>wobei <span class="math inline">\(P_{out}\)</span> die Ausgangsleistung und <span class="math inline">\(P_{in}\)</span> die Eingangsleistung ist. Ein Wirkungsgrad von 1 bedeutet, dass keine Energie verloren geht, was in der Praxis jedoch unmöglich ist. Typische Wirkungsgrade für DC-DC-Konverter liegen zwischen 0,8 und 0,95, abhängig von der Bauart und den Betriebsbedingungen. Oft wird der Wirkungsgrad auch in Prozent angegeben. Dazu muss das Verhältnis mit 100 multipliziert werden. Ein Wirkungsgrad von 0,9 entspricht also 90%.</p>
+</section>
+<section id="stabilität" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="stabilität"><span class="header-section-number">8.1.2</span> Stabilität</h3>
+<p>Die Stabilität eines DC-DC-Konverters bezieht sich auf seine Fähigkeit, eine konstante Ausgangsspannung zu liefern, auch wenn sich die Eingangsspannung oder die Lastbedingungen ändern.<br>
+Ein Maß für die Stabilität kann die Brummspannung sein, die die Schwankungen der Ausgangsspannung beschreibt. Eine niedrige Brummspannung ist wünschenswert, da sie auf eine stabile Regelung hinweist.<br>
+Eine weitere Möglichkeit die Stabilität zu beurteilen ist die Regelbandbreite. Diese beschreibt, wie schnell der Konverter auf Änderungen der Last oder der Eingangsspannung reagiert. Eine hohe Regelbandbreite bedeutet, dass der Konverter schnell auf Änderungen reagieren kann und somit eine stabilere Ausgangsspannung liefert.</p>
+</section>
+<section id="leistung" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="leistung"><span class="header-section-number">8.1.3</span> Leistung</h3>
+<p>Die Leistung eines DC-DC-Konverters bezieht sich auf die maximale Ausgangsleistung, die er liefern kann. Diese wird in Watt (W) angegeben und ist entscheidend für die Auswahl des richtigen Konverters für eine bestimmte Anwendung.</p>
+</section>
+</section>
+<section id="warum-ein-spannungsteiler-keine-gute-idee-ist" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="warum-ein-spannungsteiler-keine-gute-idee-ist"><span class="header-section-number">8.2</span> Warum ein Spannungsteiler keine gute Idee ist</h2>
+<p>Ein Spannungsteiler ist eine einfache Schaltung, die aus zwei Widerständen besteht und eine Spannung auf einen niedrigeren Wert reduziert. Obwohl er in einigen Anwendungen nützlich sein kann, ist er für die meisten Anwendungen nicht geeignet, insbesondere wenn es um die Stromversorgung von Geräten geht. Der Hauptrund dafür ist die schlechte Wirkungsgrad bei hohen Strömen und die fehlende Möglichkeit bei schwankender Eingangsspannung eine konstante Ausgangsspannung zu erzeugen. Auch auf eine wechselnde Last kann der Spannungsteiler nicht reagieren.</p>
+<section id="wirkungsgrad-eine-spannungsteilers" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="wirkungsgrad-eine-spannungsteilers"><span class="header-section-number">8.2.1</span> Wirkungsgrad eine Spannungsteilers</h3>
+<p>Am Beispiel eines unbelasteten Spannungsteilers werden die Nachteile verdeutlicht.</p>
+<div id="fig-0404_Spannungsteiler" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-0404_Spannungsteiler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="..\Projekte/BuckBoost/Spannungsteiler.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-0404_Spannungsteiler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;8.1: Spannungsteiler
+</figcaption>
+</figure>
+</div>
+<p><span class="math inline">\(R_{Last}\)</span> ist eine beliebige Last die eine vorgegebene Spannung benötigt. <span class="math inline">\(R_1\)</span> soll so berechnet werden, dass an <span class="math inline">\(R_{Last}\)</span> die korrekte Spannung abfällt. Im Anschluss soll die Qualität der Spannungsanpassung auf die drei oben genannten Kriterien hin überpürft werden.</p>
+<div id="da35b8e8" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>R1 <span class="op">=</span> MySymbol(<span class="st">'R1'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.ohm)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>RLast <span class="op">=</span> MySymbol(<span class="st">'R_</span><span class="sc">{Last}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,value<span class="op">=</span><span class="dv">330</span>,unit<span class="op">=</span>u.ohm)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Uin <span class="op">=</span> MySymbol(<span class="st">'U_</span><span class="sc">{in}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.V,value<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Uout <span class="op">=</span> MySymbol(<span class="st">'U_</span><span class="sc">{out}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.V,value<span class="op">=</span><span class="fl">3.3</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Iin <span class="op">=</span> MySymbol(<span class="st">'I_</span><span class="sc">{in}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.A)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ILast <span class="op">=</span> MySymbol(<span class="st">'I_</span><span class="sc">{Last}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.A)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>QBH.print_values2([RLast,Uin,Uout])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[R_{Last} = \mathtt{\text{330}} \ \mathtt{\text{}}\Omega\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[U_{in} = \mathtt{\text{10}} \ \mathtt{\text{}}\text{V}\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[U_{out} = \mathtt{\text{3.3}} \ \mathtt{\text{}}\text{V}\]</span></p>
+</div>
+</div>
+<p>Durch umstellen des allgemeinen Ansatzes für den Spannungsteiler erhält man die Gleichung für <span class="math inline">\(R_1\)</span>.</p>
+<div id="3bc9bf40" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>R1_eq1 <span class="op">=</span> Eq(Uin<span class="op">/</span>Uout,(R1<span class="op">+</span>RLast)<span class="op">/</span>RLast)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(R1_eq1)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>R1_eq2 <span class="op">=</span> Eq(R1,solve(R1_eq1,R1)[<span class="dv">0</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(R1_eq2)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>QBookHelpers.calculate_num_value(R1_eq2)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>QBH.print_values2([R1])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+\frac{U_{in}}{U_{out}} = \frac{R_{1} + R_{Last}}{R_{Last}}
+\tag{8.1}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+R_{1} = \frac{R_{Last} \left(U_{in} - U_{out}\right)}{U_{out}}
+\tag{8.2}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[R_{1} = \mathtt{\text{670}} \ \mathtt{\text{}}\Omega\]</span></p>
+</div>
+</div>
+</section>
+<section id="wirkungsgrad-1" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="wirkungsgrad-1"><span class="header-section-number">8.2.2</span> Wirkungsgrad</h3>
+<p>Die Verluste der Schaltung fallen am Widerstand <span class="math inline">\(R_1\)</span> ab. Die Nutzbare Leistung am <span class="math inline">\(R_{Last}\)</span> daraus ergibt sich die Gleichung für den Wirkungsgrad.</p>
+<div id="7b7014b0" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> MySymbol(<span class="vs">r'\eta'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>etaPerc <span class="op">=</span> MySymbol(<span class="vs">r'\eta'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.percent)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>P1 <span class="op">=</span> MySymbol(<span class="st">'P_1'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.watt)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>PLast <span class="op">=</span> MySymbol(<span class="st">'P_</span><span class="sc">{Last}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.watt)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Pin <span class="op">=</span> MySymbol(<span class="st">'P_</span><span class="sc">{in}</span><span class="st">'</span>,real<span class="op">=</span><span class="va">True</span>,positive<span class="op">=</span><span class="va">True</span>,unit<span class="op">=</span>u.watt)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>eta_eq1 <span class="op">=</span> Eq(eta,PLast<span class="op">/</span>Pin)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(eta_eq1)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>Pin_eq1 <span class="op">=</span> Eq(Pin,Uin<span class="op">*</span>Iin)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(Pin_eq1)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>PLast_eq1 <span class="op">=</span> Eq(PLast,Uout<span class="op">*</span>ILast)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(PLast_eq1)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>eta_eq2 <span class="op">=</span> Eq(eta,eta_eq1.rhs.subs(Pin,Pin_eq1.rhs).subs(PLast,PLast_eq1.rhs))</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(eta_eq2)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+\eta = \frac{P_{Last}}{P_{in}}
+\tag{8.3}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+P_{in} = I_{in} U_{in}
+\tag{8.4}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+P_{Last} = I_{Last} U_{out}
+\tag{8.5}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+\eta = \frac{I_{Last} U_{out}}{I_{in} U_{in}}
+\tag{8.6}\]</span></span></p>
+</div>
+</div>
+<p>Da der gesamte Eingangstrom durch die Last fließt sind die Ströme gleich und können gekürzt werden.</p>
+<div id="174f64dd" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>eta_eq3 <span class="op">=</span> Eq(eta,eta_eq2.rhs.subs(ILast,Iin))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(eta_eq3)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>etaPerc_eq1 <span class="op">=</span> Eq(etaPerc,eta<span class="op">*</span><span class="dv">100</span>,evaluate<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>QBookHelpers.calculate_num_value(eta_eq3)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#QBH.print_values2([eta])</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>QBookHelpers.calculate_num_value(etaPerc_eq1)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>QBH.print_values2([etaPerc])</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Iin_eq1 = Eq(Iin,Uin/(R1+RLast))</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#QBookHelpers.print_equation(Iin_eq1)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#QBookHelpers.calculate_num_value(Iin_eq1)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#QBH.print_values2([Iin])</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#ILast_eq1 = Eq(ILast,Iin)</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#QBookHelpers.print_equation(ILast_eq1)</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#QBookHelpers.calculate_num_value(ILast_eq1)</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#QBH.print_values2([ILast])</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span id="eq-Dummy"><span class="math display">\[
+\eta = \frac{U_{out}}{U_{in}}
+\tag{8.7}\]</span></span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[\eta = \mathtt{\text{33}} \ \mathtt{\text{}}\%\]</span></p>
+</div>
+</div>
+<p>Das bedeutet, dass in diesem Fall nur 1/3 der Leistung die die Schaltung verbraucht auch tatsächlich von der Last verwendet wird. Der Rest geht als Abwärme über den Widerstand <span class="math inline">\(R_1\)</span> verloren.</p>
+</section>
+</section>
+<section id="abwärtswandler---buck-konverter" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="abwärtswandler---buck-konverter"><span class="header-section-number">8.3</span> Abwärtswandler - Buck-Konverter</h2>
+<p>Ein Abwärtswandler, auch Buck-Konverter genannt, ist ein DC-DC-Wandler, der eine höhere Eingangsspannung in eine niedrigere Ausgangsspannung umwandelt. Dabei wird jedoch ein deutlich höherer Wirkungsgrad erreicht als mit einem Spannungsteiler.</p>
+<p>Die Funktionsweise eines Buck-Konverters basiert auf der Verwendung eines Schalttransistors, der die Eingangsspannung in eine pulsierende Spannung umwandelt, PWM. Diese pulsierende Spannung wird dann durch einen Induktor und einen Kondensator geglättet, um eine stabile Ausgangsspannung zu erzeugen.</p>
+<p>Die Verluste der Schaltung ergeben sich haupsächlich aus den Schaltvorgängen des Transistors und dem ohmschen Widerstand des Induktors. Der Wirkungsgrad eines Buck-Konverters liegt typischerweise zwischen 80% und 95%, abhängig von der Bauart und den Betriebsbedingungen.</p>
+<p>Um die Ausgangsspannung stabil zu halten, wird ein Regelkreis verwendet, der die PWM-Signale an den Schalttransistor anpasst.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Projekte/04.03_Oszillator.html" class="pagination-link" aria-label="Oszillator">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Oszillator</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Projekte/05.01_VariableStateFilter.html" class="pagination-link" aria-label="State Variable Filter">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
