@@ -375,7 +375,7 @@ Abbildung&nbsp;3.1: Hochpass 2ter Ordnung
 </figure>
 </div>
 <p>Das hier gezeigte Beispiel soll demonstrieren welche Untersuchungen, Berechnungen und Simulation bei einem Hochpass 2ter Ordnung durchgeführt werden können.</p>
-<div id="d88dd9e3" class="cell" data-execution_count="2">
+<div id="860810b7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -411,7 +411,7 @@ Abbildung&nbsp;3.1: Hochpass 2ter Ordnung
 </details>
 </div>
 <!-- Mit den Bauteilwerten kann nun die Gesamtimpedanz des Hochpasses berechnet werden. -->
-<div id="e105eb3f" class="cell" data-execution_count="3">
+<div id="a149665c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -422,7 +422,7 @@ Abbildung&nbsp;3.1: Hochpass 2ter Ordnung
 <section id="übertragungsfunktion" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="übertragungsfunktion"><span class="header-section-number">3.2.1</span> Übertragungsfunktion</h3>
 <p>Die Übertragungsfunktion beschreibt das Verhältnis zwischen der Eingangsgröße, hier die Eingangsspannung, und der Ausgangsgröße, hier die Ausgangsspannung. Sie ist eine Funktion der Frequenz und wird in der Regel in Form eines Bode-Diagramms dargestellt.</p>
-<div id="496cde36" class="cell" data-execution_count="4">
+<div id="22391d2a" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -439,7 +439,7 @@ Abbildung&nbsp;3.1: Hochpass 2ter Ordnung
 </div>
 </div>
 <p>Da es sich hier um eine Einfache Serienschaltung handelt, kann die Übertragungsfunktion auch als Verhältnis der Impedanzen dargestellt werden. Es wird die Spannungsteilerregel verwendet.</p>
-<div id="596b07f4" class="cell" data-execution_count="5">
+<div id="ba853a92" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -475,7 +475,7 @@ Abbildung&nbsp;3.1: Hochpass 2ter Ordnung
 <p>Das Wissen über die Resonanzfrequenz ist nicht nur wichtig wenn das diese Bauteile in ganz ähnlicher Anordnung als Schwingkreis verwendet wird. Auch bei Hochpass und Tiefpassfiltern ist die Resonanzfrequenz wichtig. Auch wenn für Filter die Grenzfrequenz öfter herangezogen wird.<br>
 Da es sich bei dieser Schaltung um eine Schaltung mit zwei Energiespeichern handeln zwischen der die Energie hin und her Pendeln kann ist dieses System schwingfähig und in der Lage bei Resonanz eine Resonanzüberhöhung zu erzeugen. Das bedeutet, dass die Amplitude am Ausgang größer als der Eingang ist. Es ist leicht vorsstellbar, dass in solch einem Fall eine eventuell dahinter liegende Schaltung zerstört werden könnte. daher gilt es die Resonanzüberhöhung meistens zu vermeiden.</p>
 <p>Die Resonanzfrequenz ist die Frequenz, bei der die Impedanz des Hochpasses minimal ist. Resonanz tritt ein wenn der Widerstand des Schaltung am kleinsten ist. Das ist der Fall wenn sich die induktive Impedanz und die kapazitive Impedanz aufheben. Der Imaginärteil also Null ist. Damit lässt sich die Resonanzfrequenz berechnen.</p>
-<div id="1aaa9f3e" class="cell" data-execution_count="6">
+<div id="2b98dfa1" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -514,7 +514,7 @@ Da es sich bei dieser Schaltung um eine Schaltung mit zwei Energiespeichern hand
 <section id="übertragungsfunktion-bei-resonanz" class="level4" data-number="3.2.2.1">
 <h4 data-number="3.2.2.1" class="anchored" data-anchor-id="übertragungsfunktion-bei-resonanz"><span class="header-section-number">3.2.2.1</span> Übertragungsfunktion bei Resonanz</h4>
 <p>Mit der Übertragungsfunktion kann nun der Ausgang in Abhängigkeit der des Eingangs berechnet werden. Wird zum beispiel für <span class="math inline">\(\omega\)</span> die Resonanzfrequenz eingesetzt, so erhält man die Übertragungsfunktion bei Resonanz.</p>
-<div id="1a18986c" class="cell" data-execution_count="7">
+<div id="b9da0985" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 \underline{H(i \omega)} = \frac{i \sqrt{L}}{\sqrt{C} R}
@@ -526,7 +526,7 @@ Da es sich bei dieser Schaltung um eine Schaltung mit zwei Energiespeichern hand
 <section id="grenzfrequenz" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="grenzfrequenz"><span class="header-section-number">3.2.3</span> Grenzfrequenz</h3>
 <p>Die Grenzfrequenz ist die Frequenz, bei der die Übertragungsfunktion um 3dB abfällt. Wird der Betrag der Übertragungsfunktion betrachtet, so ist die Grenzfrequenz die Frequenz, bei der der Betrag der Übertragungsfunktion <span class="math inline">\(\frac{1}{\sqrt(2)}\)</span> beträgt.</p>
-<div id="f89c9c2b" class="cell" data-execution_count="8">
+<div id="7cbfbf00" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 |H(i \omega_{G})| = \frac{1}{\sqrt{2}}
@@ -543,7 +543,7 @@ Nicht nur Filter können mittels Bode-Diagramm gut analysiert werden. Auch ander
 <p>Ob es zu einer Resonanzüberhöhung kommt, davon ab wie Stark das System gedämpft ist. Bei einem Hochpass 2ter Ordnung ist die Dämpfung durch den Widerstand R maßgeblich bestimmt.</p>
 <section id="ohne-resonanzüberhöhung---stark-gedämpft" class="level4" data-number="3.2.4.1">
 <h4 data-number="3.2.4.1" class="anchored" data-anchor-id="ohne-resonanzüberhöhung---stark-gedämpft"><span class="header-section-number">3.2.4.1</span> Ohne Resonanzüberhöhung - stark gedämpft</h4>
-<div id="1fdf2e5c" class="cell" data-execution_count="10">
+<div id="4b834c35" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[C = \mathtt{\text{10}} \ \mathtt{\text{u}}\text{F}\]</span></p>
 </div>
@@ -570,7 +570,7 @@ Nicht nur Filter können mittels Bode-Diagramm gut analysiert werden. Auch ander
 </section>
 <section id="mit-resonanzüberhöhung" class="level4" data-number="3.2.4.2">
 <h4 data-number="3.2.4.2" class="anchored" data-anchor-id="mit-resonanzüberhöhung"><span class="header-section-number">3.2.4.2</span> Mit Resonanzüberhöhung</h4>
-<div id="ea0a5430" class="cell" data-execution_count="11">
+<div id="5f81c3ea" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[C = \mathtt{\text{10}} \ \mathtt{\text{u}}\text{F}\]</span></p>
 </div>
@@ -598,7 +598,7 @@ Nicht nur Filter können mittels Bode-Diagramm gut analysiert werden. Auch ander
 <section id="grenzfall" class="level4" data-number="3.2.4.3">
 <h4 data-number="3.2.4.3" class="anchored" data-anchor-id="grenzfall"><span class="header-section-number">3.2.4.3</span> Grenzfall</h4>
 <p>Der Grenzfall wird erreicht wenn der Widerstand gerade so groß ist, dass eine Resonanzüberhöhung unterdrückt wird. Aber auch nicht so groß, dass unnötig viel Energie als Wärme verloren geht. In diesem Fall ist die Resonanzfrequenz gleich der Grenzfrequenz. Damit kann der Betrag der Übertragungsfunktion bei Resonanz gleich dem Betrag der Übertragungsfunktion bei der Grenzfrequenz gesetzt werden und R aus C und L berechnet werden.</p>
-<div id="a6607289" class="cell" data-execution_count="12">
+<div id="91777be5" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Dummy"><span class="math display">\[
 |H(\omega_{R})| = |H(\omega_{G})|

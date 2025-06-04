@@ -317,7 +317,7 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern" id="toc-grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern" class="nav-link active" data-scroll-target="#grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern"><span class="header-section-number">8.1</span> Grundlagen zur beurteilun der Qualität von DC-DC Konvertern</a>
+  <li><a href="#grundlagen-zur-beurteilung-der-qualität-von-dc-dc-konvertern" id="toc-grundlagen-zur-beurteilung-der-qualität-von-dc-dc-konvertern" class="nav-link active" data-scroll-target="#grundlagen-zur-beurteilung-der-qualität-von-dc-dc-konvertern"><span class="header-section-number">8.1</span> Grundlagen zur Beurteilung der Qualität von DC-DC Konvertern</a>
   <ul>
   <li><a href="#wirkungsgrad" id="toc-wirkungsgrad" class="nav-link" data-scroll-target="#wirkungsgrad"><span class="header-section-number">8.1.1</span> Wirkungsgrad</a></li>
   <li><a href="#stabilität" id="toc-stabilität" class="nav-link" data-scroll-target="#stabilität"><span class="header-section-number">8.1.2</span> Stabilität</a></li>
@@ -325,7 +325,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#warum-ein-spannungsteiler-keine-gute-idee-ist" id="toc-warum-ein-spannungsteiler-keine-gute-idee-ist" class="nav-link" data-scroll-target="#warum-ein-spannungsteiler-keine-gute-idee-ist"><span class="header-section-number">8.2</span> Warum ein Spannungsteiler keine gute Idee ist</a>
   <ul>
-  <li><a href="#wirkungsgrad-eine-spannungsteilers" id="toc-wirkungsgrad-eine-spannungsteilers" class="nav-link" data-scroll-target="#wirkungsgrad-eine-spannungsteilers"><span class="header-section-number">8.2.1</span> Wirkungsgrad eine Spannungsteilers</a></li>
+  <li><a href="#wirkungsgrad-eines-spannungsteilers" id="toc-wirkungsgrad-eines-spannungsteilers" class="nav-link" data-scroll-target="#wirkungsgrad-eines-spannungsteilers"><span class="header-section-number">8.2.1</span> Wirkungsgrad eines Spannungsteilers</a></li>
   <li><a href="#wirkungsgrad-1" id="toc-wirkungsgrad-1" class="nav-link" data-scroll-target="#wirkungsgrad-1"><span class="header-section-number">8.2.2</span> Wirkungsgrad</a></li>
   </ul></li>
   <li><a href="#abwärtswandler---buck-konverter" id="toc-abwärtswandler---buck-konverter" class="nav-link" data-scroll-target="#abwärtswandler---buck-konverter"><span class="header-section-number">8.3</span> Abwärtswandler - Buck-Konverter</a></li>
@@ -356,8 +356,8 @@ window.Quarto = {
 
 <p>DC-DC-Konverter sind essenzielle Bausteine in der Leistungselektronik. Sie ermöglichen die effiziente Umwandlung von Gleichspannungen auf unterschiedliche Spannungsniveaus, was in zahlreichen Anwendungen erforderlich ist. Typische Einsatzgebiete umfassen die Stromversorgung von mobilen Geräten, elektrische Fahrzeuge, erneuerbare Energien und industrielle Steuerungen. Ihre Fähigkeit, Spannungen zu erhöhen (Boost), zu senken (Buck) oder beides zu kombinieren, macht sie vielseitig und unverzichtbar in modernen elektronischen Systemen.</p>
 <p>Wer sein Wissen zu Leistungselektronik vertiefen möchte wird bei MIT OpenCourseWare fündig, <a href="https://ocw.mit.edu/courses/6-622-power-electronics-spring-2023/">MIT OpenCourseWare Power Electronics</a>.</p>
-<section id="grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="grundlagen-zur-beurteilun-der-qualität-von-dc-dc-konvertern"><span class="header-section-number">8.1</span> Grundlagen zur beurteilun der Qualität von DC-DC Konvertern</h2>
+<section id="grundlagen-zur-beurteilung-der-qualität-von-dc-dc-konvertern" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="grundlagen-zur-beurteilung-der-qualität-von-dc-dc-konvertern"><span class="header-section-number">8.1</span> Grundlagen zur Beurteilung der Qualität von DC-DC Konvertern</h2>
 <p>Die Qualität von DC-DC-Konvertern wird durch verschiedene Parameter bestimmt, die ihre Effizienz, Stabilität und Leistung beeinflussen. Zu den wichtigsten Kriterien gehören:<br>
 - <strong>Wirkungsgrad</strong>: Der Wirkungsgrad ist ein Maß dafür, wie effizient der Konverter die Eingangsleistung in Ausgangsleistung umwandelt. Ein hoher Wirkungsgrad bedeutet weniger Energieverluste und eine bessere Leistung.<br>
 - <strong>Stabilität</strong>: Die Stabilität des Konverters bezieht sich auf seine Fähigkeit, unter verschiedenen Lastbedingungen und Eingangsspannungen eine konstante Ausgangsspannung zu liefern. Eine stabile Regelung ist entscheidend für die Zuverlässigkeit des Systems.<br>
@@ -366,9 +366,9 @@ window.Quarto = {
 <h3 data-number="8.1.1" class="anchored" data-anchor-id="wirkungsgrad"><span class="header-section-number">8.1.1</span> Wirkungsgrad</h3>
 <p>Der Wirkungsgrad wird allgemein als das Verhältnis von Ausgangsenergie <span class="math inline">\(E_{out}\)</span> zu Eingangsenergie <span class="math inline">\(E_{in}\)</span> definiert. Wichtig dabei ist, dass die Ausgangsenergie dabei nicht die gesamte Energie ist, denn da keine Energie verloren gehen kann wäre der Wirkungsgrad immer 1, sondern die Energie die genutzt werden soll. Bei einem DC-DC Konverter ist das die elektrische Energie am Ausgang.</p>
 <p><span class="math display">\[\eta = \frac{E_{out}}{E_{in}} = \frac{P_{out} \cdot t_{out}}{P_{in} \cdot t_{in}}\]</span></p>
-<p>wenn die Zeit in der die Energie am Eingang anliegt gleich der Zeit ist, in der die Energie am Ausgang ausgegeben wird, dann kann die Zeit gekürzt werden zu:</p>
+<p>Wenn die Zeit in der die Energie am Eingang anliegt gleich der Zeit ist, in der die Energie am Ausgang ausgegeben wird, dann kann die Zeit gekürzt werden zu:</p>
 <p><span class="math display">\[\eta = \frac{P_{out}}{P_{in}}\]</span></p>
-<p>wobei <span class="math inline">\(P_{out}\)</span> die Ausgangsleistung und <span class="math inline">\(P_{in}\)</span> die Eingangsleistung ist. Ein Wirkungsgrad von 1 bedeutet, dass keine Energie verloren geht, was in der Praxis jedoch unmöglich ist. Typische Wirkungsgrade für DC-DC-Konverter liegen zwischen 0,8 und 0,95, abhängig von der Bauart und den Betriebsbedingungen. Oft wird der Wirkungsgrad auch in Prozent angegeben. Dazu muss das Verhältnis mit 100 multipliziert werden. Ein Wirkungsgrad von 0,9 entspricht also 90%.</p>
+<p>Wobei <span class="math inline">\(P_{out}\)</span> die Ausgangsleistung und <span class="math inline">\(P_{in}\)</span> die Eingangsleistung ist. Ein Wirkungsgrad von 1 bedeutet, dass keine Energie verloren geht, was in der Praxis jedoch unmöglich ist. Typische Wirkungsgrade für DC-DC-Konverter liegen zwischen 0,8 und 0,95, abhängig von der Bauart und den Betriebsbedingungen. Oft wird der Wirkungsgrad auch in Prozent angegeben. Dazu muss das Verhältnis mit 100 multipliziert werden. Ein Wirkungsgrad von 0,9 entspricht also 90%.</p>
 </section>
 <section id="stabilität" class="level3" data-number="8.1.2">
 <h3 data-number="8.1.2" class="anchored" data-anchor-id="stabilität"><span class="header-section-number">8.1.2</span> Stabilität</h3>
@@ -383,9 +383,9 @@ Eine weitere Möglichkeit die Stabilität zu beurteilen ist die Regelbandbreite.
 </section>
 <section id="warum-ein-spannungsteiler-keine-gute-idee-ist" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="warum-ein-spannungsteiler-keine-gute-idee-ist"><span class="header-section-number">8.2</span> Warum ein Spannungsteiler keine gute Idee ist</h2>
-<p>Ein Spannungsteiler ist eine einfache Schaltung, die aus zwei Widerständen besteht und eine Spannung auf einen niedrigeren Wert reduziert. Obwohl er in einigen Anwendungen nützlich sein kann, ist er für die meisten Anwendungen nicht geeignet, insbesondere wenn es um die Stromversorgung von Geräten geht. Der Hauptrund dafür ist die schlechte Wirkungsgrad bei hohen Strömen und die fehlende Möglichkeit bei schwankender Eingangsspannung eine konstante Ausgangsspannung zu erzeugen. Auch auf eine wechselnde Last kann der Spannungsteiler nicht reagieren.</p>
-<section id="wirkungsgrad-eine-spannungsteilers" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="wirkungsgrad-eine-spannungsteilers"><span class="header-section-number">8.2.1</span> Wirkungsgrad eine Spannungsteilers</h3>
+<p>Ein Spannungsteiler ist eine einfache Schaltung, die aus zwei Widerständen besteht und eine Spannung auf einen niedrigeren Wert reduziert. Obwohl er in einigen Anwendungen nützlich sein kann, ist er für die meisten Anwendungen nicht geeignet, insbesondere wenn es um die Stromversorgung von Geräten geht. Der Hauptgrund dafür ist die schlechte Wirkungsgrad bei hohen Strömen und die fehlende Möglichkeit bei schwankender Eingangsspannung eine konstante Ausgangsspannung zu erzeugen. Auch auf eine wechselnde Last kann der Spannungsteiler nicht reagieren.</p>
+<section id="wirkungsgrad-eines-spannungsteilers" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="wirkungsgrad-eines-spannungsteilers"><span class="header-section-number">8.2.1</span> Wirkungsgrad eines Spannungsteilers</h3>
 <p>Am Beispiel eines unbelasteten Spannungsteilers werden die Nachteile verdeutlicht.</p>
 <div id="fig-0404_Spannungsteiler" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -397,8 +397,8 @@ Abbildung&nbsp;8.1: Spannungsteiler
 </figcaption>
 </figure>
 </div>
-<p><span class="math inline">\(R_{Last}\)</span> ist eine beliebige Last die eine vorgegebene Spannung benötigt. <span class="math inline">\(R_1\)</span> soll so berechnet werden, dass an <span class="math inline">\(R_{Last}\)</span> die korrekte Spannung abfällt. Im Anschluss soll die Qualität der Spannungsanpassung auf die drei oben genannten Kriterien hin überpürft werden.</p>
-<div id="da35b8e8" class="cell" data-execution_count="2">
+<p><span class="math inline">\(R_{Last}\)</span> ist eine beliebige Last die eine vorgegebene Spannung benötigt. <span class="math inline">\(R_1\)</span> soll so berechnet werden, dass an <span class="math inline">\(R_{Last}\)</span> die korrekte Spannung abfällt. Im Anschluss soll die Qualität der Spannungsanpassung auf die drei oben genannten Kriterien hin überprüft werden.</p>
+<div id="d7a879a7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -423,7 +423,7 @@ Abbildung&nbsp;8.1: Spannungsteiler
 </div>
 </div>
 <p>Durch umstellen des allgemeinen Ansatzes für den Spannungsteiler erhält man die Gleichung für <span class="math inline">\(R_1\)</span>.</p>
-<div id="3bc9bf40" class="cell" data-execution_count="3">
+<div id="e76e910f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -458,8 +458,8 @@ R_{1} = \frac{R_{Last} \left(U_{in} - U_{out}\right)}{U_{out}}
 </section>
 <section id="wirkungsgrad-1" class="level3" data-number="8.2.2">
 <h3 data-number="8.2.2" class="anchored" data-anchor-id="wirkungsgrad-1"><span class="header-section-number">8.2.2</span> Wirkungsgrad</h3>
-<p>Die Verluste der Schaltung fallen am Widerstand <span class="math inline">\(R_1\)</span> ab. Die Nutzbare Leistung am <span class="math inline">\(R_{Last}\)</span> daraus ergibt sich die Gleichung für den Wirkungsgrad.</p>
-<div id="7b7014b0" class="cell" data-execution_count="4">
+<p>Die Verluste der Schaltung fallen am Widerstand <span class="math inline">\(R_1\)</span> ab. Die nutzbare Leistung am <span class="math inline">\(R_{Last}\)</span> daraus ergibt sich die Gleichung für den Wirkungsgrad.</p>
+<div id="976b22cc" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -505,7 +505,7 @@ P_{Last} = I_{Last} U_{out}
 </div>
 </div>
 <p>Da der gesamte Eingangstrom durch die Last fließt sind die Ströme gleich und können gekürzt werden.</p>
-<div id="174f64dd" class="cell" data-execution_count="5">
+<div id="4a0428d3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -547,9 +547,9 @@ P_{Last} = I_{Last} U_{out}
 </section>
 <section id="abwärtswandler---buck-konverter" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="abwärtswandler---buck-konverter"><span class="header-section-number">8.3</span> Abwärtswandler - Buck-Konverter</h2>
-<p>Ein Abwärtswandler, auch Buck-Konverter genannt, ist ein DC-DC-Wandler, der eine höhere Eingangsspannung in eine niedrigere Ausgangsspannung umwandelt. Dabei wird jedoch ein deutlich höherer Wirkungsgrad erreicht als mit einem Spannungsteiler.</p>
+<p>Ein Abwärtswandler, auch Buck-Konverter oder Step-Down-Konverter genannt, ist ein DC-DC-Wandler, der eine höhere Eingangsspannung in eine niedrigere Ausgangsspannung umwandelt. Dabei wird jedoch ein deutlich höherer Wirkungsgrad erreicht als mit einem Spannungsteiler.</p>
 <p>Die Funktionsweise eines Buck-Konverters basiert auf der Verwendung eines Schalttransistors, der die Eingangsspannung in eine pulsierende Spannung umwandelt, PWM. Diese pulsierende Spannung wird dann durch einen Induktor und einen Kondensator geglättet, um eine stabile Ausgangsspannung zu erzeugen.</p>
-<p>Die Verluste der Schaltung ergeben sich haupsächlich aus den Schaltvorgängen des Transistors und dem ohmschen Widerstand des Induktors. Der Wirkungsgrad eines Buck-Konverters liegt typischerweise zwischen 80% und 95%, abhängig von der Bauart und den Betriebsbedingungen.</p>
+<p>Die Verluste der Schaltung ergeben sich hauptsächlich aus den Schaltvorgängen des Transistors und dem ohmschen Widerstand des Induktors. Der Wirkungsgrad eines Buck-Konverters liegt typischerweise zwischen 80% und 95%, abhängig von der Bauart und den Betriebsbedingungen.</p>
 <p>Um die Ausgangsspannung stabil zu halten, wird ein Regelkreis verwendet, der die PWM-Signale an den Schalttransistor anpasst.</p>
 
 
