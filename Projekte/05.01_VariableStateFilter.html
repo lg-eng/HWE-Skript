@@ -360,7 +360,7 @@ window.Quarto = {
 </header>
 
 
-<div id="c2e11169" class="cell" data-execution_count="1">
+<div id="c617007b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -382,7 +382,7 @@ Abbildung&nbsp;10.1: Schaltung eines <em>State Variable Filters</em>
 </figcaption>
 </figure>
 </div>
-<div id="9608e08f" class="cell" data-execution_count="3">
+<div id="9844f5f8" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -419,7 +419,7 @@ Abbildung&nbsp;10.1: Schaltung eines <em>State Variable Filters</em>
 <section id="sec-AnalytischeHerleitungSVF" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="sec-AnalytischeHerleitungSVF"><span class="header-section-number">10.1</span> Analytische Herleitung der Übertragungsfunktionen</h2>
 <p>Ziel ist es, die Übertragungsfunktion für jeden Filtertyp zu ermitteln. Also immer das Verhältnis von Ausgangsspannung zu Eingangsspannung mathematisch zu beschreiben. Das Ergebnis darf keine abhängigen (unbekannten) Variablen mehr enthalten. Folgende Gleichungen sind gesucht:</p>
-<div id="fe7f4f5a" class="cell" data-execution_count="4">
+<div id="07bb97c0" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -499,7 +499,7 @@ Abbildung&nbsp;10.2: Summierer am Eingang
 <p>Das Potentiometer wurde für die Herleitung aufgeteilt, damit der Spannungsteiler besser dargestellt werden kann. <span class="math inline">\(x\)</span> ist dabei der einstellbare Anteil des Potentiometers. Die Herleitung wird nach dem verfahren der Knoten- Spannungsanalysen, <a href="../GET/KnotenSpannungsAnalyse.html" class="quarto-xref"><span>Kapitel 2</span></a> durchgeführt. Allerdings wird nicht jeder Schritt im Detail gezeigt.</p>
 <p>Da die Spannung <span class="math inline">\(U_{HP}\)</span> der Ausgang des Summierers ist, wird diese Spannung als Ausgang behandelt. Es ist also die Übertragungsfunktion <span class="math inline">\(A_{HP} = \frac{U_{HP}}{U_{q}}\)</span> zu ermitteln. Als bekannt gilt die Eingangsspannung <span class="math inline">\(U_q\)</span>, die Position des Potentiometers <span class="math inline">\(x\)</span> und der Widerstandswert <span class="math inline">\(R\)</span>. Weiters wird für diesen Schritt die Spannung <span class="math inline">\(U_{TP}\)</span> und <span class="math inline">\(U_{BP}\)</span> als bekannt angenommen.</p>
 <p>Im ersten Schritt werden die Knoten- und Maschengleichungen aufgestellt:</p>
-<div id="c8a7c7ed" class="cell" data-execution_count="5">
+<div id="ec0ad8ab" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -566,7 +566,7 @@ Abbildung&nbsp;10.2: Summierer am Eingang
 </div>
 </div>
 <p>Es gibt hier einige Wege um die gesuchte Übertragungsfunktion zu erhalten. Hier wird in den Knoten <span class="math inline">\(K1\)</span> eingesetzt. Es werden daher Ausdrücke für die Ströme gesucht. Diese können mit dem Ohmschen Gesetz ermittelt werden.</p>
-<div id="bab20394" class="cell" data-execution_count="6">
+<div id="7f029262" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -597,7 +597,7 @@ I_{3} = \frac{U_{3}}{R}
 </div>
 </div>
 <p>Da die Spannungen <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span> und <span class="math inline">\(U_3\)</span> noch unbekannt sind, werden diese aus den Maschengleichungen ausgedrückt.</p>
-<div id="4534321b" class="cell" data-execution_count="7">
+<div id="673361f7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>eqU1 <span class="op">=</span> Eq(U1,solve(eqM1,U1)[<span class="dv">0</span>])</span>
@@ -686,7 +686,7 @@ U_{3} = U_{HP} - U_{x}
 </div>
 </div>
 <p>Nachdem nun die Spannungen <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span> und <span class="math inline">\(U_3\)</span> ausgedrückt wurden, können diese in <a href="#eq-I1" class="quarto-xref">Gleichung&nbsp;<span>10.9</span></a>, <a href="#eq-I2" class="quarto-xref">Gleichung&nbsp;<span>10.10</span></a> und <a href="#eq-I3" class="quarto-xref">Gleichung&nbsp;<span>10.11</span></a> eingesetzt werden.</p>
-<div id="332491ea" class="cell" data-execution_count="8">
+<div id="3c104f09" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -716,7 +716,7 @@ I_{3} = \frac{U_{HP} - U_{x}}{R}
 </div>
 </div>
 <p>Nun können die Ströme in die Knotengleichung <a href="#eq-K1" class="quarto-xref">Gleichung&nbsp;<span>10.8</span></a> eingesetzt werden.</p>
-<div id="6c19271c" class="cell" data-execution_count="9">
+<div id="72b8a150" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -743,7 +743,7 @@ U_{HP} = - U_{TP} - U_{q} + 3 U_{x}
 </div>
 </div>
 <p>Nun muss nur noch <span class="math inline">\(U_x\)</span> durch bekannte Größen ausgedrückt werden. Dabei gilt es den Spannungsteiler am Potentiometer zu berechnen.</p>
-<div id="5c798621" class="cell" data-execution_count="10">
+<div id="f6192d57" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -765,7 +765,7 @@ U_{x} = U_{BP} x
 </div>
 </div>
 <p>Nun kann die <span class="math inline">\(U_{HP}\)</span> berechnet werden, indem in <a href="#eq-UHP-1" class="quarto-xref">Gleichung&nbsp;<span>10.23</span></a> für <span class="math inline">\(U_x\)</span> der Ausdruck aus <a href="#eq-Ux" class="quarto-xref">Gleichung&nbsp;<span>10.25</span></a> eingesetzt wird.</p>
-<div id="111aa276" class="cell" data-execution_count="11">
+<div id="d5cab4fd" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -817,7 +817,7 @@ Abbildung&nbsp;10.3: Integrierer Zweite Stufe
 </div>
 <p>Das Ziel ist es die Übertragungsfunktion des Integrierers zu ermitteln. Also das Verhältnis von Ausgangsspannung <span class="math inline">\(U_{BP}\)</span> zu Eingangsspannung <span class="math inline">\(U_{HP}\)</span>. Als bekannt wird die Spannung <span class="math inline">\(U_{HP}\)</span> angenommen.</p>
 <p>Auch hier wird die Übertragungsfunktion hergeleitet.</p>
-<div id="0b96ec5e" class="cell" data-execution_count="12">
+<div id="e2fcb7e9" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -867,7 +867,7 @@ Abbildung&nbsp;10.3: Integrierer Zweite Stufe
 </div>
 </div>
 <p>Es wird wieder in den Knoten <span class="math inline">\(K1\)</span> eingesetzt. Daher werden Ausdrücke für die Ströme gesucht. Diese können mit dem Ohmschen Gesetz und der Definition des Kondensators ermittelt werden.</p>
-<div id="a4776134" class="cell" data-execution_count="13">
+<div id="903ac41f" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-IR"><span class="math display">\[
 I_{R} = \frac{U_{R}}{R_{n}}
@@ -880,7 +880,7 @@ I_{C} = i C U_{C} \omega
 </div>
 </div>
 <p>Die Spannungen <span class="math inline">\(U_R\)</span> und <span class="math inline">\(U_C\)</span> werden aus den Maschengleichungen ausgedrückt. Wobei die Offsetspannung <span class="math inline">\(U_d\)</span> wieder als Null angenommen wird.</p>
-<div id="0eb93d08" class="cell" data-execution_count="14">
+<div id="6202e5ec" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-UR"><span class="math display">\[
 U_{R} = U_{HP}
@@ -893,7 +893,7 @@ U_{C} = U_{BP}
 </div>
 </div>
 <p>Damit ergeben sich für die Ströme folgende AUsdrücke:</p>
-<div id="658ec6dd" class="cell" data-execution_count="15">
+<div id="20698d73" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-IR-2"><span class="math display">\[
 I_{R} = \frac{U_{HP}}{R_{n}}
@@ -906,7 +906,7 @@ I_{C} = i C U_{BP} \omega
 </div>
 </div>
 <p>Nun können die Ströme in die Knotengleichung <a href="#eq-K1-I1" class="quarto-xref">Gleichung&nbsp;<span>10.31</span></a> eingesetzt werden.</p>
-<div id="a45c2206" class="cell" data-execution_count="16">
+<div id="1daf29b5" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -967,7 +967,7 @@ Abbildung&nbsp;10.4: Integrierer Dritte Stufe
 </figcaption>
 </figure>
 </div>
-<div id="cc7241d7" class="cell" data-execution_count="17">
+<div id="91e169d1" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -997,7 +997,7 @@ Abbildung&nbsp;10.5: Ausgangssummierer
 </figure>
 </div>
 <p>Das Ziel ist es die Übertragungsfunktion des Ausgangssummierers zu ermitteln. Also das Verhältnis von Ausgangsspannung <span class="math inline">\(U_{BS}\)</span> zu Eingangsspannung <span class="math inline">\(U_{HP}\)</span> und <span class="math inline">\(U_{TP}\)</span>. Als bekannt wird die Spannung <span class="math inline">\(U_{HP}\)</span> und <span class="math inline">\(U_{TP}\)</span> angenommen.</p>
-<div id="be36b6f8" class="cell" data-execution_count="18">
+<div id="7ea99610" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>
@@ -1015,7 +1015,7 @@ U_{BS} = - U_{HP} - U_{TP}
 <section id="lösen-der-gleichungssysteme" class="level3" data-number="10.1.5">
 <h3 data-number="10.1.5" class="anchored" data-anchor-id="lösen-der-gleichungssysteme"><span class="header-section-number">10.1.5</span> Lösen der Gleichungssysteme</h3>
 <p>Nun werden die Teilergebnisse verwendet, um die gesuchten Übertragungsfunktionen zu ermitteln. Dazu werden die Ausdrücke für <span class="math inline">\(U_{HP}\)</span>, <span class="math inline">\(U_{BP}\)</span>, <span class="math inline">\(U_{TP}\)</span> und <span class="math inline">\(U_{BS}\)</span> als Gleichungssystem gelöst. Um die Übertragungsfunktion unter verwendung der selben Variablen wie in der Literatur zu erhalten, wird die Variable <span class="math inline">\(w_0\)</span> eingeführt. Diese entspricht der Kreisfrequenz des Filters und ist definiert als <span class="math inline">\(\omega_0 = \frac{1}{T_i}\)</span>.</p>
-<div id="c3f475b8" class="cell" data-execution_count="19">
+<div id="4b9601c9" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| echo: false</span></span>

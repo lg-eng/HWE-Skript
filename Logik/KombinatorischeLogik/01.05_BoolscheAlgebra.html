@@ -371,6 +371,17 @@ window.Quarto = {
   <li><a href="#lösung-4" id="toc-lösung-4" class="nav-link" data-scroll-target="#lösung-4"><span class="header-section-number">1.3.5.2</span> Lösung</a></li>
   <li><a href="#interpretation-3" id="toc-interpretation-3" class="nav-link" data-scroll-target="#interpretation-3"><span class="header-section-number">1.3.5.3</span> Interpretation</a></li>
   </ul></li>
+  <li><a href="#beispiel-6-disjunktive-normalform-dnf-mit-mintermen" id="toc-beispiel-6-disjunktive-normalform-dnf-mit-mintermen" class="nav-link" data-scroll-target="#beispiel-6-disjunktive-normalform-dnf-mit-mintermen"><span class="header-section-number">1.3.6</span> Beispiel 6: Disjunktive Normalform (DNF) mit Mintermen</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-5" id="toc-aufgabe-5" class="nav-link" data-scroll-target="#aufgabe-5"><span class="header-section-number">1.3.6.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-5" id="toc-lösung-5" class="nav-link" data-scroll-target="#lösung-5"><span class="header-section-number">1.3.6.2</span> Lösung</a></li>
+  </ul></li>
+  <li><a href="#beispiel-7-konjunktive-normalform-knf-mit-maxtermen" id="toc-beispiel-7-konjunktive-normalform-knf-mit-maxtermen" class="nav-link" data-scroll-target="#beispiel-7-konjunktive-normalform-knf-mit-maxtermen"><span class="header-section-number">1.3.7</span> Beispiel 7: Konjunktive Normalform (KNF) mit Maxtermen</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-6" id="toc-aufgabe-6" class="nav-link" data-scroll-target="#aufgabe-6"><span class="header-section-number">1.3.7.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-6" id="toc-lösung-6" class="nav-link" data-scroll-target="#lösung-6"><span class="header-section-number">1.3.7.2</span> Lösung</a></li>
+  <li><a href="#vergleich-und-interpretation" id="toc-vergleich-und-interpretation" class="nav-link" data-scroll-target="#vergleich-und-interpretation"><span class="header-section-number">1.3.7.3</span> Vergleich und Interpretation</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -857,7 +868,7 @@ Hinweis
 <p><span class="math inline">\(\bar{A} = \neg A\)</span></p>
 </div>
 </div>
-<div id="9eb9b6db" class="cell" data-execution_count="3">
+<div id="336f0d5a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
@@ -885,16 +896,16 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 <p><span class="math inline">\(A\)</span> … A Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(D\)</span> … D Eingang</p>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(C\)</span> … C Eingang</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(D\)</span> … D Eingang</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
 </div>
 </div>
 <p><a href="#eq-bool2" class="quarto-xref">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq" class="quarto-xref">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>
@@ -1161,6 +1172,206 @@ Das Absorptionsgesetz besagt: <span class="math inline">\(A \lor \bar{A} \land B
 <section id="interpretation-3" class="level4" data-number="1.3.5.3">
 <h4 data-number="1.3.5.3" class="anchored" data-anchor-id="interpretation-3"><span class="header-section-number">1.3.5.3</span> Interpretation</h4>
 <p>Die Bewegung ist erlaubt, wenn entweder der Notfallknopf nicht gedrückt ist ODER die Türe offen ist. Dies ist logischer und sicherer als die ursprüngliche Formulierung.</p>
+</section>
+</section>
+<section id="beispiel-6-disjunktive-normalform-dnf-mit-mintermen" class="level3" data-number="1.3.6">
+<h3 data-number="1.3.6" class="anchored" data-anchor-id="beispiel-6-disjunktive-normalform-dnf-mit-mintermen"><span class="header-section-number">1.3.6</span> Beispiel 6: Disjunktive Normalform (DNF) mit Mintermen</h3>
+<section id="aufgabe-5" class="level4" data-number="1.3.6.1">
+<h4 data-number="1.3.6.1" class="anchored" data-anchor-id="aufgabe-5"><span class="header-section-number">1.3.6.1</span> Aufgabe</h4>
+<p>Gegeben ist folgende Wahrheitstabelle. Erstellen Sie die DNF und vereinfachen Sie diese mit Boolescher Algebra:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>Y</th>
+<th>Minterm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{A} \land B\)</span></td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><span class="math inline">\(A \land \bar{B}\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(A \land B\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lösung-5" class="level4" data-number="1.3.6.2">
+<h4 data-number="1.3.6.2" class="anchored" data-anchor-id="lösung-5"><span class="header-section-number">1.3.6.2</span> Lösung</h4>
+<p><strong>Schritt 1: Minterme identifizieren</strong><br>
+Ein <strong>Minterm</strong> ist eine AND-Verknüpfung aller Variablen. Die Variable wird negiert, wenn sie 0 ist.</p>
+<p>Aus der Tabelle sehen wir die Minterme für alle Zeilen mit Y = 1.</p>
+<p><strong>Schritt 2: DNF aufstellen</strong><br>
+Die <strong>Disjunktive Normalform (DNF)</strong> ist die OR-Verknüpfung aller Minterme:</p>
+<p><span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor (A \land \bar{B}) \lor (A \land B)\]</span></p>
+<p><strong>Schritt 3: Vereinfachung mit Boolescher Algebra</strong><br>
+<span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor (A \land \bar{B}) \lor (A \land B)\]</span></p>
+<p>Wir können das Distributivgesetz auf die letzten beiden Terme anwenden: <span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor A \land (\bar{B} \lor B)\]</span></p>
+<p>Komplementarität: <span class="math inline">\(\bar{B} \lor B = 1\)</span> <span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor A \land 1\]</span></p>
+<p>Identität: <span class="math inline">\(A \land 1 = A\)</span> <span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor A\]</span></p>
+<p>Absorption: <span class="math inline">\((\bar{A} \land B) \lor A = A \lor B\)</span> <span class="math display">\[Y_{DNF} = A \lor B\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \lor B\]</span></p>
+</section>
+</section>
+<section id="beispiel-7-konjunktive-normalform-knf-mit-maxtermen" class="level3" data-number="1.3.7">
+<h3 data-number="1.3.7" class="anchored" data-anchor-id="beispiel-7-konjunktive-normalform-knf-mit-maxtermen"><span class="header-section-number">1.3.7</span> Beispiel 7: Konjunktive Normalform (KNF) mit Maxtermen</h3>
+<section id="aufgabe-6" class="level4" data-number="1.3.7.1">
+<h4 data-number="1.3.7.1" class="anchored" data-anchor-id="aufgabe-6"><span class="header-section-number">1.3.7.1</span> Aufgabe</h4>
+<p>Verwenden Sie dieselbe Wahrheitstabelle und erstellen Sie die KNF. Vereinfachen Sie und zeigen Sie, dass das Ergebnis identisch zur DNF ist:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>Y</th>
+<th>Maxterm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="math inline">\(A \lor B\)</span></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lösung-6" class="level4" data-number="1.3.7.2">
+<h4 data-number="1.3.7.2" class="anchored" data-anchor-id="lösung-6"><span class="header-section-number">1.3.7.2</span> Lösung</h4>
+<p><strong>Schritt 1: Maxterme identifizieren</strong><br>
+Ein <strong>Maxterm</strong> ist eine OR-Verknüpfung aller Variablen. Die Variable wird negiert, wenn sie 1 ist.</p>
+<p>Aus der Tabelle sehen wir den Maxterm für die Zeile mit Y = 0.</p>
+<p><strong>Schritt 2: KNF aufstellen</strong><br>
+Die <strong>Konjunktive Normalform (KNF)</strong> ist die AND-Verknüpfung aller Maxterme:</p>
+<p><span class="math display">\[Y_{KNF} = A \lor B\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \lor B\]</span></p>
+</section>
+<section id="vergleich-und-interpretation" class="level4" data-number="1.3.7.3">
+<h4 data-number="1.3.7.3" class="anchored" data-anchor-id="vergleich-und-interpretation"><span class="header-section-number">1.3.7.3</span> Vergleich und Interpretation</h4>
+<p>Beide Normalformen führen zum <strong>gleichen Ergebnis</strong>:</p>
+<p><span class="math display">\[Y_{DNF} = A \lor B\]</span> <span class="math display">\[Y_{KNF} = A \lor B\]</span></p>
+<p><strong>Wahrheitstabelle zur Verifikation:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th><span class="math inline">\(\bar{A} \land B\)</span></th>
+<th><span class="math inline">\(A \land \bar{B}\)</span></th>
+<th><span class="math inline">\(A \land B\)</span></th>
+<th>DNF (Original)</th>
+<th><span class="math inline">\(A \lor B\)</span></th>
+<th>Vereinfacht</th>
+<th>KNF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Erkenntnisse:</strong></p>
+<ol type="1">
+<li><strong>DNF</strong> verwendet Minterme (Y=1 Zeilen) → Sum of Products</li>
+<li><strong>KNF</strong> verwendet Maxterme (Y=0 Zeilen) → Product of Sums<br>
+</li>
+<li>Beide Normalformen beschreiben <strong>dieselbe Funktion</strong></li>
+<li>Die KNF war in diesem Fall bereits minimal, während die DNF vereinfacht werden musste</li>
+<li>Je nachdem, ob mehr 1en oder 0en in der Wahrheitstabelle sind, kann eine Form einfacher sein</li>
+</ol>
+<p><strong>Faustregel:</strong> - Viele 1en in Wahrheitstabelle → KNF ist kürzer (weniger Maxterme) - Viele 0en in Wahrheitstabelle → DNF ist kürzer (weniger Minterme)</p>
 
 
 </section>
