@@ -328,12 +328,49 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#von-der-wahrheitstabelle-zur-booleschen-gleichung" id="toc-von-der-wahrheitstabelle-zur-booleschen-gleichung" class="nav-link active" data-scroll-target="#von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.1</span> Von der Wahrheitstabelle zur Booleschen Gleichung</a>
+  <li><a href="#grundregeln-der-booleschen-algebra" id="toc-grundregeln-der-booleschen-algebra" class="nav-link active" data-scroll-target="#grundregeln-der-booleschen-algebra"><span class="header-section-number">1.1</span> Grundregeln der Booleschen Algebra</a>
   <ul>
-  <li><a href="#wahrheitstabelle" id="toc-wahrheitstabelle" class="nav-link" data-scroll-target="#wahrheitstabelle"><span class="header-section-number">1.1.1</span> Wahrheitstabelle</a></li>
-  <li><a href="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" id="toc-vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="nav-link" data-scroll-target="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</a></li>
-  <li><a href="#überprüfung" id="toc-überprüfung" class="nav-link" data-scroll-target="#überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</a></li>
-  <li><a href="#schaltung" id="toc-schaltung" class="nav-link" data-scroll-target="#schaltung"><span class="header-section-number">1.1.4</span> Schaltung</a></li>
+  <li><a href="#basis-operationen" id="toc-basis-operationen" class="nav-link" data-scroll-target="#basis-operationen"><span class="header-section-number">1.1.1</span> Basis-Operationen</a></li>
+  </ul></li>
+  <li><a href="#von-der-wahrheitstabelle-zur-booleschen-gleichung" id="toc-von-der-wahrheitstabelle-zur-booleschen-gleichung" class="nav-link" data-scroll-target="#von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.2</span> Von der Wahrheitstabelle zur Booleschen Gleichung</a>
+  <ul>
+  <li><a href="#wahrheitstabelle" id="toc-wahrheitstabelle" class="nav-link" data-scroll-target="#wahrheitstabelle"><span class="header-section-number">1.2.1</span> Wahrheitstabelle</a></li>
+  <li><a href="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" id="toc-vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="nav-link" data-scroll-target="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.2.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</a></li>
+  <li><a href="#überprüfung" id="toc-überprüfung" class="nav-link" data-scroll-target="#überprüfung"><span class="header-section-number">1.2.3</span> Überprüfung</a></li>
+  <li><a href="#schaltung" id="toc-schaltung" class="nav-link" data-scroll-target="#schaltung"><span class="header-section-number">1.2.4</span> Schaltung</a></li>
+  </ul></li>
+  <li><a href="#beispiele-zur-booleschen-algebra" id="toc-beispiele-zur-booleschen-algebra" class="nav-link" data-scroll-target="#beispiele-zur-booleschen-algebra"><span class="header-section-number">1.3</span> Beispiele zur Booleschen Algebra</a>
+  <ul>
+  <li><a href="#beispiel-1-vereinfachung-mit-distributivgesetz" id="toc-beispiel-1-vereinfachung-mit-distributivgesetz" class="nav-link" data-scroll-target="#beispiel-1-vereinfachung-mit-distributivgesetz"><span class="header-section-number">1.3.1</span> Beispiel 1: Vereinfachung mit Distributivgesetz</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="header-section-number">1.3.1.1</span> Aufgabe</a></li>
+  <li><a href="#lösung" id="toc-lösung" class="nav-link" data-scroll-target="#lösung"><span class="header-section-number">1.3.1.2</span> Lösung</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">1.3.1.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-2-vereinfachung-mit-absorption-und-komplementarität" id="toc-beispiel-2-vereinfachung-mit-absorption-und-komplementarität" class="nav-link" data-scroll-target="#beispiel-2-vereinfachung-mit-absorption-und-komplementarität"><span class="header-section-number">1.3.2</span> Beispiel 2: Vereinfachung mit Absorption und Komplementarität</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-1" id="toc-aufgabe-1" class="nav-link" data-scroll-target="#aufgabe-1"><span class="header-section-number">1.3.2.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-1" id="toc-lösung-1" class="nav-link" data-scroll-target="#lösung-1"><span class="header-section-number">1.3.2.2</span> Lösung</a></li>
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1"><span class="header-section-number">1.3.2.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-3-de-morgans-regeln" id="toc-beispiel-3-de-morgans-regeln" class="nav-link" data-scroll-target="#beispiel-3-de-morgans-regeln"><span class="header-section-number">1.3.3</span> Beispiel 3: De Morgans Regeln</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-2" id="toc-aufgabe-2" class="nav-link" data-scroll-target="#aufgabe-2"><span class="header-section-number">1.3.3.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-2" id="toc-lösung-2" class="nav-link" data-scroll-target="#lösung-2"><span class="header-section-number">1.3.3.2</span> Lösung</a></li>
+  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2"><span class="header-section-number">1.3.3.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-4-komplexe-vereinfachung" id="toc-beispiel-4-komplexe-vereinfachung" class="nav-link" data-scroll-target="#beispiel-4-komplexe-vereinfachung"><span class="header-section-number">1.3.4</span> Beispiel 4: Komplexe Vereinfachung</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-3" id="toc-aufgabe-3" class="nav-link" data-scroll-target="#aufgabe-3"><span class="header-section-number">1.3.4.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-3" id="toc-lösung-3" class="nav-link" data-scroll-target="#lösung-3"><span class="header-section-number">1.3.4.2</span> Lösung</a></li>
+  <li><a href="#wahrheitstabelle-zur-überprüfung" id="toc-wahrheitstabelle-zur-überprüfung" class="nav-link" data-scroll-target="#wahrheitstabelle-zur-überprüfung"><span class="header-section-number">1.3.4.3</span> Wahrheitstabelle zur Überprüfung</a></li>
+  </ul></li>
+  <li><a href="#beispiel-5-praktische-anwendung---fahrstuhl-logik" id="toc-beispiel-5-praktische-anwendung---fahrstuhl-logik" class="nav-link" data-scroll-target="#beispiel-5-praktische-anwendung---fahrstuhl-logik"><span class="header-section-number">1.3.5</span> Beispiel 5: Praktische Anwendung - Fahrstuhl-Logik</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-4" id="toc-aufgabe-4" class="nav-link" data-scroll-target="#aufgabe-4"><span class="header-section-number">1.3.5.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-4" id="toc-lösung-4" class="nav-link" data-scroll-target="#lösung-4"><span class="header-section-number">1.3.5.2</span> Lösung</a></li>
+  <li><a href="#interpretation-3" id="toc-interpretation-3" class="nav-link" data-scroll-target="#interpretation-3"><span class="header-section-number">1.3.5.3</span> Interpretation</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -360,11 +397,95 @@ window.Quarto = {
 </header>
 
 
-<section id="von-der-wahrheitstabelle-zur-booleschen-gleichung" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.1</span> Von der Wahrheitstabelle zur Booleschen Gleichung</h2>
+<section id="grundregeln-der-booleschen-algebra" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="grundregeln-der-booleschen-algebra"><span class="header-section-number">1.1</span> Grundregeln der Booleschen Algebra</h2>
+<section id="basis-operationen" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="basis-operationen"><span class="header-section-number">1.1.1</span> Basis-Operationen</h3>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Regel</th>
+<th>UND (AND)</th>
+<th>ODER (OR)</th>
+<th>NICHT (NOT)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Doppeltes Komplement</td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\overline{\overline{A}} = A\)</span></td>
+</tr>
+<tr class="even">
+<td>Identität</td>
+<td><span class="math inline">\(A \land 1 = A\)</span></td>
+<td><span class="math inline">\(A \lor 0 = A\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Null-Element</td>
+<td><span class="math inline">\(A \land 0 = 0\)</span></td>
+<td><span class="math inline">\(A \lor 1 = 1\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Idempotenz</td>
+<td><span class="math inline">\(A \land A = A\)</span></td>
+<td><span class="math inline">\(A \lor A = A\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Absorption</td>
+<td><span class="math inline">\(A \land (A \lor B) = A\)</span></td>
+<td><span class="math inline">\(A \lor (A \land B) = A\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Komplementarität</td>
+<td><span class="math inline">\(A \land \bar{A} = 0\)</span></td>
+<td><span class="math inline">\(A \lor \bar{A} = 1\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Kommutativgesetz</td>
+<td><span class="math inline">\(A \land B = B \land A\)</span></td>
+<td><span class="math inline">\(A \lor B = B \lor A\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Assoziativgesetz</td>
+<td><span class="math inline">\((A \land B) \land C = A \land (B \land C)\)</span></td>
+<td><span class="math inline">\((A \lor B) \lor C = A \lor (B \lor C)\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Distributivgesetz</td>
+<td><span class="math inline">\(A \land (B \lor C) = (A \land B) \lor (A \land C)\)</span></td>
+<td><span class="math inline">\(A \lor (B \land C) = (A \lor B) \land (A \lor C)\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>De Morgans Regeln</td>
+<td><span class="math inline">\(\overline{A \land B} = \bar{A} \lor \bar{B}\)</span></td>
+<td><span class="math inline">\(\overline{A \lor B} = \bar{A} \land \bar{B}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="von-der-wahrheitstabelle-zur-booleschen-gleichung" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.2</span> Von der Wahrheitstabelle zur Booleschen Gleichung</h2>
 <p>Es soll mittels Boolescher Algebra die einfachste Boolesche Gleichung aus der Wahrheitstabelle ermittelt werden.</p>
-<section id="wahrheitstabelle" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="wahrheitstabelle"><span class="header-section-number">1.1.1</span> Wahrheitstabelle</h3>
+<section id="wahrheitstabelle" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="wahrheitstabelle"><span class="header-section-number">1.2.1</span> Wahrheitstabelle</h3>
 <table class="table">
 <colgroup>
 <col style="width: 7%">
@@ -552,8 +673,8 @@ window.Quarto = {
 </tbody>
 </table>
 </section>
-<section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
+<section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.2.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
 <p>Da gilt <span class="math inline">\(A \lor A = A\)</span> (Idempotenzgesetz der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden, bis alle Terme einmal benutzt wurden! Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden Negation, so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
 <p><span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land \bar{C} \land {B} \land   {A}) = \bar{D} \land \bar{C} \land   {A}\)</span> x<br>
 <span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land {C} \land \bar{B} \land   {A}) = \bar{D}  \land \bar{B} \land   {A}\)</span> y<br>
@@ -571,8 +692,8 @@ window.Quarto = {
 <p>Das Ergebnis:<br>
 <span id="eq-bool2"><span class="math display">\[Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B}) \tag{1.1}\]</span></span></p>
 </section>
-<section id="überprüfung" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</h3>
+<section id="überprüfung" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="überprüfung"><span class="header-section-number">1.2.3</span> Überprüfung</h3>
 <p>Zur Überprüfung wird das Ergebnis mittels Sympy berechnet.</p>
 <div class="cell" data-execution_count="2">
 <details class="code-fold">
@@ -736,7 +857,7 @@ Hinweis
 <p><span class="math inline">\(\bar{A} = \neg A\)</span></p>
 </div>
 </div>
-<div id="9785dfa0" class="cell" data-execution_count="3">
+<div id="9eb9b6db" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
@@ -761,25 +882,25 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 \tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(B\)</span> … B Eingang</p>
+<p><span class="math inline">\(A\)</span> … A Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(A\)</span> … A Eingang</p>
+<p><span class="math inline">\(D\)</span> … D Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(C\)</span> … C Eingang</p>
+<p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(D\)</span> … D Eingang</p>
+<p><span class="math inline">\(C\)</span> … C Eingang</p>
 </div>
 </div>
 <p><a href="#eq-bool2" class="quarto-xref">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq" class="quarto-xref">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>
 </section>
-<section id="schaltung" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4" class="anchored" data-anchor-id="schaltung"><span class="header-section-number">1.1.4</span> Schaltung</h3>
+<section id="schaltung" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="schaltung"><span class="header-section-number">1.2.4</span> Schaltung</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -817,8 +938,232 @@ Abbildung&nbsp;1.1: Logik Schaltung für Ausgang Y
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="beispiele-zur-booleschen-algebra" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="beispiele-zur-booleschen-algebra"><span class="header-section-number">1.3</span> Beispiele zur Booleschen Algebra</h2>
+<section id="beispiel-1-vereinfachung-mit-distributivgesetz" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="beispiel-1-vereinfachung-mit-distributivgesetz"><span class="header-section-number">1.3.1</span> Beispiel 1: Vereinfachung mit Distributivgesetz</h3>
+<section id="aufgabe" class="level4" data-number="1.3.1.1">
+<h4 data-number="1.3.1.1" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">1.3.1.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie folgende Boolesche Gleichung: <span class="math display">\[Y = A \land B \lor A \land C\]</span></p>
+</section>
+<section id="lösung" class="level4" data-number="1.3.1.2">
+<h4 data-number="1.3.1.2" class="anchored" data-anchor-id="lösung"><span class="header-section-number">1.3.1.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Anwendung des Distributivgesetzes<br>
+<span class="math display">\[Y = A \land B \lor A \land C = A \land (B \lor C)\]</span></p>
+<p>Das Distributivgesetz der Konjunktion über die Disjunktion besagt: <span class="math display">\[A \land (B \lor C) = (A \land B) \lor (A \land C)\]</span></p>
+<p>Daher können wir dies in umgekehrter Richtung anwenden und das gemeinsame <span class="math inline">\(A\)</span> ausklammern.</p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \land (B \lor C)\]</span></p>
+</section>
+<section id="interpretation" class="level4" data-number="1.3.1.3">
+<h4 data-number="1.3.1.3" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">1.3.1.3</span> Interpretation</h4>
+<ul>
+<li><strong>Vorher:</strong> AND von A und B, ODER AND von A und C (benötigt 2 AND-Gatter und 1 OR-Gatter)</li>
+<li><strong>Nachher:</strong> A AND (B OR C) (benötigt 1 OR-Gatter und 1 AND-Gatter)<br>
+→ Vereinfachung: Weniger Gatter erforderlich</li>
+</ul>
+</section>
+</section>
+<section id="beispiel-2-vereinfachung-mit-absorption-und-komplementarität" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="beispiel-2-vereinfachung-mit-absorption-und-komplementarität"><span class="header-section-number">1.3.2</span> Beispiel 2: Vereinfachung mit Absorption und Komplementarität</h3>
+<section id="aufgabe-1" class="level4" data-number="1.3.2.1">
+<h4 data-number="1.3.2.1" class="anchored" data-anchor-id="aufgabe-1"><span class="header-section-number">1.3.2.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie folgende Boolesche Gleichung: <span class="math display">\[Y = (A \lor B) \land (A \lor \bar{B})\]</span></p>
+</section>
+<section id="lösung-1" class="level4" data-number="1.3.2.2">
+<h4 data-number="1.3.2.2" class="anchored" data-anchor-id="lösung-1"><span class="header-section-number">1.3.2.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Anwendung des Distributivgesetzes (OR über AND)<br>
+<span class="math display">\[Y = A \lor (B \land \bar{B})\]</span></p>
+<p><strong>Schritt 2:</strong> Anwendung der Komplementarität<br>
+Da <span class="math inline">\(B \land \bar{B} = 0\)</span> (Komplementarität): <span class="math display">\[Y = A \lor 0\]</span></p>
+<p><strong>Schritt 3:</strong> Anwendung der Identität<br>
+Da <span class="math inline">\(A \lor 0 = A\)</span> (Identität): <span class="math display">\[Y = A\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A\]</span></p>
+</section>
+<section id="interpretation-1" class="level4" data-number="1.3.2.3">
+<h4 data-number="1.3.2.3" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">1.3.2.3</span> Interpretation</h4>
+<p>Die gesamte Schaltung reduziert sich zu einem einfachen Draht, der das Signal A durchleitet!</p>
+</section>
+</section>
+<section id="beispiel-3-de-morgans-regeln" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="beispiel-3-de-morgans-regeln"><span class="header-section-number">1.3.3</span> Beispiel 3: De Morgans Regeln</h3>
+<section id="aufgabe-2" class="level4" data-number="1.3.3.1">
+<h4 data-number="1.3.3.1" class="anchored" data-anchor-id="aufgabe-2"><span class="header-section-number">1.3.3.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie unter Verwendung von De Morgans Regeln: <span class="math display">\[Y = \overline{A \land B \land C}\]</span></p>
+</section>
+<section id="lösung-2" class="level4" data-number="1.3.3.2">
+<h4 data-number="1.3.3.2" class="anchored" data-anchor-id="lösung-2"><span class="header-section-number">1.3.3.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Anwendung von De Morgans Regel für AND<br>
+<span class="math display">\[Y = \overline{A \land B \land C} = \bar{A} \lor \bar{B} \lor \bar{C}\]</span></p>
+<p>De Morgans Regel besagt: <span class="math inline">\(\overline{A \land B} = \bar{A} \lor \bar{B}\)</span></p>
+<p>Diese kann auf mehrere Variablen erweitert werden: Das NOT einer AND-Operation ist gleich der OR-Operation der negierten Eingänge.</p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = \bar{A} \lor \bar{B} \lor \bar{C}\]</span></p>
+</section>
+<section id="interpretation-2" class="level4" data-number="1.3.3.3">
+<h4 data-number="1.3.3.3" class="anchored" data-anchor-id="interpretation-2"><span class="header-section-number">1.3.3.3</span> Interpretation</h4>
+<ul>
+<li><strong>Vorher:</strong> Ein NAND-Gatter mit 3 Eingängen</li>
+<li><strong>Nachher:</strong> Drei NOT-Gatter und ein OR-Gatter mit 3 Eingängen<br>
+→ Diese Umwandlung ist wichtig für Implementierungen, bei denen nur bestimmte Gattertypen verfügbar sind</li>
+</ul>
+</section>
+</section>
+<section id="beispiel-4-komplexe-vereinfachung" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="beispiel-4-komplexe-vereinfachung"><span class="header-section-number">1.3.4</span> Beispiel 4: Komplexe Vereinfachung</h3>
+<section id="aufgabe-3" class="level4" data-number="1.3.4.1">
+<h4 data-number="1.3.4.1" class="anchored" data-anchor-id="aufgabe-3"><span class="header-section-number">1.3.4.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie: <span class="math display">\[Y = A \land B \lor A \land \bar{B} \lor \bar{A} \land B\]</span></p>
+</section>
+<section id="lösung-3" class="level4" data-number="1.3.4.2">
+<h4 data-number="1.3.4.2" class="anchored" data-anchor-id="lösung-3"><span class="header-section-number">1.3.4.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Gruppieren Sie die ersten zwei Terme (Distributivgesetz)<br>
+<span class="math display">\[Y = A \land (B \lor \bar{B}) \lor \bar{A} \land B\]</span></p>
+<p><strong>Schritt 2:</strong> Komplementarität anwenden<br>
+<span class="math display">\[Y = A \land 1 \lor \bar{A} \land B\]</span></p>
+<p><strong>Schritt 3:</strong> Identität anwenden<br>
+<span class="math display">\[Y = A \lor \bar{A} \land B\]</span></p>
+<p><strong>Schritt 4:</strong> Absorption anwenden<br>
+Das Absorptionsgesetz besagt: <span class="math inline">\(A \lor \bar{A} \land B = A \lor B\)</span></p>
+<p><span class="math display">\[Y = A \lor B\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \lor B\]</span></p>
+</section>
+<section id="wahrheitstabelle-zur-überprüfung" class="level4" data-number="1.3.4.3">
+<h4 data-number="1.3.4.3" class="anchored" data-anchor-id="wahrheitstabelle-zur-überprüfung"><span class="header-section-number">1.3.4.3</span> Wahrheitstabelle zur Überprüfung</h4>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 16%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th><span class="math inline">\(A \land B\)</span></th>
+<th><span class="math inline">\(A \land \bar{B}\)</span></th>
+<th><span class="math inline">\(\bar{A} \land B\)</span></th>
+<th>Original Y</th>
+<th><span class="math inline">\(A \lor B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Wie zu sehen ist, sind die Ergebnisse identisch - die Vereinfachung ist korrekt!</p>
+</section>
+</section>
+<section id="beispiel-5-praktische-anwendung---fahrstuhl-logik" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="beispiel-5-praktische-anwendung---fahrstuhl-logik"><span class="header-section-number">1.3.5</span> Beispiel 5: Praktische Anwendung - Fahrstuhl-Logik</h3>
+<section id="aufgabe-4" class="level4" data-number="1.3.5.1">
+<h4 data-number="1.3.5.1" class="anchored" data-anchor-id="aufgabe-4"><span class="header-section-number">1.3.5.1</span> Aufgabe</h4>
+<p>Ein Fahrstuhl darf sich nur bewegen, wenn: - <strong>Fall 1:</strong> Der Notfallknopf NICHT gedrückt ist ODER - <strong>Fall 2:</strong> Der Notfallknopf gedrückt ist UND die Türe offen ist (sollte nicht passieren, aber sicherheitshalber verhindert)</p>
+<p>Gegeben: - <span class="math inline">\(N\)</span> = Notfallknopf gedrückt (1 = gedrückt) - <span class="math inline">\(T\)</span> = Türe offen (1 = offen) - <span class="math inline">\(B\)</span> = Bewegung erlaubt (1 = ja)</p>
+<p>Die Logik: <span class="math inline">\(B = \bar{N} \lor (N \land T)\)</span></p>
+<p>Vereinfachen Sie diese Gleichung!</p>
+</section>
+<section id="lösung-4" class="level4" data-number="1.3.5.2">
+<h4 data-number="1.3.5.2" class="anchored" data-anchor-id="lösung-4"><span class="header-section-number">1.3.5.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Absorption-ähnliche Vereinfachung<br>
+<span class="math display">\[B = \bar{N} \lor (N \land T)\]</span></p>
+<p>Wir wenden folgende Logik an: Wenn <span class="math inline">\(\bar{N}\)</span> wahr ist, ist der gesamte OR-Term bereits erfüllt, daher:</p>
+<p><span class="math display">\[B = \bar{N} \lor T\]</span></p>
+<p>Dies ist eine spezielle Form des Absorptionsgesetzes.</p>
+<p><strong>Verifikation mittels Wahrheitstabelle:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>N</th>
+<th>T</th>
+<th><span class="math inline">\(\bar{N}\)</span></th>
+<th><span class="math inline">\(N \land T\)</span></th>
+<th>Original</th>
+<th><span class="math inline">\(\bar{N} \lor T\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ergebnis:</strong> <span class="math display">\[B = \bar{N} \lor T\]</span></p>
+</section>
+<section id="interpretation-3" class="level4" data-number="1.3.5.3">
+<h4 data-number="1.3.5.3" class="anchored" data-anchor-id="interpretation-3"><span class="header-section-number">1.3.5.3</span> Interpretation</h4>
+<p>Die Bewegung ist erlaubt, wenn entweder der Notfallknopf nicht gedrückt ist ODER die Türe offen ist. Dies ist logischer und sicherer als die ursprüngliche Formulierung.</p>
 
 
+</section>
 </section>
 </section>
 
