@@ -332,7 +332,7 @@ Es ist zu erkennen, dass mit einem Verstärker das Verhältnis von Eingangssigna
 Wird kein Verstärker verwendet oder die Verstärkung ist zu klein, würde der Oszillator nicht von selbst starten. Wird die Schwingung zum Beispiel mit einem Puls gestartet würde die Schwingung abklingen. Das Signal wird kleiner. Die Schleifenverstärkung, der Schwingkreis und der Verstärker, müssen so gewählt werden, dass die Gesamtverstärkung an der Eigenfrequenz 1 ist. Das bedeutet, dass die Verstärkung des Verstärkers gleich der Dämpfung des Schwingkreises sein muss.
 
 #### Instabiles System {#sec-OscInstabilesSystem}
-Ist die Verstärkung zu groß schwingt das System auf. Das Signal wird größer und größer. Das System ist instabil. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, kleiner als 1 bei der Eigenfrequenz ist. 
+Ist die Verstärkung zu groß schwingt das System auf. Das Signal wird größer und größer. Das System ist instabil. Das bedeutet, dass die Schleifenverstärkung, Schwingkreis und Verstärker, größer als 1 bei der Eigenfrequenz ist. 
 
 #### Closed Loop Betrachtung
 Wird nun der Kreis geschlossen, siehe @fig-OscBlockschaltbildOszillator, das Ausgangssignal wird am Eingang zurückgeführt, kann eine dauerhafte Schwingung aufrecht erhalten werden. Voraussetzung dafür ist, dass die Verstärkung des Verstärkers richtig gewählt wird.

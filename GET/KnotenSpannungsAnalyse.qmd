@@ -1,5 +1,5 @@
 
-# Knoten- Spannungs- Analyse
+# Knoten- Spannungs- Analyse {#sec-KonoSpannungsanalyse}  
 {{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
 Die Knoten-Spannungsanalyse ist eine Methode zur Berechnung der unbekannten elektrischen Größen in einem Netzwerk von elektrischen oder elektronischen Komponenten.  
 Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werden Gleichungen aufgestellt, welche die Schaltung rechnerisch beschreiben. 

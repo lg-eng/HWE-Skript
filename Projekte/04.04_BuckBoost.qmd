@@ -1,0 +1,162 @@
+# DC-DC Konverter {#sec-Buck Boos}  
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+DC-DC-Konverter sind essenzielle Bausteine in der Leistungselektronik. Sie ermöglichen die effiziente Umwandlung von Gleichspannungen auf unterschiedliche Spannungsniveaus, was in zahlreichen Anwendungen erforderlich ist. Typische Einsatzgebiete umfassen die Stromversorgung von mobilen Geräten, elektrische Fahrzeuge, erneuerbare Energien und industrielle Steuerungen. Ihre Fähigkeit, Spannungen zu erhöhen (Boost), zu senken (Buck) oder beides zu kombinieren, macht sie vielseitig und unverzichtbar in modernen elektronischen Systemen.
+
+Wer sein Wissen zu Leistungselektronik vertiefen möchte wird bei MIT OpenCourseWare fündig, [MIT OpenCourseWare Power Electronics](https://ocw.mit.edu/courses/6-622-power-electronics-spring-2023/). 
+
+## Grundlagen zur Beurteilung der Qualität von DC-DC Konvertern
+Die Qualität von DC-DC-Konvertern wird durch verschiedene Parameter bestimmt, die ihre Effizienz, Stabilität und Leistung beeinflussen. Zu den wichtigsten Kriterien gehören:  
+- **Wirkungsgrad**: Der Wirkungsgrad ist ein Maß dafür, wie effizient der Konverter die Eingangsleistung in Ausgangsleistung umwandelt. Ein hoher Wirkungsgrad bedeutet weniger Energieverluste und eine bessere Leistung.  
+- **Stabilität**: Die Stabilität des Konverters bezieht sich auf seine Fähigkeit, unter verschiedenen Lastbedingungen und Eingangsspannungen eine konstante Ausgangsspannung zu liefern. Eine stabile Regelung ist entscheidend für die Zuverlässigkeit des Systems.  
+- **Leistung**: Die Leistung des Konverters bezieht sich auf die maximale Ausgangsleistung, die er liefern kann. Dies ist wichtig, um sicherzustellen, dass der Konverter in der Lage ist, die Anforderungen der angeschlossenen Last zu erfüllen.  
+
+### Wirkungsgrad
+Der Wirkungsgrad wird allgemein als das Verhältnis von Ausgangsenergie $E_{out}$ zu Eingangsenergie $E_{in}$ definiert. Wichtig dabei ist, dass die Ausgangsenergie dabei nicht die gesamte Energie ist, denn da keine Energie verloren gehen kann wäre der Wirkungsgrad immer 1, sondern die Energie die genutzt werden soll. Bei einem DC-DC Konverter ist das die elektrische Energie am Ausgang.
+
+$$\eta = \frac{E_{out}}{E_{in}} = \frac{P_{out} \cdot t_{out}}{P_{in} \cdot t_{in}}$$
+
+Wenn die Zeit in der die Energie am Eingang anliegt gleich der Zeit ist, in der die Energie am Ausgang ausgegeben wird, dann kann die Zeit gekürzt werden zu:
+
+$$\eta = \frac{P_{out}}{P_{in}}$$
+
+Wobei $P_{out}$ die Ausgangsleistung und $P_{in}$ die Eingangsleistung ist. Ein Wirkungsgrad von 1 bedeutet, dass keine Energie verloren geht, was in der Praxis jedoch unmöglich ist. Typische Wirkungsgrade für DC-DC-Konverter liegen zwischen 0,8 und 0,95, abhängig von der Bauart und den Betriebsbedingungen.
+Oft wird der Wirkungsgrad auch in Prozent angegeben. Dazu muss das Verhältnis mit 100 multipliziert werden. Ein Wirkungsgrad von 0,9 entspricht also 90%.
+
+### Stabilität
+Die Stabilität eines DC-DC-Konverters bezieht sich auf seine Fähigkeit, eine konstante Ausgangsspannung zu liefern, auch wenn sich die Eingangsspannung oder die Lastbedingungen ändern.  
+Ein Maß für die Stabilität kann die Brummspannung sein, die die Schwankungen der Ausgangsspannung beschreibt. Eine niedrige Brummspannung ist wünschenswert, da sie auf eine stabile Regelung hinweist.  
+Eine weitere Möglichkeit die Stabilität zu beurteilen ist die Regelbandbreite. Diese beschreibt, wie schnell der Konverter auf Änderungen der Last oder der Eingangsspannung reagiert. Eine hohe Regelbandbreite bedeutet, dass der Konverter schnell auf Änderungen reagieren kann und somit eine stabilere Ausgangsspannung liefert.
+
+
+### Leistung
+Die Leistung eines DC-DC-Konverters bezieht sich auf die maximale Ausgangsleistung, die er liefern kann. Diese wird in Watt (W) angegeben und ist entscheidend für die Auswahl des richtigen Konverters für eine bestimmte Anwendung.
+
+## Warum ein Spannungsteiler keine gute Idee ist
+Ein Spannungsteiler ist eine einfache Schaltung, die aus zwei Widerständen besteht und eine Spannung auf einen niedrigeren Wert reduziert. Obwohl er in einigen Anwendungen nützlich sein kann, ist er für die meisten Anwendungen nicht geeignet, insbesondere wenn es um die Stromversorgung von Geräten geht. Der Hauptgrund dafür ist die schlechte Wirkungsgrad bei hohen Strömen und die fehlende Möglichkeit bei schwankender Eingangsspannung eine konstante Ausgangsspannung zu erzeugen. Auch auf eine wechselnde Last kann der Spannungsteiler nicht reagieren.
+
+### Wirkungsgrad eines Spannungsteilers
+Am Beispiel eines unbelasteten Spannungsteilers werden die Nachteile verdeutlicht. 
+
+![Spannungsteiler](/Projekte/BuckBoost/Spannungsteiler.png){#fig-0404_Spannungsteiler}  
+
+$R_{Last}$ ist eine beliebige Last die eine vorgegebene Spannung benötigt. $R_1$ soll so berechnet werden, dass an $R_{Last}$ die korrekte Spannung abfällt. Im Anschluss soll die Qualität der Spannungsanpassung auf die drei oben genannten Kriterien hin überprüft werden.  
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+R1 = MySymbol('R1',real=True,positive=True,unit=u.ohm)
+RLast = MySymbol('R_{Last}',real=True,positive=True,value=330,unit=u.ohm)
+Uin = MySymbol('U_{in}',real=True,positive=True,unit=u.V,value=10)
+Uout = MySymbol('U_{out}',real=True,positive=True,unit=u.V,value=3.3)
+Iin = MySymbol('I_{in}',real=True,positive=True,unit=u.A)
+ILast = MySymbol('I_{Last}',real=True,positive=True,unit=u.A)
+
+QBH.print_values2([RLast,Uin,Uout])
+
+
+```
+
+Durch umstellen des allgemeinen Ansatzes für den Spannungsteiler erhält man die Gleichung für $R_1$.
+
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+R1_eq1 = Eq(Uin/Uout,(R1+RLast)/RLast)
+
+QBookHelpers.print_equation(R1_eq1)
+
+
+R1_eq2 = Eq(R1,solve(R1_eq1,R1)[0])
+
+QBookHelpers.print_equation(R1_eq2)
+
+QBookHelpers.calculate_num_value(R1_eq2)
+
+QBH.print_values2([R1])
+
+
+
+```
+ 
+
+
+### Wirkungsgrad
+Die Verluste der Schaltung fallen am Widerstand $R_1$ ab. Die nutzbare Leistung am $R_{Last}$ daraus ergibt sich die Gleichung für den Wirkungsgrad.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+eta = MySymbol(r'\eta',real=True,positive=True,unit=1)
+etaPerc = MySymbol(r'\eta',real=True,positive=True,unit=u.percent)
+P1 = MySymbol('P_1',real=True,positive=True,unit=u.watt)
+PLast = MySymbol('P_{Last}',real=True,positive=True,unit=u.watt)
+Pin = MySymbol('P_{in}',real=True,positive=True,unit=u.watt)
+
+eta_eq1 = Eq(eta,PLast/Pin)
+QBookHelpers.print_equation(eta_eq1)
+
+Pin_eq1 = Eq(Pin,Uin*Iin)
+QBookHelpers.print_equation(Pin_eq1)
+
+PLast_eq1 = Eq(PLast,Uout*ILast)
+QBookHelpers.print_equation(PLast_eq1)
+
+eta_eq2 = Eq(eta,eta_eq1.rhs.subs(Pin,Pin_eq1.rhs).subs(PLast,PLast_eq1.rhs))
+
+QBookHelpers.print_equation(eta_eq2)
+
+```
+
+Da der gesamte Eingangstrom durch die Last fließt sind die Ströme gleich und können gekürzt werden.
+
+```{python}
+#| code-fold: true
+##| echo: false
+
+
+eta_eq3 = Eq(eta,eta_eq2.rhs.subs(ILast,Iin))
+QBookHelpers.print_equation(eta_eq3)
+
+etaPerc_eq1 = Eq(etaPerc,eta*100,evaluate=False)
+
+QBookHelpers.calculate_num_value(eta_eq3)
+#QBH.print_values2([eta])
+
+QBookHelpers.calculate_num_value(etaPerc_eq1)
+QBH.print_values2([etaPerc])
+
+#Iin_eq1 = Eq(Iin,Uin/(R1+RLast))
+#QBookHelpers.print_equation(Iin_eq1)
+#QBookHelpers.calculate_num_value(Iin_eq1)
+#QBH.print_values2([Iin])
+
+
+#ILast_eq1 = Eq(ILast,Iin)
+#QBookHelpers.print_equation(ILast_eq1)
+#QBookHelpers.calculate_num_value(ILast_eq1)
+#QBH.print_values2([ILast])
+
+
+
+```
+
+Das bedeutet, dass in diesem Fall nur 1/3 der Leistung die die Schaltung verbraucht auch tatsächlich von der Last verwendet wird. Der Rest geht als Abwärme über den Widerstand $R_1$ verloren.
+
+## Abwärtswandler - Buck-Konverter
+Ein Abwärtswandler, auch Buck-Konverter oder Step-Down-Konverter genannt, ist ein DC-DC-Wandler, der eine höhere Eingangsspannung in eine niedrigere Ausgangsspannung umwandelt. Dabei wird jedoch ein deutlich höherer Wirkungsgrad erreicht als mit einem Spannungsteiler.  
+
+Die Funktionsweise eines Buck-Konverters basiert auf der Verwendung eines Schalttransistors, der die Eingangsspannung in eine pulsierende Spannung umwandelt, PWM. Diese pulsierende Spannung wird dann durch einen Induktor und einen Kondensator geglättet, um eine stabile Ausgangsspannung zu erzeugen.  
+
+Die Verluste der Schaltung ergeben sich hauptsächlich aus den Schaltvorgängen des Transistors und dem ohmschen Widerstand des Induktors. Der Wirkungsgrad eines Buck-Konverters liegt typischerweise zwischen 80% und 95%, abhängig von der Bauart und den Betriebsbedingungen.  
+
+Um die Ausgangsspannung stabil zu halten, wird ein Regelkreis verwendet, der die PWM-Signale an den Schalttransistor anpasst. 
+
+
+
+
+

@@ -1,0 +1,154 @@
+# Operationsverstärker
+{{< include ../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+from sympy import *
+
+```
+
+## Einführung
+
+## Beispiele
+<!--
+### egativ‑Impedanz‑Konverter (NIC / NIK)
+
+ToDo: Schaltplan einfügen!
+
+Ein Negativ‑Impedanz‑Konverter erzeugt am Eingang eine *negative Impedanz*.
+Dadurch kann die Eingangsschaltung z. B. Leitungsverluste kompensieren oder
+ein bestimmtes dynamisches Verhalten erzwingen.
+
+#### Funktionsprinzip
+
+Der Operationsverstärker sorgt über Gegenkopplung dafür, dass ein
+Eingangsstrom einen proportionalen, *entgegengesetzten* Strom erzeugt.
+Dadurch erscheint nach außen ein negativer Widerstand.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+R1 = MySymbol('R_1', real=True, positive=True, description='Widerstand R1', value=10e3, unit=u.ohm)
+R2 = MySymbol('R_2', real=True, positive=True, description='Widerstand R2', value=10e3, unit=u.ohm)
+RL = MySymbol('R_L', real=True, positive=True, description='Lastwiderstand', value=5e3, unit=u.ohm)
+Rneg = MySymbol('R_{neg}', real=True, description='Negative Eingangsimpedanz', unit=u.ohm)
+
+QBookHelpers.print_description([R1, R2, RL, Rneg])
+QBookHelpers.print_values([R1, R2, RL])
+
+eqRneg = Eq(Rneg, -(R1 * R2) / RL)
+QBookHelpers.print_equation(eqRneg, label='eq-Rneg')
+
+```
+
+#### Beispielrechnung
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+eqRneg_num = QBookHelpers.replace_num_value(eqRneg)
+Rneg.value = eqRneg_num.rhs
+QBookHelpers.print_values([Rneg])
+
+```
+
+
+Der Eingang verhält sich also wie ein **negativer Widerstand**.
+
+#### Hinweise zur Stabilität
+
+- Negativwiderstände können Schwingen → Frequenzgang des OPV beachten.
+- Serienwiderstand am Eingang erhöht die Stabilität.
+- OPV sollte hohe Slew‑Rate und Bandbreite besitzen.
+
+
+### 11.15.2 Kapazitäts‑Transformation
+
+::: {#fig-cap-transform}
+![](Grafiken/Kapazitaetstransformation_Circuit.svg)
+
+Schaltung zur Kapazitäts-Transformation mit invertierendem Operationsverstärker
+:::
+
+
+Bei dieser Schaltung wird eine reale Kapazität mithilfe eines
+Operationsverstärkers zu einer *effektiven* Kapazität transformiert. 
+Dadurch können wesentlich größere oder kleinere Kapazitätswerte elektrisch 
+simuliert werden, ohne physisch große Kondensatoren einzusetzen.
+
+#### Funktionsprinzip
+
+Die Kapazität liegt im Rückkopplungszweig eines invertierenden
+Operationsverstärkers. Das Verhältnis der beiden Widerstände bestimmt die Verstärkung.
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+R1_cap = MySymbol('R_1', real=True, positive=True, description='Widerstand R1', value=10e3, unit=u.ohm)
+R2_cap = MySymbol('R_2', real=True, positive=True, description='Widerstand R2', value=90e3, unit=u.ohm)
+C = MySymbol('C', real=True, positive=True, description='Kapazität', value=10e-9, unit=u.farad)
+Vu = MySymbol('V_u', real=True, description='Spannungsverstärkung')
+Ceff = MySymbol('C_{eff}', real=True, positive=True, description='Effektive Kapazität', unit=u.farad)
+
+QBookHelpers.print_description([R1_cap, R2_cap, C, Vu, Ceff])
+QBookHelpers.print_values([R1_cap, R2_cap, C])
+
+eqVu = Eq(Vu, -R2_cap / R1_cap)
+QBookHelpers.print_equation(eqVu, label='eq-Vu')
+
+```
+
+Die wirksame Kapazität ergibt sich aus:
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+eqCeff1 = Eq(Ceff, C * (1 - Vu))
+QBookHelpers.print_equation(eqCeff1, label='eq-Ceff1')
+
+```
+
+Da die Verstärkung für den invertierenden Verstärker negativ ist, vergrößert sich die Kapazität:
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+eqCeff2 = Eq(Ceff, C * (1 + R2_cap / R1_cap))
+QBookHelpers.print_equation(eqCeff2, label='eq-Ceff2')
+
+```
+
+#### Beispielrechnung
+
+```{python}
+#| code-fold: true
+#| echo: false
+
+eqVu_num = QBookHelpers.replace_num_value(eqVu)
+Vu.value = eqVu_num.rhs
+QBookHelpers.print_values([Vu])
+
+eqCeff2_num = QBookHelpers.replace_num_value(eqCeff2)
+Ceff.value = eqCeff2_num.rhs
+QBookHelpers.print_values([Ceff])
+
+```
+
+Die Kapazität wurde um einen Faktor vergrößert.
+
+#### Hinweise zur Praxis
+
+- Der OPV sollte über ausreichende Bandbreite verfügen, da die
+Kapazitätsvervielfachung das Frequenzverhalten beeinflusst.
+- Für stabile Funktion sollten R und C Bauteile mit geringer Toleranz
+(1 % oder besser) verwendet werden.
+- Bei großer Kapazitätsvervielfachung steigt der Einfluss des OPV‑Rauschens
+und der Offset‑Ströme.
+-->

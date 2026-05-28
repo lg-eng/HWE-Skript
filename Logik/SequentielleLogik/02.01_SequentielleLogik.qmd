@@ -1,0 +1,56 @@
+# Sequentielle Logik
+
+Der Unterschied zur kombinatorischen Logik besteht darin, dass die Ausgänge nicht nur von den Eingängen abhängen, sondern auch von vorherigen Zuständen der Ausgänge.  
+  
+Wie bei der kombinatorischen Logik kann zwischen asynchroner und synchroner Logik unterschieden werden. Bei der asynchronen Logik ändert sich der Ausgang sofort, wenn sich ein Eingang ändert. Bei der synchronen Logik hingegen ändert sich der Ausgang nur zu bestimmten Zeitpunkten, die durch ein Taktsignal vorgegeben werden. Dazu später mehr.  
+
+## Schaltungsentwicklung
+
+```{dot}
+//| fig-width: 7
+//| fig-height: 3
+digraph Logic {
+    rankdir=LR;
+    splines=ortho;
+    node [shape=box, style=filled, fillcolor=white, fontname="Arial", width=0.6, height=0.6];
+    edge [arrowhead=none];
+    
+    // Input nodes
+    A [shape=none, label="A"];
+    B [shape=none, label="B"];
+    
+    // Gates and delays
+    AND [label="&"];
+    DELAY1 [label="≥1"];
+    DELAY2 [label="z-1"];
+    
+    // Output
+    Q [shape=none, label="Q"];
+    
+    // Junction points
+    C [shape=point, width=0.1];
+    D [shape=point, width=0.1];
+    C2 [shape=point, width=0.1];
+    D2 [shape=point, width=0.1];
+    
+    // Main flow
+    A -> AND;
+    AND -> C [label="  C"];
+    
+    B -> DELAY2;
+    DELAY2 -> D [label="  D"];
+    
+    // From C
+    C -> C2;
+    C2 -> DELAY1;
+    C2 -> Q;
+    
+    // From D  
+    D -> D2;
+    D2 -> AND;
+    D2 -> DELAY1;
+    
+    // Final output
+    DELAY1 -> Q;
+}
+```

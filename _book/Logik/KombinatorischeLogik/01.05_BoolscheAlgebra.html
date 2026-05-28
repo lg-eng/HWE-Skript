@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HWE-Skript - 1&nbsp; Boolesche Algebra</title>
+<title>1&nbsp; Boolesche Algebra – HWE-Skript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,15 +69,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../index.html" rel="prev">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -123,7 +126,7 @@ cookieconsent.run({
 </script> 
   
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -137,7 +140,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -155,19 +158,19 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html">1. Jahrgang</a></li><li class="breadcrumb-item"><a href="../../Logik/KombinatorischeLogik/01.05_BoolscheAlgebra.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Boolesche Algebra</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -177,7 +180,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">HWE-Skript</a> 
         <div class="sidebar-tools-main">
@@ -200,9 +205,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">1. Jahrgang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -223,26 +228,32 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">2. Jahrgang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../Logik/SequentielleLogik/02.01_SequentielleLogik.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sequentielle Logik</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../GET/AC/Wechselstrom.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Komplexe Wechselstromtechnik</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Komplexe Wechselstromtechnik</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">3. Jahrgang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,16 +261,16 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Transistoren/01_Transistoren.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Der Transistor</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">4. Jahrgang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -267,28 +278,34 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Projekte/04.01_Leistungsverstaerker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Leistungsverstärker</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Projekte/04.02_H-Bruecke.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">H-Brücke</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Projekte/04.03_Oszillator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Oszillator</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Oszillator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Projekte/04.04_BuckBoost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">DC-DC Konverter</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">5. Jahrgang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Abschnitt umschalten">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Abschnitt umschalten">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -296,7 +313,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Projekte/05.01_VariableStateFilter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../OPV/01_IntroOPV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operationsverstärker</span></span></a>
   </div>
 </li>
       </ul>
@@ -311,12 +334,61 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#von-der-wahrheitstabelle-zur-booleschen-gleichung" id="toc-von-der-wahrheitstabelle-zur-booleschen-gleichung" class="nav-link active" data-scroll-target="#von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.1</span> Von der Wahrheitstabelle zur Booleschen Gleichung</a>
+  <li><a href="#grundregeln-der-booleschen-algebra" id="toc-grundregeln-der-booleschen-algebra" class="nav-link active" data-scroll-target="#grundregeln-der-booleschen-algebra"><span class="header-section-number">1.1</span> Grundregeln der Booleschen Algebra</a>
   <ul>
-  <li><a href="#wahrheitstabelle" id="toc-wahrheitstabelle" class="nav-link" data-scroll-target="#wahrheitstabelle"><span class="header-section-number">1.1.1</span> Wahrheitstabelle</a></li>
-  <li><a href="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" id="toc-vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="nav-link" data-scroll-target="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</a></li>
-  <li><a href="#überprüfung" id="toc-überprüfung" class="nav-link" data-scroll-target="#überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</a></li>
-  <li><a href="#schaltung" id="toc-schaltung" class="nav-link" data-scroll-target="#schaltung"><span class="header-section-number">1.1.4</span> Schaltung</a></li>
+  <li><a href="#basis-operationen" id="toc-basis-operationen" class="nav-link" data-scroll-target="#basis-operationen"><span class="header-section-number">1.1.1</span> Basis-Operationen</a></li>
+  </ul></li>
+  <li><a href="#von-der-wahrheitstabelle-zur-booleschen-gleichung" id="toc-von-der-wahrheitstabelle-zur-booleschen-gleichung" class="nav-link" data-scroll-target="#von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.2</span> Von der Wahrheitstabelle zur Booleschen Gleichung</a>
+  <ul>
+  <li><a href="#wahrheitstabelle" id="toc-wahrheitstabelle" class="nav-link" data-scroll-target="#wahrheitstabelle"><span class="header-section-number">1.2.1</span> Wahrheitstabelle</a></li>
+  <li><a href="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" id="toc-vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="nav-link" data-scroll-target="#vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.2.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</a></li>
+  <li><a href="#überprüfung" id="toc-überprüfung" class="nav-link" data-scroll-target="#überprüfung"><span class="header-section-number">1.2.3</span> Überprüfung</a></li>
+  <li><a href="#schaltung" id="toc-schaltung" class="nav-link" data-scroll-target="#schaltung"><span class="header-section-number">1.2.4</span> Schaltung</a></li>
+  </ul></li>
+  <li><a href="#beispiele-zur-booleschen-algebra" id="toc-beispiele-zur-booleschen-algebra" class="nav-link" data-scroll-target="#beispiele-zur-booleschen-algebra"><span class="header-section-number">1.3</span> Beispiele zur Booleschen Algebra</a>
+  <ul>
+  <li><a href="#beispiel-1-vereinfachung-mit-distributivgesetz" id="toc-beispiel-1-vereinfachung-mit-distributivgesetz" class="nav-link" data-scroll-target="#beispiel-1-vereinfachung-mit-distributivgesetz"><span class="header-section-number">1.3.1</span> Beispiel 1: Vereinfachung mit Distributivgesetz</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe" id="toc-aufgabe" class="nav-link" data-scroll-target="#aufgabe"><span class="header-section-number">1.3.1.1</span> Aufgabe</a></li>
+  <li><a href="#lösung" id="toc-lösung" class="nav-link" data-scroll-target="#lösung"><span class="header-section-number">1.3.1.2</span> Lösung</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">1.3.1.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-2-vereinfachung-mit-absorption-und-komplementarität" id="toc-beispiel-2-vereinfachung-mit-absorption-und-komplementarität" class="nav-link" data-scroll-target="#beispiel-2-vereinfachung-mit-absorption-und-komplementarität"><span class="header-section-number">1.3.2</span> Beispiel 2: Vereinfachung mit Absorption und Komplementarität</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-1" id="toc-aufgabe-1" class="nav-link" data-scroll-target="#aufgabe-1"><span class="header-section-number">1.3.2.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-1" id="toc-lösung-1" class="nav-link" data-scroll-target="#lösung-1"><span class="header-section-number">1.3.2.2</span> Lösung</a></li>
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1"><span class="header-section-number">1.3.2.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-3-de-morgans-regeln" id="toc-beispiel-3-de-morgans-regeln" class="nav-link" data-scroll-target="#beispiel-3-de-morgans-regeln"><span class="header-section-number">1.3.3</span> Beispiel 3: De Morgans Regeln</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-2" id="toc-aufgabe-2" class="nav-link" data-scroll-target="#aufgabe-2"><span class="header-section-number">1.3.3.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-2" id="toc-lösung-2" class="nav-link" data-scroll-target="#lösung-2"><span class="header-section-number">1.3.3.2</span> Lösung</a></li>
+  <li><a href="#interpretation-2" id="toc-interpretation-2" class="nav-link" data-scroll-target="#interpretation-2"><span class="header-section-number">1.3.3.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-4-komplexe-vereinfachung" id="toc-beispiel-4-komplexe-vereinfachung" class="nav-link" data-scroll-target="#beispiel-4-komplexe-vereinfachung"><span class="header-section-number">1.3.4</span> Beispiel 4: Komplexe Vereinfachung</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-3" id="toc-aufgabe-3" class="nav-link" data-scroll-target="#aufgabe-3"><span class="header-section-number">1.3.4.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-3" id="toc-lösung-3" class="nav-link" data-scroll-target="#lösung-3"><span class="header-section-number">1.3.4.2</span> Lösung</a></li>
+  <li><a href="#wahrheitstabelle-zur-überprüfung" id="toc-wahrheitstabelle-zur-überprüfung" class="nav-link" data-scroll-target="#wahrheitstabelle-zur-überprüfung"><span class="header-section-number">1.3.4.3</span> Wahrheitstabelle zur Überprüfung</a></li>
+  </ul></li>
+  <li><a href="#beispiel-5-praktische-anwendung---fahrstuhl-logik" id="toc-beispiel-5-praktische-anwendung---fahrstuhl-logik" class="nav-link" data-scroll-target="#beispiel-5-praktische-anwendung---fahrstuhl-logik"><span class="header-section-number">1.3.5</span> Beispiel 5: Praktische Anwendung - Fahrstuhl-Logik</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-4" id="toc-aufgabe-4" class="nav-link" data-scroll-target="#aufgabe-4"><span class="header-section-number">1.3.5.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-4" id="toc-lösung-4" class="nav-link" data-scroll-target="#lösung-4"><span class="header-section-number">1.3.5.2</span> Lösung</a></li>
+  <li><a href="#interpretation-3" id="toc-interpretation-3" class="nav-link" data-scroll-target="#interpretation-3"><span class="header-section-number">1.3.5.3</span> Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-6-disjunktive-normalform-dnf-mit-mintermen" id="toc-beispiel-6-disjunktive-normalform-dnf-mit-mintermen" class="nav-link" data-scroll-target="#beispiel-6-disjunktive-normalform-dnf-mit-mintermen"><span class="header-section-number">1.3.6</span> Beispiel 6: Disjunktive Normalform (DNF) mit Mintermen</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-5" id="toc-aufgabe-5" class="nav-link" data-scroll-target="#aufgabe-5"><span class="header-section-number">1.3.6.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-5" id="toc-lösung-5" class="nav-link" data-scroll-target="#lösung-5"><span class="header-section-number">1.3.6.2</span> Lösung</a></li>
+  </ul></li>
+  <li><a href="#beispiel-7-konjunktive-normalform-knf-mit-maxtermen" id="toc-beispiel-7-konjunktive-normalform-knf-mit-maxtermen" class="nav-link" data-scroll-target="#beispiel-7-konjunktive-normalform-knf-mit-maxtermen"><span class="header-section-number">1.3.7</span> Beispiel 7: Konjunktive Normalform (KNF) mit Maxtermen</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-6" id="toc-aufgabe-6" class="nav-link" data-scroll-target="#aufgabe-6"><span class="header-section-number">1.3.7.1</span> Aufgabe</a></li>
+  <li><a href="#lösung-6" id="toc-lösung-6" class="nav-link" data-scroll-target="#lösung-6"><span class="header-section-number">1.3.7.2</span> Lösung</a></li>
+  <li><a href="#vergleich-und-interpretation" id="toc-vergleich-und-interpretation" class="nav-link" data-scroll-target="#vergleich-und-interpretation"><span class="header-section-number">1.3.7.3</span> Vergleich und Interpretation</a></li>
+  </ul></li>
+  <li><a href="#beispiel-8-co2-überwachung-garage" id="toc-beispiel-8-co2-überwachung-garage" class="nav-link" data-scroll-target="#beispiel-8-co2-überwachung-garage"><span class="header-section-number">1.3.8</span> Beispiel 8: CO2 Überwachung Garage</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -343,11 +415,95 @@ window.Quarto = {
 </header>
 
 
-<section id="von-der-wahrheitstabelle-zur-booleschen-gleichung" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.1</span> Von der Wahrheitstabelle zur Booleschen Gleichung</h2>
+<section id="grundregeln-der-booleschen-algebra" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="grundregeln-der-booleschen-algebra"><span class="header-section-number">1.1</span> Grundregeln der Booleschen Algebra</h2>
+<section id="basis-operationen" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="basis-operationen"><span class="header-section-number">1.1.1</span> Basis-Operationen</h3>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Regel</th>
+<th>UND (AND)</th>
+<th>ODER (OR)</th>
+<th>NICHT (NOT)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Doppeltes Komplement</td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\overline{\overline{A}} = A\)</span></td>
+</tr>
+<tr class="even">
+<td>Identität</td>
+<td><span class="math inline">\(A \land 1 = A\)</span></td>
+<td><span class="math inline">\(A \lor 0 = A\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Null-Element</td>
+<td><span class="math inline">\(A \land 0 = 0\)</span></td>
+<td><span class="math inline">\(A \lor 1 = 1\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Idempotenz</td>
+<td><span class="math inline">\(A \land A = A\)</span></td>
+<td><span class="math inline">\(A \lor A = A\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Absorption</td>
+<td><span class="math inline">\(A \land (A \lor B) = A\)</span></td>
+<td><span class="math inline">\(A \lor (A \land B) = A\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Komplementarität</td>
+<td><span class="math inline">\(A \land \bar{A} = 0\)</span></td>
+<td><span class="math inline">\(A \lor \bar{A} = 1\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Kommutativgesetz</td>
+<td><span class="math inline">\(A \land B = B \land A\)</span></td>
+<td><span class="math inline">\(A \lor B = B \lor A\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Assoziativgesetz</td>
+<td><span class="math inline">\((A \land B) \land C = A \land (B \land C)\)</span></td>
+<td><span class="math inline">\((A \lor B) \lor C = A \lor (B \lor C)\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Distributivgesetz</td>
+<td><span class="math inline">\(A \land (B \lor C) = (A \land B) \lor (A \land C)\)</span></td>
+<td><span class="math inline">\(A \lor (B \land C) = (A \lor B) \land (A \lor C)\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>De Morgans Regeln</td>
+<td><span class="math inline">\(\overline{A \land B} = \bar{A} \lor \bar{B}\)</span></td>
+<td><span class="math inline">\(\overline{A \lor B} = \bar{A} \land \bar{B}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="von-der-wahrheitstabelle-zur-booleschen-gleichung" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="von-der-wahrheitstabelle-zur-booleschen-gleichung"><span class="header-section-number">1.2</span> Von der Wahrheitstabelle zur Booleschen Gleichung</h2>
 <p>Es soll mittels Boolescher Algebra die einfachste Boolesche Gleichung aus der Wahrheitstabelle ermittelt werden.</p>
-<section id="wahrheitstabelle" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="wahrheitstabelle"><span class="header-section-number">1.1.1</span> Wahrheitstabelle</h3>
+<section id="wahrheitstabelle" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="wahrheitstabelle"><span class="header-section-number">1.2.1</span> Wahrheitstabelle</h3>
 <table class="table">
 <colgroup>
 <col style="width: 7%">
@@ -535,8 +691,8 @@ window.Quarto = {
 </tbody>
 </table>
 </section>
-<section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.1.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
+<section id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="vereinfachen-durch-vergleich-von-thermen-mit-nur-einem-unterschied"><span class="header-section-number">1.2.2</span> Vereinfachen durch Vergleich von Thermen mit nur einem Unterschied</h3>
 <p>Da gilt <span class="math inline">\(A \lor A = A\)</span> (Idempotenzgesetz der Disjunktion) können Therme mehrfach verwendet werden. Es muss nur so lange verglichen werden, bis alle Terme einmal benutzt wurden! Gibt es zu einem Term keinen weiteren Term mit nur einer abweichenden Negation, so ist dieser vollständig in das Ergebnis zu übernehmen.</p>
 <p><span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land \bar{C} \land {B} \land   {A}) = \bar{D} \land \bar{C} \land   {A}\)</span> x<br>
 <span class="math inline">\((\bar{D} \land \bar{C} \land \bar{B} \land   {A}) \lor (\bar{D} \land {C} \land \bar{B} \land   {A}) = \bar{D}  \land \bar{B} \land   {A}\)</span> y<br>
@@ -554,22 +710,22 @@ window.Quarto = {
 <p>Das Ergebnis:<br>
 <span id="eq-bool2"><span class="math display">\[Y =  (\bar{C}  \land   {A}) \lor (\bar{D} \land   {A})  \lor (\bar{D} \land {C} \land {B}) \lor ({D} \land {C} \land \bar{B}) \tag{1.1}\]</span></span></p>
 </section>
-<section id="überprüfung" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="überprüfung"><span class="header-section-number">1.1.3</span> Überprüfung</h3>
+<section id="überprüfung" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="überprüfung"><span class="header-section-number">1.2.3</span> Überprüfung</h3>
 <p>Zur Überprüfung wird das Ergebnis mittels Sympy berechnet.</p>
 <div class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.logic <span class="im">import</span> SOPform</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.logic.boolalg <span class="im">import</span> to_cnf, to_dnf</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, Latex</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'Wahrheitstabelle.csv'</span>,sep<span class="op">=</span><span class="st">';'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>display(Markdown(df.to_markdown(index<span class="op">=</span><span class="va">False</span>, colalign <span class="op">=</span><span class="st">'left'</span>)))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>display(Markdown(df.to_markdown(index<span class="op">=</span><span class="va">False</span>, colalign <span class="op">=</span><span class="st">'left'</span>)))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="tbl-wahrheitstabelle" class="cell quarto-float anchored" data-execution_count="2">
+<div id="tbl-wahrheitstabelle" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-wahrheitstabelle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display cell-output-markdown">
@@ -719,10 +875,10 @@ Hinweis
 <p><span class="math inline">\(\bar{A} = \neg A\)</span></p>
 </div>
 </div>
-<div id="505f44df" class="cell" data-execution_count="3">
+<div id="f43293a4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> MySymbol(<span class="st">'C'</span>,description<span class="op">=</span><span class="st">'C Eingang'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> MySymbol(<span class="st">'B'</span>,description<span class="op">=</span><span class="st">'B Eingang'</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> MySymbol(<span class="st">'A'</span>,description<span class="op">=</span><span class="st">'A Eingang'</span>)</span>
@@ -736,7 +892,7 @@ Hinweis
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_equation(Yeq,label<span class="op">=</span><span class="st">'eq-Yeq'</span>)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_description(Yeq.free_symbols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>QBookHelpers.print_description(Yeq.free_symbols)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-Yeq"><span class="math display">\[
@@ -744,13 +900,13 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 \tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(B\)</span> … B Eingang</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(C\)</span> … C Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(A\)</span> … A Eingang</p>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(B\)</span> … B Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(D\)</span> … D Eingang</p>
@@ -761,8 +917,8 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 </div>
 <p><a href="#eq-bool2" class="quarto-xref">Gleichung&nbsp;<span>1.1</span></a> und <a href="#eq-Yeq" class="quarto-xref">Gleichung&nbsp;<span>1.2</span></a> stimmen überein, daher ist davon auszugehen, dass das Ergebnis stimmt.</p>
 </section>
-<section id="schaltung" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4" class="anchored" data-anchor-id="schaltung"><span class="header-section-number">1.1.4</span> Schaltung</h3>
+<section id="schaltung" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="schaltung"><span class="header-section-number">1.2.4</span> Schaltung</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -779,16 +935,16 @@ Hinweis
 <div id="cell-fig-SchaltungS1" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> schemdraw.parsing <span class="im">import</span> logicparse</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> schemdraw.parsing <span class="im">import</span> logicparse</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#https://schemdraw.readthedocs.io/en/latest/elements/logic.html</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Yeqstring <span class="op">=</span> <span class="bu">str</span>(Yeq.rhs).replace(<span class="st">'&amp;'</span>,<span class="st">'and'</span>).replace(<span class="st">'|'</span>,<span class="st">'or'</span>).replace(<span class="st">'~'</span>,<span class="st">'not '</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#print(Yeqstring)</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Yeqstring <span class="op">=</span> <span class="st">"(((A and not C) or (A and not D)) or (C and D and not B)) or (B and C and not D)"</span> <span class="co">#Manuell editiert für besseres grafische Ergebnis</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>display(logicparse(Yeqstring, outlabel<span class="op">=</span><span class="st">'$Y$'</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>display(logicparse(Yeqstring, outlabel<span class="op">=</span><span class="st">'$Y$'</span>))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-schaltungs1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-schaltungs1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-schaltungs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="01.05_BoolscheAlgebra_files/figure-html/fig-schaltungs1-output-1.svg" class="img-fluid figure-img">
@@ -800,6 +956,434 @@ Abbildung&nbsp;1.1: Logik Schaltung für Ausgang Y
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="beispiele-zur-booleschen-algebra" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="beispiele-zur-booleschen-algebra"><span class="header-section-number">1.3</span> Beispiele zur Booleschen Algebra</h2>
+<section id="beispiel-1-vereinfachung-mit-distributivgesetz" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="beispiel-1-vereinfachung-mit-distributivgesetz"><span class="header-section-number">1.3.1</span> Beispiel 1: Vereinfachung mit Distributivgesetz</h3>
+<section id="aufgabe" class="level4" data-number="1.3.1.1">
+<h4 data-number="1.3.1.1" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">1.3.1.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie folgende Boolesche Gleichung: <span class="math display">\[Y = A \land B \lor A \land C\]</span></p>
+</section>
+<section id="lösung" class="level4" data-number="1.3.1.2">
+<h4 data-number="1.3.1.2" class="anchored" data-anchor-id="lösung"><span class="header-section-number">1.3.1.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Anwendung des Distributivgesetzes<br>
+<span class="math display">\[Y = A \land B \lor A \land C = A \land (B \lor C)\]</span></p>
+<p>Das Distributivgesetz der Konjunktion über die Disjunktion besagt: <span class="math display">\[A \land (B \lor C) = (A \land B) \lor (A \land C)\]</span></p>
+<p>Daher können wir dies in umgekehrter Richtung anwenden und das gemeinsame <span class="math inline">\(A\)</span> ausklammern.</p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \land (B \lor C)\]</span></p>
+</section>
+<section id="interpretation" class="level4" data-number="1.3.1.3">
+<h4 data-number="1.3.1.3" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">1.3.1.3</span> Interpretation</h4>
+<ul>
+<li><strong>Vorher:</strong> AND von A und B, ODER AND von A und C (benötigt 2 AND-Gatter und 1 OR-Gatter)</li>
+<li><strong>Nachher:</strong> A AND (B OR C) (benötigt 1 OR-Gatter und 1 AND-Gatter)<br>
+→ Vereinfachung: Weniger Gatter erforderlich</li>
+</ul>
+</section>
+</section>
+<section id="beispiel-2-vereinfachung-mit-absorption-und-komplementarität" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="beispiel-2-vereinfachung-mit-absorption-und-komplementarität"><span class="header-section-number">1.3.2</span> Beispiel 2: Vereinfachung mit Absorption und Komplementarität</h3>
+<section id="aufgabe-1" class="level4" data-number="1.3.2.1">
+<h4 data-number="1.3.2.1" class="anchored" data-anchor-id="aufgabe-1"><span class="header-section-number">1.3.2.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie folgende Boolesche Gleichung: <span class="math display">\[Y = (A \lor B) \land (A \lor \bar{B})\]</span></p>
+</section>
+<section id="lösung-1" class="level4" data-number="1.3.2.2">
+<h4 data-number="1.3.2.2" class="anchored" data-anchor-id="lösung-1"><span class="header-section-number">1.3.2.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Anwendung des Distributivgesetzes (OR über AND)<br>
+<span class="math display">\[Y = A \lor (B \land \bar{B})\]</span></p>
+<p><strong>Schritt 2:</strong> Anwendung der Komplementarität<br>
+Da <span class="math inline">\(B \land \bar{B} = 0\)</span> (Komplementarität): <span class="math display">\[Y = A \lor 0\]</span></p>
+<p><strong>Schritt 3:</strong> Anwendung der Identität<br>
+Da <span class="math inline">\(A \lor 0 = A\)</span> (Identität): <span class="math display">\[Y = A\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A\]</span></p>
+</section>
+<section id="interpretation-1" class="level4" data-number="1.3.2.3">
+<h4 data-number="1.3.2.3" class="anchored" data-anchor-id="interpretation-1"><span class="header-section-number">1.3.2.3</span> Interpretation</h4>
+<p>Die gesamte Schaltung reduziert sich zu einem einfachen Draht, der das Signal A durchleitet!</p>
+</section>
+</section>
+<section id="beispiel-3-de-morgans-regeln" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="beispiel-3-de-morgans-regeln"><span class="header-section-number">1.3.3</span> Beispiel 3: De Morgans Regeln</h3>
+<section id="aufgabe-2" class="level4" data-number="1.3.3.1">
+<h4 data-number="1.3.3.1" class="anchored" data-anchor-id="aufgabe-2"><span class="header-section-number">1.3.3.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie unter Verwendung von De Morgans Regeln: <span class="math display">\[Y = \overline{A \land B \land C}\]</span></p>
+</section>
+<section id="lösung-2" class="level4" data-number="1.3.3.2">
+<h4 data-number="1.3.3.2" class="anchored" data-anchor-id="lösung-2"><span class="header-section-number">1.3.3.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Anwendung von De Morgans Regel für AND<br>
+<span class="math display">\[Y = \overline{A \land B \land C} = \bar{A} \lor \bar{B} \lor \bar{C}\]</span></p>
+<p>De Morgans Regel besagt: <span class="math inline">\(\overline{A \land B} = \bar{A} \lor \bar{B}\)</span></p>
+<p>Diese kann auf mehrere Variablen erweitert werden: Das NOT einer AND-Operation ist gleich der OR-Operation der negierten Eingänge.</p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = \bar{A} \lor \bar{B} \lor \bar{C}\]</span></p>
+</section>
+<section id="interpretation-2" class="level4" data-number="1.3.3.3">
+<h4 data-number="1.3.3.3" class="anchored" data-anchor-id="interpretation-2"><span class="header-section-number">1.3.3.3</span> Interpretation</h4>
+<ul>
+<li><strong>Vorher:</strong> Ein NAND-Gatter mit 3 Eingängen</li>
+<li><strong>Nachher:</strong> Drei NOT-Gatter und ein OR-Gatter mit 3 Eingängen<br>
+→ Diese Umwandlung ist wichtig für Implementierungen, bei denen nur bestimmte Gattertypen verfügbar sind</li>
+</ul>
+</section>
+</section>
+<section id="beispiel-4-komplexe-vereinfachung" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="beispiel-4-komplexe-vereinfachung"><span class="header-section-number">1.3.4</span> Beispiel 4: Komplexe Vereinfachung</h3>
+<section id="aufgabe-3" class="level4" data-number="1.3.4.1">
+<h4 data-number="1.3.4.1" class="anchored" data-anchor-id="aufgabe-3"><span class="header-section-number">1.3.4.1</span> Aufgabe</h4>
+<p>Vereinfachen Sie: <span class="math display">\[Y = A \land B \lor A \land \bar{B} \lor \bar{A} \land B\]</span></p>
+</section>
+<section id="lösung-3" class="level4" data-number="1.3.4.2">
+<h4 data-number="1.3.4.2" class="anchored" data-anchor-id="lösung-3"><span class="header-section-number">1.3.4.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Gruppieren Sie die ersten zwei Terme (Distributivgesetz)<br>
+<span class="math display">\[Y = A \land (B \lor \bar{B}) \lor \bar{A} \land B\]</span></p>
+<p><strong>Schritt 2:</strong> Komplementarität anwenden<br>
+<span class="math display">\[Y = A \land 1 \lor \bar{A} \land B\]</span></p>
+<p><strong>Schritt 3:</strong> Identität anwenden<br>
+<span class="math display">\[Y = A \lor \bar{A} \land B\]</span></p>
+<p><strong>Schritt 4:</strong> Absorption anwenden<br>
+Das Absorptionsgesetz besagt: <span class="math inline">\(A \lor \bar{A} \land B = A \lor B\)</span></p>
+<p><span class="math display">\[Y = A \lor B\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \lor B\]</span></p>
+</section>
+<section id="wahrheitstabelle-zur-überprüfung" class="level4" data-number="1.3.4.3">
+<h4 data-number="1.3.4.3" class="anchored" data-anchor-id="wahrheitstabelle-zur-überprüfung"><span class="header-section-number">1.3.4.3</span> Wahrheitstabelle zur Überprüfung</h4>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 16%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 15%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th><span class="math inline">\(A \land B\)</span></th>
+<th><span class="math inline">\(A \land \bar{B}\)</span></th>
+<th><span class="math inline">\(\bar{A} \land B\)</span></th>
+<th>Original Y</th>
+<th><span class="math inline">\(A \lor B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Wie zu sehen ist, sind die Ergebnisse identisch - die Vereinfachung ist korrekt!</p>
+</section>
+</section>
+<section id="beispiel-5-praktische-anwendung---fahrstuhl-logik" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="beispiel-5-praktische-anwendung---fahrstuhl-logik"><span class="header-section-number">1.3.5</span> Beispiel 5: Praktische Anwendung - Fahrstuhl-Logik</h3>
+<section id="aufgabe-4" class="level4" data-number="1.3.5.1">
+<h4 data-number="1.3.5.1" class="anchored" data-anchor-id="aufgabe-4"><span class="header-section-number">1.3.5.1</span> Aufgabe</h4>
+<p>Ein Fahrstuhl darf sich nur bewegen, wenn: - <strong>Fall 1:</strong> Der Notfallknopf NICHT gedrückt ist ODER - <strong>Fall 2:</strong> Der Notfallknopf gedrückt ist UND die Türe offen ist (sollte nicht passieren, aber sicherheitshalber verhindert)</p>
+<p>Gegeben: - <span class="math inline">\(N\)</span> = Notfallknopf gedrückt (1 = gedrückt) - <span class="math inline">\(T\)</span> = Türe offen (1 = offen) - <span class="math inline">\(B\)</span> = Bewegung erlaubt (1 = ja)</p>
+<p>Die Logik: <span class="math inline">\(B = \bar{N} \lor (N \land T)\)</span></p>
+<p>Vereinfachen Sie diese Gleichung!</p>
+</section>
+<section id="lösung-4" class="level4" data-number="1.3.5.2">
+<h4 data-number="1.3.5.2" class="anchored" data-anchor-id="lösung-4"><span class="header-section-number">1.3.5.2</span> Lösung</h4>
+<p><strong>Schritt 1:</strong> Absorption-ähnliche Vereinfachung<br>
+<span class="math display">\[B = \bar{N} \lor (N \land T)\]</span></p>
+<p>Wir wenden folgende Logik an: Wenn <span class="math inline">\(\bar{N}\)</span> wahr ist, ist der gesamte OR-Term bereits erfüllt, daher:</p>
+<p><span class="math display">\[B = \bar{N} \lor T\]</span></p>
+<p>Dies ist eine spezielle Form des Absorptionsgesetzes.</p>
+<p><strong>Verifikation mittels Wahrheitstabelle:</strong></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>N</th>
+<th>T</th>
+<th><span class="math inline">\(\bar{N}\)</span></th>
+<th><span class="math inline">\(N \land T\)</span></th>
+<th>Original</th>
+<th><span class="math inline">\(\bar{N} \lor T\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ergebnis:</strong> <span class="math display">\[B = \bar{N} \lor T\]</span></p>
+</section>
+<section id="interpretation-3" class="level4" data-number="1.3.5.3">
+<h4 data-number="1.3.5.3" class="anchored" data-anchor-id="interpretation-3"><span class="header-section-number">1.3.5.3</span> Interpretation</h4>
+<p>Die Bewegung ist erlaubt, wenn entweder der Notfallknopf nicht gedrückt ist ODER die Türe offen ist. Dies ist logischer und sicherer als die ursprüngliche Formulierung.</p>
+</section>
+</section>
+<section id="beispiel-6-disjunktive-normalform-dnf-mit-mintermen" class="level3" data-number="1.3.6">
+<h3 data-number="1.3.6" class="anchored" data-anchor-id="beispiel-6-disjunktive-normalform-dnf-mit-mintermen"><span class="header-section-number">1.3.6</span> Beispiel 6: Disjunktive Normalform (DNF) mit Mintermen</h3>
+<section id="aufgabe-5" class="level4" data-number="1.3.6.1">
+<h4 data-number="1.3.6.1" class="anchored" data-anchor-id="aufgabe-5"><span class="header-section-number">1.3.6.1</span> Aufgabe</h4>
+<p>Gegeben ist folgende Wahrheitstabelle. Erstellen Sie die DNF und vereinfachen Sie diese mit Boolescher Algebra:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>Y</th>
+<th>Minterm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(\bar{A} \land B\)</span></td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><span class="math inline">\(A \land \bar{B}\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><span class="math inline">\(A \land B\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lösung-5" class="level4" data-number="1.3.6.2">
+<h4 data-number="1.3.6.2" class="anchored" data-anchor-id="lösung-5"><span class="header-section-number">1.3.6.2</span> Lösung</h4>
+<p><strong>Schritt 1: Minterme identifizieren</strong><br>
+Ein <strong>Minterm</strong> ist eine AND-Verknüpfung aller Variablen. Die Variable wird negiert, wenn sie 0 ist.</p>
+<p>Aus der Tabelle sehen wir die Minterme für alle Zeilen mit Y = 1.</p>
+<p><strong>Schritt 2: DNF aufstellen</strong><br>
+Die <strong>Disjunktive Normalform (DNF)</strong> ist die OR-Verknüpfung aller Minterme:</p>
+<p><span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor (A \land \bar{B}) \lor (A \land B)\]</span></p>
+<p><strong>Schritt 3: Vereinfachung mit Boolescher Algebra</strong><br>
+<span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor (A \land \bar{B}) \lor (A \land B)\]</span></p>
+<p>Wir können das Distributivgesetz auf die letzten beiden Terme anwenden: <span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor A \land (\bar{B} \lor B)\]</span></p>
+<p>Komplementarität: <span class="math inline">\(\bar{B} \lor B = 1\)</span> <span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor A \land 1\]</span></p>
+<p>Identität: <span class="math inline">\(A \land 1 = A\)</span> <span class="math display">\[Y_{DNF} = (\bar{A} \land B) \lor A\]</span></p>
+<p>Absorption: <span class="math inline">\((\bar{A} \land B) \lor A = A \lor B\)</span> <span class="math display">\[Y_{DNF} = A \lor B\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \lor B\]</span></p>
+</section>
+</section>
+<section id="beispiel-7-konjunktive-normalform-knf-mit-maxtermen" class="level3" data-number="1.3.7">
+<h3 data-number="1.3.7" class="anchored" data-anchor-id="beispiel-7-konjunktive-normalform-knf-mit-maxtermen"><span class="header-section-number">1.3.7</span> Beispiel 7: Konjunktive Normalform (KNF) mit Maxtermen</h3>
+<section id="aufgabe-6" class="level4" data-number="1.3.7.1">
+<h4 data-number="1.3.7.1" class="anchored" data-anchor-id="aufgabe-6"><span class="header-section-number">1.3.7.1</span> Aufgabe</h4>
+<p>Verwenden Sie dieselbe Wahrheitstabelle und erstellen Sie die KNF. Vereinfachen Sie und zeigen Sie, dass das Ergebnis identisch zur DNF ist:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>Y</th>
+<th>Maxterm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><span class="math inline">\(A \lor B\)</span></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lösung-6" class="level4" data-number="1.3.7.2">
+<h4 data-number="1.3.7.2" class="anchored" data-anchor-id="lösung-6"><span class="header-section-number">1.3.7.2</span> Lösung</h4>
+<p><strong>Schritt 1: Maxterme identifizieren</strong><br>
+Ein <strong>Maxterm</strong> ist eine OR-Verknüpfung aller Variablen. Die Variable wird negiert, wenn sie 1 ist.</p>
+<p>Aus der Tabelle sehen wir den Maxterm für die Zeile mit Y = 0.</p>
+<p><strong>Schritt 2: KNF aufstellen</strong><br>
+Die <strong>Konjunktive Normalform (KNF)</strong> ist die AND-Verknüpfung aller Maxterme:</p>
+<p><span class="math display">\[Y_{KNF} = A \lor B\]</span></p>
+<p><strong>Ergebnis:</strong> <span class="math display">\[Y = A \lor B\]</span></p>
+</section>
+<section id="vergleich-und-interpretation" class="level4" data-number="1.3.7.3">
+<h4 data-number="1.3.7.3" class="anchored" data-anchor-id="vergleich-und-interpretation"><span class="header-section-number">1.3.7.3</span> Vergleich und Interpretation</h4>
+<p>Beide Normalformen führen zum <strong>gleichen Ergebnis</strong>:</p>
+<p><span class="math display">\[Y_{DNF} = A \lor B\]</span> <span class="math display">\[Y_{KNF} = A \lor B\]</span></p>
+<p><strong>Wahrheitstabelle zur Verifikation:</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th><span class="math inline">\(\bar{A} \land B\)</span></th>
+<th><span class="math inline">\(A \land \bar{B}\)</span></th>
+<th><span class="math inline">\(A \land B\)</span></th>
+<th>DNF (Original)</th>
+<th><span class="math inline">\(A \lor B\)</span></th>
+<th>Vereinfacht</th>
+<th>KNF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Erkenntnisse:</strong></p>
+<ol type="1">
+<li><strong>DNF</strong> verwendet Minterme (Y=1 Zeilen) → Sum of Products</li>
+<li><strong>KNF</strong> verwendet Maxterme (Y=0 Zeilen) → Product of Sums<br>
+</li>
+<li>Beide Normalformen beschreiben <strong>dieselbe Funktion</strong></li>
+<li>Die KNF war in diesem Fall bereits minimal, während die DNF vereinfacht werden musste</li>
+<li>Je nachdem, ob mehr 1en oder 0en in der Wahrheitstabelle sind, kann eine Form einfacher sein</li>
+</ol>
+<p><strong>Faustregel:</strong> - Viele 1en in Wahrheitstabelle → KNF ist kürzer (weniger Maxterme) - Viele 0en in Wahrheitstabelle → DNF ist kürzer (weniger Minterme)</p>
+</section>
+</section>
+<section id="beispiel-8-co2-überwachung-garage" class="level3" data-number="1.3.8">
+<h3 data-number="1.3.8" class="anchored" data-anchor-id="beispiel-8-co2-überwachung-garage"><span class="header-section-number">1.3.8</span> Beispiel 8: CO2 Überwachung Garage</h3>
+<!-- {{< include 01.05.01_Garagen_CO2_Ueberwachung.qmd >}} -->
 
 
 </section>
@@ -807,43 +1391,58 @@ Abbildung&nbsp;1.1: Logik Schaltung für Ausgang Y
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -851,162 +1450,184 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Kopiert");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Kopiert");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1014,185 +1635,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../index.html" class="pagination-link" aria-label="Willkommen zum Skript">

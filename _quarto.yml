@@ -22,6 +22,7 @@ book:
         - GET/KnotenSpannungsAnalyse.qmd
     - part: 2. Jahrgang
       chapters:
+        - Logik/SequentielleLogik/02.01_SequentielleLogik.qmd
         - GET/AC/Wechselstrom.qmd
 
     - part: 3. Jahrgang
@@ -33,9 +34,11 @@ book:
         - Projekte/04.01_Leistungsverstaerker.qmd
         - Projekte/04.02_H-Bruecke.qmd
         - Projekte/04.03_Oszillator.qmd
+        - Projekte/04.04_BuckBoost.qmd
     - part: 5. Jahrgang
       chapters:
         - Projekte/05.01_VariableStateFilter.qmd
+        - OPV/01_IntroOPV.qmd
 
 #    - references.qmd
 

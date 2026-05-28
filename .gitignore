@@ -9,3 +9,5 @@ Projekte/Oszillator/Transient AnalysisPKanal.csv
 Projekte/Oszillator/Transient Analysis.csv
 bfg.jar
 /.quarto/
+
+**/*.quarto_ipynb

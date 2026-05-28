@@ -1,5 +1,25 @@
 # Boolesche Algebra  
 {{< include ../../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+
+## Grundregeln der Booleschen Algebra
+
+### Basis-Operationen
+
+| Regel | UND (AND) | ODER (OR) | NICHT (NOT) |
+|-------|-----------|-----------|------------|
+| Doppeltes Komplement | | | $\overline{\overline{A}} = A$ |
+| Identität | $A \land 1 = A$ | $A \lor 0 = A$ | |
+| Null-Element | $A \land 0 = 0$ | $A \lor 1 = 1$ | |
+| Idempotenz | $A \land A = A$ | $A \lor A = A$ | |
+| Absorption | $A \land (A \lor B) = A$ | $A \lor (A \land B) = A$ | |
+| Komplementarität | $A \land \bar{A} = 0$ | $A \lor \bar{A} = 1$ | |
+| Kommutativgesetz | $A \land B = B \land A$ | $A \lor B = B \lor A$ | |
+| Assoziativgesetz | $(A \land B) \land C = A \land (B \land C)$ | $(A \lor B) \lor C = A \lor (B \lor C)$ | |
+| Distributivgesetz | $A \land (B \lor C) = (A \land B) \lor (A \land C)$ | $A \lor (B \land C) = (A \lor B) \land (A \lor C)$ | |
+| De Morgans Regeln | $\overline{A \land B} = \bar{A} \lor \bar{B}$ | $\overline{A \lor B} = \bar{A} \land \bar{B}$ | |
+
+
 ## Von der Wahrheitstabelle zur Booleschen Gleichung  
 Es soll mittels Boolescher Algebra die einfachste Boolesche Gleichung aus der Wahrheitstabelle ermittelt werden. 
 
@@ -118,3 +138,264 @@ Yeqstring = "(((A and not C) or (A and not D)) or (C and D and not B)) or (B and
 display(logicparse(Yeqstring, outlabel='$Y$'))
 
 ```
+
+## Beispiele zur Booleschen Algebra 
+{{< include ../../../../../Common/QuartoBookHelpers/QuartoBookHelpers.qmd >}}
+
+### Beispiel 1: Vereinfachung mit Distributivgesetz
+
+#### Aufgabe
+Vereinfachen Sie folgende Boolesche Gleichung:
+$$Y = A \land B \lor A \land C$$
+
+#### Lösung
+
+**Schritt 1:** Anwendung des Distributivgesetzes  
+$$Y = A \land B \lor A \land C = A \land (B \lor C)$$
+
+Das Distributivgesetz der Konjunktion über die Disjunktion besagt:
+$$A \land (B \lor C) = (A \land B) \lor (A \land C)$$
+
+Daher können wir dies in umgekehrter Richtung anwenden und das gemeinsame $A$ ausklammern.
+
+**Ergebnis:**
+$$Y = A \land (B \lor C)$$
+
+#### Interpretation
+- **Vorher:** AND von A und B, ODER AND von A und C (benötigt 2 AND-Gatter und 1 OR-Gatter)
+- **Nachher:** A AND (B OR C) (benötigt 1 OR-Gatter und 1 AND-Gatter)  
+→ Vereinfachung: Weniger Gatter erforderlich
+
+
+### Beispiel 2: Vereinfachung mit Absorption und Komplementarität
+
+#### Aufgabe
+Vereinfachen Sie folgende Boolesche Gleichung:
+$$Y = (A \lor B) \land (A \lor \bar{B})$$
+
+#### Lösung
+
+**Schritt 1:** Anwendung des Distributivgesetzes (OR über AND)  
+$$Y = A \lor (B \land \bar{B})$$
+
+**Schritt 2:** Anwendung der Komplementarität  
+Da $B \land \bar{B} = 0$ (Komplementarität):
+$$Y = A \lor 0$$
+
+**Schritt 3:** Anwendung der Identität  
+Da $A \lor 0 = A$ (Identität):
+$$Y = A$$
+
+**Ergebnis:**
+$$Y = A$$
+
+#### Interpretation
+Die gesamte Schaltung reduziert sich zu einem einfachen Draht, der das Signal A durchleitet!
+
+
+### Beispiel 3: De Morgans Regeln
+
+#### Aufgabe
+Vereinfachen Sie unter Verwendung von De Morgans Regeln:
+$$Y = \overline{A \land B \land C}$$
+
+#### Lösung
+
+**Schritt 1:** Anwendung von De Morgans Regel für AND  
+$$Y = \overline{A \land B \land C} = \bar{A} \lor \bar{B} \lor \bar{C}$$
+
+De Morgans Regel besagt: $\overline{A \land B} = \bar{A} \lor \bar{B}$
+
+Diese kann auf mehrere Variablen erweitert werden: Das NOT einer AND-Operation ist gleich der OR-Operation der negierten Eingänge.
+
+**Ergebnis:**
+$$Y = \bar{A} \lor \bar{B} \lor \bar{C}$$
+
+#### Interpretation
+- **Vorher:** Ein NAND-Gatter mit 3 Eingängen
+- **Nachher:** Drei NOT-Gatter und ein OR-Gatter mit 3 Eingängen  
+→ Diese Umwandlung ist wichtig für Implementierungen, bei denen nur bestimmte Gattertypen verfügbar sind
+
+
+### Beispiel 4: Komplexe Vereinfachung
+
+#### Aufgabe
+Vereinfachen Sie:
+$$Y = A \land B \lor A \land \bar{B} \lor \bar{A} \land B$$
+
+#### Lösung
+
+**Schritt 1:** Gruppieren Sie die ersten zwei Terme (Distributivgesetz)  
+$$Y = A \land (B \lor \bar{B}) \lor \bar{A} \land B$$
+
+**Schritt 2:** Komplementarität anwenden  
+$$Y = A \land 1 \lor \bar{A} \land B$$
+
+**Schritt 3:** Identität anwenden  
+$$Y = A \lor \bar{A} \land B$$
+
+**Schritt 4:** Absorption anwenden  
+Das Absorptionsgesetz besagt: $A \lor \bar{A} \land B = A \lor B$
+
+$$Y = A \lor B$$
+
+**Ergebnis:**
+$$Y = A \lor B$$
+
+#### Wahrheitstabelle zur Überprüfung
+
+| A | B | $A \land B$ | $A \land \bar{B}$ | $\bar{A} \land B$ | Original Y | $A \lor B$ |
+|---|---|-------------|------------------|------------------|------------|-----------|
+| 0 | 0 | 0           | 0                | 0                | 0          | 0         |
+| 0 | 1 | 0           | 0                | 1                | 1          | 1         |
+| 1 | 0 | 0           | 1                | 0                | 1          | 1         |
+| 1 | 1 | 1           | 0                | 0                | 1          | 1         |
+
+Wie zu sehen ist, sind die Ergebnisse identisch - die Vereinfachung ist korrekt!
+
+
+### Beispiel 5: Praktische Anwendung - Fahrstuhl-Logik
+
+#### Aufgabe
+Ein Fahrstuhl darf sich nur bewegen, wenn:
+- **Fall 1:** Der Notfallknopf NICHT gedrückt ist ODER
+- **Fall 2:** Der Notfallknopf gedrückt ist UND die Türe offen ist (sollte nicht passieren, aber sicherheitshalber verhindert)
+
+Gegeben:
+- $N$ = Notfallknopf gedrückt (1 = gedrückt)
+- $T$ = Türe offen (1 = offen)
+- $B$ = Bewegung erlaubt (1 = ja)
+
+Die Logik: $B = \bar{N} \lor (N \land T)$
+
+Vereinfachen Sie diese Gleichung!
+
+#### Lösung
+
+**Schritt 1:** Absorption-ähnliche Vereinfachung  
+$$B = \bar{N} \lor (N \land T)$$
+
+Wir wenden folgende Logik an: Wenn $\bar{N}$ wahr ist, ist der gesamte OR-Term bereits erfüllt, daher:
+
+$$B = \bar{N} \lor T$$
+
+Dies ist eine spezielle Form des Absorptionsgesetzes.
+
+**Verifikation mittels Wahrheitstabelle:**
+
+| N | T | $\bar{N}$ | $N \land T$ | Original | $\bar{N} \lor T$ |
+|---|---|----------|------------|----------|-----------------|
+| 0 | 0 | 1        | 0          | 1        | 1               |
+| 0 | 1 | 1        | 0          | 1        | 1               |
+| 1 | 0 | 0        | 0          | 0        | 0               |
+| 1 | 1 | 0        | 1          | 1        | 1               |
+
+**Ergebnis:**
+$$B = \bar{N} \lor T$$
+
+#### Interpretation
+Die Bewegung ist erlaubt, wenn entweder der Notfallknopf nicht gedrückt ist ODER die Türe offen ist. Dies ist logischer und sicherer als die ursprüngliche Formulierung.
+
+
+### Beispiel 6: Disjunktive Normalform (DNF) mit Mintermen
+
+#### Aufgabe
+Gegeben ist folgende Wahrheitstabelle. Erstellen Sie die DNF und vereinfachen Sie diese mit Boolescher Algebra:
+
+| A | B | Y | Minterm |
+|---|---|---|----------|
+| 0 | 0 | 0 | \- |
+| 0 | 1 | 1 | $\bar{A} \land B$ |
+| 1 | 0 | 1 | $A \land \bar{B}$ |
+| 1 | 1 | 1 | $A \land B$ |
+
+#### Lösung
+
+**Schritt 1: Minterme identifizieren**  
+Ein **Minterm** ist eine AND-Verknüpfung aller Variablen. Die Variable wird negiert, wenn sie 0 ist.
+
+Aus der Tabelle sehen wir die Minterme für alle Zeilen mit Y = 1.
+
+**Schritt 2: DNF aufstellen**  
+Die **Disjunktive Normalform (DNF)** ist die OR-Verknüpfung aller Minterme:
+
+$$Y_{DNF} = (\bar{A} \land B) \lor (A \land \bar{B}) \lor (A \land B)$$
+
+**Schritt 3: Vereinfachung mit Boolescher Algebra**  
+$$Y_{DNF} = (\bar{A} \land B) \lor (A \land \bar{B}) \lor (A \land B)$$
+
+Wir können das Distributivgesetz auf die letzten beiden Terme anwenden:
+$$Y_{DNF} = (\bar{A} \land B) \lor A \land (\bar{B} \lor B)$$
+
+Komplementarität: $\bar{B} \lor B = 1$
+$$Y_{DNF} = (\bar{A} \land B) \lor A \land 1$$
+
+Identität: $A \land 1 = A$
+$$Y_{DNF} = (\bar{A} \land B) \lor A$$
+
+Absorption: $(\bar{A} \land B) \lor A = A \lor B$
+$$Y_{DNF} = A \lor B$$
+
+**Ergebnis:**
+$$Y = A \lor B$$
+
+
+### Beispiel 7: Konjunktive Normalform (KNF) mit Maxtermen
+
+#### Aufgabe
+Verwenden Sie dieselbe Wahrheitstabelle und erstellen Sie die KNF. Vereinfachen Sie und zeigen Sie, dass das Ergebnis identisch zur DNF ist:
+
+| A | B | Y | Maxterm |
+|---|---|---|----------|
+| 0 | 0 | 0 | $A \lor B$ |
+| 0 | 1 | 1 | \- |
+| 1 | 0 | 1 | \- |
+| 1 | 1 | 1 | \- |
+
+#### Lösung
+
+**Schritt 1: Maxterme identifizieren**  
+Ein **Maxterm** ist eine OR-Verknüpfung aller Variablen. Die Variable wird negiert, wenn sie 1 ist.
+
+Aus der Tabelle sehen wir den Maxterm für die Zeile mit Y = 0.
+
+**Schritt 2: KNF aufstellen**  
+Die **Konjunktive Normalform (KNF)** ist die AND-Verknüpfung aller Maxterme:
+
+$$Y_{KNF} = A \lor B$$
+
+**Ergebnis:**
+$$Y = A \lor B$$
+
+#### Vergleich und Interpretation
+
+Beide Normalformen führen zum **gleichen Ergebnis**:
+
+$$Y_{DNF} = A \lor B$$
+$$Y_{KNF} = A \lor B$$
+
+**Wahrheitstabelle zur Verifikation:**
+
+| A | B | $\bar{A} \land B$ | $A \land \bar{B}$ | $A \land B$ | DNF (Original) | $A \lor B$ | Vereinfacht | KNF |
+|---|---|------------------|------------------|-------------|----------------|------------|-------------|-----|
+| 0 | 0 | 0                | 0                | 0           | 0              | 0          | 0           | 0   |
+| 0 | 1 | 1                | 0                | 0           | 1              | 1          | 1           | 1   |
+| 1 | 0 | 0                | 1                | 0           | 1              | 1          | 1           | 1   |
+| 1 | 1 | 0                | 0                | 1           | 1              | 1          | 1           | 1   |
+
+**Erkenntnisse:**
+
+1. **DNF** verwendet Minterme (Y=1 Zeilen) → Sum of Products
+2. **KNF** verwendet Maxterme (Y=0 Zeilen) → Product of Sums  
+3. Beide Normalformen beschreiben **dieselbe Funktion**
+4. Die KNF war in diesem Fall bereits minimal, während die DNF vereinfacht werden musste
+5. Je nachdem, ob mehr 1en oder 0en in der Wahrheitstabelle sind, kann eine Form einfacher sein
+
+**Faustregel:**
+- Viele 1en in Wahrheitstabelle → KNF ist kürzer (weniger Maxterme)
+- Viele 0en in Wahrheitstabelle → DNF ist kürzer (weniger Minterme)
+
+### Beispiel 8: CO2 Überwachung Garage
+
+<!-- {{< include 01.05.01_Garagen_CO2_Ueberwachung.qmd >}} -->
+
