@@ -316,6 +316,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../OPV/01_IntroOPV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operationsverstärker</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -382,6 +388,7 @@ window.Quarto = {
   <li><a href="#lösung-6" id="toc-lösung-6" class="nav-link" data-scroll-target="#lösung-6"><span class="header-section-number">1.3.7.2</span> Lösung</a></li>
   <li><a href="#vergleich-und-interpretation" id="toc-vergleich-und-interpretation" class="nav-link" data-scroll-target="#vergleich-und-interpretation"><span class="header-section-number">1.3.7.3</span> Vergleich und Interpretation</a></li>
   </ul></li>
+  <li><a href="#beispiel-8-co2-überwachung-garage" id="toc-beispiel-8-co2-überwachung-garage" class="nav-link" data-scroll-target="#beispiel-8-co2-überwachung-garage"><span class="header-section-number">1.3.8</span> Beispiel 8: CO2 Überwachung Garage</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -868,7 +875,7 @@ Hinweis
 <p><span class="math inline">\(\bar{A} = \neg A\)</span></p>
 </div>
 </div>
-<div id="336f0d5a" class="cell" data-execution_count="3">
+<div id="b5e8eab2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> MySymbol(<span class="st">'D'</span>,description<span class="op">=</span><span class="st">'D Eingang'</span>)</span>
@@ -893,16 +900,16 @@ Y = \left(A \wedge \neg C\right) \vee \left(A \wedge \neg D\right) \vee \left(B 
 \tag{1.2}\]</span></span></p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(A\)</span> … A Eingang</p>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(B\)</span> … B Eingang</p>
+<p><span class="math inline">\(D\)</span> … D Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(C\)</span> … C Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(D\)</span> … D Eingang</p>
+<p><span class="math inline">\(B\)</span> … B Eingang</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(A\)</span> … A Eingang</p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(Y\)</span> … Y Ausgang</p>
@@ -1372,9 +1379,13 @@ Die <strong>Konjunktive Normalform (KNF)</strong> ist die AND-Verknüpfung aller
 <li>Je nachdem, ob mehr 1en oder 0en in der Wahrheitstabelle sind, kann eine Form einfacher sein</li>
 </ol>
 <p><strong>Faustregel:</strong> - Viele 1en in Wahrheitstabelle → KNF ist kürzer (weniger Maxterme) - Viele 0en in Wahrheitstabelle → DNF ist kürzer (weniger Minterme)</p>
-
-
 </section>
+</section>
+<section id="beispiel-8-co2-überwachung-garage" class="level3" data-number="1.3.8">
+<h3 data-number="1.3.8" class="anchored" data-anchor-id="beispiel-8-co2-überwachung-garage"><span class="header-section-number">1.3.8</span> Beispiel 8: CO2 Überwachung Garage</h3>
+<!-- {{< include 01.05.01_Garagen_CO2_Ueberwachung.qmd >}} -->
+
+
 </section>
 </section>
 

@@ -316,6 +316,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">State Variable Filter</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../OPV/01_IntroOPV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operationsverstärker</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -328,21 +334,45 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#beispiel-1" id="toc-beispiel-1" class="nav-link active" data-scroll-target="#beispiel-1"><span class="header-section-number">2.1</span> Beispiel 1</a></li>
-  <li><a href="#beispiel-2" id="toc-beispiel-2" class="nav-link" data-scroll-target="#beispiel-2"><span class="header-section-number">2.2</span> Beispiel 2</a></li>
-  <li><a href="#beispiel-3" id="toc-beispiel-3" class="nav-link" data-scroll-target="#beispiel-3"><span class="header-section-number">2.3</span> Beispiel 3</a>
+  <li><a href="#gleichungssysteme-mit-matrizen" id="toc-gleichungssysteme-mit-matrizen" class="nav-link active" data-scroll-target="#gleichungssysteme-mit-matrizen"><span class="header-section-number">2.1</span> Gleichungssysteme mit Matrizen</a>
   <ul>
-  <li><a href="#alle-ströme-und-spannungen-einzeichnen" id="toc-alle-ströme-und-spannungen-einzeichnen" class="nav-link" data-scroll-target="#alle-ströme-und-spannungen-einzeichnen"><span class="header-section-number">2.3.1</span> Alle Ströme und Spannungen einzeichnen</a></li>
-  <li><a href="#bekannte-größen" id="toc-bekannte-größen" class="nav-link" data-scroll-target="#bekannte-größen"><span class="header-section-number">2.3.2</span> Bekannte Größen</a></li>
-  <li><a href="#unbekannte-größen-definieren" id="toc-unbekannte-größen-definieren" class="nav-link" data-scroll-target="#unbekannte-größen-definieren"><span class="header-section-number">2.3.3</span> Unbekannte Größen definieren</a></li>
-  <li><a href="#knoten-und-maschen-einzeichnen" id="toc-knoten-und-maschen-einzeichnen" class="nav-link" data-scroll-target="#knoten-und-maschen-einzeichnen"><span class="header-section-number">2.3.4</span> Knoten und Maschen einzeichnen</a></li>
-  <li><a href="#knoten--und-maschengleichungen-aufstellen" id="toc-knoten--und-maschengleichungen-aufstellen" class="nav-link" data-scroll-target="#knoten--und-maschengleichungen-aufstellen"><span class="header-section-number">2.3.5</span> Knoten- und Maschengleichungen aufstellen</a></li>
-  <li><a href="#ohmsche-gesetze-für-die-widerstände-anschreiben" id="toc-ohmsche-gesetze-für-die-widerstände-anschreiben" class="nav-link" data-scroll-target="#ohmsche-gesetze-für-die-widerstände-anschreiben"><span class="header-section-number">2.3.6</span> Ohmsche Gesetze für die Widerstände anschreiben</a></li>
-  <li><a href="#überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt" id="toc-überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt" class="nav-link" data-scroll-target="#überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt"><span class="header-section-number">2.3.7</span> Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</a></li>
-  <li><a href="#gleichungssystem-lösen" id="toc-gleichungssystem-lösen" class="nav-link" data-scroll-target="#gleichungssystem-lösen"><span class="header-section-number">2.3.8</span> Gleichungssystem lösen</a></li>
+  <li><a href="#erweiterte-matrix" id="toc-erweiterte-matrix" class="nav-link" data-scroll-target="#erweiterte-matrix"><span class="header-section-number">2.1.1</span> Erweiterte Matrix</a></li>
+  <li><a href="#gauß-elimination" id="toc-gauß-elimination" class="nav-link" data-scroll-target="#gauß-elimination"><span class="header-section-number">2.1.2</span> Gauß-Elimination</a>
+  <ul class="collapse">
+  <li><a href="#von-der-erweiterten-matrix-zur-lösung" id="toc-von-der-erweiterten-matrix-zur-lösung" class="nav-link" data-scroll-target="#von-der-erweiterten-matrix-zur-lösung"><span class="header-section-number">2.1.2.1</span> Von der erweiterten Matrix zur Lösung</a></li>
   </ul></li>
-  <li><a href="#beispiel-4" id="toc-beispiel-4" class="nav-link" data-scroll-target="#beispiel-4"><span class="header-section-number">2.4</span> Beispiel 4</a></li>
-  <li><a href="#beispiel-5" id="toc-beispiel-5" class="nav-link" data-scroll-target="#beispiel-5"><span class="header-section-number">2.5</span> Beispiel 5</a></li>
+  <li><a href="#determinantenmethode-cramersche-regel" id="toc-determinantenmethode-cramersche-regel" class="nav-link" data-scroll-target="#determinantenmethode-cramersche-regel"><span class="header-section-number">2.1.3</span> Determinantenmethode (Cramersche Regel)</a></li>
+  <li><a href="#rueckwaertseinsetzen" id="toc-rueckwaertseinsetzen" class="nav-link" data-scroll-target="#rueckwaertseinsetzen"><span class="header-section-number">2.1.4</span> Rueckwaertseinsetzen</a></li>
+  <li><a href="#probe-durch-einsetzen" id="toc-probe-durch-einsetzen" class="nav-link" data-scroll-target="#probe-durch-einsetzen"><span class="header-section-number">2.1.5</span> Probe durch Einsetzen</a></li>
+  </ul></li>
+  <li><a href="#beispiel-1" id="toc-beispiel-1" class="nav-link" data-scroll-target="#beispiel-1"><span class="header-section-number">2.2</span> Beispiel 1</a>
+  <ul>
+  <li><a href="#lösung-mittels-matrizen" id="toc-lösung-mittels-matrizen" class="nav-link" data-scroll-target="#lösung-mittels-matrizen"><span class="header-section-number">2.2.1</span> Lösung mittels Matrizen</a></li>
+  </ul></li>
+  <li><a href="#beispiel-2" id="toc-beispiel-2" class="nav-link" data-scroll-target="#beispiel-2"><span class="header-section-number">2.3</span> Beispiel 2</a>
+  <ul>
+  <li><a href="#lösung-mittels-matrizen-1" id="toc-lösung-mittels-matrizen-1" class="nav-link" data-scroll-target="#lösung-mittels-matrizen-1"><span class="header-section-number">2.3.1</span> Lösung mittels Matrizen</a></li>
+  </ul></li>
+  <li><a href="#beispiel-3" id="toc-beispiel-3" class="nav-link" data-scroll-target="#beispiel-3"><span class="header-section-number">2.4</span> Beispiel 3</a>
+  <ul>
+  <li><a href="#alle-ströme-und-spannungen-einzeichnen" id="toc-alle-ströme-und-spannungen-einzeichnen" class="nav-link" data-scroll-target="#alle-ströme-und-spannungen-einzeichnen"><span class="header-section-number">2.4.1</span> Alle Ströme und Spannungen einzeichnen</a></li>
+  <li><a href="#bekannte-größen" id="toc-bekannte-größen" class="nav-link" data-scroll-target="#bekannte-größen"><span class="header-section-number">2.4.2</span> Bekannte Größen</a></li>
+  <li><a href="#unbekannte-größen-definieren" id="toc-unbekannte-größen-definieren" class="nav-link" data-scroll-target="#unbekannte-größen-definieren"><span class="header-section-number">2.4.3</span> Unbekannte Größen definieren</a></li>
+  <li><a href="#knoten-und-maschen-einzeichnen" id="toc-knoten-und-maschen-einzeichnen" class="nav-link" data-scroll-target="#knoten-und-maschen-einzeichnen"><span class="header-section-number">2.4.4</span> Knoten und Maschen einzeichnen</a></li>
+  <li><a href="#knoten--und-maschengleichungen-aufstellen" id="toc-knoten--und-maschengleichungen-aufstellen" class="nav-link" data-scroll-target="#knoten--und-maschengleichungen-aufstellen"><span class="header-section-number">2.4.5</span> Knoten- und Maschengleichungen aufstellen</a></li>
+  <li><a href="#ohmsche-gesetze-für-die-widerstände-anschreiben" id="toc-ohmsche-gesetze-für-die-widerstände-anschreiben" class="nav-link" data-scroll-target="#ohmsche-gesetze-für-die-widerstände-anschreiben"><span class="header-section-number">2.4.6</span> Ohmsche Gesetze für die Widerstände anschreiben</a></li>
+  <li><a href="#überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt" id="toc-überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt" class="nav-link" data-scroll-target="#überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt"><span class="header-section-number">2.4.7</span> Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</a></li>
+  <li><a href="#gleichungssystem-lösen" id="toc-gleichungssystem-lösen" class="nav-link" data-scroll-target="#gleichungssystem-lösen"><span class="header-section-number">2.4.8</span> Gleichungssystem lösen</a></li>
+  <li><a href="#lösung-mittels-matrizen-2" id="toc-lösung-mittels-matrizen-2" class="nav-link" data-scroll-target="#lösung-mittels-matrizen-2"><span class="header-section-number">2.4.9</span> Lösung mittels Matrizen</a></li>
+  </ul></li>
+  <li><a href="#beispiel-4" id="toc-beispiel-4" class="nav-link" data-scroll-target="#beispiel-4"><span class="header-section-number">2.5</span> Beispiel 4</a>
+  <ul>
+  <li><a href="#lösung-mittels-matrizen-3" id="toc-lösung-mittels-matrizen-3" class="nav-link" data-scroll-target="#lösung-mittels-matrizen-3"><span class="header-section-number">2.5.1</span> Lösung mittels Matrizen</a></li>
+  </ul></li>
+  <li><a href="#beispiel-5" id="toc-beispiel-5" class="nav-link" data-scroll-target="#beispiel-5"><span class="header-section-number">2.6</span> Beispiel 5</a>
+  <ul>
+  <li><a href="#lösung-mittels-matrizen-4" id="toc-lösung-mittels-matrizen-4" class="nav-link" data-scroll-target="#lösung-mittels-matrizen-4"><span class="header-section-number">2.6.1</span> Lösung mittels Matrizen</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -370,8 +400,107 @@ window.Quarto = {
 
 <p>Die Knoten-Spannungsanalyse ist eine Methode zur Berechnung der unbekannten elektrischen Größen in einem Netzwerk von elektrischen oder elektronischen Komponenten.<br>
 Unter Verwendung der Knotenregel, der Maschenregel und dem Ohmschen Gesetz werden Gleichungen aufgestellt, welche die Schaltung rechnerisch beschreiben. Es entsteht ein lineares Gleichungssystem, das gelöst werden kann.</p>
-<section id="beispiel-1" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="beispiel-1"><span class="header-section-number">2.1</span> Beispiel 1</h2>
+<p>Alternativ kann das lineare Gleichungssystem in Matrixform <span class="math inline">\(A \cdot x = b\)</span> geschrieben und mit Matrizen gelöst werden.</p>
+<section id="gleichungssysteme-mit-matrizen" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="gleichungssysteme-mit-matrizen"><span class="header-section-number">2.1</span> Gleichungssysteme mit Matrizen</h2>
+<p>Dies ist besonders gut geeignet, wenn die Schaltung komplex ist und viele Unbekannte enthält und damit mittels Berechnungsprogrammen gelöst werden soll.</p>
+<p>Weiterfuehrende Links:</p>
+<ol type="1">
+<li>Lineare Gleichungssysteme mit Matrizen in GeoGebra: <a href="https://www.geogebra.org/m/mwbyyfpn">GeoGebra Matrix-Rechner</a></li>
+<li>Lineare Gleichungssysteme mit Python SymPy: <a href="https://docs.sympy.org/latest/guides/solving/solve-matrix-equation.html">SymPy solve matrix equation</a></li>
+</ol>
+<p>Für ein lineares Gleichungssystem mit <span class="math inline">\(n\)</span> Unbekannten wird zuerst eine feste Reihenfolge der Unbekannten gewählt, zum Beispiel</p>
+<p><span class="math display">\[
+x = \begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}.
+\]</span></p>
+<p>Danach werden alle Gleichungen so umgeformt, dass links nur Terme mit Unbekannten stehen und rechts nur Zahlenwerte bzw. bekannte Größen. Dadurch entsteht die Matrixgleichung</p>
+<p><span class="math display">\[
+A \cdot x = b.
+\]</span></p>
+<p>Dabei gilt:</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}
+\end{pmatrix}, \qquad
+b = \begin{pmatrix}b_1\\b_2\\\vdots\\b_n\end{pmatrix}.
+\]</span></p>
+<section id="erweiterte-matrix" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="erweiterte-matrix"><span class="header-section-number">2.1.1</span> Erweiterte Matrix</h3>
+<p>Zur praktischen Rechnung wird oft die erweiterte Matrix verwendet. Dabei werden die Koeffizientenmatrix <span class="math inline">\(A\)</span> und der rechte Vektor <span class="math inline">\(b\)</span> zu einer Matrix zusammengefasst:</p>
+<p><span class="math display">\[
+(A|b) =
+\left(\begin{array}{cccc|c}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; b_1 \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; b_2 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; b_n
+\end{array}\right).
+\]</span></p>
+<p>Diese Schreibweise ist hilfreich, weil alle Umformungen in einem einzigen Objekt durchgeführt werden.</p>
+</section>
+<section id="gauß-elimination" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="gauß-elimination"><span class="header-section-number">2.1.2</span> Gauß-Elimination</h3>
+<p>Bei der Gauß-Elimination sind nur drei Zeilenumformungen erlaubt:</p>
+<ol type="1">
+<li>Zwei Zeilen vertauschen.</li>
+<li>Eine Zeile mit einem von Null verschiedenen Faktor multiplizieren.</li>
+<li>Ein Vielfaches einer Zeile zu einer anderen Zeile addieren.</li>
+</ol>
+<p>Ziel ist die Zeilenstufenform. Danach werden die Unbekannten durch Rückwärtseinsetzen berechnet.</p>
+<p>Wenn in einer Zeile links nur Nullen stehen, ergeben sich zwei wichtige Fälle:</p>
+<ol type="1">
+<li><span class="math inline">\(0 = c\)</span> mit <span class="math inline">\(c \neq 0\)</span>: keine Lösung (Widerspruch).</li>
+<li><span class="math inline">\(0 = 0\)</span>: diese Zeile liefert keine neue Information (abhängige Gleichung).</li>
+</ol>
+<section id="von-der-erweiterten-matrix-zur-lösung" class="level4" data-number="2.1.2.1">
+<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="von-der-erweiterten-matrix-zur-lösung"><span class="header-section-number">2.1.2.1</span> Von der erweiterten Matrix zur Lösung</h4>
+<p>Nach der Umformung zur Zeilenstufenform liegt die erweiterte Matrix typischerweise in der Form</p>
+<p><span class="math display">\[
+\left(\begin{array}{cccc|c}
+* &amp; * &amp; \cdots &amp; * &amp; * \\
+0 &amp; * &amp; \cdots &amp; * &amp; * \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; * &amp; *
+\end{array}\right)
+\]</span></p>
+<p>vor. Daraus entstehen die Lösungsschritte:</p>
+<ol type="1">
+<li>In der untersten Zeile steht nur noch eine Unbekannte. Diese wird zuerst direkt berechnet.</li>
+<li>Der berechnete Wert wird in die Zeile darüber eingesetzt. Dadurch fällt dort eine Variable weg und die nächste Unbekannte kann berechnet werden.</li>
+<li>Dieser Vorgang wird Zeile für Zeile nach oben wiederholt, bis alle Unbekannten bestimmt sind (Rückwärtseinsetzen).</li>
+<li>Zum Schluss werden alle berechneten Werte in die ursprünglichen Gleichungen eingesetzt. Nur wenn alle Gleichungen erfüllt sind, ist die Lösung korrekt (Probe).</li>
+</ol>
+<p>Wichtig: Die Probe wird mit den Ausgangsgleichungen durchgeführt, nicht mit bereits umgeformten Zwischenzeilen.</p>
+</section>
+</section>
+<section id="determinantenmethode-cramersche-regel" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="determinantenmethode-cramersche-regel"><span class="header-section-number">2.1.3</span> Determinantenmethode (Cramersche Regel)</h3>
+<p>Für quadratische Systeme kann man die Lösbarkeit auch über die Determinante prüfen:</p>
+<ol type="1">
+<li><span class="math inline">\(\det(A) \neq 0\)</span>: genau eine Lösung.</li>
+<li><span class="math inline">\(\det(A) = 0\)</span>: keine eindeutige Lösung (entweder keine oder unendlich viele).</li>
+</ol>
+<p>Falls <span class="math inline">\(\det(A) \neq 0\)</span>, kann jede Unbekannte mit der Cramerschen Regel berechnet werden:</p>
+<p><span class="math display">\[
+x_i = \frac{\det(A_i)}{\det(A)},
+\]</span></p>
+<p>wobei <span class="math inline">\(A_i\)</span> aus <span class="math inline">\(A\)</span> entsteht, indem die <span class="math inline">\(i\)</span>-te Spalte durch <span class="math inline">\(b\)</span> ersetzt wird.</p>
+<p>Die Determinantenmethode ist didaktisch sehr nützlich, für größere Systeme ist die Gauß-Elimination meist der praktischere Rechenweg.</p>
+</section>
+<section id="rueckwaertseinsetzen" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="rueckwaertseinsetzen"><span class="header-section-number">2.1.4</span> Rueckwaertseinsetzen</h3>
+<p>Nach der Gauß-Elimination liegt die letzte Zeile meist als Gleichung mit nur einer Unbekannten vor. Diese Unbekannte wird zuerst berechnet. Danach wird ihr Wert in die Zeile darüber eingesetzt, wodurch dort wieder nur eine neue Unbekannte übrig bleibt. So arbeitet man sich von unten nach oben, bis alle Unbekannten bestimmt sind.</p>
+</section>
+<section id="probe-durch-einsetzen" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="probe-durch-einsetzen"><span class="header-section-number">2.1.5</span> Probe durch Einsetzen</h3>
+<p>Alle berechneten Werte werden in die ursprünglichen Knoten-, Maschen- und Ohm-Gleichungen eingesetzt. Ist jede Gleichung erfüllt, ist die Lösung konsistent. Tritt in einer Gleichung ein Widerspruch auf, liegt ein Rechen- oder Umformungsfehler vor und die betroffenen Schritte müssen überprüft werden.</p>
+</section>
+</section>
+<section id="beispiel-1" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="beispiel-1"><span class="header-section-number">2.2</span> Beispiel 1</h2>
 <p>In Grafik <a href="#fig-KSA1" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -386,7 +515,7 @@ Abbildung&nbsp;2.1: Netzwerk
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div id="8f17e85d" class="cell" data-execution_count="2">
+<div id="1e1d4006" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(R\)</span> … Widerstand</p>
 </div>
@@ -403,7 +532,7 @@ Abbildung&nbsp;2.1: Netzwerk
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
 Siehe <a href="#fig-KSA1" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a><br>
 <strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div id="bf5c8fd3" class="cell" data-execution_count="3">
+<div id="5b290021" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Maschengleichungen</p>
 </div>
@@ -418,7 +547,7 @@ Siehe <a href="#fig-KSA1" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetze für die Widerstände anschreiben</strong></p>
-<div id="6795bcd1" class="cell" data-execution_count="4">
+<div id="09b43e97" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -430,7 +559,14 @@ Siehe <a href="#fig-KSA1" class="quarto-xref">Abbildung&nbsp;<span>2.1</span></a
 Passt, es gibt 2 Gleichungen und 2 Unbekannte.</p>
 <p><strong>7. Gleichungssystem lösen</strong><br>
 Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.</p>
-<div id="bb515d1f" class="cell" data-execution_count="5">
+<p>Vorgehen mit Zettel und Stift:</p>
+<ol type="1">
+<li>Aus der Maschengleichung folgt direkt <span class="math inline">\(U_R = U_q\)</span>.</li>
+<li>Diese Beziehung wird in das Ohmsche Gesetz <span class="math inline">\(U_R = R \cdot I\)</span> eingesetzt.</li>
+<li>Danach wird nach <span class="math inline">\(I\)</span> umgestellt: <span class="math inline">\(I = \frac{U_q}{R}\)</span>.</li>
+<li>Zum Schluss wird <span class="math inline">\(U_R\)</span> mit <span class="math inline">\(U_R = U_q\)</span> angegeben und die Lösung durch Einsetzen kontrolliert.</li>
+</ol>
+<div id="62efd50a" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle U_{R} = U_{q}\)</span></p>
 </div>
@@ -438,10 +574,100 @@ Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltung
 <p><span class="math inline">\(\displaystyle I = \frac{U_{q}}{R}\)</span></p>
 </div>
 </div>
+<section id="lösung-mittels-matrizen" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="lösung-mittels-matrizen"><span class="header-section-number">2.2.1</span> Lösung mittels Matrizen</h3>
+<p>Die Matrixrechnung kann ebenfalls händisch durchgeführt werden:</p>
+<ol type="1">
+<li>Unbekanntenvektor festlegen, z.B. <span class="math inline">\(x = \begin{pmatrix}U_R \\ I\end{pmatrix}\)</span>.</li>
+<li>Beide Gleichungen so umformen, dass alle Unbekannten links stehen.</li>
+<li>Koeffizienten in die Matrix <span class="math inline">\(A\)</span> und rechte Seiten in den Vektor <span class="math inline">\(b\)</span> eintragen.</li>
+<li>Das lineare System <span class="math inline">\(A \cdot x = b\)</span> mit Gauß-Verfahren lösen und die Ergebnisse rückprüfen.</li>
+</ol>
+<p>Von <span class="math inline">\((A|b)\)</span> zur Lösung in diesem Beispiel:</p>
+<ol type="1">
+<li>Die erste Zeile wird als Pivotzeile verwendet. Mit ihr wird der Eintrag darunter auf Null gebracht, damit die zweite Zeile nur noch eine Unbekannte enthält.</li>
+<li>Aus dieser zweiten Zeile wird zuerst <span class="math inline">\(I\)</span> berechnet, weil dort kein weiterer unbekannter Term mehr übrig ist.</li>
+<li>Der berechnete Strom <span class="math inline">\(I\)</span> wird in die erste Zeile eingesetzt. Dadurch erhält man direkt <span class="math inline">\(U_R\)</span>.</li>
+<li>Abschließend werden beide Werte in Maschen- und Ohm-Gleichung eingesetzt, um die Konsistenz der Lösung zu prüfen.</li>
+</ol>
+<p>Vollständige Ausrechnung (händisch):</p>
+<p>Zuerst in matrixgeeignete Normalform bringen (alle Unbekannten links, bekannte Größen rechts):</p>
+<p><span class="math display">\[
+\begin{aligned}
+U_R + 0\,I &amp;= U_q \\
+U_R - R I &amp;= 0
+\end{aligned}
+\]</span></p>
+<p>mit Unbekanntenvektor <span class="math inline">\(x = \begin{pmatrix}U_R \\ I\end{pmatrix}\)</span> folgt</p>
+<p><span class="math display">\[
+A = \begin{pmatrix}1 &amp; 0 \\ 1 &amp; -R\end{pmatrix}, \quad
+b = \begin{pmatrix}U_q \\ 0\end{pmatrix}, \quad
+(A|b)=
+\left(\begin{array}{cc|c}
+1 &amp; 0 &amp; U_q \\
+1 &amp; -R &amp; 0
+\end{array}\right).
+\]</span></p>
+<p>Die Matrixschreibweise lautet damit explizit:</p>
+<p><span class="math display">\[
+\begin{pmatrix}1 &amp; 0 \\ 1 &amp; -R\end{pmatrix}
+\cdot
+\begin{pmatrix}U_R \\ I\end{pmatrix}
+=
+\begin{pmatrix}U_q \\ 0\end{pmatrix}.
+\]</span></p>
+<p>Zeilenumformung:</p>
+<p><span class="math display">\[
+Z_2 \leftarrow Z_2 - Z_1
+\Rightarrow
+\left(\begin{array}{cc|c}
+1 &amp; 0 &amp; U_q \\
+0 &amp; -R &amp; -U_q
+\end{array}\right).
+\]</span></p>
+<p>Rückwärtseinsetzen:</p>
+<p><span class="math display">\[
+\begin{aligned}
+-R I &amp;= -U_q \Rightarrow I = \frac{U_q}{R},\\
+U_R &amp;= U_q.
+\end{aligned}
+\]</span></p>
+<p>Probe:</p>
+<p><span class="math display">\[
+U_R - R I = U_q - R\cdot\frac{U_q}{R} = 0.
+\]</span></p>
+<!--
+
+::: {#9820cb60 .cell execution_count=6}
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+Matrixgleichung in kompakter Form
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$$A \cdot x = b$$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$$\left[\begin{matrix}-1 & 0\\1 & - R\end{matrix}\right] \cdot \left[\begin{matrix}U_{R}\\I\end{matrix}\right] = \left[\begin{matrix}- U_{q}\\0\end{matrix}\right]$$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle U_{R} = U_{q}$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle I = \frac{U_{q}}{R}$
+:::
+:::
+
+
+-->
 <p>Für so eine einfache Schaltung würde man die Knoten-Spannungs-Analyse nicht verwenden. Die Methode lässt sich allerdings auf beliebig Komplexe Schaltungen anwenden.</p>
 </section>
-<section id="beispiel-2" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="beispiel-2"><span class="header-section-number">2.2</span> Beispiel 2</h2>
+</section>
+<section id="beispiel-2" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="beispiel-2"><span class="header-section-number">2.3</span> Beispiel 2</h2>
 <p>In Grafik <a href="#fig-KSA2" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -456,7 +682,7 @@ Abbildung&nbsp;2.2: Netzwerk
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div id="00f94fb2" class="cell" data-execution_count="6">
+<div id="c1d85c15" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(R_{1}\)</span> … Widerstand 1</p>
 </div>
@@ -491,7 +717,7 @@ Abbildung&nbsp;2.2: Netzwerk
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
 Siehe <a href="#fig-KSA2" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a><br>
 <strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div id="4efbefda" class="cell" data-execution_count="7">
+<div id="9a29be2d" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Maschengleichungen</p>
 </div>
@@ -515,7 +741,7 @@ Siehe <a href="#fig-KSA2" class="quarto-xref">Abbildung&nbsp;<span>2.2</span></a
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetze für die Widerstände anschreiben</strong></p>
-<div id="58f634e2" class="cell" data-execution_count="8">
+<div id="edf7dfe1" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -539,7 +765,14 @@ U_{3} = I_{2} R_{3}
 Passt, es gibt 6 Gleichungen und 6 Unbekannte.</p>
 <p><strong>7. Gleichungssystem lösen</strong><br>
 Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.</p>
-<div id="0c7cc66e" class="cell" data-execution_count="9">
+<p>Rechenweg in kurzen Schritten:</p>
+<ol type="1">
+<li>Zuerst die Maschengleichungen verwenden, um die Spannungen <span class="math inline">\(U_1, U_2, U_3\)</span> zu verknüpfen.</li>
+<li>Mit den Ohmschen Gesetzen die Spannungen durch Ströme ausdrücken.</li>
+<li>Die Knotengleichung einsetzen und schrittweise nur noch eine Unbekannte übrig lassen.</li>
+<li>Danach rückwärts einsetzen, bis alle Spannungen und Ströme bestimmt sind.</li>
+</ol>
+<div id="a9003b28" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-U1"><span class="math display">\[
 U_{1} = U_{q}
@@ -589,9 +822,198 @@ I = \frac{R_{1} U_{q} + R_{2} U_{q} + R_{3} U_{q}}{R_{1} R_{2} + R_{1} R_{3}}
 <p><span class="math display">\[I = \mathtt{\text{15}} \ \mathtt{\text{mA}}\]</span></p>
 </div>
 </div>
+<section id="lösung-mittels-matrizen-1" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="lösung-mittels-matrizen-1"><span class="header-section-number">2.3.1</span> Lösung mittels Matrizen</h3>
+<p>Für die Matrixdarstellung wird das System wieder in kleine Arbeitsschritte zerlegt:</p>
+<ol type="1">
+<li>Alle sechs Gleichungen in lineare Form bringen.</li>
+<li>Unbekannte in einer festen Reihenfolge anordnen, z.B. <span class="math inline">\((U_1, U_2, U_3, I_1, I_2, I)\)</span>.</li>
+<li>Daraus die Koeffizientenmatrix und den rechten Vektor aufstellen.</li>
+<li>Mit dem Gauß-Verfahren Zeile für Zeile eliminieren und danach rückwärts einsetzen.</li>
+</ol>
+<p>Von <span class="math inline">\((A|b)\)</span> zur Lösung in diesem Beispiel:</p>
+<ol type="1">
+<li>Die Unbekanntenreihenfolge bleibt fix. Dann wird spaltenweise pivotiert, sodass unter jedem Pivot nur Nullen stehen.</li>
+<li>Nach der Elimination liegt eine Stufenform vor. Die unterste Zeile enthält dann nur noch eine neue Unbekannte.</li>
+<li>Diese Unbekannte wird berechnet und sofort in die darüberliegenden Zeilen eingesetzt. So wird die Zahl der Unbekannten pro Zeile Schritt für Schritt reduziert.</li>
+<li>Dieser Prozess wird bis zur ersten Zeile fortgesetzt, bis alle sechs Größen berechnet sind.</li>
+<li>Zum Schluss folgt die Probe in Knoten-, Maschen- und Ohm-Gleichungen. Dabei müssen alle linken und rechten Seiten übereinstimmen.</li>
+</ol>
+<p>Vollständige Ausrechnung (händisch, symbolisch):</p>
+<p>Ziel: Die sechs Unbekannten <span class="math inline">\(U_1, U_2, U_3, I_1, I_2, I\)</span> nacheinander so bestimmen, dass jede neue Gleichung möglichst nur noch eine neue Unbekannte enthält.</p>
+<p>Welche Gleichungen werden in die Matrix gebracht?</p>
+<p>Ausgangspunkt ist das volle Gleichungssystem aus Beispiel 2:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M1:&amp;\ -U_q + U_1 = 0,\\
+M2:&amp;\ -U_1 + U_2 + U_3 = 0,\\
+K1:&amp;\ I - I_1 - I_2 = 0,\\
+O1:&amp;\ U_1 - R_1 I_1 = 0,\\
+O2:&amp;\ U_2 - R_2 I_2 = 0,\\
+O3:&amp;\ U_3 - R_3 I_2 = 0.
+\end{aligned}
+\]</span></p>
+<p>Fuer die handschriftliche Matrixrechnung wird daraus ein aequivalentes reduziertes Strom-System gebildet:</p>
+<ol type="1">
+<li>Aus <span class="math inline">\(M1\)</span> und <span class="math inline">\(O1\)</span>: <span class="math inline">\(U_1 = U_q\)</span> und damit <span class="math inline">\(R_1 I_1 = U_q\)</span>.</li>
+<li>Aus <span class="math inline">\(M2\)</span>, <span class="math inline">\(O2\)</span>, <span class="math inline">\(O3\)</span> und <span class="math inline">\(U_1 = U_q\)</span>: <span class="math inline">\((R_2+R_3)I_2 = U_q\)</span>.</li>
+<li>Aus <span class="math inline">\(K1\)</span>: <span class="math inline">\(I - I_1 - I_2 = 0\)</span>.</li>
+</ol>
+<p>Explizite Gauß-Zeilenumformungen (auf dem reduzierten Strom-System):</p>
+<p>Zuerst in matrixgeeignete Normalform bringen (alle Unbekannten links, bekannte Groessen rechts):</p>
+<p><span class="math display">\[
+R_1 I_1 = U_q,
+\qquad
+\left(R_2 + R_3\right) I_2 = U_q,
+\qquad
+I - I_1 - I_2 = 0.
+\]</span></p>
+<p>Mit Unbekanntenvektor <span class="math inline">\(\begin{pmatrix}I_1 \\ I_2 \\ I\end{pmatrix}\)</span> ergibt sich die erweiterte Matrix</p>
+<p><span class="math display">\[
+\left(\begin{array}{ccc|c}
+R_1 &amp; 0 &amp; 0 &amp; U_q \\
+0 &amp; R_2+R_3 &amp; 0 &amp; U_q \\
+-1 &amp; -1 &amp; 1 &amp; 0
+\end{array}\right).
+\]</span></p>
+<p>Die Matrixschreibweise lautet damit explizit:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+R_1 &amp; 0 &amp; 0 \\
+0 &amp; R_2+R_3 &amp; 0 \\
+-1 &amp; -1 &amp; 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}I_1 \\ I_2 \\ I\end{pmatrix}
+=
+\begin{pmatrix}U_q \\ U_q \\ 0\end{pmatrix}.
+\]</span></p>
+<p>Zeilenumformungen:</p>
+<p><span class="math display">\[
+Z_3 \leftarrow Z_3 + \frac{1}{R_1} Z_1
+\Rightarrow
+\left(\begin{array}{ccc|c}
+R_1 &amp; 0 &amp; 0 &amp; U_q \\
+0 &amp; R_2+R_3 &amp; 0 &amp; U_q \\
+0 &amp; -1 &amp; 1 &amp; \frac{U_q}{R_1}
+\end{array}\right)
+\]</span></p>
+<p><span class="math display">\[
+Z_3 \leftarrow Z_3 + \frac{1}{R_2+R_3} Z_2
+\Rightarrow
+\left(\begin{array}{ccc|c}
+R_1 &amp; 0 &amp; 0 &amp; U_q \\
+0 &amp; R_2+R_3 &amp; 0 &amp; U_q \\
+0 &amp; 0 &amp; 1 &amp; \frac{U_q}{R_1} + \frac{U_q}{R_2+R_3}
+\end{array}\right).
+\]</span></p>
+<p>Rückwärtseinsetzen liefert damit direkt:</p>
+<p><span class="math display">\[
+I = \frac{U_q}{R_1} + \frac{U_q}{R_2+R_3},
+\qquad
+I_2 = \frac{U_q}{R_2+R_3},
+\qquad
+I_1 = \frac{U_q}{R_1}.
+\]</span></p>
+<p>Aus den Gleichungen folgen direkt</p>
+<p><span class="math display">\[
+U_1 = U_q, \qquad U_2 + U_3 = U_1 = U_q.
+\]</span></p>
+<p>Mit den Ohmschen Gesetzen</p>
+<p><span class="math display">\[
+U_1 = R_1 I_1, \quad U_2 = R_2 I_2, \quad U_3 = R_3 I_2
+\]</span></p>
+<p>erhaelt man:</p>
+<p><span class="math display">\[
+I_1 = \frac{U_1}{R_1} = \frac{U_q}{R_1}.
+\]</span></p>
+<p>Außerdem gilt</p>
+<p><span class="math display">\[
+U_2 + U_3 = (R_2+R_3)I_2 = U_q
+\Rightarrow
+I_2 = \frac{U_q}{R_2+R_3}.
+\]</span></p>
+<p>Damit:</p>
+<p><span class="math display">\[
+U_2 = R_2 I_2 = \frac{R_2}{R_2+R_3}U_q,
+\qquad
+U_3 = R_3 I_2 = \frac{R_3}{R_2+R_3}U_q.
+\]</span></p>
+<p>Aus der Knotengleichung:</p>
+<p><span class="math display">\[
+I = I_1 + I_2 = \frac{U_q}{R_1} + \frac{U_q}{R_2+R_3}.
+\]</span></p>
+<p>Erst zum Schluss Werte einsetzen (hier: <span class="math inline">\(R_1=R_2=R_3=1000\,\Omega\)</span>, <span class="math inline">\(U_q=10\,\mathrm{V}\)</span>):</p>
+<p><span class="math display">\[
+I_1 = 0.01\,\mathrm{A},\quad
+I_2 = 0.005\,\mathrm{A},\quad
+I = 0.015\,\mathrm{A},\quad
+U_1 = 10\,\mathrm{V},\quad
+U_2 = 5\,\mathrm{V},\quad
+U_3 = 5\,\mathrm{V}.
+\]</span></p>
+<p>Lösung (mit eingesetzten Werten):</p>
+<p><span class="math display">\[
+\begin{aligned}
+U_1 &amp;= 10\,\mathrm{V}, &amp; U_2 &amp;= 5\,\mathrm{V}, &amp; U_3 &amp;= 5\,\mathrm{V},\\
+I_1 &amp;= 0.01\,\mathrm{A}, &amp; I_2 &amp;= 0.005\,\mathrm{A}, &amp; I &amp;= 0.015\,\mathrm{A}.
+\end{aligned}
+\]</span></p>
+<p>Probe:</p>
+<p>Die Probe ist wichtig, weil bei mehreren Umformungen kleine Vorzeichenfehler häufig sind. Erst wenn sowohl Maschen- als auch Knotengleichungen erfüllt sind, ist die Lösung verlässlich.</p>
+<p><span class="math display">\[
+\begin{aligned}
+M2:&amp;\ -U_1 + U_2 + U_3 = -10 + 5 + 5 = 0,\\
+K1:&amp;\ I - I_1 - I_2 = 0.015 - 0.01 - 0.005 = 0.
+\end{aligned}
+\]</span></p>
+<!--
+
+::: {#5f6d3943 .cell execution_count=11}
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+Matrixgleichung in kompakter Form
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$$A \cdot x = b$$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$$\left[\begin{matrix}-1 & 0 & 0 & 0 & 0 & 0\\1 & -1 & -1 & 0 & 0 & 0\\0 & 0 & 0 & 1 & 1 & -1\\1 & 0 & 0 & - R_{1} & 0 & 0\\0 & 1 & 0 & 0 & - R_{2} & 0\\0 & 0 & 1 & 0 & - R_{3} & 0\end{matrix}\right] \cdot \left[\begin{matrix}U_{1}\\U_{2}\\U_{3}\\I_{1}\\I_{2}\\I\end{matrix}\right] = \left[\begin{matrix}- U_{q}\\0\\0\\0\\0\\0\end{matrix}\right]$$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle U_{1} = U_{q}$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle U_{2} = \frac{R_{2} U_{q}}{R_{2} + R_{3}}$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle U_{3} = \frac{R_{3} U_{q}}{R_{2} + R_{3}}$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle I_{1} = \frac{U_{q}}{R_{1}}$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle I_{2} = \frac{U_{q}}{R_{2} + R_{3}}$
+:::
+
+::: {.cell-output .cell-output-display .cell-output-markdown}
+$\displaystyle I = \frac{R_{1} U_{q} + R_{2} U_{q} + R_{3} U_{q}}{R_{1} R_{2} + R_{1} R_{3}}$
+:::
+:::
+
+
+-->
 </section>
-<section id="beispiel-3" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="beispiel-3"><span class="header-section-number">2.3</span> Beispiel 3</h2>
+</section>
+<section id="beispiel-3" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="beispiel-3"><span class="header-section-number">2.4</span> Beispiel 3</h2>
 <p>In Grafik <a href="#fig-KSA3" class="quarto-xref">Abbildung&nbsp;<span>2.3</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA3" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -603,12 +1025,12 @@ Abbildung&nbsp;2.3: Netzwerk
 </figcaption>
 </figure>
 </div>
-<section id="alle-ströme-und-spannungen-einzeichnen" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="alle-ströme-und-spannungen-einzeichnen"><span class="header-section-number">2.3.1</span> Alle Ströme und Spannungen einzeichnen</h3>
+<section id="alle-ströme-und-spannungen-einzeichnen" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="alle-ströme-und-spannungen-einzeichnen"><span class="header-section-number">2.4.1</span> Alle Ströme und Spannungen einzeichnen</h3>
 </section>
-<section id="bekannte-größen" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="bekannte-größen"><span class="header-section-number">2.3.2</span> Bekannte Größen</h3>
-<div id="84005242" class="cell" data-execution_count="10">
+<section id="bekannte-größen" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="bekannte-größen"><span class="header-section-number">2.4.2</span> Bekannte Größen</h3>
+<div id="9372ba67" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math display">\[R_{1} = \mathtt{\text{1}} \ \mathrm{k\Omega}\]</span></p>
 </div>
@@ -626,9 +1048,9 @@ Abbildung&nbsp;2.3: Netzwerk
 </div>
 </div>
 </section>
-<section id="unbekannte-größen-definieren" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="unbekannte-größen-definieren"><span class="header-section-number">2.3.3</span> Unbekannte Größen definieren</h3>
-<div id="9c8c84fb" class="cell" data-execution_count="11">
+<section id="unbekannte-größen-definieren" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="unbekannte-größen-definieren"><span class="header-section-number">2.4.3</span> Unbekannte Größen definieren</h3>
+<div id="f74c0cd1" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(U_{1}\)</span> … Spannungsabfall an R1</p>
 </div>
@@ -649,13 +1071,13 @@ Abbildung&nbsp;2.3: Netzwerk
 </div>
 </div>
 </section>
-<section id="knoten-und-maschen-einzeichnen" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="knoten-und-maschen-einzeichnen"><span class="header-section-number">2.3.4</span> Knoten und Maschen einzeichnen</h3>
+<section id="knoten-und-maschen-einzeichnen" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="knoten-und-maschen-einzeichnen"><span class="header-section-number">2.4.4</span> Knoten und Maschen einzeichnen</h3>
 <p>Siehe <a href="#fig-KSA3" class="quarto-xref">Abbildung&nbsp;<span>2.3</span></a></p>
 </section>
-<section id="knoten--und-maschengleichungen-aufstellen" class="level3" data-number="2.3.5">
-<h3 data-number="2.3.5" class="anchored" data-anchor-id="knoten--und-maschengleichungen-aufstellen"><span class="header-section-number">2.3.5</span> Knoten- und Maschengleichungen aufstellen</h3>
-<div id="773a014e" class="cell" data-execution_count="12">
+<section id="knoten--und-maschengleichungen-aufstellen" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="knoten--und-maschengleichungen-aufstellen"><span class="header-section-number">2.4.5</span> Knoten- und Maschengleichungen aufstellen</h3>
+<div id="65535d94" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Maschengleichungen</p>
 </div>
@@ -679,9 +1101,9 @@ Abbildung&nbsp;2.3: Netzwerk
 </div>
 </div>
 </section>
-<section id="ohmsche-gesetze-für-die-widerstände-anschreiben" class="level3" data-number="2.3.6">
-<h3 data-number="2.3.6" class="anchored" data-anchor-id="ohmsche-gesetze-für-die-widerstände-anschreiben"><span class="header-section-number">2.3.6</span> Ohmsche Gesetze für die Widerstände anschreiben</h3>
-<div id="9a4ed911" class="cell" data-execution_count="13">
+<section id="ohmsche-gesetze-für-die-widerstände-anschreiben" class="level3" data-number="2.4.6">
+<h3 data-number="2.4.6" class="anchored" data-anchor-id="ohmsche-gesetze-für-die-widerstände-anschreiben"><span class="header-section-number">2.4.6</span> Ohmsche Gesetze für die Widerstände anschreiben</h3>
+<div id="773bd23f" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -702,14 +1124,21 @@ U_{3} = I_{2} R_{3}
 </div>
 </div>
 </section>
-<section id="überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt" class="level3" data-number="2.3.7">
-<h3 data-number="2.3.7" class="anchored" data-anchor-id="überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt"><span class="header-section-number">2.3.7</span> Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</h3>
+<section id="überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt" class="level3" data-number="2.4.7">
+<h3 data-number="2.4.7" class="anchored" data-anchor-id="überprüfen-ob-es-gleich-viele-gleichungen-wie-unbekannte-gibt"><span class="header-section-number">2.4.7</span> Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</h3>
 <p>Passt, es gibt 6 Gleichungen und 6 Unbekannte.</p>
 </section>
-<section id="gleichungssystem-lösen" class="level3" data-number="2.3.8">
-<h3 data-number="2.3.8" class="anchored" data-anchor-id="gleichungssystem-lösen"><span class="header-section-number">2.3.8</span> Gleichungssystem lösen</h3>
+<section id="gleichungssystem-lösen" class="level3" data-number="2.4.8">
+<h3 data-number="2.4.8" class="anchored" data-anchor-id="gleichungssystem-lösen"><span class="header-section-number">2.4.8</span> Gleichungssystem lösen</h3>
 <p>Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.</p>
-<div id="24c8bf78" class="cell" data-execution_count="14">
+<p>Hier ist der Lösungsweg besonders übersichtlich:</p>
+<ol type="1">
+<li>Zuerst werden die zwei Maschengleichungen, die Knotengleichung und die drei Ohmschen Gesetze gesammelt.</li>
+<li>Dann werden die sechs Unbekannten festgelegt.</li>
+<li>Eine Gleichung nach der anderen umstellen und die Ergebnisse direkt in die übrigen Gleichungen einsetzen.</li>
+<li>Zum Schluss alle gesuchten Größen berechnen und jede Gleichung als Probe prüfen.</li>
+</ol>
+<div id="83bbb132" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-U1"><span class="math display">\[
 U_{1} = U_{q1} - U_{q2}
@@ -760,9 +1189,75 @@ I = \frac{R_{1} U_{q1} + R_{2} U_{q1} - R_{2} U_{q2} + R_{3} U_{q1} - R_{3} U_{q
 </div>
 </div>
 </section>
+<section id="lösung-mittels-matrizen-2" class="level3" data-number="2.4.9">
+<h3 data-number="2.4.9" class="anchored" data-anchor-id="lösung-mittels-matrizen-2"><span class="header-section-number">2.4.9</span> Lösung mittels Matrizen</h3>
+<p>Vollstaendige Ausrechnung (haendisch, symbolisch):</p>
+<p>Welche Gleichungen werden in die Matrix gebracht?</p>
+<p>Ausgangspunkt ist das volle Gleichungssystem aus Beispiel 3:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M1:&amp;\ -U_{q1} + U_1 + U_{q2} = 0,\\
+M2:&amp;\ -U_1 - U_{q2} + U_2 + U_3 = 0,\\
+K1:&amp;\ I - I_1 - I_2 = 0,\\
+O1:&amp;\ U_1 - R_1 I_1 = 0,\\
+O2:&amp;\ U_2 - R_2 I_2 = 0,\\
+O3:&amp;\ U_3 - R_3 I_2 = 0.
+\end{aligned}
+\]</span></p>
+<p>Fuer die handschriftliche Matrixrechnung wird wieder ein aequivalentes reduziertes Strom-System verwendet:</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_1 I_1 &amp;= U_{q1}-U_{q2},\\
+\left(R_2+R_3\right)I_2 &amp;= U_{q1}-U_{q2},\\
+I-I_1-I_2 &amp;= 0.
+\end{aligned}
+\]</span></p>
+<p>Mit Unbekanntenvektor <span class="math inline">\(\begin{pmatrix}I_1 \\ I_2 \\ I\end{pmatrix}\)</span> ergibt sich:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+R_1 &amp; 0 &amp; 0 \\
+0 &amp; R_2+R_3 &amp; 0 \\
+-1 &amp; -1 &amp; 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}I_1 \\ I_2 \\ I\end{pmatrix}
+=
+\begin{pmatrix}U_{q1}-U_{q2} \\ U_{q1}-U_{q2} \\ 0\end{pmatrix}.
+\]</span></p>
+<p>Erst zum Schluss Werte einsetzen und die Probe in den Ausgangsgleichungen durchfuehren.</p>
+<div id="4d7a646c" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Matrixgleichung in kompakter Form</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[A \cdot x = b\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[\left[\begin{matrix}-1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\1 &amp; -1 &amp; -1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; -1\\1 &amp; 0 &amp; 0 &amp; - R_{1} &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0 &amp; - R_{2} &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0 &amp; - R_{3} &amp; 0\end{matrix}\right] \cdot \left[\begin{matrix}U_{1}\\U_{2}\\U_{3}\\I_{1}\\I_{2}\\I\end{matrix}\right] = \left[\begin{matrix}- U_{q1} + U_{q2}\\- U_{q2}\\0\\0\\0\\0\end{matrix}\right]\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{1} = U_{q1} - U_{q2}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{2} = \frac{R_{2} U_{q1}}{R_{2} + R_{3}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{3} = \frac{R_{3} U_{q1}}{R_{2} + R_{3}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{1} = \frac{U_{q1}}{R_{1}} - \frac{U_{q2}}{R_{1}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{2} = \frac{U_{q1}}{R_{2} + R_{3}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I = \frac{R_{1} U_{q1} + R_{2} U_{q1} - R_{2} U_{q2} + R_{3} U_{q1} - R_{3} U_{q2}}{R_{1} R_{2} + R_{1} R_{3}}\)</span></p>
+</div>
+</div>
 </section>
-<section id="beispiel-4" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="beispiel-4"><span class="header-section-number">2.4</span> Beispiel 4</h2>
+</section>
+<section id="beispiel-4" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="beispiel-4"><span class="header-section-number">2.5</span> Beispiel 4</h2>
 <p>In Grafik <a href="#fig-KSA4" class="quarto-xref">Abbildung&nbsp;<span>2.4</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA4" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -777,7 +1272,7 @@ Abbildung&nbsp;2.4: Netzwerk
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div id="480bf201" class="cell" data-execution_count="15">
+<div id="3f674c6a" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Bekannte Größen</p>
 </div>
@@ -845,7 +1340,7 @@ Abbildung&nbsp;2.4: Netzwerk
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
 Siehe <a href="#fig-KSA4" class="quarto-xref">Abbildung&nbsp;<span>2.4</span></a></p>
 <p><strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div id="34a2608c" class="cell" data-execution_count="16">
+<div id="e0ff2f06" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Maschengleichungen</p>
 </div>
@@ -884,7 +1379,7 @@ Siehe <a href="#fig-KSA4" class="quarto-xref">Abbildung&nbsp;<span>2.4</span></a
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetze für die Widerstände anschreiben</strong></p>
-<div id="c16c7dd9" class="cell" data-execution_count="17">
+<div id="e1e9d472" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>Ohmsches Gesetz</p>
 </div>
@@ -906,9 +1401,15 @@ U_{3} = I_{3} R_{3}
 </div>
 <p><strong>6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</strong><br>
 Passt, es gibt 9 Gleichungen und 9 Unbekannte.</p>
-<p><strong>7. Gleichungssystem lösen</strong><br>
-Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.</p>
-<div id="6e5e121d" class="cell" data-execution_count="18">
+<p><strong>7. Gleichungssystem lösen</strong></p>
+<p>Wenn mehr Gleichungen als Unbekannte vorhanden sind, hilft dieses Schema:</p>
+<ol type="1">
+<li>Zuerst prüfen, ob das System widerspruchsfrei ist.</li>
+<li>Danach unabhängige Gleichungen auswählen und abhängige Gleichungen als Kontrolle behandeln.</li>
+<li>Das reduzierte System von Hand lösen (Einsetzen oder Gauß-Verfahren).</li>
+<li>Die erhaltene Lösung in alle ursprünglichen Gleichungen einsetzen und prüfen. Das Gleichungssystem kann mit der Hand gelöst werden. Für komplexere Schaltungen ist es sinnvoll, ein Computerprogramm zu verwenden.</li>
+</ol>
+<div id="2f9c0adb" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span id="eq-U1"><span class="math display">\[
 U_{1} = U_{q1} - U_{q2}
@@ -982,9 +1483,71 @@ I = \frac{R_{1} U_{q1} - R_{1} U_{q2} + R_{2} U_{q1} - R_{2} U_{q2}}{R_{1} R_{2}
 <p><span class="math display">\[I = \mathtt{\text{18}} \ \mathtt{\text{mA}}\]</span></p>
 </div>
 </div>
+<section id="lösung-mittels-matrizen-3" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="lösung-mittels-matrizen-3"><span class="header-section-number">2.5.1</span> Lösung mittels Matrizen</h3>
+<p>Vollstaendige Ausrechnung (haendisch, symbolisch):</p>
+<p>Welche Gleichungen werden in die Matrix gebracht?</p>
+<p>In Beispiel 4 wird das volle, bereits aufgestellte Gleichungssystem verwendet:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M1:&amp;\ -U_{q1}+U_1+U_{q2}=0,\\
+M2:&amp;\ -U_1+U_2=0,\\
+M3:&amp;\ -U_{q2}+U_3=0,\\
+K1:&amp;\ I-I_1-I_2=0,\\
+K2:&amp;\ I_1-I_4+I_5=0,\\
+K3:&amp;\ I_2-I_5-I_3=0,\\
+O1:&amp;\ U_1-R_1 I_1=0,\\
+O2:&amp;\ U_2-R_2 I_2=0,\\
+O3:&amp;\ U_3-R_3 I_3=0.
+\end{aligned}
+\]</span></p>
+<p>Unbekanntenreihenfolge (wie im Code):</p>
+<p><span class="math display">\[
+x = \begin{pmatrix}U_1\\U_2\\U_3\\I_1\\I_2\\I_3\\I_4\\I_5\\I\end{pmatrix}.
+\]</span></p>
+<p>Damit wird direkt die Matrixgleichung <span class="math inline">\(A\cdot x=b\)</span> gebildet und mit Gauß geloest. Numerische Werte werden erst nach der symbolischen Loesung eingesetzt.</p>
+<div id="6f894107" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Matrixgleichung in kompakter Form</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[A \cdot x = b\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[\left[\begin{matrix}-1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\1 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -1\\0 &amp; 0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 &amp; 1 &amp; -1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0 &amp; - R_{1} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0 &amp; - R_{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; - R_{3} &amp; 0 &amp; 0 &amp; 0\end{matrix}\right] \cdot \left[\begin{matrix}U_{1}\\U_{2}\\U_{3}\\I_{1}\\I_{2}\\I_{3}\\I_{4}\\I_{5}\\I\end{matrix}\right] = \left[\begin{matrix}- U_{q1} + U_{q2}\\0\\- U_{q2}\\0\\0\\0\\0\\0\\0\end{matrix}\right]\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{1} = U_{q1} - U_{q2}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{2} = U_{q1} - U_{q2}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{3} = U_{q2}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{1} = \frac{U_{q1}}{R_{1}} - \frac{U_{q2}}{R_{1}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{2} = \frac{U_{q1}}{R_{2}} - \frac{U_{q2}}{R_{2}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{3} = \frac{U_{q2}}{R_{3}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{4} = \frac{- R_{1} R_{2} U_{q2} + R_{1} R_{3} U_{q1} - R_{1} R_{3} U_{q2} + R_{2} R_{3} U_{q1} - R_{2} R_{3} U_{q2}}{R_{1} R_{2} R_{3}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{5} = - \frac{U_{q2}}{R_{3}} + \frac{U_{q1}}{R_{2}} - \frac{U_{q2}}{R_{2}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I = \frac{R_{1} U_{q1} - R_{1} U_{q2} + R_{2} U_{q1} - R_{2} U_{q2}}{R_{1} R_{2}}\)</span></p>
+</div>
+</div>
 </section>
-<section id="beispiel-5" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="beispiel-5"><span class="header-section-number">2.5</span> Beispiel 5</h2>
+</section>
+<section id="beispiel-5" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="beispiel-5"><span class="header-section-number">2.6</span> Beispiel 5</h2>
 <p>In Grafik <a href="#fig-KSA5" class="quarto-xref">Abbildung&nbsp;<span>2.5</span></a> ist ein Netzwerk aus Widerständen und Spannungsquellen dargestellt.</p>
 <div id="fig-KSA5" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -999,7 +1562,7 @@ Abbildung&nbsp;2.5: Netzwerk
 <p>Vorgehensweise<br>
 <strong>1. Alle Ströme und Spannungen einzeichnen</strong><br>
 <strong>2. Unbekannte Größen definieren</strong></p>
-<div id="519ec5a1" class="cell" data-execution_count="19">
+<div id="30a7745b" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
@@ -1134,7 +1697,7 @@ Abbildung&nbsp;2.5: Netzwerk
 <p><strong>3. Knoten und Maschen einzeichnen</strong><br>
 Siehe <a href="#fig-KSA5" class="quarto-xref">Abbildung&nbsp;<span>2.5</span></a></p>
 <p><strong>4. Knoten- und Maschengleichungen aufstellen</strong></p>
-<div id="7e737a36" class="cell" data-execution_count="20">
+<div id="93414435" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gleichungen</span></span>
@@ -1200,7 +1763,7 @@ Siehe <a href="#fig-KSA5" class="quarto-xref">Abbildung&nbsp;<span>2.5</span></a
 </div>
 </div>
 <p><strong>5. Ohmsche Gesetze für die Widerstände anschreiben</strong></p>
-<div id="a977cdb1" class="cell" data-execution_count="21">
+<div id="0161cf6f" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="st">'Ohmsches Gesetz'</span>))</span>
@@ -1255,7 +1818,7 @@ U_{R5} = I_{5} R_{5}
 </div>
 </div>
 <p><strong>6. Überprüfen ob es gleich viele Gleichungen wie Unbekannte gibt</strong></p>
-<div id="377686be" class="cell" data-execution_count="22">
+<div id="0e617ed7" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="st">'Anzahl der Gleichungen:'</span>))</span>
@@ -1264,7 +1827,7 @@ U_{R5} = I_{5} R_{5}
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>display(<span class="bu">len</span>(unknowns))</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(equations) <span class="op">&gt;</span> <span class="bu">len</span>(unknowns):</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">'Das Gleichungssystem ist überbestimmt. Es gibt mehr Gleichungen als Unbekannte. Das bedeutet, dass Gleichungen abhängig sind. Eine Gleichung kann aus den anderen abgeleitet werden. Wird diese Gleichung aus dem Gleichungssystem entfernt, so ist das Gleichungssystem lösbar. Mit Sympy kann das Gleichungssystem gelöst werden. Die überflüssigen Gleichungen werden ignoriert.'</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">'Das Gleichungssystem ist überbestimmt. Es gibt mehr Gleichungen als Unbekannte. Das bedeutet, dass einzelne Gleichungen abhängig sein können. Eine abhängige Gleichung kann aus den anderen abgeleitet werden. Wird sie entfernt, kann das reduzierte Gleichungssystem gelöst werden.'</span>))</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="bu">len</span>(equations) <span class="op">&lt;</span> <span class="bu">len</span>(unknowns):</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">'Das Gleichungssystem ist unterbestimmt. Es gibt mehr Unbekannte als Gleichungen. Das Gleichungssystem kann nicht gelöst werden.'</span>))</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="bu">len</span>(equations) <span class="op">==</span> <span class="bu">len</span>(unknowns):</span>
@@ -1285,11 +1848,18 @@ U_{R5} = I_{5} R_{5}
 <pre><code>11</code></pre>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p>Das Gleichungssystem ist überbestimmt. Es gibt mehr Gleichungen als Unbekannte. Das bedeutet, dass Gleichungen abhängig sind. Eine Gleichung kann aus den anderen abgeleitet werden. Wird diese Gleichung aus dem Gleichungssystem entfernt, so ist das Gleichungssystem lösbar. Mit Sympy kann das Gleichungssystem gelöst werden. Die überflüssigen Gleichungen werden ignoriert.</p>
+<p>Das Gleichungssystem ist überbestimmt. Es gibt mehr Gleichungen als Unbekannte. Das bedeutet, dass einzelne Gleichungen abhängig sein können. Eine abhängige Gleichung kann aus den anderen abgeleitet werden. Wird sie entfernt, kann das reduzierte Gleichungssystem gelöst werden.</p>
 </div>
 </div>
 <p><strong>7. Gleichungssystem lösen</strong></p>
-<div id="20d13e38" class="cell" data-execution_count="23">
+<p>Rechenweg mit Zettel und Stift:</p>
+<ol type="1">
+<li>Zuerst ein unabhängiges Teilsystem auswählen (gleich viele Gleichungen wie Unbekannte).</li>
+<li>Dieses Teilsystem sauber lösen, z.B. durch Einsetzen oder Gauß-Verfahren.</li>
+<li>Danach alle berechneten Größen in die übrigen Gleichungen einsetzen.</li>
+<li>Stimmen alle Restgleichungen, ist die Lösung des gesamten Netzwerks konsistent.</li>
+</ol>
+<div id="9180235c" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gleichungssystem lösen</span></span>
@@ -1393,8 +1963,68 @@ I_{6} = \frac{- R_{1} R_{3} U_{2} - R_{1} R_{4} U_{2} - R_{1} R_{5} U_{2} - R_{2
 <p><span class="math display">\[I_{6} = \mathtt{\text{-787}} \ \mathtt{\text{mA}}\]</span></p>
 </div>
 </div>
+<section id="lösung-mittels-matrizen-4" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="lösung-mittels-matrizen-4"><span class="header-section-number">2.6.1</span> Lösung mittels Matrizen</h3>
+<p>Vollstaendige Ausrechnung (haendisch, symbolisch):</p>
+<p>Welche Gleichungen werden in die Matrix gebracht?</p>
+<p>In Beispiel 5 werden alle aufgestellten Maschen-, Knoten- und Ohm-Gleichungen gemeinsam in Matrixform gebracht:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;M1,\ M2,\ M3,\ K1,\ K2,\ K3,\ K4,\ O1,\ O2,\ O3,\ O4,\ O5.
+\end{aligned}
+\]</span></p>
+<p>Unbekanntenreihenfolge (wie im Code):</p>
+<p><span class="math display">\[
+x = \begin{pmatrix}U_{R1}\\U_{R2}\\U_{R3}\\U_{R4}\\U_{R5}\\I_1\\I_2\\I_3\\I_4\\I_5\\I_6\end{pmatrix}.
+\]</span></p>
+<p>Damit gilt direkt <span class="math inline">\(A\cdot x=b\)</span>. Erst nach der symbolischen Loesung werden konkrete Werte fuer <span class="math inline">\(R_1,\dots,R_5,U_1,U_2\)</span> eingesetzt und anschliessend die Probe gemacht.</p>
+<div id="dbbb2d19" class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Matrixgleichung in kompakter Form</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[A \cdot x = b\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[\left[\begin{array}{ccccccccccc}-1 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; -1 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 0 &amp; 1 &amp; -1\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; -1 &amp; -1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; - R_{1} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; - R_{2} &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; - R_{3} &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; - R_{4} &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; - R_{5} &amp; 0\end{array}\right] \cdot \left[\begin{matrix}U_{R1}\\U_{R2}\\U_{R3}\\U_{R4}\\U_{R5}\\I_{1}\\I_{2}\\I_{3}\\I_{4}\\I_{5}\\I_{6}\end{matrix}\right] = \left[\begin{matrix}U_{1}\\0\\- U_{2}\\0\\0\\0\\0\\0\\0\\0\\0\\0\end{matrix}\right]\]</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{R1} = \frac{- R_{1} R_{2} R_{3} U_{1} - R_{1} R_{2} R_{4} U_{1} - R_{1} R_{2} R_{5} U_{1} - R_{1} R_{3} R_{4} U_{1} - R_{1} R_{3} R_{5} U_{1} + R_{1} R_{3} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{R2} = \frac{R_{1} R_{2} R_{3} U_{2} + R_{1} R_{2} R_{4} U_{2} + R_{1} R_{2} R_{5} U_{2} - R_{2} R_{3} R_{5} U_{1} + R_{2} R_{3} R_{5} U_{2} + R_{2} R_{4} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{R3} = \frac{R_{1} R_{3} R_{4} U_{2} + R_{1} R_{3} R_{5} U_{2} + R_{2} R_{3} R_{5} U_{1} + R_{3} R_{4} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{R4} = \frac{R_{1} R_{3} R_{4} U_{2} - R_{2} R_{4} R_{5} U_{1} - R_{3} R_{4} R_{5} U_{1} + R_{3} R_{4} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U_{R5} = \frac{- R_{1} R_{3} R_{5} U_{2} - R_{2} R_{3} R_{5} U_{1} - R_{2} R_{4} R_{5} U_{1} - R_{3} R_{4} R_{5} U_{1}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{1} = \frac{- R_{2} R_{3} U_{1} - R_{2} R_{4} U_{1} - R_{2} R_{5} U_{1} - R_{3} R_{4} U_{1} - R_{3} R_{5} U_{1} + R_{3} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{2} = \frac{R_{1} R_{3} U_{2} + R_{1} R_{4} U_{2} + R_{1} R_{5} U_{2} - R_{3} R_{5} U_{1} + R_{3} R_{5} U_{2} + R_{4} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{3} = \frac{R_{1} R_{4} U_{2} + R_{1} R_{5} U_{2} + R_{2} R_{5} U_{1} + R_{4} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{4} = \frac{R_{1} R_{3} U_{2} - R_{2} R_{5} U_{1} - R_{3} R_{5} U_{1} + R_{3} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{5} = \frac{- R_{1} R_{3} U_{2} - R_{2} R_{3} U_{1} - R_{2} R_{4} U_{1} - R_{3} R_{4} U_{1}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle I_{6} = \frac{- R_{1} R_{3} U_{2} - R_{1} R_{4} U_{2} - R_{1} R_{5} U_{2} - R_{2} R_{3} U_{1} - R_{2} R_{4} U_{1} - R_{2} R_{5} U_{1} - R_{3} R_{4} U_{1} - R_{4} R_{5} U_{2}}{R_{1} R_{2} R_{3} + R_{1} R_{2} R_{4} + R_{1} R_{2} R_{5} + R_{1} R_{3} R_{4} + R_{1} R_{3} R_{5} + R_{2} R_{3} R_{5} + R_{2} R_{4} R_{5} + R_{3} R_{4} R_{5}}\)</span></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
