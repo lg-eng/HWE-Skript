@@ -69,7 +69,7 @@ QBookHelpers.print_equation(H_eq1)
 
 ```
 
-Da es sich hier um eine Einfache Serienschaltung handelt, kann die Übertragungsfunktion auch als Verhältnis der Impedanzen dargestellt werden. Es wird die Spannungsteilerregel verwendet.
+Da es sich hier um eine einfache Serienschaltung handelt, kann die Übertragungsfunktion auch als Verhältnis der Impedanzen dargestellt werden. Es wird die Spannungsteilerregel verwendet.
 
 ```{python}
 #| code-fold: true
@@ -88,8 +88,8 @@ QBookHelpers.print_equation(H_eq3)
 ```
 
 ### Resonanzfrequenz
-Das Wissen über die Resonanzfrequenz ist nicht nur wichtig wenn das diese Bauteile in ganz ähnlicher Anordnung als Schwingkreis verwendet wird. Auch bei Hochpass und Tiefpassfiltern ist die Resonanzfrequenz wichtig. Auch wenn für Filter die Grenzfrequenz öfter herangezogen wird.  
-Da es sich bei dieser Schaltung um eine Schaltung mit zwei Energiespeichern handeln zwischen der die Energie hin und her Pendeln kann ist dieses System schwingfähig und in der Lage bei Resonanz eine Resonanzüberhöhung zu erzeugen. Das bedeutet, dass die Amplitude am Ausgang größer als der Eingang ist. Es ist leicht vorsstellbar, dass in solch einem Fall eine eventuell dahinter liegende Schaltung zerstört werden könnte. daher gilt es die Resonanzüberhöhung meistens zu vermeiden.
+Das Wissen über die Resonanzfrequenz ist nicht nur wichtig wenn diese Bauteile in ganz ähnlicher Anordnung als Schwingkreis verwendet werden. Auch bei Hochpass und Tiefpassfiltern ist die Resonanzfrequenz wichtig. Auch wenn für Filter die Grenzfrequenz öfter herangezogen wird.  
+Da es sich bei dieser Schaltung um eine Schaltung mit zwei Energiespeichern handelt, zwischen der die Energie hin und her Pendeln kann, ist dieses System schwingfähig und in der Lage bei Resonanz eine Resonanzüberhöhung zu erzeugen. Das bedeutet, dass die Amplitude am Ausgang größer als der Eingang ist. Es ist leicht vorstellbar, dass in solch einem Fall eine eventuell dahinter liegende Schaltung zerstört werden könnte. Daher gilt es die Resonanzüberhöhung meistens zu vermeiden.
 
 Die Resonanzfrequenz ist die Frequenz, bei der die Impedanz des Hochpasses minimal ist. Resonanz tritt ein wenn der Widerstand des Schaltung am kleinsten ist. Das ist der Fall wenn sich die induktive Impedanz und die kapazitive Impedanz aufheben. Der Imaginärteil also Null ist. Damit lässt sich die Resonanzfrequenz berechnen.
 
@@ -119,7 +119,7 @@ QBH.print_values2([wr])
 ```
 
 #### Übertragungsfunktion bei Resonanz
-Mit der Übertragungsfunktion kann nun der Ausgang in Abhängigkeit der des Eingangs berechnet werden. Wird zum beispiel für $\omega$ die Resonanzfrequenz eingesetzt, so erhält man die Übertragungsfunktion bei Resonanz.
+Mit der Übertragungsfunktion kann nun der Ausgang in Abhängigkeit der des Eingangs berechnet werden. Wird zum Beispiel für $\omega$ die Resonanzfrequenz eingesetzt, so erhält man die Übertragungsfunktion bei Resonanz.
 
 ```{python}
 #| code-fold: true 
@@ -173,10 +173,10 @@ wg_eq1 = Eq(wg,expand(simplify(expand(solve(wg_eq0,w)[1])))) # can not be simpli
 
 ### Bode-Diagramm in Abhängigkeit der Bauteilwerte
 Das Bode-Diagramm ist eine grafische Darstellung der Übertragungsfunktion in Abhängigkeit von der Frequenz. Es wird in zwei Diagrammen dargestellt, einem für den Betrag der Übertragungsfunktion in dB und einem für die Phase der Übertragungsfunktion. Die Frequenz wird in logarithmischer Skala dargestellt. Die Phase der Übertragungsfunktion wird in Grad angegeben und gibt an, wie viel die Ausgangsspannung gegenüber der Eingangsspannung verschoben ist.  
-Aus dem Bode-Diagramm kann das Verhalten des Filter, welches mathematisch in der Übertragungsfunktion beschrieben ist, grafisch abgelesen werden.  
+Aus dem Bode-Diagramm kann das Verhalten des Filters, welches mathematisch in der Übertragungsfunktion beschrieben ist, grafisch abgelesen werden.  
 Nicht nur Filter können mittels Bode-Diagramm gut analysiert werden. Auch andere Systeme welche einen Eingang und einen Ausgang haben, können mit Hilfe der Übertragungsfunktion und dem Bode-Diagramm analysiert werden.  
 
-Ob es zu einer Resonanzüberhöhung kommt, davon ab wie Stark das System gedämpft ist. Bei einem Hochpass 2ter Ordnung ist die Dämpfung durch den Widerstand R maßgeblich bestimmt. 
+Ob es zu einer Resonanzüberhöhung kommt, hängt davon ab, wie stark das System gedämpft ist. Bei einem Hochpass 2ter Ordnung ist die Dämpfung durch den Widerstand R maßgeblich bestimmt. 
 
 
 #### Ohne Resonanzüberhöhung - stark gedämpft
