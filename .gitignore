@@ -5,9 +5,12 @@
 /ef37abcc/
 /.ipynb_checkpoints/
 *.html
+!Projekte/Grafiken/Hbruecke/H-Bruecken-Simulator.html
 Projekte/Oszillator/Transient AnalysisPKanal.csv
 Projekte/Oszillator/Transient Analysis.csv
 bfg.jar
 /.quarto/
 
 **/*.quarto_ipynb
+
+/.venv/

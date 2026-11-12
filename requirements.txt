@@ -1,0 +1,19 @@
+# Python-Umgebung fuer Quarto-Render (Jupyter-Engine)
+# Quarto/Jupyter-Engine:
+pyyaml
+jupyter_client
+nbclient
+nbformat
+ipykernel
+ipython
+# Kapitel-Abhaengigkeiten:
+pandas
+tabulate
+numpy
+matplotlib
+plotly
+kaleido>=1
+sympy
+scipy
+schemdraw
+quantiphy
