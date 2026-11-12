@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H-Brücken-Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: Labortisch. Links der Schaltplan, rechts das Bedienfeld, darunter Messwerte, Schreiber und Schalttabelle. */
+:root{
+  --bg:#eceff3; --panel:#f9fafb; --ink:#17202b; --muted:#5a6675; --line:#cfd6de;
+  --fwd:#0b7a75; --rev:#7448c9; --brake:#c2362b; --hot:#d07a06; --on-ink:#ffffff;
+  --display:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12171d; --panel:#1a2129; --ink:#e6ebf1; --muted:#93a0af; --line:#2e3945;
+    --fwd:#37c2b8; --rev:#a98bf0; --brake:#f0685c; --hot:#f5a623; --on-ink:#10151b;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12171d; --panel:#1a2129; --ink:#e6ebf1; --muted:#93a0af; --line:#2e3945;
+  --fwd:#37c2b8; --rev:#a98bf0; --brake:#f0685c; --hot:#f5a623; --on-ink:#10151b;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:15px;line-height:1.45}
+.wrap{max-width:1120px;margin:0 auto;padding:20px 16px 32px;display:flex;flex-direction:column;gap:14px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+h1{font-size:22px;font-weight:600;margin:0;text-wrap:balance}
+header p{margin:0;color:var(--muted);font-size:13px;font-family:var(--mono)}
+h2{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px}
+.top{display:grid;grid-template-columns:1.35fr 1fr;gap:14px}
+.circuit{display:flex;flex-direction:column;gap:8px}
+.circuit-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;border:1.5px solid currentColor}
+.chip.fwd{color:var(--fwd)} .chip.rev{color:var(--rev)} .chip.brake{color:var(--brake)} .chip.coast{color:var(--muted)}
+.chip.lim{color:var(--hot);visibility:hidden} .chip.lim.show{visibility:visible}
+svg{display:block;width:100%;height:auto}
+.wire{stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.thin{stroke:var(--ink);stroke-width:1.5;fill:none}
+.dot{fill:var(--ink)}
+.lbl{font-family:var(--mono);font-size:13px;fill:var(--ink);font-weight:600}
+.sub{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.fet .ch,.fet .gate{stroke:var(--ink);stroke-width:3.5;stroke-linecap:round;fill:none}
+.fet .state{font-family:var(--mono);font-size:11px;font-weight:600;fill:var(--muted)}
+.fet.on .ch,.fet.on .gate,.fet.pwm .ch,.fet.pwm .gate{stroke:var(--hot)}
+.fet.on .state,.fet.pwm .state{fill:var(--hot)}
+.fet .halo{fill:var(--hot);opacity:0}
+.fet.on .halo{opacity:.16}
+.fet.pwm .halo{opacity:.16;animation:pulse .5s steps(2,jump-none) infinite}
+@keyframes pulse{from{opacity:.22}to{opacity:.04}}
+.flow{stroke:var(--hot);stroke-width:5;fill:none;stroke-dasharray:3 13;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.flow.show{opacity:1}
+.motor{fill:var(--panel);stroke:var(--ink);stroke-width:2.5}
+.rotor line{stroke:var(--muted);stroke-width:3;stroke-linecap:round}
+.hub{fill:var(--ink)}
+.note{font-size:13px;color:var(--muted);margin:0;max-width:65ch}
+
+.controls{display:flex;flex-direction:column;gap:16px}
+.group{display:flex;flex-direction:column;gap:8px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:6px;padding:10px 10px;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left}
+button:hover{border-color:var(--muted)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+button kbd{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:0 5px}
+button[aria-pressed="true"]{color:var(--on-ink);border-color:transparent}
+button[aria-pressed="true"] kbd{color:var(--on-ink);border-color:currentColor;opacity:.8}
+button[data-mode="fwd"][aria-pressed="true"]{background:var(--fwd)}
+button[data-mode="rev"][aria-pressed="true"]{background:var(--rev)}
+button[data-mode="brake"][aria-pressed="true"]{background:var(--brake)}
+button[data-mode="coast"][aria-pressed="true"]{background:var(--muted)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.seg button{border-radius:0;justify-content:center;text-align:center;padding:8px}
+.seg button:first-child{border-radius:6px 0 0 6px;border-right-width:0}
+.seg button:last-child{border-radius:0 6px 6px 0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--panel)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.row output{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--ink);margin:0;height:24px}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{display:flex;flex-direction:column;gap:4px}
+.val{font-family:var(--mono);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1;white-space:nowrap}
+.val small{font-size:13px;font-weight:400;color:var(--muted);margin-left:4px}
+.bar{height:5px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ink)}
+.bar.cur i{background:var(--hot)}
+.scope{display:flex;flex-direction:column;gap:8px}
+canvas{display:block;width:100%;height:270px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line)}
+th{font-size:12px;color:var(--muted);font-weight:600}
+td.s{font-family:var(--mono);font-weight:600}
+tr.active td{background:color-mix(in srgb,var(--hot) 14%,transparent)}
+tr.bad td{color:var(--brake)}
+@media (max-width:820px){
+  .top{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr 1fr}
+  .val{font-size:22px}
+}
+@media (prefers-reduced-motion: reduce){.fet.pwm .halo{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>H-Brücken-Simulator</h1>
+    <p>4 × N-MOSFET · 24 V · Gleichstrommotor 3500 min⁻¹</p>
+  </header>
+
+  <div class="top">
+    <section class="panel circuit" aria-label="Schaltplan">
+      <div class="circuit-head">
+        <h2>Schaltung</h2>
+        <div class="chips">
+          <span class="chip lim" id="limChip">Strombegrenzung 8 A</span>
+          <span class="chip fwd" id="modeChip">Vorlauf</span>
+        </div>
+      </div>
+      <svg viewBox="0 0 560 420" role="img" aria-label="H-Brücke mit vier MOSFETs Q1 bis Q4 und Motor in der Mitte">
+        <!-- Versorgung -->
+        <path class="wire" d="M60 40H410M60 380H410"/>
+        <text class="lbl" x="8" y="45">+24 V</text>
+        <text class="lbl" x="18" y="385">GND</text>
+        <!-- Brückenzweige -->
+        <path class="wire" d="M150 40V106M150 134V286M150 314V380M410 40V106M410 134V286M410 314V380"/>
+        <path class="wire" d="M150 210H240M320 210H410"/>
+        <circle class="dot" cx="150" cy="210" r="4"/><circle class="dot" cx="410" cy="210" r="4"/>
+        <circle class="dot" cx="150" cy="40" r="3.5"/><circle class="dot" cx="150" cy="380" r="3.5"/>
+        <text class="lbl" x="160" y="200">A</text><text class="lbl" x="392" y="200">B</text>
+        <g id="fets"></g>
+        <!-- Strompfade -->
+        <polyline class="flow" id="flow-fwd"/>
+        <polyline class="flow" id="flow-rev"/>
+        <polyline class="flow" id="flow-brake"/>
+        <!-- Motor -->
+        <circle class="motor" cx="280" cy="210" r="40"/>
+        <g class="rotor" id="rotor">
+          <line x1="280" y1="210" x2="280" y2="178"/>
+          <line x1="280" y1="210" x2="307.7" y2="226"/>
+          <line x1="280" y1="210" x2="252.3" y2="226"/>
+        </g>
+        <circle class="hub" cx="280" cy="210" r="6"/>
+        <text class="lbl" x="280" y="272" text-anchor="middle">Motor</text>
+        <text class="sub" id="dirText" x="280" y="288" text-anchor="middle">dreht vorwärts</text>
+      </svg>
+      <p class="note">Die gepunktete Linie zeigt den Strom, ihre Geschwindigkeit die Stromstärke. In den PWM-Pausen läuft der Strom über die Body-Diode des gegenüberliegenden High-Side-FETs im oberen Kreis weiter.</p>
+    </section>
+
+    <section class="panel controls" aria-label="Bedienfeld">
+      <div class="group">
+        <h2>Betriebsart</h2>
+        <div class="modes">
+          <button type="button" id="btn-fwd" data-mode="fwd" aria-pressed="true">Vorlauf <kbd>V</kbd></button>
+          <button type="button" id="btn-rev" data-mode="rev" aria-pressed="false">Rücklauf <kbd>R</kbd></button>
+          <button type="button" id="btn-brake" data-mode="brake" aria-pressed="false">Bremsen <kbd>B</kbd></button>
+          <button type="button" id="btn-coast" data-mode="coast" aria-pressed="false">Freilauf <kbd>F</kbd></button>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="row"><h2><label for="speed">Geschwindigkeit</label></h2><output id="speedOut" for="speed">Tastgrad 60 %</output></div>
+        <input type="range" id="speed" min="0" max="100" step="1" value="60">
+        <div class="seg" role="group" aria-label="Art der Geschwindigkeitsvorgabe">
+          <button type="button" id="ctl-open" aria-pressed="true">Steuerung (PWM)</button>
+          <button type="button" id="ctl-closed" aria-pressed="false">Drehzahlregler (PI)</button>
+        </div>
+        <p class="hint" id="ctlHint">Der Regler gibt den Tastgrad direkt vor. Unter Last sinkt die Drehzahl.</p>
+      </div>
+
+      <div class="group">
+        <div class="row"><h2><label for="load">Last an der Welle</label></h2><output id="loadOut" for="load">0,00 Nm</output></div>
+        <input type="range" id="load" min="0" max="0.25" step="0.01" value="0">
+        <p class="hint">Zum Vergleich: Last erhöhen, einmal mit Steuerung und einmal mit Drehzahlregler.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="tiles" aria-label="Messwerte">
+    <div class="panel tile"><h2>Drehzahl</h2><div class="val"><span id="vN">0</span><small>min⁻¹</small></div><div class="bar"><i id="bN"></i></div></div>
+    <div class="panel tile"><h2>Motorstrom</h2><div class="val"><span id="vI">0,0</span><small>A</small></div><div class="bar cur"><i id="bI"></i></div></div>
+    <div class="panel tile"><h2>Motorspannung</h2><div class="val"><span id="vU">0,0</span><small>V</small></div><div class="bar"><i id="bU"></i></div></div>
+    <div class="panel tile"><h2>Tastgrad</h2><div class="val"><span id="vD">0</span><small>%</small></div><div class="bar"><i id="bD"></i></div></div>
+  </section>
+
+  <section class="panel scope">
+    <h2>Verlauf der letzten 10 Sekunden</h2>
+    <canvas id="cv" aria-label="Zeitverlauf von Drehzahl und Motorstrom"></canvas>
+  </section>
+
+  <section class="panel">
+    <h2 style="margin-bottom:8px">Schaltzustände</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Betriebsart</th><th>Q1 oben links</th><th>Q2 unten links</th><th>Q3 oben rechts</th><th>Q4 unten rechts</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr data-row="fwd"><td>Vorlauf</td><td class="s">EIN</td><td class="s">AUS</td><td class="s">AUS</td><td class="s">PWM</td><td>Strom von A nach B</td></tr>
+          <tr data-row="rev"><td>Rücklauf</td><td class="s">AUS</td><td class="s">PWM</td><td class="s">EIN</td><td class="s">AUS</td><td>Strom von B nach A</td></tr>
+          <tr data-row="brake"><td>Bremsen</td><td class="s">AUS</td><td class="s">EIN</td><td class="s">AUS</td><td class="s">EIN</td><td>Motor kurzgeschlossen, er bremst sich als Generator selbst</td></tr>
+          <tr data-row="coast"><td>Freilauf</td><td class="s">AUS</td><td class="s">AUS</td><td class="s">AUS</td><td class="s">AUS</td><td>Motor stromlos, läuft durch Reibung aus</td></tr>
+          <tr class="bad"><td>Verboten</td><td class="s">EIN</td><td class="s">EIN</td><td class="s">–</td><td class="s">–</td><td>Kurzschluss der Versorgung über einen Zweig. Die Simulation schaltet nie beide FETs eines Zweigs ein.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+"use strict";
+// Motor- und Brückendaten
+const P = {Vs:24, R:1.5, L:0.002, K:0.05, J:8e-4, B:1e-4, Tc:0.03, Ilim:8, nRef:3500, Kp:3, Ki:12};
+const S = {mode:"fwd", speed:60, closed:false, load:0, i:0, w:0, v:0, D:0, I:0, lim:false, theta:0, off:0};
+const RPM = 30/Math.PI;
+const $ = id => document.getElementById(id);
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// ---------- Schaltplan aufbauen ----------
+const FETS = [
+  {id:"Q1", cx:150, cy:120, s:-1}, {id:"Q2", cx:150, cy:300, s:-1},
+  {id:"Q3", cx:410, cy:120, s:1},  {id:"Q4", cx:410, cy:300, s:1}
+];
+$("fets").innerHTML = FETS.map(f => {
+  const {cx,cy,s} = f, xc = cx+s*14, xg = cx+s*21, xd = cx-s*22, a = s<0 ? "end" : "start";
+  return `<g class="fet" id="${f.id}">
+    <circle class="halo" cx="${cx+s*8}" cy="${cy}" r="34"/>
+    <path class="thin" d="M${cx} ${cy-14}H${xc}M${cx} ${cy+14}H${xc}M${xg} ${cy}H${cx+s*46}"/>
+    <path class="ch" d="M${xc} ${cy-18}V${cy+18}"/>
+    <path class="gate" d="M${xg} ${cy-13}V${cy+13}"/>
+    <path class="thin" d="M${cx} ${cy-24}H${xd}V${cy+24}H${cx}"/>
+    <path class="thin" style="fill:var(--panel)" d="M${xd-6} ${cy+6}H${xd+6}L${xd} ${cy-5}Z"/>
+    <path class="thin" d="M${xd-6} ${cy-5}H${xd+6}"/>
+    <text class="lbl" x="${cx+s*52}" y="${cy-3}" text-anchor="${a}">${f.id}</text>
+    <text class="state" x="${cx+s*52}" y="${cy+13}" text-anchor="${a}">AUS</text>
+  </g>`;
+}).join("");
+
+const thru = (f, up) => {
+  const {cx,cy,s} = f, p = [[cx,cy-14],[cx+s*14,cy-14],[cx+s*14,cy+14],[cx,cy+14]];
+  return up ? p.reverse() : p;
+};
+const pts = a => a.map(p => p.join(",")).join(" ");
+const [Q1,Q2,Q3,Q4] = FETS;
+$("flow-fwd").setAttribute("points", pts([[60,40],[150,40],...thru(Q1),[150,210],[410,210],...thru(Q4),[410,380],[60,380]]));
+$("flow-rev").setAttribute("points", pts([[60,40],[410,40],...thru(Q3),[410,210],[150,210],...thru(Q2),[150,380],[60,380]]));
+$("flow-brake").setAttribute("points", pts([[150,210],...thru(Q2),[150,380],[410,380],...thru(Q4,true),[410,210],[150,210]]));
+
+// ---------- Physik ----------
+function step(dt){
+  const e = P.K*S.w;
+  let lim = false;
+  if (S.mode === "fwd" || S.mode === "rev"){
+    const d = S.mode === "fwd" ? 1 : -1;
+    let D;
+    if (S.closed){
+      const err = S.speed/100 - d*S.w*RPM/P.nRef;
+      const u = P.Kp*err + S.I;
+      const sat = (u >= 1 && err > 0) || (u <= 0 && err < 0) || (S.lim && err > 0);
+      if (!sat) S.I += P.Ki*err*dt;
+      D = Math.min(1, Math.max(0, u));
+    } else {
+      D = S.speed/100;
+    }
+    let vc = d*D*P.Vs;
+    const cap = e + d*P.R*P.Ilim;           // Spannung, bei der der Strom die Grenze erreicht
+    if (d*vc > d*cap){ vc = cap; lim = true; }
+    S.i += (vc - P.R*S.i - e)/P.L*dt;
+    if (S.i*d < 0) S.i = 0;                 // Dioden lassen keinen Rückstrom zu
+    S.v = S.i !== 0 ? vc : e;
+    S.D = Math.max(0, d*vc)/P.Vs;
+  } else if (S.mode === "brake"){
+    S.i += (-P.R*S.i - e)/P.L*dt;           // Klemmen kurzgeschlossen
+    S.v = 0; S.D = 0; S.I = 0;
+  } else {
+    S.i = 0; S.v = e; S.D = 0; S.I = 0;     // alle FETs aus
+  }
+  S.lim = lim;
+
+  const Tm = P.K*S.i, Tf = P.Tc + S.load;
+  if (Math.abs(S.w) < 0.5 && Math.abs(Tm) <= Tf){
+    S.w = 0;
+  } else {
+    const sg = S.w !== 0 ? Math.sign(S.w) : Math.sign(Tm);
+    const w2 = S.w + (Tm - P.B*S.w - Tf*sg)/P.J*dt;
+    S.w = (S.w !== 0 && Math.sign(w2) !== Math.sign(S.w) && Math.abs(Tm) <= Tf) ? 0 : w2;
+  }
+}
+
+// ---------- Bedienung ----------
+const MODES = {
+  fwd:  {name:"Vorlauf",  fets:{Q1:"on", Q4:"pwm"}},
+  rev:  {name:"Rücklauf", fets:{Q3:"on", Q2:"pwm"}},
+  brake:{name:"Bremsen",  fets:{Q2:"on", Q4:"on"}},
+  coast:{name:"Freilauf", fets:{}}
+};
+const de = (x, n) => x.toFixed(n).replace(".", ",").replace("-", "−");
+
+function setMode(m){
+  if (S.mode !== m) S.I = 0;
+  S.mode = m;
+  for (const k in MODES) $("btn-"+k).setAttribute("aria-pressed", k === m);
+  for (const f of FETS){
+    const st = MODES[m].fets[f.id] || "";
+    const g = $(f.id);
+    g.setAttribute("class", "fet " + st);
+    g.querySelector(".state").textContent = st === "on" ? "EIN" : st === "pwm" ? "PWM" : "AUS";
+  }
+  const chip = $("modeChip");
+  chip.className = "chip " + m; chip.textContent = MODES[m].name;
+  document.querySelectorAll("tr[data-row]").forEach(tr => tr.classList.toggle("active", tr.dataset.row === m));
+}
+function setClosed(c){
+  if (c && !S.closed) S.I = S.D;            // stoßfreies Umschalten
+  S.closed = c;
+  $("ctl-open").setAttribute("aria-pressed", !c);
+  $("ctl-closed").setAttribute("aria-pressed", c);
+  $("ctlHint").textContent = c
+    ? "Ein PI-Regler vergleicht Soll- und Ist-Drehzahl und stellt den Tastgrad nach. Die Drehzahl bleibt unter Last gleich."
+    : "Der Regler gibt den Tastgrad direkt vor. Unter Last sinkt die Drehzahl.";
+  labels();
+}
+function labels(){
+  $("speedOut").textContent = S.closed
+    ? "Soll " + Math.round(S.speed/100*P.nRef) + " min⁻¹"
+    : "Tastgrad " + S.speed + " %";
+  $("loadOut").textContent = de(S.load, 2) + " Nm";
+}
+document.querySelectorAll("button[data-mode]").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
+$("ctl-open").addEventListener("click", () => setClosed(false));
+$("ctl-closed").addEventListener("click", () => setClosed(true));
+$("speed").addEventListener("input", ev => { S.speed = +ev.target.value; labels(); });
+$("load").addEventListener("input", ev => { S.load = +ev.target.value; labels(); });
+addEventListener("keydown", ev => {
+  if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+  const m = {v:"fwd", r:"rev", b:"brake", f:"coast"}[ev.key.toLowerCase()];
+  if (m){ setMode(m); ev.preventDefault(); }
+});
+
+// ---------- Schreiber ----------
+const cv = $("cv"), ctx = cv.getContext("2d");
+const N = 500, hist = [];
+let col = {};
+function readColors(){
+  const cs = getComputedStyle(document.documentElement);
+  for (const k of ["ink","muted","line","fwd","hot","panel"]) col[k] = cs.getPropertyValue("--"+k).trim();
+}
+function draw(){
+  const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+  const W = r.width, H = r.height;
+  if (cv.width !== Math.round(W*dpr) || cv.height !== Math.round(H*dpr)){ cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr); }
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+  const padL = 50, padR = 8, gap = 22, h = (H - gap - 8)/2;
+  const strips = [
+    {y:4,       max:4500, ticks:[-4000,0,4000], key:"n", c:col.fwd, name:"Drehzahl in min⁻¹", set:true},
+    {y:4+h+gap, max:16,   ticks:[-15,0,15],     key:"i", c:col.hot, name:"Motorstrom in A"}
+  ];
+  ctx.font = "11px 'IBM Plex Mono', ui-monospace, monospace";
+  ctx.textBaseline = "middle";
+  for (const s of strips){
+    const Y = v => s.y + h/2 - v/s.max*(h/2);
+    const X = k => padL + (W-padL-padR)*(k + N - hist.length)/(N-1);
+    ctx.lineWidth = 1;
+    for (const t of s.ticks){
+      ctx.strokeStyle = col.line; ctx.setLineDash(t === 0 ? [] : [2,4]);
+      ctx.beginPath(); ctx.moveTo(padL, Y(t)); ctx.lineTo(W-padR, Y(t)); ctx.stroke();
+      ctx.fillStyle = col.muted; ctx.textAlign = "right";
+      ctx.fillText(String(t).replace("-","−"), padL-6, Y(t));
+    }
+    ctx.setLineDash([]);
+    ctx.textAlign = "left"; ctx.fillStyle = col.c; ctx.fillStyle = s.c;
+    ctx.fillText(s.name, padL+6, s.y+2+6);
+    if (s.set){
+      ctx.strokeStyle = col.muted; ctx.setLineDash([5,4]); ctx.lineWidth = 1.25; ctx.beginPath();
+      let pen = false;
+      hist.forEach((p,k) => {
+        if (p.set === null){ pen = false; return; }
+        pen ? ctx.lineTo(X(k), Y(p.set)) : ctx.moveTo(X(k), Y(p.set)); pen = true;
+      });
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+    if (hist.length > 1){
+      ctx.beginPath();
+      hist.forEach((p,k) => k ? ctx.lineTo(X(k), Y(p[s.key])) : ctx.moveTo(X(k), Y(p[s.key])));
+      ctx.strokeStyle = s.c; ctx.lineWidth = 2; ctx.lineJoin = "round"; ctx.stroke();
+      ctx.lineTo(X(hist.length-1), Y(0)); ctx.lineTo(X(0), Y(0)); ctx.closePath();
+      ctx.globalAlpha = .12; ctx.fillStyle = s.c; ctx.fill(); ctx.globalAlpha = 1;
+      const last = hist[hist.length-1];
+      ctx.beginPath(); ctx.arc(X(hist.length-1), Y(last[s.key]), 3.5, 0, 6.3); ctx.fillStyle = s.c; ctx.fill();
+    }
+  }
+}
+
+// ---------- Hauptschleife ----------
+const flows = {fwd:$("flow-fwd"), rev:$("flow-rev"), brake:$("flow-brake")};
+let tPrev = performance.now(), tSample = 0, frame = 0;
+function tick(now){
+  const dt = Math.min(0.05, (now - tPrev)/1000); tPrev = now;
+  const h = 5e-5, n = Math.round(dt/h);
+  for (let k = 0; k < n; k++) step(h);
+
+  tSample += dt;
+  while (tSample >= 0.02){
+    tSample -= 0.02;
+    const drive = S.mode === "fwd" || S.mode === "rev";
+    hist.push({n:S.w*RPM, i:S.i, set:(drive && S.closed) ? (S.mode === "fwd" ? 1 : -1)*S.speed/100*P.nRef : null});
+    if (hist.length > N) hist.shift();
+  }
+
+  // Schaltplan
+  const act = Math.abs(S.i) > 0.05;
+  for (const k in flows) flows[k].classList.toggle("show", k === S.mode && act);
+  if (!calm){
+    const dir = S.mode === "brake" ? -Math.sign(S.i) : 1;
+    S.off -= dir*Math.abs(S.i)*14*dt;
+    if (flows[S.mode]) flows[S.mode].style.strokeDashoffset = (S.off % 16).toFixed(2);
+    S.theta += S.w/436*540*dt;
+    $("rotor").setAttribute("transform", `rotate(${(S.theta % 360).toFixed(1)} 280 210)`);
+  }
+
+  // Anzeigen
+  const rpm = S.w*RPM;
+  $("vN").textContent = de(Math.round(rpm) || 0, 0);
+  $("vI").textContent = de(Math.abs(S.i) < 0.05 ? 0 : S.i, 1);
+  $("vU").textContent = de(Math.abs(S.v) < 0.05 ? 0 : S.v, 1);
+  $("vD").textContent = Math.round(S.D*100);
+  $("bN").style.width = Math.min(100, Math.abs(rpm)/4500*100) + "%";
+  $("bI").style.width = Math.min(100, Math.abs(S.i)/16*100) + "%";
+  $("bU").style.width = Math.min(100, Math.abs(S.v)/P.Vs*100) + "%";
+  $("bD").style.width = S.D*100 + "%";
+  $("limChip").classList.toggle("show", S.lim);
+  $("dirText").textContent = Math.abs(rpm) < 1 ? "steht" : rpm > 0 ? "dreht vorwärts" : "dreht rückwärts";
+
+  if (frame++ % 30 === 0) readColors();
+  draw();
+  requestAnimationFrame(tick);
+}
+
+readColors(); setMode("fwd"); labels();
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
