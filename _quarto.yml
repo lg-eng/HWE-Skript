@@ -74,6 +74,9 @@ format:
     toc-depth: 4
     toc-expand: 4
     theme: cosmo
+    html-math-method:
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
     default-image-extension: svg
     echo: true
 

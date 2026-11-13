@@ -124,7 +124,7 @@ import pandas as pd
 dfS2S4 = pd.read_csv('HBrücke_WahrheitstabelleS2S4.csv',sep=';')
 
 
-display(Markdown(dfS2S4.to_markdown(index=False,tablefmt="github", colalign ='center')))
+display(Markdown(dfS2S4.to_markdown(index=False,tablefmt="github", colalign=["center"]*len(dfS2S4.columns))))
 
 ```
 
@@ -246,7 +246,7 @@ for t in table:
     tt4.append(bo)
 df2 = df2.assign(S4=tt4)
 
-display(Markdown(df2.to_markdown(index=False,tablefmt="github", colalign ='center')))
+display(Markdown(df2.to_markdown(index=False,tablefmt="github", colalign=["center"]*len(df2.columns))))
 
 ```
 
@@ -352,7 +352,7 @@ Will man nun die Funktion der H-Brücke simulieren, muss die Logikschaltung mit 
 
 ![Einfaches Motormodell ](Grafiken/Hbruecke/SimpleMotorModel.png){#fig-SimpleMotorModel height=50%}
 
-![Erweitertes Motormodell, @MotorModell ](Grafiken/Hbruecke/AdvancedMotorModel.png){#fig-ExtendedMotorModell width=80%}
+![Erweitertes Motormodell, @MotorModel ](Grafiken/Hbruecke/AdvancedMotorModel.png){#fig-ExtendedMotorModel width=80%}
 
 Nun können die Betriebszustände simuliert werden. Die Simulation ist in @fig-BridgeSim dargestellt. Die Simulation zeigt, dass die H-Brücke wie gewünscht funktioniert. Die Drehzahl lässt sich mittels PWM verändern. Die Drehrichtung lässt sich mittels Direction ändern. Die Bremsfunktion lässt sich mittels brake aktivieren. 
 
