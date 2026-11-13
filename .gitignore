@@ -13,4 +13,6 @@ bfg.jar
 
 **/*.quarto_ipynb
 
+*_files/
+
 /.venv/
